@@ -23,6 +23,7 @@ public class Menu {
 
                 case 1:
                     Doctor.printDoctors();
+                    FileService.writeToFile();
                     break;
                 case 2:
                     System.out.println("case2");
