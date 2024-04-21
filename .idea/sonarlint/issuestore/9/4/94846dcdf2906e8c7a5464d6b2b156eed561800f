@@ -1,0 +1,9 @@
+
+}
+java:S1118":Add a private constructor to hide the implicit public one.(Ìì¢Ï8’µğ1J$aea14f96-6a21-411e-8662-7a9f3e64560d
+s
+java:S1481"+Remove this unused "doctor" local variable.(øµ…úÿÿÿÿ8’’µğ1J$c08b0f0d-dd60-402a-a13a-eed077e5f2c7
+r	java:S106"+Replace this use of System.out by a logger.(¾ÍêÇşÿÿÿÿ8“’µğ1J$7ded40b4-a847-4674-9d77-9aa749d13c54
+m	java:S106"+Replace this use of System.out by a logger.(õÙ°ñ8”’µğ1J$c041e7e2-32ca-43f5-baec-a2eb608187e4
+m	java:S106""+Replace this use of System.out by a logger.(íÎˆ£8”’µğ1J$2088d772-52fe-4204-b29e-86c6044ecf51
+r	java:S106%"+Replace this use of System.out by a logger.(ƒª· øÿÿÿÿ8”’µğ1J$83e91bef-51c2-4091-93f3-e2a3cc6f9840
