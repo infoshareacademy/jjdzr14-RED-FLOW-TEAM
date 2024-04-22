@@ -65,7 +65,7 @@ public class Doctor {
 
     public static void printDoctors() {
 
-        Details details =  new Details("Jan", "Kowalski","123456789", 999);
+        Details details =  new Details("Jan", "Kowalski","123456789", "L999");
         Doctor doctor = new Doctor("Onkologia", true, true, details);
         List<Doctor> doctorTest = new ArrayList<>();
 

@@ -1,0 +1,17 @@
+
+j
+java:S2189""Add an end condition to this loop.(˜ïˆžÿÿÿÿÿ8…Ñ£¦ð1J$119deb36-e833-4c6f-9af2-79dbf6b2d07a
+}
+java:S1118	":Add a private constructor to hide the implicit public one.(—µ¥½8ˆÑ£¦ð1J$a9f54d53-4828-44c3-b244-cd95fd1f09b6
+ƒ
+java:S1854";Remove this useless assignment to local variable "patient".(’»Èçüÿÿÿÿ8‰Ñ£¦ð1J$eade0fa2-71b5-4493-bf15-0815ec8347c8
+
+java:S1854"<Remove this useless assignment to local variable "patients".(æ†ãŠ8ŠÑ£¦ð1J$0b27ccb0-5d76-41fb-bfa5-e3ed55669ee4
+p
+java:S1481"-Remove this unused "patients" local variable.(æ†ãŠ8‹Ñ£¦ð1J$7ba6dda6-52ef-49e3-a14c-5e0fd4e7299e
+t
+java:S1481",Remove this unused "patient" local variable.(’»Èçüÿÿÿÿ8Ñ£¦ð1J$e56768d8-78cd-4935-975b-35bf723f23b0
+m	java:S106"+Replace this use of System.out by a logger.(¢Šº†8ŽÑ£¦ð1J$399e9082-a359-4453-8c1b-5ad399f80209
+m	java:S106"+Replace this use of System.out by a logger.(úŸ±¡8Ñ£¦ð1J$3edde0f6-6ce7-4999-97fc-4e956c32325e
+u
+java:S1068"2Remove this unused "patientSurname" private field.(¨ƒ¬ 8Ñ£¦ð1J$0676d0c9-6c88-486e-8b5b-a61986021db7

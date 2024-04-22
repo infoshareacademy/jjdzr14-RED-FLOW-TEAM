@@ -5,9 +5,9 @@ public class Details {
     private String name;
     private String surname;
     private String phoneNumber;
-    private int idNumber;
+    private String idNumber;
 
-    public Details(String name, String surname, String phoneNumber, int idNumber) {
+    public Details(String name, String surname, String phoneNumber, String idNumber) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
@@ -17,8 +17,8 @@ public class Details {
     @Override
     public String toString() {
         return "Details{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
+                "name='" + name.toUpperCase() + '\'' +
+                ", surname='" + surname.toUpperCase() + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", idNumber=" + idNumber +
                 '}';
@@ -48,11 +48,11 @@ public class Details {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getIdNumber() {
+    public String getIdNumber() {
         return idNumber;
     }
 
-    public void setIdNumber(int idNumber) {
+    public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
     }
 }
