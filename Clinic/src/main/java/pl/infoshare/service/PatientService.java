@@ -92,7 +92,7 @@ public class PatientService {
         // test for fullName
         System.out.println(fullName);
 
-        //test for creating Patient object
+
         for (Patient p1 : patientsList) {
             System.out.println(p1);
         }
