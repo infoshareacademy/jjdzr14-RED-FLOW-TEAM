@@ -25,13 +25,9 @@ public class PatientService {
     public static void addPatient () {
 
         final String regex = "[a-zA-Z]+";
-//        final String regexNo = "\\d+";
 
         Scanner scanner = new Scanner(System.in);
         String userInput;
-
-        // full name to be added to text file of Patients
-        String fullName;
 
         System.out.println("Dodawanie pacjenta -> ");
 
@@ -77,7 +73,7 @@ public class PatientService {
         } while (!userInput.matches(regex));
 
 
-        fullName = patientName + " " + patientSurname;
+        String fullName = patientName + " " + patientSurname;
 
         Details details = new Details(patientName, patientSurname, patientPhoneNumber, patientID);
         Patient patient = new Patient(patientBirthDate, details);
@@ -93,9 +89,6 @@ public class PatientService {
         }
 
         FileService.writeToFile(fullName, fileOfPatientsPath);
-
-
-
 
 
     }
