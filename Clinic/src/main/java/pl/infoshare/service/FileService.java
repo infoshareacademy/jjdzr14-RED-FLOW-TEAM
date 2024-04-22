@@ -1,35 +1,52 @@
 package pl.infoshare.service;
-
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 
 public class FileService {
 
 
-public static void writeToFile() {
+    public static void writeToFile(String fullName, String filePath) {
 
 
-    String pathOfResources = "Clinic/src/main/resources/plikTekstowy.txt";
-    String value = "Kowalski Jan";
-    Path path = Path.of(pathOfResources);
+        try {
 
-    try {
+            File file = new File(filePath);
+            FileWriter fw = new FileWriter(file, true);
+            BufferedWriter bw = new BufferedWriter(fw);
 
-        Files.writeString(path, value, StandardOpenOption.CREATE);
+            bw.write(fullName);
+            bw.newLine();
 
-    } catch (
-            IOException e) {
+            bw.close();
 
-        System.out.println("wystapił błąd podczas zapisywania pliku");
-    }
-    try {
-        String content = Files.readString(path);
-        System.out.println(content);
-    } catch (
-            IOException e) {
-        System.err.println("bład odczytu pliku ");
+        } catch (IOException e) {
+
+            System.out.println(e.getMessage());
+
+        }
+
+
+//    String pathOfResources = "Clinic/src/main/resources/plikTekstowy.txt";
+//    String value = "Kowalski Jan";
+//    Path path = Path.of(pathOfResources);
+//
+//    try {
+//
+//        Files.writeString(path, value, StandardOpenOption.CREATE);
+//
+//    } catch (
+//            IOException e) {
+//
+//        System.out.println("wystapił błąd podczas zapisywania pliku");
+//    }
+//    try {
+//        String content = Files.readString(path);
+//        System.out.println(content);
+//    } catch (
+//            IOException e) {
+//        System.err.println("bład odczytu pliku ");
     }
 
 //public static void writeToFile()  {
@@ -66,7 +83,7 @@ public static void writeToFile() {
 //    }
 }
 
-}
+
 
 
 
