@@ -3,18 +3,6 @@
 Clinic/pom.xml,a/b/ab8a13437eeec6e03cf6b9272ffe9834bf2a1926
 Z
 *Clinic/src/main/java/pl/infoshare/App.java,8/e/8eec791f5962b40e4142e71b63140250dad92afa
-a
-1Clinic/src/main/java/pl/infoshare/data/Human.java,5/f/5f909456e1b4d5d1df3b1fe9e68bb97bcec04ec2
-c
-3Clinic/src/main/java/pl/infoshare/data/Patient.java,c/4/c4e38f1f1f5dfb563f16cdcbc96f1879ba0bddd6
-b
-2Clinic/src/main/java/pl/infoshare/data/Doctor.java,3/2/327413412b4205add0488c6b4502f27c250aef09
-b
-2Clinic/src/main/java/pl/infoshare/data/Clinic.java,b/6/b6868455a4252ae981d157db7c01208b843187ba
-c
-3Clinic/src/main/java/pl/infoshare/data/Details.java,1/8/18a7104e4248d9af972b3365344b075d46fe93f4
-a
-1Clinic/src/main/java/pl/infoshare/logic/Menu.java,b/8/b8eae4ac05ca8fc98599d6cedaf026d52e967f9d
 c
 3Clinic/src/main/java/pl/infoshare/service/Menu.java,9/4/94846dcdf2906e8c7a5464d6b2b156eed561800f
 d
@@ -31,3 +19,7 @@ l
 <Clinic/src/main/java/pl/infoshare/service/DoctorService.java,9/5/9533afc4083e3eba974c07436814fc38a0559eb6
 j
 :Clinic/src/main/java/pl/infoshare/service/FileService.java,7/c/7cd3cf052a6ca1e423f6e1505db44616943a6903
+S
+#.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e

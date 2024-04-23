@@ -3,7 +3,7 @@ W
 java:S1118":Add a private constructor to hide the implicit public one.(Ìì¢Ï8ä‘„ğ1
 M
 java:S1481"+Remove this unused "doctor" local variable.(øµ…úÿÿÿÿ8 ä‘„ğ1
-L	java:S106"+Replace this use of System.out by a logger.(¾ÍêÇşÿÿÿÿ8¡ä‘„ğ1
-G	java:S106 "+Replace this use of System.out by a logger.(õÙ°ñ8¡ä‘„ğ1
-G	java:S106#"+Replace this use of System.out by a logger.(íÎˆ£8¡ä‘„ğ1
-L	java:S106&"+Replace this use of System.out by a logger.(ƒª· øÿÿÿÿ8¡ä‘„ğ1
+L	java:S106"+Replace this use of System.out by a logger.(¾ÍêÇşÿÿÿÿ8¡ä‘„ğ1
+G	java:S106"+Replace this use of System.out by a logger.(õÙ°ñ8¡ä‘„ğ1
+G	java:S106""+Replace this use of System.out by a logger.(íÎˆ£8¡ä‘„ğ1
+L	java:S106%"+Replace this use of System.out by a logger.(ƒª· øÿÿÿÿ8¡ä‘„ğ1
