@@ -1,44 +1,58 @@
 package pl.infoshare.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Clinic {
-    private String addres;
+    private String address;
     private String openHours;
-    private List<Doctor> doctorList;
-    private List<Patient> patientList;
+    private String doctorList;
+    private String patientList;
 
 
-    public Clinic(String addres, int openHours, Doctor doctor, Patient patient) {
-        this.addres = addres;
+    public Clinic(String addres, String openHours, String doctor, String patient) {
+        this.address = addres;
         this.openHours = openHours;
         this.doctorList = doctor;
         this.patientList = patient;
     }
 
+
     public String getAddres() {
-        return addres;
+        return address;
     }
 
-    public int getOpenHours() {
+    public String getOpenHours() {
         return openHours;
     }
 
-    public Doctor getDoctor() {
+    public String getDoctor() {
         return doctorList;
     }
 
-    public Patient getPatient() {
+    public String getPatient() {
         return patientList;
     }
+
+
     @Override
     public String toString() {
         return "Clinic{" +
-                "addres = " + addres +
+                "address = " + address +
                 "openHours = " + openHours +
                 "doctors = " + doctorList +
                 "patients = " + patientList +
                 "}";
+    }
+
+    public static void printClinic() {
+        Clinic clinic = new Clinic("Gdańsk ul.Główna 1" + ", ", "8:00-20:00" + ", ", "Jak Konieczny" + ", ", "Mariusz Mostowiak");
+        List<Clinic> clinicList = new ArrayList<>();
+        clinicList.add(clinic);
+
+        for (Clinic clinic1 : clinicList) {
+            System.out.println(clinic1);
+        }
     }
 
 }

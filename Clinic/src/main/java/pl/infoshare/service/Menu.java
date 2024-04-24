@@ -1,5 +1,6 @@
 package pl.infoshare.service;
 
+import pl.infoshare.model.Clinic;
 import pl.infoshare.model.Doctor;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class Menu {
                     System.out.println("case2");
                     break;
                 case 3:
-                    System.out.println("case3");
+                    Clinic.printClinic();
                     break;
                 case 0:
                     System.out.println("Bye bye");

@@ -1,9 +1,8 @@
 
-W
-java:S1118":Add a private constructor to hide the implicit public one.(Ìì¢Ï8ä‘„ğ1
-M
-java:S1481"+Remove this unused "doctor" local variable.(øµ…úÿÿÿÿ8 ä‘„ğ1
-L	java:S106"+Replace this use of System.out by a logger.(¾ÍêÇşÿÿÿÿ8¡ä‘„ğ1
-G	java:S106"+Replace this use of System.out by a logger.(õÙ°ñ8¡ä‘„ğ1
-G	java:S106""+Replace this use of System.out by a logger.(íÎˆ£8¡ä‘„ğ1
-L	java:S106%"+Replace this use of System.out by a logger.(ƒª· øÿÿÿÿ8¡ä‘„ğ1
+}
+java:S1118	":Add a private constructor to hide the implicit public one.(Ìì¢Ï8ä‘„ğ1J$ba6bc8c9-f958-4cd3-9239-435541b5e4cf
+s
+java:S1481"+Remove this unused "doctor" local variable.(øµ…úÿÿÿÿ8 ä‘„ğ1J$f1b3b995-289d-43e6-8f28-f06d781dfed3
+r	java:S106"+Replace this use of System.out by a logger.(¾ÍêÇşÿÿÿÿ8¡ä‘„ğ1J$708b814e-13d6-4211-83cf-e97b0360543c
+m	java:S106#"+Replace this use of System.out by a logger.(íÎˆ£8¡ä‘„ğ1J$86d43e46-de90-4231-a6c5-98c01b1540b1
+r	java:S106&"+Replace this use of System.out by a logger.(ƒª· øÿÿÿÿ8¡ä‘„ğ1J$66cd51dd-2863-406a-b3db-e0046ea6a671
