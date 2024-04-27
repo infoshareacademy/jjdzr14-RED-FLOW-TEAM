@@ -20,10 +20,10 @@ public class Details {
     @Override
     public String toString() {
         return "Lekarz : " +
-                "imię :" + name + '\'' +
-                ", nazwisko : " + surname + '\'' +
-                ", numer telefonu : '" + phoneNumber + '\'' +
-                ", id :" + idNumber;
+                " " + name + '\'' +
+                " " + surname + '\'' +
+                " " + phoneNumber + '\'' +
+                ", id : " + idNumber;
     }
 
     public String getName() {

@@ -22,6 +22,7 @@ public class Menu {
             switch (option) {
 
                 case 1:
+//                    FileService.addDoctor();
                     FileService.vievDoctors();
                     break;
                 case 2:
@@ -34,7 +35,7 @@ public class Menu {
                     System.out.println("Bye bye");
                     break;
                 default:
-                    System.out.println("Zly wybor");
+                    System.out.println("Zly wybór");
                     break;
             }
         } while (option != 0);

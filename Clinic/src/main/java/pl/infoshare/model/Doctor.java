@@ -58,19 +58,13 @@ public class Doctor {
 
     @Override
     public String toString() {
-        return getDetails().getName() + " " + details.getSurname() +
-                "specjalizacja :" + specialization + '\'' +
-                ", clinikaa :" + clinic +
-                ", spotknia online : " + online +
-                ", dostępność : " + availability +
-                ", details : " + details +
+        return details + specialization +
+                " " + clinic +
+                " " + online +
+                " " + availability +
                 ", patient : " + patient +
                 '}';
     }
-
-    List<Doctor> doctorTest = new ArrayList<>();
-
-// do DoctorService
 
     public static void printDoctors() {
 

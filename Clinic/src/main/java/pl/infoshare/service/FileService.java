@@ -1,9 +1,11 @@
 package pl.infoshare.service;
 
 import pl.infoshare.exeption.DataImportException;
+import pl.infoshare.model.Details;
 import pl.infoshare.model.Doctor;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,6 +14,37 @@ public class FileService {
     static List<Doctor> doctorTest;
     String pathDoctors = "Clinic/src/main/resources/listDoctors.txt";
 
+    public static void addDoctor() {
+        Scanner scanner = new Scanner(System.in);
+
+        Doctor doctor = new Doctor();
+        Details details = new Details();
+        System.out.println("Podaj Imię");
+        details.setName(scanner.nextLine());
+        System.out.println("Podaj Nazwisko");
+        details.setSurname(scanner.nextLine());
+        System.out.println("Podaj mumer telefonu");
+        details.setPhoneNumber(scanner.nextLine());
+        System.out.println("podaj ID number");
+        details.setIdNumber(scanner.nextInt());
+        scanner.nextLine();
+        doctor.setDetails(details);
+        System.out.println("Pojdaj specjalizację");
+        doctor.setSpecialization(scanner.nextLine());
+        System.out.println("online?");
+        doctor.setOnline(scanner.nextBoolean());
+        System.out.println("podaj dostępność");
+        doctor.setAvailability(scanner.nextBoolean());
+
+
+        List<Doctor> doctorTest = new ArrayList<>();
+        doctorTest.add(doctor);
+        for (Doctor doctor1 : doctorTest) {
+            System.out.println(doctor1);
+            writeToFile(doctor1, "/home/grzegorzacademy/Pulpit/ud282-master" +
+                    "/jjdzr14-RED-FLOW-TEAM/Clinic/src/main/resources/plikTekstowy.txt");
+        }
+    }
     private  static void fileReader(String pathDoctors) {
 
         File file = new File(pathDoctors);
@@ -32,10 +65,10 @@ public class FileService {
 
     }
     public static void vievDoctors(){
-        fileReader( "Clinic/src/main/resources/listDoctors.txt");
+        fileReader( "Clinic/src/main/resources/plikTekstowy.txt");
     }
     public static void vievPatient (){
-        fileReader("Clinic/src/main/resources/listDoctors.txt");
+        fileReader("Clinic/src/main/resources/listPatient.txt");
     }
 
 
