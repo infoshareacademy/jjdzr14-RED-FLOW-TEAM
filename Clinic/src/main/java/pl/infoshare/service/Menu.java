@@ -11,7 +11,7 @@ public class Menu {
 
         Scanner scanner = new Scanner(System.in);
         int option = 0;
-        List <Doctor> doctor;
+        List<Doctor> doctor;
 
 
         do {
@@ -22,10 +22,10 @@ public class Menu {
             switch (option) {
 
                 case 1:
-FileService.vievDoctors();
+                    FileService.vievDoctors();
                     break;
                 case 2:
-                    System.out.println("case2");
+                    FileService.vievPatient();
                     break;
                 case 3:
                     System.out.println("case3");
