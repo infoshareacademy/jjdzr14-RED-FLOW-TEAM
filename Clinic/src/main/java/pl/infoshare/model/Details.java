@@ -19,11 +19,10 @@ public class Details {
 
     @Override
     public String toString() {
-        return "Lekarz : " +
-                " " + name + '\'' +
-                " " + surname + '\'' +
-                " " + phoneNumber + '\'' +
-                ", id : " + idNumber;
+        return idNumber + " " + name +
+                " " + surname +
+                " " + phoneNumber +
+                " ";
     }
 
     public String getName() {

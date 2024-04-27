@@ -22,8 +22,8 @@ public class Menu {
             switch (option) {
 
                 case 1:
-//                    FileService.addDoctor();
-                    FileService.vievDoctors();
+//                 FileService.addDoctor();
+                   FileService.vievDoctors();
                     break;
                 case 2:
                     FileService.vievPatient();

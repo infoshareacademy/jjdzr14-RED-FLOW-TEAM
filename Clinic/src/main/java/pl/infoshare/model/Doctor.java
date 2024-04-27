@@ -58,12 +58,11 @@ public class Doctor {
 
     @Override
     public String toString() {
-        return details + specialization +
+        return  details + specialization +
                 " " + clinic +
                 " " + online +
                 " " + availability +
-                ", patient : " + patient +
-                '}';
+                ", patient : " + patient ;
     }
 
     public static void printDoctors() {
