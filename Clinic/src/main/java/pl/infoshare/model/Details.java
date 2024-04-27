@@ -7,6 +7,9 @@ public class Details {
     private String phoneNumber;
     private int idNumber;
 
+    public Details() {
+    }
+
     public Details(String name, String surname, String phoneNumber, int idNumber) {
         this.name = name;
         this.surname = surname;
@@ -16,12 +19,10 @@ public class Details {
 
     @Override
     public String toString() {
-        return "Details{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", idNumber=" + idNumber +
-                '}';
+        return idNumber + " " + name +
+                " " + surname +
+                " " + phoneNumber +
+                " ";
     }
 
     public String getName() {
