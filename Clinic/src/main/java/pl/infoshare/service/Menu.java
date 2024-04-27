@@ -22,7 +22,7 @@ public class Menu {
             switch (option) {
 
                 case 1:
-                    Doctor.printDoctors();
+FileService.vievDoctors();
                     break;
                 case 2:
                     System.out.println("case2");

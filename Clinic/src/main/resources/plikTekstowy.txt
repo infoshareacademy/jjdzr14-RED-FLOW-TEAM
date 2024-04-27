@@ -1,1 +1,1 @@
-Kowalski Jan
+Grzegorz Polkospecjalizacja :specjalizacja', clinikaa :null, spotknia online : true, dostępność : true, details : Lekarz : imię :Grzegorz', nazwisko : Polko', numer telefonu : '5111118312', id :2, patient : null}

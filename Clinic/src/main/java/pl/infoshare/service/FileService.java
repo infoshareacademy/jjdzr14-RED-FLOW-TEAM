@@ -1,22 +1,52 @@
 package pl.infoshare.service;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import pl.infoshare.exeption.DataImportException;
+import pl.infoshare.model.Details;
+import pl.infoshare.model.Doctor;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
 public class FileService {
+    static List<Doctor> doctorTest;
 
 
-    public static void writeToFile(String fullName, String filePath) {
+public static void vievDoctors() {
 
+    String path = "Clinic/src/main/resources/listDoctors.txt";
+    File file = new File(path);
+    Scanner scan = null;
+    try {
+        scan = new Scanner(file);
+    } catch (FileNotFoundException e) {
+        throw new DataImportException("Nie ma takiego pliku");
+    }
+
+    int lines = 0;
+    while (scan.hasNextLine()) {
+        String name = scan.nextLine();
+        System.out.println(name);
+        lines++;
+    }
+    scan.close();
+
+}
+
+
+
+
+    public static void writeToFile(Doctor fullName, String filePath) {
         try {
+            List<Doctor>listDoctor = new LinkedList<>();
 
             File file = new File(filePath);
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
 
-            bw.write(fullName);
+            bw.write(String.valueOf(fullName));
 
             bw.newLine();
 
@@ -29,7 +59,7 @@ public class FileService {
         }
 
 
-//    String pathOfResources = "Clinic/src/main/resources/plikTekstowy.txt";
+//        String pathOfResources = "Clinic/src/main/resources/plikTekstowy.txt";
 //    String value = "Kowalski Jan";
 //    Path path = Path.of(pathOfResources);
 //
