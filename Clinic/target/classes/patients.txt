@@ -1,2 +1,1 @@
-Testowy Pacjent
-Testowy Drugi
+Patient{details=Details{name='Wlodek', surname='Wlodkowski', phoneNumber='null', idNumber=null}', age=0, clinic=null, doctor=null, pesel=null}

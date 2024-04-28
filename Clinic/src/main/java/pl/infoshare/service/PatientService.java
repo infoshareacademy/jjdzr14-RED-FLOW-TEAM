@@ -7,22 +7,16 @@ import java.util.Scanner;
 
 public class PatientService {
 
-    private static String patientName;
-    private static String patientSurname;
-    private static String patientID;
-    private static String patientPhoneNumber;
-    private static String patientBirthDate;
-    private static List <Patient> patientsList = new ArrayList<>();
-    private static String fileOfPatientsPath = "Clinic/src/main/resources/patients.txt";
+
+    private static final String PATIENT_PATH = "Clinic/src/main/resources/patients.txt";
 
 
-    public static List<Patient> getPatients() {
+    public static void addPatient (Patient patient) {
 
-        return patientsList;
+        Details details = new Details();
+        patient.setDetails(details);
 
-    }
-
-    public static void addPatient () {
+        List <Patient> patientsList = new ArrayList<>();
 
         final String regex = "[a-zA-Z]+";
 
@@ -31,7 +25,6 @@ public class PatientService {
 
         System.out.println("Dodawanie pacjenta -> ");
 
-        //patient name
         do {
 
             System.out.println("Podaj imie: ");
@@ -47,13 +40,12 @@ public class PatientService {
 
             } else {
 
-                patientName = userInput;
+                patient.getDetails().setName(userInput);
             }
 
         } while (!userInput.matches(regex));
 
 
-        // patient surname
         do {
             System.out.println("Podaj nazwisko: ");
             userInput = scanner.nextLine();
@@ -68,28 +60,15 @@ public class PatientService {
 
             } else {
 
-                patientSurname = userInput;
+                patient.getDetails().setSurname(userInput);
             }
         } while (!userInput.matches(regex));
 
 
-        String fullName = patientName + " " + patientSurname;
-
-        Details details = new Details(patientName, patientSurname, patientPhoneNumber, patientID);
-        Patient patient = new Patient(patientBirthDate, details);
-
-        PatientService.patientsList.add(patient);
-
-        // test for fullName
-        System.out.println(fullName);
-
-
-        for (Patient p1 : patientsList) {
-            System.out.println(p1);
-        }
-
-        FileService.writeToFile(fullName, fileOfPatientsPath);
-
+        patientsList.add(patient);
+        FileService.writeToFile(patient, PATIENT_PATH);
 
     }
+
+
 }

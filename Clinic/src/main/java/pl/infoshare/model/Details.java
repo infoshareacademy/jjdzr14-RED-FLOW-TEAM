@@ -7,6 +7,10 @@ public class Details {
     private String phoneNumber;
     private String idNumber;
 
+
+    public Details () {
+
+    }
     public Details(String name, String surname, String phoneNumber, String idNumber) {
         this.name = name;
         this.surname = surname;
@@ -17,8 +21,8 @@ public class Details {
     @Override
     public String toString() {
         return "Details{" +
-                "name='" + name.toUpperCase() + '\'' +
-                ", surname='" + surname.toUpperCase() + '\'' +
+                "name='" + name + '\'' +
+                ", surname='" + surname+ '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", idNumber=" + idNumber +
                 '}';
