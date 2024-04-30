@@ -29,6 +29,7 @@ public class Menu {
                     FileService.vievPatient();
                     break;
                 case 3:
+                    FileService.dataToJson();
                     System.out.println("case3");
                     break;
                 case 0:
