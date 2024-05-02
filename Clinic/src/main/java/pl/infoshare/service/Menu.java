@@ -1,7 +1,5 @@
 package pl.infoshare.service;
-
 import pl.infoshare.model.Doctor;
-
 import java.util.List;
 import java.util.Scanner;
 

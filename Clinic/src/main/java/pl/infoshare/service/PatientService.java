@@ -1,9 +1,8 @@
 package pl.infoshare.service;
 import pl.infoshare.model.Details;
 import pl.infoshare.model.Patient;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+
 
 public class PatientService {
 
@@ -11,64 +10,90 @@ public class PatientService {
     private static final String PATIENT_PATH = "Clinic/src/main/resources/patients.txt";
 
 
-    public static void addPatient (Patient patient) {
+    public static void addPatient(Patient patient) {
 
+        Scanner scanner = new Scanner(System.in);
         Details details = new Details();
         patient.setDetails(details);
 
-        List <Patient> patientsList = new ArrayList<>();
-
-        final String regex = "[a-zA-Z]+";
-
-        Scanner scanner = new Scanner(System.in);
         String userInput;
+
 
         System.out.println("Dodawanie pacjenta -> ");
 
-        do {
+        try {
 
-            System.out.println("Podaj imie: ");
-            userInput = scanner.nextLine();
+            do {
+                System.out.println("Podaj imie: ");
+                userInput = scanner.nextLine();
 
-            if (userInput.length() < 1) {
+                if (!NameValidator.isLengthValid(userInput)) {
 
-                System.out.println("Pole imie nie moze byc puste.");
+                    System.out.println("Pole imie nie moze byc puste.");
 
-            } else if (!userInput.matches(regex)) {
+                } else if (!NameValidator.isFormatValid(userInput)) {
 
-                System.out.println("Bledny format. Imie powinno skladac sie z samych liter.");
+                    System.out.println("Bledny format. Imie powinno skladac sie z samych liter.");
 
-            } else {
+                } else {
 
-                patient.getDetails().setName(userInput);
-            }
+                    patient.getDetails().setName(userInput);
+                }
 
-        } while (!userInput.matches(regex));
-
-
-        do {
-            System.out.println("Podaj nazwisko: ");
-            userInput = scanner.nextLine();
-
-            if (userInput.length() < 1) {
-
-                System.out.println("Pole nazwisko nie moze byc puste.");
-
-            } else if (!userInput.matches(regex)) {
-
-                System.out.println("Bledny format. Nazwisko powinno skladac sie z samych liter.");
-
-            } else {
-
-                patient.getDetails().setSurname(userInput);
-            }
-        } while (!userInput.matches(regex));
+            } while (!NameValidator.isNameValid(userInput));
 
 
-        patientsList.add(patient);
+            do {
+
+                System.out.println("Podaj nazwisko: ");
+                userInput = scanner.nextLine();
+
+                if (!SurnameValidator.isLengthValid(userInput)) {
+
+                    System.out.println("Pole nazwisko nie moze byc puste.");
+
+                } else if (!SurnameValidator.isFormatValid(userInput)) {
+
+                    System.out.println("Bledny format. Nazwisko powinno skladac sie z samych liter.");
+
+                } else {
+
+                    patient.getDetails().setSurname(userInput);
+                }
+
+            } while (!SurnameValidator.isSurnameValid(userInput));
+
+
+            do {
+
+                System.out.println("Podaj pesel: ");
+                userInput = scanner.nextLine();
+
+                if (!PeselValidator.isPeselValid(userInput)) {
+
+                    System.out.println("Nieprawidlowy numer pesel.");
+
+                } else if (PeselValidator.isPeselValid(userInput)) {
+
+                    patient.setPesel(userInput);
+                    patient.setBirthDate(BirthDateDecoder.decodeDateOfBirth(patient));
+                    patient.setAge(AgeCounter.countAge(BirthDateDecoder.decodeDateOfBirth(patient)));
+
+                }
+
+            } while (!PeselValidator.isPeselValid(userInput));
+
+
+        } catch (NullPointerException npe) {
+
+            System.out.println("Proba odwolania sie do nieistniejacego obiektu.");
+
+        }
+
         FileService.writeToFile(patient, PATIENT_PATH);
 
     }
 
 
 }
+

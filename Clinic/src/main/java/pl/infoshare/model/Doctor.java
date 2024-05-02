@@ -1,7 +1,5 @@
 package pl.infoshare.model;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Doctor {
