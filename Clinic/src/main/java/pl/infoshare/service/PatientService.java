@@ -27,20 +27,20 @@ public class PatientService {
                 System.out.println("Podaj imie: ");
                 userInput = scanner.nextLine();
 
-                if (!NameValidator.isLengthValid(userInput)) {
+                if (!Utils.isLengthValid(userInput)) {
 
-                    System.out.println("Pole imie nie moze byc puste.");
+                    System.out.println("Nieodpowiedni rozmiar pola. Pole musi zawierac od 2 do 20 znakow. ");
 
-                } else if (!NameValidator.isFormatValid(userInput)) {
+                } else if (!Utils.isFormatValid(userInput)) {
 
-                    System.out.println("Bledny format. Imie powinno skladac sie z samych liter.");
+                    System.out.println("Bledny format. To pole musi skladac sie wylacznie z liter.");
 
-                } else {
+                } else if (Utils.isNameOrSurnameValid(userInput)) {
 
                     patient.getDetails().setName(userInput);
                 }
 
-            } while (!NameValidator.isNameValid(userInput));
+            } while (!Utils.isNameOrSurnameValid(userInput));
 
 
             do {
@@ -48,20 +48,21 @@ public class PatientService {
                 System.out.println("Podaj nazwisko: ");
                 userInput = scanner.nextLine();
 
-                if (!SurnameValidator.isLengthValid(userInput)) {
+                if (!Utils.isLengthValid(userInput)) {
 
-                    System.out.println("Pole nazwisko nie moze byc puste.");
+                    System.out.println("Nieodpowiedni rozmiar pola. Pole musi zawierac od 2 do 20 znakow. ");
 
-                } else if (!SurnameValidator.isFormatValid(userInput)) {
+                } else if (!Utils.isFormatValid(userInput)) {
 
-                    System.out.println("Bledny format. Nazwisko powinno skladac sie z samych liter.");
+                    System.out.println("Bledny format. To pole musi skladac sie wylacznie z liter.");
 
-                } else {
+                } else if (Utils.isNameOrSurnameValid(userInput)) {
 
                     patient.getDetails().setSurname(userInput);
                 }
 
-            } while (!SurnameValidator.isSurnameValid(userInput));
+
+            } while (!Utils.isNameOrSurnameValid(userInput));
 
 
             do {
@@ -69,19 +70,19 @@ public class PatientService {
                 System.out.println("Podaj pesel: ");
                 userInput = scanner.nextLine();
 
-                if (!PeselValidator.isPeselValid(userInput)) {
+                if (!Utils.isPeselValid(userInput)) {
 
                     System.out.println("Nieprawidlowy numer pesel.");
 
-                } else if (PeselValidator.isPeselValid(userInput)) {
+                } else if (Utils.isPeselValid(userInput)) {
 
                     patient.setPesel(userInput);
-                    patient.setBirthDate(BirthDateDecoder.decodeDateOfBirth(patient));
-                    patient.setAge(AgeCounter.countAge(BirthDateDecoder.decodeDateOfBirth(patient)));
+                    patient.setBirthDate(Utils.decodeDateOfBirth(patient));
+                    patient.setAge(Utils.countAge(Utils.decodeDateOfBirth(patient)));
 
                 }
 
-            } while (!PeselValidator.isPeselValid(userInput));
+            } while (!Utils.isPeselValid(userInput));
 
 
         } catch (NullPointerException npe) {

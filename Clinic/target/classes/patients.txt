@@ -1,2 +1,3 @@
 Patient{details='Details{name='Ala', surname='Kot', phoneNumber='null', idNumber=null}, pesel=01262876543'', birthDate='2001-06-28', age='22', clinic='null', doctor='null}
 Patient{details='Details{name='Tomasz', surname='Tomaszowski', phoneNumber='null', idNumber=null}, pesel=97112534567'', birthDate='1997-11-25', age='26', clinic='null', doctor='null}
+Patient{details='Details{name='Bogumila', surname='Grzadka', phoneNumber='null', idNumber=null}, pesel=00010101456'', birthDate='1900-01-01', age='124', clinic='null', doctor='null}
