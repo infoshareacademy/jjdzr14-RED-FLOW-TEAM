@@ -2,39 +2,13 @@ package pl.infoshare.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import pl.infoshare.exeption.DataExportException;
 import pl.infoshare.exeption.DataImportException;
-import pl.infoshare.model.*;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class FileService {
 
-
-    public static void dataToJson() {
-        String path = "Clinic/src/main/resources/listPatient.json";
-        ObjectMapper mapper = new ObjectMapper();
-        ArrayList<Patient> listPatient = new ArrayList<>();
-        Doctor d1 = new Doctor(new Details("Adam", "Nowak", "505-69-963", 2), "Internista", true, true);
-        Address a1 = new Address("Gdańsk", "Polska", "85-669", "Władysława Jagieły");
-        Clinic c1 = new Clinic(a1, "Meodentica");
-        Patient p1 = new Patient(new Details("Roman", "Adamowicz"), 18, "5882225586", c1, a1, d1);
-        listPatient.add(p1);
-        try {
-            String jsonData = mapper.writeValueAsString(listPatient);
-            mapper.writeValue(new File(path), listPatient);
-            System.out.println(jsonData);
-        } catch (JsonProcessingException e) {
-            throw new DataExportException("bład zapisu pliku");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 
     private static void fileReader(String pathDoctors) {
 
@@ -64,15 +38,14 @@ public class FileService {
         fileReader("Clinic/src/main/resources/listPatient.txt");
     }
 
-    public static void writeToFile(Doctor fullName, String filePath) {
+    public static void writeToFile(Object object, String filePath) {
         try {
-            List<Doctor> listDoctor = new LinkedList<>();
 
             File file = new File(filePath);
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
-
-            bw.write(String.valueOf(fullName));
+            String jsonData = dataToJson(object);
+            bw.write(jsonData);
 
             bw.newLine();
 
@@ -81,6 +54,26 @@ public class FileService {
         } catch (IOException e) {
 
             System.out.println(e.getMessage());
+
+        }
+
+    }
+
+    public static String dataToJson(Object object) {
+//        String path = "Clinic/src/main/resources/listPatient.json";
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            String jsonData = mapper.writeValueAsString(object);
+//            mapper.writeValue(new File(path), object);
+            System.out.println(jsonData);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+        try {
+            return mapper.writeValueAsString(object);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
 
         }
 
