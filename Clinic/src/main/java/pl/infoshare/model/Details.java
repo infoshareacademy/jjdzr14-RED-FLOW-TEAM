@@ -10,6 +10,11 @@ public class Details {
     public Details() {
     }
 
+    public Details(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+
     public Details(String name, String surname, String phoneNumber, int idNumber) {
         this.name = name;
         this.surname = surname;
