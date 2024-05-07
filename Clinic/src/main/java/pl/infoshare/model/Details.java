@@ -7,7 +7,6 @@ public class Details {
     private String phoneNumber;
     private String idNumber;
 
-
     public Details () {
 
     }

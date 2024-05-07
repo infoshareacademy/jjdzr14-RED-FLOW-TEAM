@@ -1,5 +1,8 @@
 package pl.infoshare.service;
 import pl.infoshare.model.Doctor;
+import pl.infoshare.model.*;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,9 +12,8 @@ public class Menu {
 
         Scanner scanner = new Scanner(System.in);
         int option = 0;
-        List<Doctor> doctor;
-
-
+        ArrayList<Patient> listPatient = null;
+        String path = null;
         do {
 
             DisplayMenu.chooseMenu();
@@ -26,6 +28,7 @@ public class Menu {
                     FileService.vievPatient();
                     break;
                 case 3:
+                    FileService.writeToFile(listPatient, path);
                     System.out.println("case3");
                     break;
                 case 0:

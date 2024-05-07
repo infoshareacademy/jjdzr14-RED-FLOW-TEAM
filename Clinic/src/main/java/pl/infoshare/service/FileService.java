@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class FileService {
 
+
     private static void fileReader(String pathDoctors) {
 
         File file = new File(pathDoctors);
@@ -59,8 +60,9 @@ public class FileService {
     }
 
     public static String dataToJson(Object object) {
-        ObjectMapper mapper = new ObjectMapper();
 
+        ObjectMapper mapper = new ObjectMapper();  System.err.println(e.getMessage());
+       
         try {
             String jsonData = mapper.writeValueAsString(object);
             System.out.println(jsonData);
