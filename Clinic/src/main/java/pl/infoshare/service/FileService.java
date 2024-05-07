@@ -60,17 +60,12 @@ public class FileService {
     }
 
     public static String dataToJson(Object object) {
-//        String path = "Clinic/src/main/resources/listPatient.json";
-        ObjectMapper mapper = new ObjectMapper();
 
+        ObjectMapper mapper = new ObjectMapper();  System.err.println(e.getMessage());
+       
         try {
             String jsonData = mapper.writeValueAsString(object);
-//            mapper.writeValue(new File(path), object);
             System.out.println(jsonData);
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-        try {
             return mapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
@@ -81,6 +76,8 @@ public class FileService {
 
 
 }
+
+
 
 
 

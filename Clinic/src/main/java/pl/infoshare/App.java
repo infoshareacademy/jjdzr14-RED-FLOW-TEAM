@@ -1,15 +1,12 @@
 package pl.infoshare;
-import pl.infoshare.service.Menu;
+import pl.infoshare.model.Patient;
+import pl.infoshare.service.PatientService;
 
 
 public class App {
     public static void main(String[] args) {
 
-        Menu.mainMenu();
-
-
-
+        Patient patient = new Patient();
+        PatientService.addPatient(patient);
     }
-
-
 }

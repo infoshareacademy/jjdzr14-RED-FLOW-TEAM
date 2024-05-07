@@ -1,7 +1,5 @@
 package pl.infoshare.model;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Doctor {
@@ -58,16 +56,19 @@ public class Doctor {
 
     @Override
     public String toString() {
-        return  details + specialization +
-                " " + clinic +
-                " " + online +
-                " " + availability +
-                ", patient : " + patient ;
+        return "Doctor{" +
+                "specialization='" + specialization + '\'' +
+                ", clinic=" + clinic +
+                ", online=" + online +
+                ", availability=" + availability +
+                ", details=" + details +
+                ", patient=" + patient +
+                '}';
     }
 
     public static void printDoctors() {
 
-        Details details = new Details("Jan", "Kowalski", "123456789", 999);
+        Details details =  new Details("Jan", "Kowalski","123456789", "L999");
         Doctor doctor = new Doctor(details, "Onkologia", true, true);
         List<Doctor> doctorTest = new ArrayList<>();
 

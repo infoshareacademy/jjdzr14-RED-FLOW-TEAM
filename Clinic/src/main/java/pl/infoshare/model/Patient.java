@@ -1,38 +1,24 @@
 package pl.infoshare.model;
-
+import java.time.LocalDate;
 public class Patient {
 
-    Details details;
-    private int age;
+    private Details details;
     private String pesel;
+    private LocalDate birthDate;
+    private int age;
     private Clinic clinic;
-    Address address;
-    Doctor doctor;
+    private Doctor doctor;
 
+    public Patient() {}
 
-    public Patient(Details details, int age, String pesel, Clinic clinic, Address address, Doctor doctor) {
+    public Patient(Details details, String pesel, LocalDate birthDate, int age, Clinic clinic, Doctor doctor) {
         this.details = details;
-        this.age = age;
         this.pesel = pesel;
-        this.clinic = clinic;
-        this.address = address;
-        this.doctor = doctor;
-    }
-
-    public Details getDetails() {
-        return details;
-    }
-
-    public void setDetails(Details details) {
-        this.details = details;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
+        this.birthDate = birthDate;
         this.age = age;
+        this.clinic = clinic;
+        this.doctor = doctor;
+
     }
 
     public String getPesel() {
@@ -43,20 +29,25 @@ public class Patient {
         this.pesel = pesel;
     }
 
+    public Details getDetails() {
+        return details;
+    }
+
+    public void setDetails(Details details) {
+        this.details = details;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+
     public Clinic getClinic() {
         return clinic;
     }
 
     public void setClinic(Clinic clinic) {
         this.clinic = clinic;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 
     public Doctor getDoctor() {
@@ -67,13 +58,28 @@ public class Patient {
         this.doctor = doctor;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+
     @Override
     public String toString() {
-        return "Patient " +
-                " " + age + " l " +
-                "  pesel = " + pesel + '\'' +
-                ", clinic = " + clinic +
-                ", address = " + address +
-                ", doctor = " + doctor + " ";
+        return "Patient{" +
+                "details='" + details +
+                ", pesel=" + pesel + '\'' +
+                "', birthDate='" + birthDate +
+                "', age='" + age +
+                "', clinic='" + clinic +
+                "', doctor='" + doctor +
+                '}';
     }
 }
