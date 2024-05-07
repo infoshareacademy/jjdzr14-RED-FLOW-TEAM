@@ -5,20 +5,29 @@ import java.util.List;
 public class Doctor {
 
     private String specialization;
-    private List <Patient> patient;
+    private List<Patient> patient;
     private Clinic clinic;
     private boolean online;
     private boolean availability;
     public Details details;
 
+    public Details getDetails() {
+        return details;
+    }
+
+    public void setDetails(Details details) {
+        this.details = details;
+    }
+
     public Doctor() {
     }
 
-    public Doctor(String specialization, boolean online, boolean availability, Details details) {
+    public Doctor(Details details, String specialization, boolean online, boolean availability) {
+        this.details = details;
         this.specialization = specialization;
         this.online = online;
         this.availability = availability;
-        this.details = details;
+
     }
 
     public String getSpecialization() {
@@ -57,25 +66,19 @@ public class Doctor {
                 '}';
     }
 
-    List <Doctor> doctorTest = new ArrayList<>();
-
-// do DoctorService
-
     public static void printDoctors() {
 
         Details details =  new Details("Jan", "Kowalski","123456789", "L999");
-        Doctor doctor = new Doctor("Onkologia", true, true, details);
+        Doctor doctor = new Doctor(details, "Onkologia", true, true);
         List<Doctor> doctorTest = new ArrayList<>();
 
         doctorTest.add(doctor);
 
-        for(Doctor doctor1:doctorTest){
+        for (Doctor doctor1 : doctorTest) {
             System.out.println(doctor1);
         }
 
     }
-
-
 
 
 }

@@ -8,15 +8,10 @@ public class Patient {
     private int age;
     private Clinic clinic;
     private Doctor doctor;
-    ;
 
-
-    public Patient() {
-
-    }
+    public Patient() {}
 
     public Patient(Details details, String pesel, LocalDate birthDate, int age, Clinic clinic, Doctor doctor) {
-
         this.details = details;
         this.pesel = pesel;
         this.birthDate = birthDate;
@@ -25,7 +20,6 @@ public class Patient {
         this.doctor = doctor;
 
     }
-
 
     public String getPesel() {
         return pesel;

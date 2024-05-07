@@ -8,9 +8,5 @@ public class App {
 
         Patient patient = new Patient();
         PatientService.addPatient(patient);
-
-
     }
-
-
 }

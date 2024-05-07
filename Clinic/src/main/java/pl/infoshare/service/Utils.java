@@ -7,19 +7,16 @@ public class Utils {
 
     public static boolean isNameOrSurnameValid(String nameOrSurname) {
 
-
         return isLengthValid(nameOrSurname) && isFormatValid(nameOrSurname);
     }
 
     public static boolean isLengthValid(String nameOrSurname) {
-
 
         return nameOrSurname.length() > 1 && nameOrSurname.length() <= 20;
 
     }
 
     public static boolean isFormatValid(String nameOrSurname) {
-
         final String REGEX = "[a-zA-Z]+";
 
         return nameOrSurname.matches(REGEX);
@@ -29,15 +26,12 @@ public class Utils {
 
     public static boolean isPeselValid(String pesel) {
 
-
         return hasValidLength(pesel) && hasCorrectDigits(pesel) && hasCorrectFormat(pesel);
-
     }
 
     public static boolean hasValidLength(String pesel) {
 
         return pesel != null && pesel.length() == 11;
-
     }
 
     public static boolean hasCorrectFormat(String pesel) {
@@ -60,7 +54,6 @@ public class Utils {
         int calculatedDigits = 10 - modulo;
 
         return modulo == 0 || calculatedDigits == checkDigit;
-
     }
 
     public static LocalDate decodeDateOfBirth(Patient patient) {
@@ -102,6 +95,4 @@ public class Utils {
 
         return age;
     }
-
-
 }

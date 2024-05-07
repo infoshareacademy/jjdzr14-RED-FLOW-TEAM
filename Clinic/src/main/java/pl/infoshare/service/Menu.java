@@ -9,7 +9,7 @@ public class Menu {
 
         Scanner scanner = new Scanner(System.in);
         int option = 0;
-        List <Doctor> doctor;
+        List<Doctor> doctor;
 
 
         do {
@@ -20,10 +20,10 @@ public class Menu {
             switch (option) {
 
                 case 1:
-                    Doctor.printDoctors();
+                   FileService.vievDoctors();
                     break;
                 case 2:
-                    System.out.println("case2");
+                    FileService.vievPatient();
                     break;
                 case 3:
                     System.out.println("case3");
@@ -32,7 +32,7 @@ public class Menu {
                     System.out.println("Bye bye");
                     break;
                 default:
-                    System.out.println("Zly wybor");
+                    System.out.println("Zly wybór");
                     break;
             }
         } while (option != 0);
