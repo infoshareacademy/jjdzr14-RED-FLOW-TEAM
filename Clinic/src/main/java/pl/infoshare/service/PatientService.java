@@ -1,6 +1,7 @@
 package pl.infoshare.service;
 import pl.infoshare.model.Details;
 import pl.infoshare.model.Patient;
+
 import java.util.Scanner;
 
 
@@ -15,6 +16,7 @@ public class PatientService {
         Scanner scanner = new Scanner(System.in);
         Details details = new Details();
         patient.setDetails(details);
+
 
         String userInput;
 

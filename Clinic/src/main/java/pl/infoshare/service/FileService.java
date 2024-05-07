@@ -61,14 +61,20 @@ public class FileService {
 
     public static String dataToJson(Object object) {
 
-        ObjectMapper mapper = new ObjectMapper();  System.err.println(e.getMessage());
+
+
+        ObjectMapper mapper = new ObjectMapper(); System.err.println(e.getMessage());
        
         try {
             String jsonData = mapper.writeValueAsString(object);
             System.out.println(jsonData);
             return mapper.writeValueAsString(object);
+
         } catch (JsonProcessingException e) {
+
             throw new RuntimeException(e);
+
+
 
         }
 
