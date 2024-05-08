@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Doctor {
 
+    private User user;
     private String specialization;
     private List<Patient> patient;
     private Clinic clinic;
@@ -11,23 +12,27 @@ public class Doctor {
     private boolean availability;
     public Details details;
 
+
+
+    public Doctor() {
+    }
+
+    public Doctor(User user, Details details, String specialization, boolean online, boolean availability) {
+
+        this.user = user;
+        this.details = details;
+        this.specialization = specialization;
+        this.online = online;
+        this.availability = availability;
+
+    }
+
     public Details getDetails() {
         return details;
     }
 
     public void setDetails(Details details) {
         this.details = details;
-    }
-
-    public Doctor() {
-    }
-
-    public Doctor(Details details, String specialization, boolean online, boolean availability) {
-        this.details = details;
-        this.specialization = specialization;
-        this.online = online;
-        this.availability = availability;
-
     }
 
     public String getSpecialization() {
@@ -54,22 +59,32 @@ public class Doctor {
         this.availability = availability;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Doctor{" +
-                "specialization='" + specialization + '\'' +
+                "user=" + user +
+                ", specialization='" + specialization + '\'' +
+                ", patient=" + patient +
                 ", clinic=" + clinic +
                 ", online=" + online +
                 ", availability=" + availability +
                 ", details=" + details +
-                ", patient=" + patient +
                 '}';
     }
 
     public static void printDoctors() {
 
         Details details =  new Details("Jan", "Kowalski","123456789", "L999");
-        Doctor doctor = new Doctor(details, "Onkologia", true, true);
+        User user = new User();
+        Doctor doctor = new Doctor(user, details, "Onkologia", true, true);
         List<Doctor> doctorTest = new ArrayList<>();
 
         doctorTest.add(doctor);

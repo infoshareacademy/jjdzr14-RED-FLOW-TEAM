@@ -8,10 +8,13 @@ public class Patient {
     private int age;
     private Clinic clinic;
     private Doctor doctor;
+    private User user;
 
     public Patient() {}
 
-    public Patient(Details details, String pesel, LocalDate birthDate, int age, Clinic clinic, Doctor doctor) {
+    public Patient(User user, Details details, String pesel, LocalDate birthDate, int age, Clinic clinic, Doctor doctor) {
+
+        this.user = user;
         this.details = details;
         this.pesel = pesel;
         this.birthDate = birthDate;
@@ -19,6 +22,14 @@ public class Patient {
         this.clinic = clinic;
         this.doctor = doctor;
 
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getPesel() {
@@ -74,6 +85,7 @@ public class Patient {
     @Override
     public String toString() {
         return "Patient{" +
+                "user='" + user +
                 "details='" + details +
                 ", pesel=" + pesel + '\'' +
                 "', birthDate='" + birthDate +
