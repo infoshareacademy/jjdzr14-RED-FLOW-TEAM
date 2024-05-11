@@ -1,17 +1,15 @@
 package pl.infoshare;
-import pl.infoshare.model.Patient;
-import pl.infoshare.model.Role;
-import pl.infoshare.model.User;
-import pl.infoshare.service.PatientService;
+
+import pl.infoshare.service.Registration;
+
+import java.io.FileNotFoundException;
 
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+
+        Registration.registerUser();
 
 
-        User user = new User();
-        user.setRole(Role.ADMIN);
-        System.out.println(user.getRole().getRoleDescription());
-        System.out.println(user.toString());
     }
 }

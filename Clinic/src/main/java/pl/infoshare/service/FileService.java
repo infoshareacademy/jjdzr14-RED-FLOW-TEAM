@@ -2,6 +2,7 @@ package pl.infoshare.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import pl.infoshare.exeption.DataImportException;
 
 import java.io.*;
@@ -38,6 +39,11 @@ public class FileService {
         fileReader("Clinic/src/main/resources/listPatient.txt");
     }
 
+    public static void viewUsers() {
+        fileReader("Clinic/src/main/resources/usernames.txt");
+    }
+
+
     public static void writeToFile(Object object, String filePath) {
         try {
 
@@ -62,9 +68,9 @@ public class FileService {
     public static String dataToJson(Object object) {
 
 
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
 
-        ObjectMapper mapper = new ObjectMapper(); System.err.println(e.getMessage());
-       
         try {
             String jsonData = mapper.writeValueAsString(object);
             System.out.println(jsonData);
@@ -72,8 +78,8 @@ public class FileService {
 
         } catch (JsonProcessingException e) {
 
+            System.err.println(e.getMessage());
             throw new RuntimeException(e);
-
 
 
         }
