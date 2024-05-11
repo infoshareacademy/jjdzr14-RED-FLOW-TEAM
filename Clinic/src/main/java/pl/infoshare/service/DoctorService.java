@@ -17,11 +17,6 @@ public class DoctorService {
         doctor.setDetails(details);
         doctor.setUser(user);
 
-        doctor.setDetails(details);
-        doctor.setUser(user);
-
-
-
 
         try {
 

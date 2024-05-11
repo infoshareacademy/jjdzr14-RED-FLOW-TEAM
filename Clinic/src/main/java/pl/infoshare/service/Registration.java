@@ -77,7 +77,7 @@ public class Registration {
 
             }
 
-        } while (!Utils.isLoginValid(userInput));
+        } while (!Utils.isPasswordValid(userInput));
 
         return password;
     }
