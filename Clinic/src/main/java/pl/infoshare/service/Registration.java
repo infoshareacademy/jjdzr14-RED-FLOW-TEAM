@@ -15,7 +15,7 @@ public class Registration {
 
         try {
 
-            System.out.println("REJESTRACJA UZYTKOWNIKA: ");
+            System.out.println("REJESTRACJA UZYTKOWNIKA ");
 
             User user = new User(createLogin(), createPassword(), addEmail(), chooseRole());
 

@@ -1,1 +1,2 @@
 {"details":{"name":"Wlodek","surname":"Wlodkowski","phoneNumber":null,"idNumber":null},"pesel":"01262876543","birthDate":[2001,6,28],"age":22,"clinic":null,"doctor":null,"user":{"login":"Wlodek","password":"Puszek123!","email":"Wlodizmierz@gmail.com","role":"PATIENT"}}
+{"details":{"name":"Wlodek","surname":"WLodkowksi","phoneNumber":null,"idNumber":null},"pesel":"01262876543","birthDate":[2001,6,28],"age":22,"clinic":null,"doctor":null,"user":{"login":"Kamil","password":"Puszek123!","email":"puszek@gmail.com","role":"PATIENT"}}

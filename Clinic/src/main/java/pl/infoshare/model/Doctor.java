@@ -6,11 +6,11 @@ public class Doctor {
 
     private User user;
     private String specialization;
-    private List<Patient> patient;
+    private Patient patient;
     private Clinic clinic;
     private boolean online;
     private boolean availability;
-    public Details details;
+    private Details details;
 
 
 
