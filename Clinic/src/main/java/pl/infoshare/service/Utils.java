@@ -9,7 +9,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,7 +16,7 @@ public class Utils {
 
 
     private static final String PESEL_REGEX = "\\d{11}";
-    public static final String PASSWORD_REGEX = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$";
+    private static final String PASSWORD_REGEX = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$";
     private static final String LETTER_REGEX = "[a-zA-Z]+";
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -46,7 +45,7 @@ public class Utils {
 
     private static boolean hasValidLength(String pesel) {
 
-        return pesel != null && pesel.length() == 11;
+        return pesel.matches(PESEL_REGEX);
     }
 
     private static boolean hasCorrectFormat(String pesel) {
@@ -71,13 +70,25 @@ public class Utils {
         return modulo == 0 || calculatedDigits == checkDigit;
     }
 
-    public static LocalDate decodeDateOfBirth(Patient patient) {
+    public static LocalDate decodeDateOfBirth(Object object) {
+
+        String pesel = "";
+
+        if (object instanceof Patient) {
+            Patient patient = (Patient) object;
+            pesel = patient.getPersonDetails().getPesel();
+        }
+
+        if (object instanceof Doctor) {
+            Doctor doctor = (Doctor) object;
+            pesel = doctor.getPersonDetails().getPesel();
+        }
 
 
         String decodedYearPart = "";
-        String secondYearPart = patient.getPesel().substring(0, 2);
-        String month = patient.getPesel().substring(2, 4);
-        int day = Integer.parseInt(patient.getPesel().substring(4, 6));
+        String secondYearPart = pesel.substring(0, 2);
+        String month = pesel.substring(2, 4);
+        int day = Integer.parseInt(pesel.substring(4, 6));
 
         if (month.startsWith("8") || month.startsWith("9")) {
             decodedYearPart = "18";
@@ -103,13 +114,6 @@ public class Utils {
         return dateOfBirth;
     }
 
-    public static int countAge(LocalDate birthDate) {
-
-        LocalDate currentDate = LocalDate.now();
-        int age = Period.between(birthDate, currentDate).getYears();
-
-        return age;
-    }
 
     public static boolean isLoginValid(String userInput) {
 
@@ -148,79 +152,6 @@ public class Utils {
     public static boolean isPasswordValid(String userPassword) {
 
         return userPassword.matches(PASSWORD_REGEX);
-    }
-
-
-    public static void addName(Object object) {
-
-        Scanner scanner = new Scanner(System.in);
-        String userInput;
-
-        do {
-            System.out.println("Podaj imie: ");
-            userInput = scanner.nextLine();
-
-            if (!Utils.isLengthValid(userInput)) {
-
-                System.out.println("Nieodpowiedni rozmiar pola. Pole musi zawierac od 2 do 20 znakow. ");
-
-            } else if (!Utils.isFormatValid(userInput)) {
-
-                System.out.println("Bledny format. To pole musi skladac sie wylacznie z liter.");
-
-            } else if (Utils.isNameOrSurnameValid(userInput)) {
-
-                if (object instanceof Patient) {
-                    Patient patient = (Patient) object;
-
-                    patient.getDetails().setName(userInput);
-                }
-
-                if (object instanceof Doctor) {
-                    Doctor doctor = (Doctor) object;
-
-                    doctor.getDetails().setName(userInput);
-
-                }
-            }
-
-        } while (!Utils.isNameOrSurnameValid(userInput));
-    }
-
-    public static void addSurname(Object object) {
-
-        Scanner scanner = new Scanner(System.in);
-        String userInput;
-
-        do {
-            System.out.println("Podaj nazwisko: ");
-            userInput = scanner.nextLine();
-
-            if (!Utils.isLengthValid(userInput)) {
-
-                System.out.println("Nieodpowiedni rozmiar pola. Pole musi zawierac od 2 do 20 znakow. ");
-
-            } else if (!Utils.isFormatValid(userInput)) {
-
-                System.out.println("Bledny format. To pole musi skladac sie wylacznie z liter.");
-
-            } else if (Utils.isNameOrSurnameValid(userInput)) {
-
-                if (object instanceof Patient) {
-                    Patient patient = (Patient) object;
-
-                    patient.getDetails().setSurname(userInput);
-                }
-
-                if (object instanceof Doctor) {
-                    Doctor doctor = (Doctor) object;
-
-                    doctor.getDetails().setSurname(userInput);
-
-                }
-            }
-
-        } while (!Utils.isNameOrSurnameValid(userInput));
     }
 
 

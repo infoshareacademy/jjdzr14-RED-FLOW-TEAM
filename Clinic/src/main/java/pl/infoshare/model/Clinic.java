@@ -1,10 +1,10 @@
 package pl.infoshare.model;
 
 public class Clinic {
-    String clinicName;
-    Address address;
-    Patient patient;
-    Doctor doctor;
+    private String clinicName;
+    private Address address;
+    private Patient patient;
+    private Doctor doctor;
 
     public String getClinicName() {
         return clinicName;

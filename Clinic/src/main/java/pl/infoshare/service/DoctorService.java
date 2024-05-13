@@ -1,7 +1,9 @@
 package pl.infoshare.service;
 
-import pl.infoshare.model.Details;
+
+import pl.infoshare.model.Address;
 import pl.infoshare.model.Doctor;
+import pl.infoshare.model.PersonDetails;
 import pl.infoshare.model.User;
 
 
@@ -12,18 +14,21 @@ public class DoctorService {
     public static void addDoctor(User user) {
 
 
-        Details details = new Details();
+        PersonDetails details = new PersonDetails();
+        Address address = new Address();
         Doctor doctor = new Doctor();
-        doctor.setDetails(details);
+        doctor.setPersonDetails(details);
+        doctor.setAddress(address);
         doctor.setUser(user);
-
 
         try {
 
             System.out.println("DODAWANIE LEKARZA ");
 
-            Utils.addName(doctor);
-            Utils.addSurname(doctor);
+            PersonDetails.addName(doctor);
+            PersonDetails.addSurname(doctor);
+            PersonDetails.addPesel(doctor);
+            doctor.getPersonDetails().setIdNumber();
 
             FileService.writeToFile(doctor, DOCTOR_PATH);
 
