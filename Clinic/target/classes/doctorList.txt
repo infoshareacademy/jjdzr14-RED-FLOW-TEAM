@@ -1,3 +1,0 @@
-1 Roman Adams 502-605-202 Psychologia null true true, patient : null
-2 Anna Zagłoba 505-505-302 Psychologia null false false, patient : null
-{"user":{"login":"WLodek","password":"Puszekl1234!","email":"xx.@ld.pl","role":"DOCTOR"},"specialization":null,"online":false,"availability":false,"address":{"city":null,"country":null,"zipCode":null,"street":null},"personDetails":{"name":"WLodek","surname":"Wlodkowski","phoneNumber":null,"idNumber":0,"pesel":"01262876543","birthDate":[2001,6,28]}}
