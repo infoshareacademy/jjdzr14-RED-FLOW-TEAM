@@ -6,11 +6,11 @@ public class Doctor {
 
     private User user;
     private String specialization;
-    private List<Patient> patient;
+    private Patient patient;
     private Clinic clinic;
     private boolean online;
     private boolean availability;
-    public Details details;
+    private Details details;
 
 
 
@@ -80,20 +80,7 @@ public class Doctor {
                 '}';
     }
 
-    public static void printDoctors() {
 
-        Details details =  new Details("Jan", "Kowalski","123456789", "L999");
-        User user = new User();
-        Doctor doctor = new Doctor(user, details, "Onkologia", true, true);
-        List<Doctor> doctorTest = new ArrayList<>();
-
-        doctorTest.add(doctor);
-
-        for (Doctor doctor1 : doctorTest) {
-            System.out.println(doctor1);
-        }
-
-    }
 
 
 }

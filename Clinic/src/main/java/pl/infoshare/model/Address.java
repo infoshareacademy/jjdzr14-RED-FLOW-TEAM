@@ -4,7 +4,7 @@ public class Address {
     private String City;
     private String country;
     private String zipCode;
-    String street;
+    private String street;
 
     public Address(String city, String country, String zipCode, String street) {
         City = city;

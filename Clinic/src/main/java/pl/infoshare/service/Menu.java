@@ -1,9 +1,8 @@
 package pl.infoshare.service;
-import pl.infoshare.model.Doctor;
-import pl.infoshare.model.*;
-import java.nio.file.Path;
+
+import pl.infoshare.model.Patient;
+
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -22,7 +21,7 @@ public class Menu {
             switch (option) {
 
                 case 1:
-                   FileService.vievDoctors();
+                    FileService.vievDoctors();
                     break;
                 case 2:
                     FileService.vievPatient();
