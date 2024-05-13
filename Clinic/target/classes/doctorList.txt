@@ -1,4 +1,0 @@
-1 Roman Adams 502-605-202 Psychologia null true true, patient : null
-2 Anna Zagłoba 505-505-302 Psychologia null false false, patient : null
-{"user":{"login":"Kaziu","password":"Puszek123!","email":"kaziu3345@gmail.com","role":"DOCTOR"},"specialization":null,"online":false,"availability":false,"details":{"name":"Kazimierz","surname":"Kazimierzowski","phoneNumber":null,"idNumber":null}}
-
