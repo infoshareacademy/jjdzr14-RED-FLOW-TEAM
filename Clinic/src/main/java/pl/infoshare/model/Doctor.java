@@ -1,37 +1,37 @@
 package pl.infoshare.model;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Doctor {
 
     private User user;
     private String specialization;
-    private Patient patient;
+    private List<Patient> patient;
     private Clinic clinic;
     private boolean online;
     private boolean availability;
-    private Details details;
-
-
+    private PersonDetails details;
+    private Address address;
 
     public Doctor() {
     }
 
-    public Doctor(User user, Details details, String specialization, boolean online, boolean availability) {
+    public Doctor(User user, PersonDetails details, Address address, String specialization, boolean online, boolean availability) {
 
         this.user = user;
         this.details = details;
+        this.address = address;
         this.specialization = specialization;
         this.online = online;
         this.availability = availability;
 
     }
 
-    public Details getDetails() {
+    public PersonDetails getPersonDetails() {
         return details;
     }
 
-    public void setDetails(Details details) {
+    public void setPersonDetails(PersonDetails details) {
         this.details = details;
     }
 
@@ -67,10 +67,19 @@ public class Doctor {
         this.user = user;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "Doctor{" +
                 "user=" + user +
+                "address=" + address +
                 ", specialization='" + specialization + '\'' +
                 ", patient=" + patient +
                 ", clinic=" + clinic +
@@ -79,8 +88,4 @@ public class Doctor {
                 ", details=" + details +
                 '}';
     }
-
-
-
-
 }

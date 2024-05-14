@@ -1,24 +1,21 @@
 package pl.infoshare.model;
-import java.time.LocalDate;
+
 public class Patient {
 
-    private Details details;
-    private String pesel;
-    private LocalDate birthDate;
-    private int age;
+    private PersonDetails details;
     private Clinic clinic;
     private Doctor doctor;
     private User user;
+    private Address address;
 
-    public Patient() {}
+    public Patient() {
+    }
 
-    public Patient(User user, Details details, String pesel, LocalDate birthDate, int age, Clinic clinic, Doctor doctor) {
+    public Patient(User user, PersonDetails details, Address address, Clinic clinic, Doctor doctor) {
 
         this.user = user;
         this.details = details;
-        this.pesel = pesel;
-        this.birthDate = birthDate;
-        this.age = age;
+        this.address = address;
         this.clinic = clinic;
         this.doctor = doctor;
 
@@ -32,24 +29,13 @@ public class Patient {
         this.user = user;
     }
 
-    public String getPesel() {
-        return pesel;
-    }
 
-    public void setPesel(String pesel) {
-        this.pesel = pesel;
-    }
-
-    public Details getDetails() {
+    public PersonDetails getPersonDetails() {
         return details;
     }
 
-    public void setDetails(Details details) {
+    public void setPersonDetails(PersonDetails details) {
         this.details = details;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
 
@@ -69,16 +55,13 @@ public class Patient {
         this.doctor = doctor;
     }
 
-    public int getAge() {
-        return age;
+
+    public Address getAddress() {
+        return address;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
 
@@ -87,9 +70,7 @@ public class Patient {
         return "Patient{" +
                 "user='" + user +
                 "details='" + details +
-                ", pesel=" + pesel + '\'' +
-                "', birthDate='" + birthDate +
-                "', age='" + age +
+                "', address='" + address +
                 "', clinic='" + clinic +
                 "', doctor='" + doctor +
                 '}';

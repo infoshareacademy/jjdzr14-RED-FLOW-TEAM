@@ -1,10 +1,9 @@
 package pl.infoshare.service;
 
-import pl.infoshare.model.Details;
+import pl.infoshare.model.Address;
 import pl.infoshare.model.Patient;
+import pl.infoshare.model.PersonDetails;
 import pl.infoshare.model.User;
-
-import java.util.Scanner;
 
 
 public class PatientService {
@@ -16,19 +15,24 @@ public class PatientService {
     public static void addPatient(User user) {
 
         Patient patient = new Patient();
-        Details details = new Details();
+        Address address = new Address();
+        PersonDetails details = new PersonDetails();
 
-        patient.setDetails(details);
+
+        patient.setPersonDetails(details);
+        patient.setAddress(address);
         patient.setUser(user);
+
 
 
         System.out.println("DODAWANIE PACJENTA");
 
         try {
 
-            Utils.addName(patient);
-            Utils.addSurname(patient);
-            addPesel(patient);
+            PersonDetails.addName(patient);
+            PersonDetails.addSurname(patient);
+            PersonDetails.addPesel(patient);
+            patient.getPersonDetails().setIdNumber();
 
             FileService.writeToFile(patient, PATIENT_PATH);
 
@@ -39,31 +43,6 @@ public class PatientService {
         }
 
 
-    }
-
-    private static void addPesel(Patient patient) {
-
-        String userInput;
-        Scanner scanner = new Scanner(System.in);
-
-        do {
-
-            System.out.println("Podaj pesel: ");
-            userInput = scanner.nextLine();
-
-            if (!Utils.isPeselValid(userInput)) {
-
-                System.out.println("Nieprawidlowy numer pesel.");
-
-            } else if (Utils.isPeselValid(userInput)) {
-
-                patient.setPesel(userInput);
-                patient.setBirthDate(Utils.decodeDateOfBirth(patient));
-                patient.setAge(Utils.countAge(Utils.decodeDateOfBirth(patient)));
-
-            }
-
-        } while (!Utils.isPeselValid(userInput));
     }
 
 

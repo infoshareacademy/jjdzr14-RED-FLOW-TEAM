@@ -1,24 +1,27 @@
 package pl.infoshare.model;
 
 public class Address {
-    private String City;
+    private String city;
     private String country;
     private String zipCode;
     private String street;
 
+    public Address() {
+    }
+
     public Address(String city, String country, String zipCode, String street) {
-        City = city;
+        this.city = city;
         this.country = country;
         this.zipCode = zipCode;
         this.street = street;
     }
 
     public String getCity() {
-        return City;
+        return city;
     }
 
     public void setCity(String city) {
-        City = city;
+        city = city;
     }
 
     public String getCountry() {
@@ -48,7 +51,7 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "City='" + City + '\'' +
+                "city='" + city + '\'' +
                 ", country='" + country + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", street='" + street + '\'' +
