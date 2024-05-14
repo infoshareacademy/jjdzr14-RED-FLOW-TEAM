@@ -13,7 +13,6 @@ public class Doctor {
     private PersonDetails details;
     private Address address;
 
-
     public Doctor() {
     }
 
@@ -89,6 +88,4 @@ public class Doctor {
                 ", details=" + details +
                 '}';
     }
-
-
 }

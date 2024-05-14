@@ -1,10 +1,14 @@
 package pl.infoshare.model;
 
+import java.util.Set;
+
 public class Clinic {
     private String clinicName;
     private Address address;
-    private Patient patient;
-    private Doctor doctor;
+    private Set<Patient> patients;
+    private Set<Doctor> doctors ;
+
+
 
     public String getClinicName() {
         return clinicName;
@@ -22,20 +26,20 @@ public class Clinic {
         this.address = address;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public Set<Patient> getPatients() {
+        return patients;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatients(Set<Patient> patients) {
+        this.patients = patients;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public Set<Doctor> getDoctors() {
+        return doctors;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setDoctors(Set<Doctor> doctors) {
+        this.doctors = doctors;
     }
 
     public Clinic(Address address, String clinicName) {
