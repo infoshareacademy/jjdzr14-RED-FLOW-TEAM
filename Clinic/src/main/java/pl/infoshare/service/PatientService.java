@@ -10,6 +10,7 @@ public class PatientService {
 
 
     private static final String PATIENT_PATH = "Clinic/src/main/resources/listPatient.txt";
+    private static final String PATIENT_PATHJSON = "Clinic/src/main/resources/listPatient.json";
 
 
     public static void addPatient(User user) {
@@ -24,7 +25,6 @@ public class PatientService {
         patient.setUser(user);
 
 
-
         System.out.println("DODAWANIE PACJENTA");
 
         try {
@@ -34,7 +34,7 @@ public class PatientService {
             PersonDetails.addPesel(patient);
             patient.getPersonDetails().setIdNumber();
 
-            FileService.writeToFile(patient, PATIENT_PATH);
+            FileService.writeToFile(patient, PATIENT_PATHJSON);
 
 
         } catch (NullPointerException npe) {

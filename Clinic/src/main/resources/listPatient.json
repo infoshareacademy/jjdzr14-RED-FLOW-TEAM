@@ -1,1 +1,20 @@
-[{"details":{"name":"Roman","surname":"Adamowicz","phoneNumber":null,"idNumber":0},"age":18,"pesel":"5882225586","clinic":{"clinicName":"Meodentica","address":{"country":"Polska","zipCode":"85-669","street":"Władysława Jagieły","city":"Gdańsk"},"patient":null,"doctor":null},"address":{"country":"Polska","zipCode":"85-669","street":"Władysława Jagieły","city":"Gdańsk"},"doctor":{"specialization":"Internista","online":true,"availability":true,"details":{"name":"Adam","surname":"Nowak","phoneNumber":"505-69-963","idNumber":2}}}]
+{
+  "user": {
+    "login": "lko",
+    "password": "mnn!@#123ASD",
+    "email": "qp@pl.pl",
+    "role": "PATIENT"
+  },
+  "address": {},
+  "personDetails": {
+    "name": "aser",
+    "surname": "tre",
+    "idNumber": 5429,
+    "pesel": "50030632193",
+    "birthDate": [
+      1950,
+      3,
+      6
+    ]
+  }
+}

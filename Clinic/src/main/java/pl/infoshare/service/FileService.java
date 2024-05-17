@@ -3,6 +3,12 @@ package pl.infoshare.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import pl.infoshare.exeption.DataImportException;
 
 import java.io.*;
@@ -51,14 +57,16 @@ public class FileService {
             File file = new File(filePath);
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
+            JSONParser jsonParser = new JSONParser();
+
             String jsonData = dataToJson(object);
-            bw.write(jsonData);
+            bw.write(jsonParser.parse(jsonData).toString());
 
             bw.newLine();
 
             bw.close();
 
-        } catch (IOException e) {
+        } catch (IOException | ParseException e) {
 
             System.out.println(e.getMessage());
 
@@ -68,14 +76,17 @@ public class FileService {
 
     public static String dataToJson(Object object) {
 
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
 
         try {
             String jsonData = mapper.writeValueAsString(object);
+            JsonElement jsonElement = JsonParser.parseString(jsonData);
+            String prettyJsonString = gson.toJson(jsonElement);
             System.out.println(jsonData);
-            return mapper.writeValueAsString(object);
+            return mapper.writeValueAsString(prettyJsonString);
 
         } catch (JsonProcessingException e) {
 
