@@ -21,10 +21,10 @@ public class Menu {
             switch (option) {
 
                 case 1:
-                    FileService.vievDoctors();
+                    FileService.findAllDoctor();
                     break;
                 case 2:
-                    FileService.vievPatient();
+                    FileService.findAllPatient();
                     break;
                 case 3:
                     FileService.writeToFile(listPatient, path);

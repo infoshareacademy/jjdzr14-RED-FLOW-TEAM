@@ -1,0 +1,113 @@
+[
+  {
+    "user": {
+      "login": "Jacek",
+      "password": "Akademia!2",
+      "email": "jacek@gmail.com",
+      "role": "DOCTOR"
+    },
+    "online": false,
+    "availability": false,
+    "address": {},
+    "personDetails": {
+      "name": "Jacek",
+      "surname": "Przypadek",
+      "idNumber": 4372,
+      "pesel": "64101581165",
+      "birthDate": [
+        1964,
+        10,
+        15
+      ]
+    }
+  },
+  {
+    "user": {
+      "login": "Anna",
+      "password": "!Akademia2",
+      "email": "ania@gmail.com",
+      "role": "DOCTOR"
+    },
+    "online": false,
+    "availability": false,
+    "address": {},
+    "personDetails": {
+      "name": "Anna",
+      "surname": "Jakas",
+      "idNumber": 780,
+      "pesel": "64081365928",
+      "birthDate": [
+        1964,
+        8,
+        13
+      ]
+    }
+  }
+,
+  {
+    "user": {
+      "login": "Anna2",
+      "password": "!Akademia2",
+      "email": "ania2@gmail.com",
+      "role": "DOCTOR"
+    },
+    "online": false,
+    "availability": false,
+    "address": {},
+    "personDetails": {
+      "name": "Anna2",
+      "surname": "Jakas2",
+      "idNumber":850,
+      "pesel": "64081365928",
+      "birthDate": [
+        1964,
+        8,
+        13
+      ]
+    }
+  },
+  {
+    "user": {
+      "login": "Jacek2",
+      "password": "Akademia!2",
+      "email": "jacek2@gmail.com",
+      "role": "DOCTOR"
+    },
+    "online": false,
+    "availability": false,
+    "address": {},
+    "personDetails": {
+      "name": "Jacek2",
+      "surname": "Przypadek2",
+      "idNumber": 4342,
+      "pesel": "64101581165",
+      "birthDate": [
+        1964,
+        10,
+        15
+      ]
+    }
+  },
+  {
+    "user": {
+      "login": "Krzysztof",
+      "password": "Akademia!2",
+      "email": "krzysztof@gmail.com",
+      "role": "DOCTOR"
+    },
+    "online": false,
+    "availability": false,
+    "address": {},
+    "personDetails": {
+      "name": "Krzysztof",
+      "surname": "Wypadek",
+      "idNumber": 4152,
+      "pesel": "64101581165",
+      "birthDate": [
+        1964,
+        10,
+        15
+      ]
+    }
+  }
+]
