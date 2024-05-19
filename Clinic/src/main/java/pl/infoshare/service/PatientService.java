@@ -8,17 +8,13 @@ import pl.infoshare.model.User;
 
 public class PatientService {
 
-
-    private static final String PATIENT_PATH = "Clinic/src/main/resources/listPatient.txt";
-    private static final String PATIENT_PATHJSON = "Clinic/src/main/resources/listPatient.json";
-
+    private static final String PATIENT_PATHJSON = "Clinic/src/main/resources/patient.json";
 
     public static void addPatient(User user) {
 
         Patient patient = new Patient();
         Address address = new Address();
         PersonDetails details = new PersonDetails();
-
 
         patient.setPersonDetails(details);
         patient.setAddress(address);
@@ -36,15 +32,9 @@ public class PatientService {
 
             FileService.writeToFile(patient, PATIENT_PATHJSON);
 
-
         } catch (NullPointerException npe) {
 
             System.out.println("Proba odwolania sie do nieistniejacego obiektu.");
         }
-
-
     }
-
-
 }
-
