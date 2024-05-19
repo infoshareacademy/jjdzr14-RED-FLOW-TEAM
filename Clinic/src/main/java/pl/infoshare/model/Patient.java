@@ -65,14 +65,15 @@ public class Patient {
     }
 
 
+
     @Override
     public String toString() {
-        return "Patient{" +
-                "user='" + user +
-                "details='" + details +
-                "', address='" + address +
-                "', clinic='" + clinic +
-                "', doctor='" + doctor +
+        return "Patient{\n" +
+                "details=" + details +
+                "\n, clinic=" + clinic +
+                "\n, doctor=" + doctor +
+                "\n, user=" + user +
+                "\n, address=" + address +
                 '}';
     }
 }

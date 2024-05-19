@@ -1,3 +1,0 @@
-1 Roman Adams 502-605-202 Psychologia null true true, patient : null
-2 Anna Zagłoba 505-505-302 Psychologia null false false, patient : null
-
