@@ -6,9 +6,9 @@ import pl.infoshare.model.PersonDetails;
 import pl.infoshare.model.User;
 
 
-public class PatientService {
+public class PatientService extends Login {
 
-    private static final String PATIENT_PATHJSON = "Clinic/src/main/resources/patient.json";
+    protected static final String PATIENT_PATHJSON = "Clinic/src/main/resources/patient.json";
 
     public static void addPatient(User user) {
 

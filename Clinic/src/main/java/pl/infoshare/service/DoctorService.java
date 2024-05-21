@@ -7,9 +7,9 @@ import pl.infoshare.model.PersonDetails;
 import pl.infoshare.model.User;
 
 
-public class DoctorService {
+public class DoctorService extends Login {
 
-    private static final String DOCTOR_PATH = "Clinic/src/main/resources/doctorList.txt";
+    protected static final String DOCTOR_PATH = "Clinic/src/main/resources/doctor.json";
 
     public static void addDoctor(User user) {
 

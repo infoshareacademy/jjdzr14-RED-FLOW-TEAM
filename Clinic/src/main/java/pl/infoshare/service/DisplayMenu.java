@@ -11,8 +11,6 @@ public class DisplayMenu {
                 "3.Admin \n" +
                 "0.Zamknij aplikacje.");
 
-
-
     }
 
     private static void displayMenuDoctors () {

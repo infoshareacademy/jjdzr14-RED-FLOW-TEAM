@@ -38,16 +38,14 @@ public class FileService {
     }
 
     public static void vievDoctors() {
-        fileReader("Clinic/src/main/resources/doctorList.txt");
+        fileReader("Clinic/src/main/resources/doctor.json");
     }
 
     public static void vievPatient() {
-        fileReader("Clinic/src/main/resources/listPatient.txt");
+        fileReader("Clinic/src/main/resources/patient.json");
     }
 
-    public static void viewUsers() {
-        fileReader("Clinic/src/main/resources/usernames.txt");
-    }
+
 
 
     public static void writeToFile(Object object, String filePath) {

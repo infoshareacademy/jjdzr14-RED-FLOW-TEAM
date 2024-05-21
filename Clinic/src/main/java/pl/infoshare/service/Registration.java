@@ -28,7 +28,6 @@ public class Registration {
                 System.out.println("ADMIN");
             }
 
-            FileService.writeToFile(user.getLogin(), USERNAMES_FILE);
 
 
         } catch (NullPointerException e) {
