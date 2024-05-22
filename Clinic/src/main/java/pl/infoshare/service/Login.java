@@ -13,11 +13,10 @@ import java.util.Scanner;
 public class Login {
 
     private static HashMap<String, String> userData = new HashMap<>();
+    private static String currentlyCheckedLogin;
 
 
-    public static void tryLoginUser() {
-
-        Scanner scanner = new Scanner(System.in);
+    public static void loginMenu() {
 
         int userChoice = chooseLoginOption();
 
@@ -25,12 +24,20 @@ public class Login {
 
             case 1:
 
-                tryLoginPatient();
+                getDataFromJsonUser(PatientService.PATIENT_PATHJSON);
+                System.out.println("Logowanie pacjenta. ");
+
+                tryLoginUser();
+
                 break;
 
             case 2:
 
-                tryLoginDoctor();
+                getDataFromJsonUser(DoctorService.DOCTOR_PATH);
+                System.out.println("Logowanie lekarza. ");
+
+                tryLoginUser();
+
                 break;
         }
 
@@ -51,106 +58,80 @@ public class Login {
 
     }
 
-    public static void tryLoginPatient() {
+    public static void tryLoginUser() {
 
+        provideUserLogin();
+        provideUserPassword();
 
-        do {
-
-            System.out.println("Logowanie pacjenta: ");
-
-            getDataFromJsonUser(PatientService.PATIENT_PATHJSON);
-
-            provideLogin();
-            providePassword();
-
-            if (hasUserEnteredCorrectData(userData,
-                    provideLogin(), providePassword())) {
-
-                System.out.println("Zalogowano pacjenta. ");
-                break;
-
-            } else if (!hasUserEnteredCorrectData(userData, provideLogin(), providePassword())) {
-
-                System.out.println("Bledne dane logowania. ");
-            }
-
-        } while (!hasUserEnteredCorrectData(userData,
-                provideLogin(), providePassword()));
-        ;
 
     }
 
-    public static void tryLoginDoctor() {
+    private static void provideUserLogin() {
 
-        System.out.println("Logowanie lekarza: ");
-
-        getDataFromJsonUser(DoctorService.DOCTOR_PATH);
+        String login = "";
 
         do {
-            provideLogin();
-            providePassword();
 
-            if (hasUserEnteredCorrectData(userData, provideLogin(), providePassword())) {
+            Scanner scanner = new Scanner(System.in);
 
-                System.out.println("Zalogowano lekarza. ");
+            System.out.println("Podaj login: ");
+            login = scanner.nextLine();
+
+            if (!validProvidedLogin(login)) {
+
+                System.out.println("Nie ma takiego uzytkownika. ");
+            }
+
+        } while (!validProvidedLogin(login));
+
+    }
+
+    private static void provideUserPassword() {
+
+        String password = "";
+
+        do {
+
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Podaj haslo: ");
+            password = scanner.nextLine();
+
+            if (isEnteredPasswordCorrect(password)) {
+
+                System.out.println("ZALOGOWANO UZYTKOWNIKA. ");
 
             } else {
-
-                System.out.println("Bledne dane logowania. ");
+                System.out.println("Bledne haslo. ");
             }
 
-        } while (!hasUserEnteredCorrectData(userData,
-                provideLogin(), providePassword()));
-
-    }
-
-    public static String provideLogin() {
-
-        String login;
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Podaj login: ");
-        login = scanner.next();
-
-        return login;
-
-    }
-
-    public static String providePassword() {
-
-        String password;
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Podaj haslo: ");
-        password = scanner.next();
-
-        return password;
-
+        } while (!isEnteredPasswordCorrect(password));
     }
 
 
-    public static boolean hasUserEnteredCorrectData(HashMap<String, String> userData, String login, String password) {
+    private static boolean isEnteredPasswordCorrect(String password) {
 
-        String usrPassword = "";
+        return password.equals(userData.get(currentlyCheckedLogin));
+
+
+    }
+
+    private static boolean validProvidedLogin(String login) {
+
+
         for (String key : userData.keySet()) {
+
             if (login.equals(key)) {
-                usrPassword = userData.get(key);
 
-            } else {
-                System.out.println("Nieprawidlowa nazwa uzytkownika. ");
-            }
-
-            if (usrPassword.equals(password)) {
-
+                currentlyCheckedLogin = login;
                 return true;
-            } else {
 
-                System.out.println("Nieprawidlowe haslo. ");
             }
         }
-
         return false;
+
     }
+
 
     public static void getDataFromJsonUser(String filename) {
 
@@ -167,7 +148,6 @@ public class Login {
     }
 
     public static JSONObject convertFileToJSON(String fileName) {
-
 
         JSONObject jsonObject = null;
 
