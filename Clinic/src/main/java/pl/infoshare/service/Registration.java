@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Registration {
 
 
-
     public static void registerUser() {
 
         try {

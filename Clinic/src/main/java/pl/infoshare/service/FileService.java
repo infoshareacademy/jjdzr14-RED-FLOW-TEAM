@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -48,8 +49,6 @@ public class FileService {
     public static void vievPatient() {
         fileReader("Clinic/src/main/resources/patient.json");
     }
-
-
 
 
     public static void writeToFile(Object object, String filePath) {
@@ -102,27 +101,34 @@ public class FileService {
 
     public static void getDataFromJsonUser(String filename) {
 
-        JSONObject jsonObject = convertFileToJSON(filename);
+        String login = "";
+        String password = "";
+        JSONArray jsonArray = (JSONArray) convertFileToJSON(filename);
 
-        JSONObject user = (JSONObject) jsonObject.get("user");
+        for (int i = 0; i < jsonArray.size(); i++) {
 
-        String login = (String) user.get("login");
-        String password = (String) user.get("password");
+            JSONObject singlePerson = (JSONObject) jsonArray.get(i);
 
-        Login.userData.put(login, password);
+            JSONObject userData = (JSONObject) singlePerson.get("user");
+
+            login = userData.get("login").toString();
+            password = userData.get("password").toString();
+
+            Login.userData.put(login, password);
+        }
 
 
     }
 
-    public static JSONObject convertFileToJSON(String fileName) {
+    public static JSONArray convertFileToJSON(String fileName) {
 
-        JSONObject jsonObject = null;
+        JSONArray jsonArray = null;
 
         try {
 
             JSONParser parser = new JSONParser();
 
-            jsonObject = (JSONObject) parser.parse(new FileReader(fileName));
+            jsonArray = (JSONArray) parser.parse(new FileReader(fileName));
 
 
         } catch (FileNotFoundException e) {
@@ -135,7 +141,7 @@ public class FileService {
             throw new RuntimeException(e);
         }
 
-        return jsonObject;
+        return jsonArray;
 
     }
 
