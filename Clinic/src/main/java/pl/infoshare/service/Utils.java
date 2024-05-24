@@ -122,22 +122,14 @@ public class Utils {
 
     public static boolean isUsernameExisting(String userInput) {
 
-        try {
+        FileService.getDataFromJsonUser(FileService.PATIENT_PATH);
+        FileService.getDataFromJsonUser(FileService.DOCTOR_PATH);
 
-            FileReader in = new FileReader(Registration.USERNAMES_FILE);
-            BufferedReader br = new BufferedReader(in);
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (line.contains(userInput))
-                    return true;
+        for (String key : Login.userData.keySet()) {
+            if (key.equals(userInput)) {
+
+                return true;
             }
-            in.close();
-
-        } catch (FileNotFoundException fnfe) {
-            System.out.println(fnfe.getMessage());
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         return false;
     }
