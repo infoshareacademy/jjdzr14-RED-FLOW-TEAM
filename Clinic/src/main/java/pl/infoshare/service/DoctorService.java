@@ -6,13 +6,13 @@ import pl.infoshare.model.Doctor;
 import pl.infoshare.model.PersonDetails;
 import pl.infoshare.model.User;
 
+import static pl.infoshare.service.FileService.DOCTOR_PATH;
 
-public class DoctorService extends Login {
 
-    protected static final String DOCTOR_PATH = "Clinic/src/main/resources/doctor.json";
+public class DoctorService {
+
 
     public static void addDoctor(User user) {
-
 
         PersonDetails details = new PersonDetails();
         Address address = new Address();

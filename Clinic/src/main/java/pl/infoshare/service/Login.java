@@ -1,18 +1,14 @@
 package pl.infoshare.service;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import static pl.infoshare.service.FileService.*;
+
 public class Login {
 
-    private static HashMap<String, String> userData = new HashMap<>();
+
+    protected static HashMap<String, String> userData = new HashMap<>();
     private static String currentlyCheckedLogin;
 
 
@@ -24,7 +20,7 @@ public class Login {
 
             case 1:
 
-                getDataFromJsonUser(PatientService.PATIENT_PATHJSON);
+                getDataFromJsonUser(PATIENT_PATH);
                 System.out.println("Logowanie pacjenta. ");
 
                 tryLoginUser();
@@ -33,7 +29,7 @@ public class Login {
 
             case 2:
 
-                getDataFromJsonUser(DoctorService.DOCTOR_PATH);
+                getDataFromJsonUser(DOCTOR_PATH);
                 System.out.println("Logowanie lekarza. ");
 
                 tryLoginUser();
@@ -133,42 +129,4 @@ public class Login {
     }
 
 
-    public static void getDataFromJsonUser(String filename) {
-
-        JSONObject jsonObject = convertFileToJSON(filename);
-
-        JSONObject user = (JSONObject) jsonObject.get("user");
-
-        String login = (String) user.get("login");
-        String password = (String) user.get("password");
-
-        Login.userData.put(login, password);
-
-
-    }
-
-    public static JSONObject convertFileToJSON(String fileName) {
-
-        JSONObject jsonObject = null;
-
-        try {
-
-            JSONParser parser = new JSONParser();
-
-            jsonObject = (JSONObject) parser.parse(new FileReader(fileName));
-
-
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-
-        } catch (IOException ioe) {
-            System.out.println(ioe.getMessage());
-
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-
-        return jsonObject;
-
-    }
 }

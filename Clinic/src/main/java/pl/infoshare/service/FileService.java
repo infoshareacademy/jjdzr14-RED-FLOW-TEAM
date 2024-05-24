@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import pl.infoshare.exeption.DataImportException;
@@ -15,6 +16,9 @@ import java.io.*;
 import java.util.Scanner;
 
 public class FileService {
+
+    protected static final String DOCTOR_PATH = "Clinic/src/main/resources/doctor.json";
+    protected static final String PATIENT_PATH = "Clinic/src/main/resources/patient.json";
 
 
     private static void fileReader(String pathDoctors) {
@@ -93,6 +97,45 @@ public class FileService {
 
 
         }
+
+    }
+
+    public static void getDataFromJsonUser(String filename) {
+
+        JSONObject jsonObject = convertFileToJSON(filename);
+
+        JSONObject user = (JSONObject) jsonObject.get("user");
+
+        String login = (String) user.get("login");
+        String password = (String) user.get("password");
+
+        Login.userData.put(login, password);
+
+
+    }
+
+    public static JSONObject convertFileToJSON(String fileName) {
+
+        JSONObject jsonObject = null;
+
+        try {
+
+            JSONParser parser = new JSONParser();
+
+            jsonObject = (JSONObject) parser.parse(new FileReader(fileName));
+
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        return jsonObject;
 
     }
 

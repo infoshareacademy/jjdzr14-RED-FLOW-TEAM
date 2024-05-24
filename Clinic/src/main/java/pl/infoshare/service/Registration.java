@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Registration {
 
 
-    protected static final String USERNAMES_FILE = "Clinic/src/main/resources/usernames.txt";
 
     public static void registerUser() {
 

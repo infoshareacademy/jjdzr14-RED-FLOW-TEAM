@@ -1,0 +1,22 @@
+{
+  "user": {
+    "login": "testowyUser",
+    "password": "est123!T",
+    "email": "test@wp.pl",
+    "role": "DOCTOR"
+  },
+  "online": false,
+  "availability": false,
+  "address": {},
+  "personDetails": {
+    "name": "TestowyLekarz",
+    "surname": "Lekarzz",
+    "idNumber": 4911,
+    "pesel": "00010101456",
+    "birthDate": [
+      1900,
+      1,
+      1
+    ]
+  }
+}
