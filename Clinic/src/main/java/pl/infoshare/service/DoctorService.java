@@ -9,7 +9,7 @@ import pl.infoshare.model.User;
 
 public class DoctorService {
 
-    private static final String DOCTOR_PATH = "Clinic/src/main/resources/doctorList.txt";
+    private static final String DOCTOR_PATH = "Clinic/src/main/resources/doctor.json";
 
     public static void addDoctor(User user) {
 

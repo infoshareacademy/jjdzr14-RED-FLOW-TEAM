@@ -80,7 +80,7 @@ public class Doctor {
         return "Doctor{" +
                 "user=" + user +
                 "address=" + address +
-                ", specialization='" + specialization + '\'' +
+                ", specialization='" + specialization  +
                 ", patient=" + patient +
                 ", clinic=" + clinic +
                 ", online=" + online +
