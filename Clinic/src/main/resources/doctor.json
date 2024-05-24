@@ -1,0 +1,73 @@
+[ {
+  "user" : {
+    "login" : "apollo",
+    "password" : "ASDasd!@#11",
+    "email" : "ap@op.pl",
+    "role" : "DOCTOR"
+  },
+  "specialization" : null,
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : null,
+    "country" : null,
+    "zipCode" : null,
+    "street" : null
+  },
+  "personDetails" : {
+    "name" : "Adonis",
+    "surname" : "Pedro",
+    "phoneNumber" : null,
+    "idNumber" : 3597,
+    "pesel" : "94062821334",
+    "birthDate" : [ 1994, 6, 28 ]
+  }
+}, {
+  "user" : {
+    "login" : "roman",
+    "password" : "asddsaASD123!",
+    "email" : "io@op.pl",
+    "role" : "DOCTOR"
+  },
+  "specialization" : null,
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : null,
+    "country" : null,
+    "zipCode" : null,
+    "street" : null
+  },
+  "personDetails" : {
+    "name" : "Kazimierz",
+    "surname" : "Deyna",
+    "phoneNumber" : null,
+    "idNumber" : 8068,
+    "pesel" : "94062821334",
+    "birthDate" : [ 1994, 6, 28 ]
+  }
+}, {
+  "user" : {
+    "login" : "anna",
+    "password" : "123!@#321!!asdDS",
+    "email" : "qp@qp.pl",
+    "role" : "DOCTOR"
+  },
+  "specialization" : null,
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : null,
+    "country" : null,
+    "zipCode" : null,
+    "street" : null
+  },
+  "personDetails" : {
+    "name" : "Ania",
+    "surname" : "Kowalska",
+    "phoneNumber" : null,
+    "idNumber" : 1861,
+    "pesel" : "08213064545",
+    "birthDate" : [ 2008, 1, 30 ]
+  }
+} ]

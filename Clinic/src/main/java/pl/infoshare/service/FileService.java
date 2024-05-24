@@ -1,18 +1,20 @@
 package pl.infoshare.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import pl.infoshare.exeption.DataImportException;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.util.LinkedHashSet;
 import java.util.Scanner;
+import java.util.Set;
+
+import static java.nio.file.Paths.get;
 
 public class FileService {
 
@@ -51,22 +53,21 @@ public class FileService {
 
 
     public static void writeToFile(Object object, String filePath) {
-
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
         try {
 
             File file = new File(filePath);
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
-            JSONParser jsonParser = new JSONParser();
+            objectToJson(object, filePath);
 
-            String jsonData = dataToJson(object);
-            bw.write(jsonParser.parse(jsonData).toString());
 
             bw.newLine();
 
             bw.close();
 
-        } catch (IOException | ParseException e) {
+        } catch (IOException  e) {
 
             System.out.println(e.getMessage());
 
@@ -74,32 +75,41 @@ public class FileService {
 
     }
 
-    public static String dataToJson(Object object) {
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
+    public static void objectToJson(Object newObject, String filePath) {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
 
         try {
-            String jsonData = mapper.writeValueAsString(object);
-            JsonElement jsonElement = JsonParser.parseString(jsonData);
-            String prettyJsonString = gson.toJson(jsonElement);
-            System.out.println(jsonData);
-            return mapper.writeValueAsString(prettyJsonString);
+            Set<Object> objectSet;
+            File file = new File(filePath);
+
+            if (file.exists() && !file.isDirectory() && file.length() != 0) {
+                String jsonContent = new String(Files.readAllBytes(get(filePath)));
+                objectSet = mapper.readValue(jsonContent, new TypeReference<LinkedHashSet<Object>>() {
+                });
+            } else {
+                objectSet = new LinkedHashSet<>();
+            }
+            objectSet.add(newObject);
+            ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+            String jsonData = writer.writeValueAsString(objectSet);
+
+            Files.write(get(filePath), jsonData.getBytes());
+
+            System.out.println("Updated collection written to file:");
 
         } catch (JsonProcessingException e) {
-
-            System.err.println(e.getMessage());
+            System.err.println("Json processing error: " + e.getMessage());
             throw new RuntimeException(e);
-
-
+        } catch (IOException e) {
+            System.err.println("File IO error: " + e.getMessage());
+            throw new RuntimeException(e);
         }
-
     }
-
-
 }
+
+
 
 
 
