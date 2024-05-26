@@ -51,10 +51,10 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", street='" + street + '\'' +
+                "city='" + city +
+                ", country='" + country +
+                ", zipCode='" + zipCode +
+                ", street='" + street +
                 '}';
     }
 }

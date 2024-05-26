@@ -1,0 +1,22 @@
+{
+  "user": {
+    "login": "Adam",
+    "password": "ASDasd!@#123",
+    "email": "ania@ania.pl",
+    "role": "DOCTOR"
+  },
+  "online": false,
+  "availability": false,
+  "address": {},
+  "personDetails": {
+    "name": "Adam",
+    "surname": "Nowak",
+    "idNumber": 9913,
+    "pesel": "05270128979",
+    "birthDate": [
+      2005,
+      7,
+      1
+    ]
+  }
+}
