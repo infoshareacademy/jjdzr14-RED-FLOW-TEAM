@@ -9,8 +9,6 @@ import java.util.Scanner;
 public class Registration {
 
 
-    protected static final String USERNAMES_FILE = "Clinic/src/main/resources/usernames.txt";
-
     public static void registerUser() {
 
         try {
@@ -27,8 +25,6 @@ public class Registration {
             } else {
                 System.out.println("ADMIN");
             }
-
-            FileService.writeToFile(user.getLogin(), USERNAMES_FILE);
 
 
         } catch (NullPointerException e) {

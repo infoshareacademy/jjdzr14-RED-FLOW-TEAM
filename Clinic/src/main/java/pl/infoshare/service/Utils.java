@@ -3,12 +3,7 @@ package pl.infoshare.service;
 import pl.infoshare.model.Doctor;
 import pl.infoshare.model.Patient;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -123,22 +118,14 @@ public class Utils {
 
     public static boolean isUsernameExisting(String userInput) {
 
-        try {
+        FileService.getDataFromJsonUser(FileService.DOCTOR_PATH);
+        FileService.getDataFromJsonUser(FileService.PATIENT_PATH);
 
-            FileReader in = new FileReader(Registration.USERNAMES_FILE);
-            BufferedReader br = new BufferedReader(in);
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (line.contains(userInput))
-                    return true;
+        for (String key : Login.userData.keySet()) {
+
+            if (key.equals(userInput)) {
+                return true;
             }
-            in.close();
-
-        } catch (FileNotFoundException fnfe) {
-            System.out.println(fnfe.getMessage());
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         return false;
     }

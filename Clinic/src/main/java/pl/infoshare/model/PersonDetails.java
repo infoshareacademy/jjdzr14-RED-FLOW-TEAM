@@ -183,6 +183,7 @@ public class PersonDetails {
                     patient.getPersonDetails().setPesel(userInput);
 
                     patient.getPersonDetails().setBirthDate(Utils.decodeDateOfBirth(patient));
+
                 } else if (object instanceof Doctor) {
 
                     Doctor doctor = (Doctor) object;

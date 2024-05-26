@@ -5,10 +5,11 @@ import pl.infoshare.model.Patient;
 import pl.infoshare.model.PersonDetails;
 import pl.infoshare.model.User;
 
+import static pl.infoshare.service.FileService.PATIENT_PATH;
+
 
 public class PatientService {
 
-    private static final String PATIENT_PATHJSON = "Clinic/src/main/resources/patient.json";
 
     public static void addPatient(User user) {
 
@@ -30,7 +31,7 @@ public class PatientService {
             PersonDetails.addPesel(patient);
             patient.getPersonDetails().setIdNumber();
 
-            FileService.writeToFile(patient, PATIENT_PATHJSON);
+            FileService.writeToFile(patient, PATIENT_PATH);
 
         } catch (NullPointerException npe) {
 

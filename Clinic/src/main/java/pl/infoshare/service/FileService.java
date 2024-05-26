@@ -6,6 +6,14 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import pl.infoshare.exeption.DataImportException;
 
 import java.io.*;
@@ -17,6 +25,9 @@ import java.util.Set;
 import static java.nio.file.Paths.get;
 
 public class FileService {
+
+    protected static final String DOCTOR_PATH = "Clinic/src/main/resources/doctor.json";
+    protected static final String PATIENT_PATH = "Clinic/src/main/resources/patient.json";
 
 
     private static void fileReader(String pathDoctors) {
@@ -40,15 +51,11 @@ public class FileService {
     }
 
     public static void vievDoctors() {
-        fileReader("Clinic/src/main/resources/doctorList.txt");
+        fileReader("Clinic/src/main/resources/doctor.json");
     }
 
     public static void vievPatient() {
-        fileReader("Clinic/src/main/resources/listPatient.txt");
-    }
-
-    public static void viewUsers() {
-        fileReader("Clinic/src/main/resources/usernames.txt");
+        fileReader("Clinic/src/main/resources/patient.json");
     }
 
 
@@ -106,6 +113,56 @@ public class FileService {
             System.err.println("File IO error: " + e.getMessage());
             throw new RuntimeException(e);
         }
+
+
+        }
+
+    }
+
+    public static void getDataFromJsonUser(String filename) {
+
+        String login = "";
+        String password = "";
+        JSONArray jsonArray = (JSONArray) convertFileToJSON(filename);
+
+        for (int i = 0; i < jsonArray.size(); i++) {
+
+            JSONObject singlePerson = (JSONObject) jsonArray.get(i);
+
+            JSONObject userData = (JSONObject) singlePerson.get("user");
+
+            login = userData.get("login").toString();
+            password = userData.get("password").toString();
+
+            Login.userData.put(login, password);
+        }
+
+
+    }
+
+    public static JSONArray convertFileToJSON(String fileName) {
+
+        JSONArray jsonArray = null;
+
+        try {
+
+            JSONParser parser = new JSONParser();
+
+            jsonArray = (JSONArray) parser.parse(new FileReader(fileName));
+
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        return jsonArray;
+
     }
 }
 
