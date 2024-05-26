@@ -6,10 +6,6 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -74,7 +70,7 @@ public class FileService {
 
             bw.close();
 
-        } catch (IOException  e) {
+        } catch (IOException e) {
 
             System.out.println(e.getMessage());
 
@@ -115,56 +111,56 @@ public class FileService {
         }
 
 
-        }
-
     }
 
-    public static void getDataFromJsonUser(String filename) {
+public static void getDataFromJsonUser(String filename) {
 
-        String login = "";
-        String password = "";
-        JSONArray jsonArray = (JSONArray) convertFileToJSON(filename);
+    String login = "";
+    String password = "";
+    JSONArray jsonArray = (JSONArray) convertFileToJSON(filename);
 
-        for (int i = 0; i < jsonArray.size(); i++) {
+    for (int i = 0; i < jsonArray.size(); i++) {
 
-            JSONObject singlePerson = (JSONObject) jsonArray.get(i);
+        JSONObject singlePerson = (JSONObject) jsonArray.get(i);
 
-            JSONObject userData = (JSONObject) singlePerson.get("user");
+        JSONObject userData = (JSONObject) singlePerson.get("user");
 
-            login = userData.get("login").toString();
-            password = userData.get("password").toString();
+        login = userData.get("login").toString();
+        password = userData.get("password").toString();
 
-            Login.userData.put(login, password);
-        }
-
-
+        Login.userData.put(login, password);
     }
 
-    public static JSONArray convertFileToJSON(String fileName) {
 
-        JSONArray jsonArray = null;
-
-        try {
-
-            JSONParser parser = new JSONParser();
-
-            jsonArray = (JSONArray) parser.parse(new FileReader(fileName));
-
-
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-
-        } catch (IOException ioe) {
-            System.out.println(ioe.getMessage());
-
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-
-        return jsonArray;
-
-    }
 }
+
+public static JSONArray convertFileToJSON(String fileName) {
+
+    JSONArray jsonArray = null;
+
+    try {
+
+        JSONParser parser = new JSONParser();
+
+        jsonArray = (JSONArray) parser.parse(new FileReader(fileName));
+
+
+    } catch (FileNotFoundException e) {
+        System.out.println(e.getMessage());
+
+    } catch (IOException ioe) {
+        System.out.println(ioe.getMessage());
+
+    } catch (ParseException e) {
+        throw new RuntimeException(e);
+    }
+
+    return jsonArray;
+}
+
+}
+
+
 
 
 
