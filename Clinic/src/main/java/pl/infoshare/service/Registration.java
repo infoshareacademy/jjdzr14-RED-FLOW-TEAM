@@ -47,8 +47,6 @@ public class Registration {
                 login = userInput;
                 break;
 
-            } else if (Utils.isUsernameExisting(userInput)) {
-                System.out.println("Ta nazwa uzytkownika jest juz zajeta.");
             }
 
         } while (!Utils.isLoginValid(userInput));
