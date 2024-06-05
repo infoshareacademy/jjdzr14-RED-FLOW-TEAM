@@ -1,16 +1,13 @@
 package pl.infoshare;
 
-import org.json.simple.parser.ParseException;
-import pl.infoshare.service.Login;
-
-import java.io.IOException;
+import pl.infoshare.service.UserService;
 
 
 public class App {
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) {
 
 
-        Login.loginMenu();
+        UserService.searchBar();
 
 
     }

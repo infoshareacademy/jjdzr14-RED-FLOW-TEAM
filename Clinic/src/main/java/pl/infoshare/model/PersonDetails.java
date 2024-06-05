@@ -36,7 +36,7 @@ public class PersonDetails {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", idNumber=" + idNumber +
                 ", pesel=" + pesel +
-                ", birtbDate=" + birthDate +
+                ", birthDate=" + birthDate +
                 '}';
     }
 
