@@ -4,8 +4,13 @@ import pl.infoshare.model.Doctor;
 import pl.infoshare.model.Patient;
 
 import java.time.LocalDate;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toSet;
 
 public class Utils {
 
@@ -114,6 +119,19 @@ public class Utils {
 
 
         return (userInput.matches(LETTER_REGEX));
+    }
+
+    public static boolean isUsernameExisting(String userInput) {
+
+        Set<String> listOfDoctors = Registration.getUserNamesFromJSon(FileService.DOCTOR_PATH);
+        Set<String> listOfPatients = Registration.getUserNamesFromJSon(FileService.PATIENT_PATH);
+
+        Set<String> combinedSet = Stream.of(listOfDoctors, listOfPatients).flatMap(Set::stream)
+                .collect(toSet());
+
+        Predicate<String> userPredicate = u -> (userInput.equalsIgnoreCase(u));
+
+        return combinedSet.stream().anyMatch(userPredicate);
     }
 
 
