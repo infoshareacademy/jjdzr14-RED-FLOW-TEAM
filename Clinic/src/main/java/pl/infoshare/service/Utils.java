@@ -118,7 +118,7 @@ public class Utils {
     public static boolean isLoginValid(String userInput) {
 
 
-        return (!isUsernameExisting(userInput)) && userInput.matches(LETTER_REGEX);
+        return (userInput.matches(LETTER_REGEX));
     }
 
     public static boolean isUsernameExisting(String userInput) {
@@ -133,6 +133,7 @@ public class Utils {
 
         return combinedSet.stream().anyMatch(userPredicate);
     }
+
 
     public static boolean isEmailValid(String userEmail) {
 
