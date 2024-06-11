@@ -1,16 +1,16 @@
 package pl.infoshare.clinicweb.doctor;
 
-import pl.infoshare.file.FileService;
 import pl.infoshare.clinicweb.adress.Address;
 import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.PersonDetailsService;
 import pl.infoshare.clinicweb.user.User;
+import pl.infoshare.file.FileService;
 
 import static pl.infoshare.file.FileService.DOCTOR_PATH;
 
+public class DoctorService implements DoctorRepository {
 
-public class DoctorService {
-
-    public static void addDoctor(User user) {
+    public void addDoctor(User user) {
 
         PersonDetails details = new PersonDetails();
         Address address = new Address();
@@ -23,9 +23,9 @@ public class DoctorService {
 
             System.out.println("DODAWANIE LEKARZA ");
 
-            PersonDetails.addName(doctor);
-            PersonDetails.addSurname(doctor);
-            PersonDetails.addPesel(doctor);
+            PersonDetailsService.addName(doctor);
+            PersonDetailsService.addSurname(doctor);
+            PersonDetailsService.addPesel(doctor);
             doctor.getPersonDetails().setIdNumber();
 
             FileService.writeToFile(doctor, DOCTOR_PATH);

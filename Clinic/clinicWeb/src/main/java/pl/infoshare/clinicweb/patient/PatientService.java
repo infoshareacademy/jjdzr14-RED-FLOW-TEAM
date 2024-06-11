@@ -3,9 +3,11 @@ package pl.infoshare.clinicweb.patient;
 import pl.infoshare.clinicweb.adress.Address;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.User;
-import pl.infoshare.service.FileService;
+import pl.infoshare.file.FileService;
 
-import static pl.infoshare.service.FileService.PATIENT_PATH;
+
+import static pl.infoshare.file.FileService.PATIENT_PATH;
+
 
 public class PatientService {
     public static void addPatient(User user) {
