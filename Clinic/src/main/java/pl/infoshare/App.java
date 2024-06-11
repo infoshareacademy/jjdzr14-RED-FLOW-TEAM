@@ -1,13 +1,15 @@
 package pl.infoshare;
 
-import pl.infoshare.service.UserService;
+import org.json.simple.parser.ParseException;
+import pl.infoshare.service.Registration;
+
+import java.io.IOException;
+
 
 
 public class App {
     public static void main(String[] args) {
 
-
-        UserService.searchBar();
 
 
     }
