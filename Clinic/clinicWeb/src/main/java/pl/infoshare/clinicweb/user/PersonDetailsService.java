@@ -1,6 +1,5 @@
 package pl.infoshare.clinicweb.user;
 
-import pl.infoshare.clinicweb.Utils;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Patient;
 
