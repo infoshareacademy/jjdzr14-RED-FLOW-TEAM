@@ -1,11 +1,4 @@
-package pl.infoshare.clinicweb.adress.model;
-
-import pl.infoshare.clinicweb.clinic.model.Clinic;
-import pl.infoshare.clinicweb.patient.model.Patient;
-import pl.infoshare.clinicweb.user.model.PersonDetails;
-import pl.infoshare.clinicweb.user.model.User;
-
-import java.util.List;
+package pl.infoshare.clinicweb.adress;
 
 public class Address {
     private String city;

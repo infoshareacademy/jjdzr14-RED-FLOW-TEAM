@@ -1,9 +1,8 @@
-package pl.infoshare.clinicweb.patient.service;
+package pl.infoshare.clinicweb.patient;
 
-import pl.infoshare.clinicweb.adress.model.Address;
-import pl.infoshare.clinicweb.patient.model.Patient;
-import pl.infoshare.clinicweb.user.model.PersonDetails;
-import pl.infoshare.clinicweb.user.model.User;
+import pl.infoshare.clinicweb.adress.Address;
+import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.User;
 import pl.infoshare.service.FileService;
 
 import static pl.infoshare.service.FileService.PATIENT_PATH;

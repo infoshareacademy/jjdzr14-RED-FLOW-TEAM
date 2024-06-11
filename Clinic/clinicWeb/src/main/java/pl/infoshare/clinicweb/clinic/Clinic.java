@@ -1,8 +1,8 @@
-package pl.infoshare.clinicweb.clinic.model;
+package pl.infoshare.clinicweb.clinic;
 
-import pl.infoshare.clinicweb.adress.model.Address;
-import pl.infoshare.clinicweb.doctor.model.Doctor;
-import pl.infoshare.clinicweb.patient.model.Patient;
+import pl.infoshare.clinicweb.adress.Address;
+import pl.infoshare.clinicweb.doctor.Doctor;
+import pl.infoshare.clinicweb.patient.Patient;
 
 import java.util.Set;
 

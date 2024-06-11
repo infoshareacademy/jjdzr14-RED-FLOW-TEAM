@@ -1,12 +1,11 @@
-package pl.infoshare.clinicweb.doctor.service;
+package pl.infoshare.clinicweb.doctor;
 
-import pl.infoshare.clinicweb.FileService;
-import pl.infoshare.clinicweb.adress.model.Address;
-import pl.infoshare.clinicweb.doctor.model.Doctor;
-import pl.infoshare.clinicweb.user.model.PersonDetails;
-import pl.infoshare.clinicweb.user.model.User;
+import pl.infoshare.file.FileService;
+import pl.infoshare.clinicweb.adress.Address;
+import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.User;
 
-import static pl.infoshare.clinicweb.FileService.DOCTOR_PATH;
+import static pl.infoshare.file.FileService.DOCTOR_PATH;
 
 
 public class DoctorService {

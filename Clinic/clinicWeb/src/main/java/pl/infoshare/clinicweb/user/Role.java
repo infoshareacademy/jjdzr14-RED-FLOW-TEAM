@@ -1,4 +1,4 @@
-package pl.infoshare.clinicweb.user.model;
+package pl.infoshare.clinicweb.user;
 
 public enum Role {
     PATIENT("Patient"),

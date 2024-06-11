@@ -1,7 +1,8 @@
 package pl.infoshare.clinicweb;
 
-import pl.infoshare.clinicweb.doctor.model.Doctor;
-import pl.infoshare.clinicweb.patient.model.Patient;
+import pl.infoshare.clinicweb.doctor.Doctor;
+import pl.infoshare.clinicweb.patient.Patient;
+import pl.infoshare.file.FileService;
 import pl.infoshare.service.Registration;
 
 import java.time.LocalDate;

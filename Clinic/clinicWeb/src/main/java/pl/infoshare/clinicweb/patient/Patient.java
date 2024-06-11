@@ -1,10 +1,10 @@
-package pl.infoshare.clinicweb.patient.model;
+package pl.infoshare.clinicweb.patient;
 
-import pl.infoshare.clinicweb.adress.model.Address;
-import pl.infoshare.clinicweb.clinic.model.Clinic;
-import pl.infoshare.clinicweb.doctor.model.Doctor;
-import pl.infoshare.clinicweb.user.model.PersonDetails;
-import pl.infoshare.clinicweb.user.model.User;
+import pl.infoshare.clinicweb.adress.Address;
+import pl.infoshare.clinicweb.clinic.Clinic;
+import pl.infoshare.clinicweb.doctor.Doctor;
+import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.User;
 
 public class Patient {
     private PersonDetails details;

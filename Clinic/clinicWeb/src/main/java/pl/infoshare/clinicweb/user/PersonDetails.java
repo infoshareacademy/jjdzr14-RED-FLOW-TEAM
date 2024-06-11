@@ -1,8 +1,8 @@
-package pl.infoshare.clinicweb.user.model;
+package pl.infoshare.clinicweb.user;
 
 import pl.infoshare.clinicweb.Utils;
-import pl.infoshare.clinicweb.doctor.model.Doctor;
-import pl.infoshare.clinicweb.patient.model.Patient;
+import pl.infoshare.clinicweb.doctor.Doctor;
+import pl.infoshare.clinicweb.patient.Patient;
 
 import java.time.LocalDate;
 import java.util.Date;
