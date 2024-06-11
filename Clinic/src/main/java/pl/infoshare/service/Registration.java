@@ -56,6 +56,7 @@ public class Registration {
             } else {
 
                 System.out.println("Ta nazwa uzytkownika jest juz zajeta.");
+
             }
 
         } while (!Utils.isLoginValid(userInput));
