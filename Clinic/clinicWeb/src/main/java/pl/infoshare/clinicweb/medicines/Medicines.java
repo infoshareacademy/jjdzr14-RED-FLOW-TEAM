@@ -58,12 +58,10 @@ List<Medicines>medicines;
 
     @Override
     public String toString() {
-        return "Medicines{" +
-                "name='" + name + '\'' +
-                ", producer='" + producer + '\'' +
-                ", quantity=" + quantity +
-                ", OrOnPrescription=" + OrOnPrescription +
-                ", medicines=" + medicines +
-                '}';
+        return "Lekarstwo : " +
+                "Nazwa :" + name + '\'' +
+                "Producent :  " + producer + '\'' +
+                ", Iość w opakowaniu :" + quantity +  " szt." +
+                ", Lek na receptę" + (OrOnPrescription ? " tak " : " nie " );
     }
 }

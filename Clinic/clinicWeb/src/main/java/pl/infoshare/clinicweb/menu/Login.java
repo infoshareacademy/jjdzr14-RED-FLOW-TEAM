@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import static pl.infoshare.file.FileService.*;
-import static pl.infoshare.service.FileService.*;
+
 
 public class Login {
 
 
-    protected static HashMap<String, String> userData = new HashMap<>();
+    public static HashMap<String, String> userData = new HashMap<>();
     private static String currentlyCheckedLogin;
 
 
@@ -128,6 +128,4 @@ public class Login {
         return false;
 
     }
-
-
 }

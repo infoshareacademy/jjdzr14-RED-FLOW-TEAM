@@ -10,6 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import pl.infoshare.clinicweb.menu.Login;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -31,7 +32,7 @@ public class FileService {
         try {
             scan = new Scanner(file);
         } catch (FileNotFoundException e) {
-            throw new DataImportException("Nie ma takiego pliku");
+            throw new RuntimeException("Nie ma takiego pliku");
         }
 
         int lines = 0;
