@@ -1,9 +1,15 @@
 package pl.infoshare.service;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import pl.infoshare.model.Role;
 import pl.infoshare.model.User;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
+
+import static pl.infoshare.service.FileService.convertFileToJSON;
 
 
 public class Registration {
@@ -47,8 +53,10 @@ public class Registration {
                 login = userInput;
                 break;
 
-            } else if (Utils.isUsernameExisting(userInput)) {
+            } else {
+
                 System.out.println("Ta nazwa uzytkownika jest juz zajeta.");
+
             }
 
         } while (!Utils.isLoginValid(userInput));
@@ -138,6 +146,29 @@ public class Registration {
 
         return email;
     }
+
+    public static Set<String> getUserNamesFromJSon(String filename) {
+
+        Set<String> userNames = new HashSet<>();
+        String login = "";
+
+        JSONArray jsonArray = (JSONArray) convertFileToJSON(filename);
+
+        for (int i = 0; i < jsonArray.size(); i++) {
+
+            JSONObject singlePerson = (JSONObject) jsonArray.get(i);
+
+            JSONObject userData = (JSONObject) singlePerson.get("user");
+
+            login = (String) userData.get("login");
+            userNames.add(login);
+
+
+
+        }
+        return userNames;
+    }
+
 
 }
 
