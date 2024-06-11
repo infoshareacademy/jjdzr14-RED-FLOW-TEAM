@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import pl.infoshare.exeption.DataImportException;
@@ -22,8 +21,8 @@ import static java.nio.file.Paths.get;
 
 public class FileService {
 
-    protected static final String DOCTOR_PATH = "Clinic/src/main/resources/doctor.json";
-    protected static final String PATIENT_PATH = "Clinic/src/main/resources/patient.json";
+    public static final String DOCTOR_PATH = "Clinic/src/main/resources/doctor.json";
+    public static final String PATIENT_PATH = "Clinic/src/main/resources/patient.json";
 
 
     private static void fileReader(String pathDoctors) {
@@ -113,50 +112,30 @@ public class FileService {
 
     }
 
-public static void getDataFromJsonUser(String filename) {
 
-    String login = "";
-    String password = "";
-    JSONArray jsonArray = (JSONArray) convertFileToJSON(filename);
+    public static JSONArray convertFileToJSON(String fileName) {
 
-    for (int i = 0; i < jsonArray.size(); i++) {
+        JSONArray jsonArray = null;
 
-        JSONObject singlePerson = (JSONObject) jsonArray.get(i);
+        try {
 
-        JSONObject userData = (JSONObject) singlePerson.get("user");
+            JSONParser parser = new JSONParser();
 
-        login = userData.get("login").toString();
-        password = userData.get("password").toString();
+            jsonArray = (JSONArray) parser.parse(new FileReader(fileName));
 
-        Login.userData.put(login, password);
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        return jsonArray;
     }
-
-
-}
-
-public static JSONArray convertFileToJSON(String fileName) {
-
-    JSONArray jsonArray = null;
-
-    try {
-
-        JSONParser parser = new JSONParser();
-
-        jsonArray = (JSONArray) parser.parse(new FileReader(fileName));
-
-
-    } catch (FileNotFoundException e) {
-        System.out.println(e.getMessage());
-
-    } catch (IOException ioe) {
-        System.out.println(ioe.getMessage());
-
-    } catch (ParseException e) {
-        throw new RuntimeException(e);
-    }
-
-    return jsonArray;
-}
 
 }
 

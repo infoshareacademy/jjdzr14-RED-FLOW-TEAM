@@ -17,9 +17,10 @@ public class Utils {
 
     private static final String PESEL_REGEX = "\\d{11}";
     private static final String PASSWORD_REGEX = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$";
-    private static final String LETTER_REGEX = "[a-zA-Z]+";
+    private static final String LETTER_REGEX = "AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż";
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
 
     public static boolean isNameOrSurnameValid(String nameOrSurname) {
 
@@ -118,7 +119,7 @@ public class Utils {
     public static boolean isLoginValid(String userInput) {
 
 
-        return (!isUsernameExisting(userInput)) && userInput.matches(LETTER_REGEX);
+        return (userInput.matches(LETTER_REGEX));
     }
 
     public static boolean isUsernameExisting(String userInput) {
@@ -133,6 +134,7 @@ public class Utils {
 
         return combinedSet.stream().anyMatch(userPredicate);
     }
+
 
     public static boolean isEmailValid(String userEmail) {
 
