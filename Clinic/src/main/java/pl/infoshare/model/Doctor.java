@@ -51,7 +51,7 @@ public class Doctor {
         this.online = online;
     }
 
-    public boolean isAvailability() {
+    public boolean hasAvailability() {
         return availability;
     }
 

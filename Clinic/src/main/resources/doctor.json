@@ -5,7 +5,7 @@
     "email" : "ap@op.pl",
     "role" : "DOCTOR"
   },
-  "specialization" : null,
+  "specialization" : "Neurolog",
   "online" : false,
   "availability" : false,
   "address" : {
@@ -17,7 +17,7 @@
   "personDetails" : {
     "name" : "Adonis",
     "surname" : "Pedro",
-    "phoneNumber" : null,
+    "phoneNumber" : "434-323-232",
     "idNumber" : 3597,
     "pesel" : "94062821334",
     "birthDate" : [ 1994, 6, 28 ]
@@ -29,7 +29,7 @@
     "email" : "io@op.pl",
     "role" : "DOCTOR"
   },
-  "specialization" : null,
+  "specialization" : "Anestezjolog",
   "online" : false,
   "availability" : false,
   "address" : {
@@ -41,7 +41,7 @@
   "personDetails" : {
     "name" : "Kazimierz",
     "surname" : "Deyna",
-    "phoneNumber" : null,
+    "phoneNumber" : "123-543-323",
     "idNumber" : 8068,
     "pesel" : "94062821334",
     "birthDate" : [ 1994, 6, 28 ]
@@ -53,7 +53,7 @@
     "email" : "qp@qp.pl",
     "role" : "DOCTOR"
   },
-  "specialization" : null,
+  "specialization" : "Chirurg",
   "online" : false,
   "availability" : false,
   "address" : {
@@ -65,7 +65,7 @@
   "personDetails" : {
     "name" : "Ania",
     "surname" : "Kowalska",
-    "phoneNumber" : null,
+    "phoneNumber" : "795-054-342",
     "idNumber" : 1861,
     "pesel" : "08213064545",
     "birthDate" : [ 2008, 1, 30 ]
