@@ -1,4 +1,4 @@
-package pl.infoshare.clinicweb.adress;
+package pl.infoshare.clinicweb.patient;
 
 public class Address {
     private String city;

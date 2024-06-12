@@ -1,4 +1,4 @@
-package pl.infoshare.file;
+package pl.infoshare.clinicweb.file;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -10,7 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import pl.infoshare.clinicweb.menu.Login;
+
 
 import java.io.*;
 import java.nio.file.Files;
@@ -114,24 +114,9 @@ public class FileService {
 
     public static void getDataFromJsonUser(String filename) {
 
-        String login = "";
-        String password = "";
-        JSONArray jsonArray = (JSONArray) convertFileToJSON(filename);
-
-        for (int i = 0; i < jsonArray.size(); i++) {
-
-            JSONObject singlePerson = (JSONObject) jsonArray.get(i);
-
-            JSONObject userData = (JSONObject) singlePerson.get("user");
-
-            login = userData.get("login").toString();
-            password = userData.get("password").toString();
-
-            Login.userData.put(login, password);
-        }
-
 
     }
+
 
     public static JSONArray convertFileToJSON(String fileName) {
 

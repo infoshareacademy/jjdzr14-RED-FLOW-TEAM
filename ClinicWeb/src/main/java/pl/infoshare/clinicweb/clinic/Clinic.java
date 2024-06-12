@@ -1,6 +1,6 @@
 package pl.infoshare.clinicweb.clinic;
 
-import pl.infoshare.clinicweb.adress.Address;
+import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Patient;
 
