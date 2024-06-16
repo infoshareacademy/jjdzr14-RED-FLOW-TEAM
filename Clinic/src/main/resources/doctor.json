@@ -70,4 +70,10 @@
     "pesel" : "08213064545",
     "birthDate" : [ 2008, 1, 30 ]
   }
+}, {
+  "user" : null,
+  "specialization" : null,
+  "online" : false,
+  "address" : null,
+  "personDetails" : null
 } ]

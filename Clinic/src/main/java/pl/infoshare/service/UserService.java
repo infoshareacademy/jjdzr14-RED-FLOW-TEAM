@@ -102,7 +102,7 @@ public class UserService {
 
         return userInput;
     }
-=======
+
     public static void loginMenu() {
 
         int userChoice = chooseLoginOption();
