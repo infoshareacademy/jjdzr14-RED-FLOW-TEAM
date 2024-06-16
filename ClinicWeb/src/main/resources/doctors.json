@@ -1,0 +1,49 @@
+[ {
+  "personDetails" : {
+    "phoneNumber" : null,
+    "surname" : null,
+    "name" : null,
+    "idNumber" : 0,
+    "pesel" : null,
+    "birthDate" : null
+  },
+  "address" : {
+    "country" : null,
+    "zipCode" : null,
+    "city" : null,
+    "street" : null
+  },
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false,
+  "user" : {
+    "password" : null,
+    "role" : null,
+    "login" : null,
+    "email" : null
+  }
+}, {
+  "user" : {
+    "login" : null,
+    "password" : null,
+    "email" : null,
+    "role" : null
+  },
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : null,
+    "country" : null,
+    "zipCode" : null,
+    "street" : null
+  },
+  "personDetails" : {
+    "name" : null,
+    "surname" : null,
+    "phoneNumber" : null,
+    "idNumber" : 0,
+    "pesel" : null,
+    "birthDate" : null
+  }
+} ]

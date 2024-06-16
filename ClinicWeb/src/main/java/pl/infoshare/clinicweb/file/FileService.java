@@ -17,21 +17,25 @@ import java.util.List;
 
 public class FileService implements FileRepository {
 
+    private final ObjectMapper mapper;
+
+    public FileService(ObjectMapper mapper) {
+        this.mapper = mapper;
+    }
+
     public static final String DOCTOR_PATH = "ClinicWeb/src/main/resources/doctors.json";
     public static final String PATIENT_PATH = "ClinicWeb/src/main/resources/patients.json";
 
+
+
+
     @Override
-    public <T> void fileReader(String filePath) {
+    public <T> List<T> readFromFile(String filePath, TypeReference<List<T>> typeReference) throws IOException {
 
-        ObjectMapper mapper = new ObjectMapper();
 
-        try {
-            List<T> deserializedObjects = mapper.readValue(Files.readAllBytes(Path.of(filePath)),new TypeReference<List<T>>(){});
-            deserializedObjects.forEach(System.out::println);
+        byte [] fileBytes = Files.readAllBytes(Path.of(filePath));
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return mapper.readValue(fileBytes, typeReference);
     }
 
     @Override
@@ -45,9 +49,8 @@ public class FileService implements FileRepository {
     }
 
     @Override
-    public void saveObjectToJsonFile(Object object, String filePath) {
+    public void writeToFile(Object object, String filePath) {
 
-        ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
 
         JSONArray jsonArray = this.parseArrayFromFile(filePath);
@@ -69,8 +72,7 @@ public class FileService implements FileRepository {
 
     }
 
-    @Override
-    public JSONArray parseArrayFromFile(String filePath) {
+    private JSONArray parseArrayFromFile(String filePath) {
 
         JSONParser parser = new JSONParser();
 
@@ -83,11 +85,11 @@ public class FileService implements FileRepository {
 
         } catch (FileNotFoundException e) {
             System.out.println("Nie znaleziono pliku. ");
-            return null;
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return new JSONArray();
 
     }
 }
