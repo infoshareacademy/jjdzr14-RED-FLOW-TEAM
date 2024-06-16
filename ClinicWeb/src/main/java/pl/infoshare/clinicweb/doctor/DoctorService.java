@@ -4,6 +4,8 @@ import pl.infoshare.clinicweb.user.User;
 
 public class DoctorService implements DoctorRepository {
 
+    private static final String DOCTOR_PATH = "ClinicWeb/src/main/resources/doctors.json";
+
     public void addDoctor(User user) {
 
     }

@@ -23,11 +23,6 @@ public class FileService implements FileRepository {
         this.mapper = mapper;
     }
 
-    public static final String DOCTOR_PATH = "ClinicWeb/src/main/resources/doctors.json";
-    public static final String PATIENT_PATH = "ClinicWeb/src/main/resources/patients.json";
-
-
-
 
     @Override
     public <T> List<T> readFromFile(String filePath, TypeReference<List<T>> typeReference) throws IOException {
