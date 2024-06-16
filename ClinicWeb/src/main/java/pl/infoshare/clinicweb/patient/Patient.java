@@ -9,29 +9,19 @@ public class Patient {
     private PersonDetails details;
     private Clinic clinic;
     private Doctor doctor;
-    private User user;
     private Address address;
 
     public Patient() {
     }
-    public Patient(User user, PersonDetails details, Address address, Clinic clinic, Doctor doctor) {
+    public Patient(PersonDetails details, Address address, Clinic clinic, Doctor doctor) {
 
-        this.user = user;
+
         this.details = details;
         this.address = address;
         this.clinic = clinic;
         this.doctor = doctor;
 
     }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
 
     public PersonDetails getPersonDetails() {
         return details;
@@ -74,7 +64,6 @@ public class Patient {
                 "details=" + details +
                 " , clinic=" + clinic +
                 " , doctor=" + doctor +
-                " , user=" + user +
                 " , address=" + address +
                 '}';
     }
