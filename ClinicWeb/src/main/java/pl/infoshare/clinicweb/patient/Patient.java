@@ -3,7 +3,7 @@ package pl.infoshare.clinicweb.patient;
 import pl.infoshare.clinicweb.clinic.Clinic;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.user.PersonDetails;
-import pl.infoshare.clinicweb.user.User;
+
 
 public class Patient {
     private PersonDetails details;
@@ -11,8 +11,7 @@ public class Patient {
     private Doctor doctor;
     private Address address;
 
-    public Patient() {
-    }
+
     public Patient(PersonDetails details, Address address, Clinic clinic, Doctor doctor) {
 
 

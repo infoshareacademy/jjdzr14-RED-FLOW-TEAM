@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Web clinic</title>
 </head>
 <body>
 
-<p> Test</p>
+<h1> Formularz rejestarcyjny pacjenta </h1>
 
+<form th:action="result" th:method="post" th:object="${patientForm}">
+    <label>Imie :</label>
+    <input type="text" th:field="*{name}">
+
+    <label>Nazwisko :</label>
+    <input type="text" th:field="*{surname}">
+
+    <label>Plec: </label>
+    <select name="gender">
+        <option value=""></option>
+        <option value="male">Mezczyzna</option>
+        <option value="female">Kobieta</option>
+    </select>
+
+    <p></p>
+    <button type="submit">Przeslij formularz</button>
+</form>
 </body>
 </html>
