@@ -9,22 +9,49 @@
 
 <h1> Formularz rejestarcyjny pacjenta </h1>
 
-<form th:action="result" th:method="post" th:object="${patientForm}">
-    <label>Imie :</label>
+<form th:action="register" th:method="post" th:object="${patientForm}">
+    <label>Imię :</label>
     <input type="text" th:field="*{name}">
 
     <label>Nazwisko :</label>
     <input type="text" th:field="*{surname}">
 
-    <label>Plec: </label>
+    <label>Płeć : </label>
     <select name="gender">
         <option value=""></option>
-        <option value="male">Mezczyzna</option>
-        <option value="female">Kobieta</option>
+        <option value="Mężczyzna">Mezczyzna</option>
+        <option value="Kobieta">Kobieta</option>
     </select>
 
+    <label>Numer telefonu :</label>
+    <input type="text" th:field="*{phoneNumber}">
+
+    <label>Pesel :</label>
+    <input type="text" th:field="*{pesel}">
+
+    <label>Data urodzenia :</label>
+    <input type="date" th:field="*{birthDate}">
+
     <p></p>
-    <button type="submit">Przeslij formularz</button>
+<!--    <div th:object="${addressForm}>-->
+
+<!--        <label>Ulica :</label>-->
+<!--        <input type="text" th:field="*{street}">-->
+
+<!--        <label>Kod pocztowy :</label>-->
+<!--        <input type="text" th:field="*{zipCode}">-->
+
+<!--        <label>Miasto :</label>-->
+<!--        <input type="text" th:field="*{city}">-->
+
+<!--        <label>Kraj :</label>-->
+<!--        <input type="text" th:field="*{country}">-->
+
+<!--    </div>-->
+
+
+    <p></p>
+    <button type="submit">Prześlij formularz</button>
 </form>
 </body>
 </html>

@@ -6,11 +6,11 @@ import pl.infoshare.clinicweb.user.PersonDetails;
 
 
 public class Patient {
+
     private PersonDetails details;
     private Clinic clinic;
     private Doctor doctor;
     private Address address;
-
 
     public Patient(PersonDetails details, Address address, Clinic clinic, Doctor doctor) {
 

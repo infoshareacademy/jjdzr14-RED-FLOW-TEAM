@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.infoshare.clinicweb.clinic.Clinic;
+import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 
@@ -21,17 +23,27 @@ public class PatientController {
 
     @GetMapping("/patient")
     public String patientForm(Model model) {
+
         model.addAttribute("patientForm", new PersonDetails());
+
+
         return "patientForm";
     }
 
-    @PostMapping("/patient")
-    public String patientFormSubmission(@ModelAttribute Patient patient, Model model) {
-        model.addAttribute("patientForm", patient);
+    @PostMapping("/register")
+    public String patientFormSubmission(@ModelAttribute PersonDetails patientDetails, Model model) {
+
+        model.addAttribute("patientForm", new PersonDetails());
+
+
+        patientService.savePatient(new Patient(patientDetails, new Address(), new Clinic(), new Doctor()));
+
 
         return "result";
 
     }
+
+
 
 
 }
