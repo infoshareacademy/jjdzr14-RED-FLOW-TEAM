@@ -12,6 +12,17 @@ public class Patient {
     private Doctor doctor;
     private Address address;
 
+    public Patient () {
+
+    }
+
+    public Patient(PersonDetails details, Address address) {
+
+        this.details = details;
+        this.address = address;
+
+    }
+
     public Patient(PersonDetails details, Address address, Clinic clinic, Doctor doctor) {
 
 
