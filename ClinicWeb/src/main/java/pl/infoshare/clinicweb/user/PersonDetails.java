@@ -6,7 +6,6 @@ import java.util.Date;
 public class PersonDetails {
     private String name;
     private String surname;
-    private String gender;
     private String phoneNumber;
     private long idNumber;
     private String pesel;
@@ -16,10 +15,9 @@ public class PersonDetails {
 
     }
 
-    public PersonDetails(String name, String surname, String gender, long idNumber, String phoneNumber, String pesel, LocalDate birthDate) {
+    public PersonDetails(String name, String surname, long idNumber, String phoneNumber, String pesel, LocalDate birthDate) {
         this.name = name;
         this.surname = surname;
-        this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.idNumber = idNumber;
         this.pesel = pesel;
@@ -42,14 +40,6 @@ public class PersonDetails {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getPhoneNumber() {
@@ -94,14 +84,14 @@ public class PersonDetails {
 
     @Override
     public String toString() {
-        return "PersonDetails{" +
+        return "Person details{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", gender='" + gender + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", idNumber=" + idNumber +
-                ", pesel='" + pesel + '\'' +
-                ", birthDate=" + birthDate +
+                ", pesel=" + pesel +
+                ", birtbDate=" + birthDate +
                 '}';
     }
+
 }

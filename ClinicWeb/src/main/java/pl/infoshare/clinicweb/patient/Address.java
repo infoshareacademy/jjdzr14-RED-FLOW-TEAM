@@ -5,28 +5,23 @@ public class Address {
     private String country;
     private String zipCode;
     private String street;
-    private String houseNumber;
-    private String flatNumber;
 
     public Address() {
     }
 
-public Address(String city, String country, String zipCode, String street, String houseNumber, String flatNumber) {
+public Address(String city, String country, String zipCode, String street) {
     this.city = city;
     this.country = country;
     this.zipCode = zipCode;
     this.street = street;
-    this.houseNumber = houseNumber;
-    this.flatNumber = flatNumber;
 }
-
 
 public String getCity() {
     return city;
 }
 
 public void setCity(String city) {
-    this.city = city;
+    city = city;
 }
 
 public String getCountry() {
@@ -53,31 +48,13 @@ public void setStreet(String street) {
     this.street = street;
 }
 
-    public String getHouseNumber() {
-        return houseNumber;
-    }
-
-    public void setHouseNumber(String houseNumber) {
-        this.houseNumber = houseNumber;
-    }
-
-    public String getFlatNumber() {
-        return flatNumber;
-    }
-
-    public void setFlatNumber(String flatNumber) {
-        this.flatNumber = flatNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", street='" + street + '\'' +
-                ", houseNumber='" + houseNumber + '\'' +
-                ", flatNumber='" + flatNumber + '\'' +
-                '}';
-    }
+@Override
+public String toString() {
+    return "Address{" +
+            "city='" + city +
+            ", country='" + country +
+            ", zipCode='" + zipCode +
+            ", street='" + street +
+            '}';
+}
 }

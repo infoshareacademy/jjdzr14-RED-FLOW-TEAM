@@ -1,6 +1,7 @@
 package pl.infoshare.clinicweb.patient;
 
-public interface PatientRepository {
+import pl.infoshare.clinicweb.user.User;
 
-    void savePatient(Patient patient);
+public interface PatientRepository {
+    void addPatient(User user);
 }

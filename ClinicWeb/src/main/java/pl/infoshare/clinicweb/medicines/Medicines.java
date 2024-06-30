@@ -7,7 +7,7 @@ public class Medicines {
     String producer;
     int quantity;
     boolean OrOnPrescription;
-    List<Medicines> medicines;
+List<Medicines>medicines;
 
     public Medicines(String name, String producer, int quantity, boolean orOnPrescription) {
         this.name = name;
@@ -61,7 +61,7 @@ public class Medicines {
         return "Lekarstwo : " +
                 "Nazwa :" + name + '\'' +
                 "Producent :  " + producer + '\'' +
-                ", Iość w opakowaniu :" + quantity + " szt." +
-                ", Lek na receptę" + (OrOnPrescription ? " tak " : " nie ");
+                ", Iość w opakowaniu :" + quantity +  " szt." +
+                ", Lek na receptę" + (OrOnPrescription ? " tak " : " nie " );
     }
 }

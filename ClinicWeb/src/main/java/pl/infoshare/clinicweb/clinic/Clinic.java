@@ -1,7 +1,7 @@
 package pl.infoshare.clinicweb.clinic;
 
-import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Address;
+import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Patient;
 
 import java.util.Set;
@@ -10,11 +10,9 @@ public class Clinic {
     private String clinicName;
     private Address address;
     private Set<Patient> patients;
-    private Set<Doctor> doctors;
+    private Set<Doctor> doctors ;
 
-    public Clinic() {
 
-    }
 
     public String getClinicName() {
         return clinicName;
