@@ -16,19 +16,18 @@
                         <a class="nav-link" href="#">O nas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Umów się na wizytę</a>
+                        <a class="nav-link" th:href="@{/addVisit}">Umów się na wizytę</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarViewDoctorSpecialization" role="button"
                            data-bs-toggle="dropdown" aria-expanded="true">
                             Nasze specjalizacje</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" th:href="@{/listdoctors}">Lekarze rodzinni</a></li>
-                            <li><a class="dropdown-item" href="#">Geriatria</a></li>
-                            <li><a class="dropdown-item" href="#">Onkologia</a></li>
-                            <li><a class="dropdown-item" href="#">Hirurgia</a></li>
-                            <li><a class="dropdown-item" href="#">Ortopedia</a></li>
-
+                            <li><a class="dropdown-item" th:href="@{/listDoctorsFamily}">Lekarze rodzinni</a></li>
+                            <li><a class="dropdown-item" th:href="@{listDoctorsGeriatrics}">Geriatria</a></li>
+                            <li><a class="dropdown-item" th:href="@{listDoctorsOncology}">Onkologia</a></li>
+                            <li><a class="dropdown-item" th:href="@{listDoctorsSurgery}">Hirurgia</a></li>
+                            <li><a class="dropdown-item" th:href="@{listDoctorsOrthopedics}">Ortopedia</a></li>
                         </ul>
 
                     <li class="nav-item">
