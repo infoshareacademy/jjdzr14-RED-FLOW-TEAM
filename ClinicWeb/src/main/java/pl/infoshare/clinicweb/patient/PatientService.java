@@ -1,14 +1,24 @@
 package pl.infoshare.clinicweb.patient;
 
-import pl.infoshare.clinicweb.user.User;
+import org.springframework.stereotype.Service;
+import pl.infoshare.clinicweb.file.FileService;
 
-
-public class PatientService  implements PatientRepository{
+@Service
+public class PatientService implements PatientRepository {
 
     private static final String PATIENT_PATH = "ClinicWeb/src/main/resources/patients.json";
 
+    private final FileService fileService;
+
+
+    public PatientService(FileService fileService) {
+        this.fileService = fileService;
+    }
+
     @Override
-    public void addPatient(User user) {
+    public void savePatient(Patient patient) {
+
+        fileService.writeToFile(patient, PATIENT_PATH);
 
     }
 }
