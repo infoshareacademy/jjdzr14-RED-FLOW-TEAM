@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/listDoctorsOrthopedics")
-public class ViewListDoctorsOrthopedics {
+@RequestMapping("/listDoctorsFamily")
+public class ViewListDoctors {
     @GetMapping
     public String getDoctors() {
-        return "listDoctorsOrthopedics";
+        return "listDoctorsFamily";
     }
 
 }
