@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formularz rejestracji</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link th:href="@{/css/styles.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -15,48 +15,58 @@
         <div class="card-body">
             <h3 class="card-title text-center">Rejestracja nowej wizyty</h3>
             <form>
-                <div class="form-group">
-
+                <div class="form-group mb-3">
                     <label for="username">Imię</label>
-                    <input type="text" class="form-control" id="username" placeholder="podaj imię ">
-                </div>
-                <div class="form-group">
-                    <label for="userSurname">Nazwisko</label>
-                    <label for="userSurname"></label> <input type="text" class="form-control" id="userSurname" placeholder="podaj nazwisko">
-                </div>
-                <div class="visitDate">
-                    <label for="visitDate">Data wizyty</label>
-                    <label for="visitDate"></label> <input type="text" class="form-control" id="visitDate" placeholder="dd-MM-yyyy">
+                    <input type="text" class="form-control" id="username" placeholder="podaj imię">
                 </div>
 
-                <div class="form-check form-switch">
+                <div class="form-group mb-3">
+                    <label for="userSurname">Nazwisko</label>
+                    <input type="text" class="form-control" id="userSurname" placeholder="podaj nazwisko">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="pesel">Pesel</label>
+                    <input type="text" class="form-control" id="pesel" placeholder="pesel">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="visitDate">Data wizyty</label>
+                    <input type="date" class="form-control" id="visitDate">
+                </div>
+
+                <div class="form-check form-switch mb-3">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Pacjent jest ubezpieczony</label>
                 </div>
 
-                <div class="btn btn-primary btn-block">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                <div class="btn-group mb-3">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                         Do jakiego lekarza chcesz zapisać
                     </button>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                        <button class="dropdown-item" type="button">Lekarz rodzinny</button>
-                        <button class="dropdown-item" type="button">Pediatra</button>
-                        <button class="dropdown-item" type="button">Kardiolog</button>
-                        <button class="dropdown-item" type="button">Dermatolog</button>
-                        <button class="dropdown-item" type="button">Ortopeda</button>
-                        <button class="dropdown-item" type="button">Ginekolog</button>
-                    </div>
-
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Lekarz rodzinny')">Lekarz rodzinny</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Pediatra')">Pediatra</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Kardiolog')">Kardiolog</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Dermatolog')">Dermatolog</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Ortopeda')">Ortopeda</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Ginekolog')">Ginekolog</button></li>
+                    </ul>
+                    <span id="selected-specialization" class="ms-3"></span>
                 </div>
-                <p></p>
-                <button type="submit" class="btn btn-primary btn-bloc ">Zarejestruj się</button>
+
+              <p>  <button type="submit" class="btn btn-primary btn-block">Zarejestruj się</button></p>
             </form>
         </div>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function selectSpecialization(specialization) {
+        document.getElementById('selected-specialization').innerText = specialization;
+    }
+</script>
 </body>
 </html>

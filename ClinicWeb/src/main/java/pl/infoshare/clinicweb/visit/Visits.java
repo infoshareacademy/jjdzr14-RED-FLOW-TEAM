@@ -1,4 +1,4 @@
-package pl.infoshare.clinicweb.patient;
+package pl.infoshare.clinicweb.visit;
 
 import pl.infoshare.clinicweb.doctor.Doctor;
 
