@@ -1,44 +1,41 @@
 package pl.infoshare.clinicweb.patient;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import pl.infoshare.clinicweb.clinic.Clinic;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.user.PersonDetails;
-import pl.infoshare.clinicweb.user.User;
 
+
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Patient {
 
-    private PersonDetails details;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
+    private PersonDetails personDetails;
     private Clinic clinic;
     private Doctor doctor;
     private Address address;
 
-    public Patient () {
-
+    public Patient(PersonDetails patientDetails, Address patientAddress) {
+        this.personDetails = patientDetails;
+        this.address = patientAddress;
     }
 
-    public Patient(PersonDetails details, Address address) {
-
-        this.details = details;
-        this.address = address;
-
-    }
-
-    public Patient(PersonDetails details, Address address, Clinic clinic, Doctor doctor) {
-
-
-        this.details = details;
-        this.address = address;
-        this.clinic = clinic;
-        this.doctor = doctor;
-
-    }
 
     public PersonDetails getPersonDetails() {
-        return details;
+        return personDetails;
     }
 
-    public void setPersonDetails(PersonDetails details) {
-        this.details = details;
+    public void setPersonDetails(PersonDetails personDetails) {
+        this.personDetails = personDetails;
     }
 
 
@@ -70,11 +67,12 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{\n" +
-                "details=" + details +
-                " , clinic=" + clinic +
-                " , doctor=" + doctor +
-                " , address=" + address +
+        return "Patient{" +
+                "ID=" + ID +
+                ", personDetails=" + personDetails +
+                ", clinic=" + clinic +
+                ", doctor=" + doctor +
+                ", address=" + address +
                 '}';
     }
 }

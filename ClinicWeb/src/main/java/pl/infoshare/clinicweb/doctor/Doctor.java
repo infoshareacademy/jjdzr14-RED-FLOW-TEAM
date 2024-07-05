@@ -1,12 +1,16 @@
 package pl.infoshare.clinicweb.doctor;
 
-import pl.infoshare.clinicweb.patient.Address;
+import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import pl.infoshare.clinicweb.clinic.Clinic;
+import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.User;
 
 import java.util.List;
+
 
 public class Doctor {
     private User user;
@@ -85,7 +89,7 @@ public class Doctor {
         return "Doctor{" +
                 "user=" + user +
                 "address=" + address +
-                ", specialization='" + specialization  +
+                ", specialization='" + specialization +
                 ", patient=" + patient +
                 ", clinic=" + clinic +
                 ", online=" + online +

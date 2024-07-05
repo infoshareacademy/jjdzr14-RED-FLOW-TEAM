@@ -1,0 +1,20 @@
+[ {
+  "personDetails" : {
+    "name" : "Antoni",
+    "surname" : "Jarzabek",
+    "phoneNumber" : "785-432-123",
+    "pesel" : "75010112345",
+    "birthDate" : "1975-01-01"
+  },
+  "clinic" : null,
+  "doctor" : null,
+  "address" : {
+    "city" : "Krakow",
+    "country" : "Polska",
+    "zipCode" : "30-836",
+    "street" : "Kwiatowa",
+    "houseNumber" : "11",
+    "flatNumber" : "1"
+  },
+  "id" : null
+} ]

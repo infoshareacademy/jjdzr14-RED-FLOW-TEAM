@@ -1,5 +1,6 @@
 package pl.infoshare.clinicweb.patient;
 
+
 public class Address {
 
     private String city;
@@ -10,15 +11,6 @@ public class Address {
     private String flatNumber;
 
     public Address() {
-    }
-
-    public Address(String city, String country, String zipCode, String street, String houseNumber, String flatNumber) {
-        this.city = city;
-        this.country = country;
-        this.zipCode = zipCode;
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.flatNumber = flatNumber;
     }
 
 
