@@ -1,23 +1,56 @@
-[ {
-  "personDetails" : {
-    "name" : "Damian",
-    "surname" : "Korzen",
-    "phoneNumber" : "444-444-333",
-    "birthDate" : [ 1975, 12, 12 ],
-    "pesel" : "7564932323"
+[
+  {
+    "personDetails": {
+      "name": "Damian",
+      "surname": "Korzen",
+      "phoneNumber": "444-444-333",
+      "birthDate": [
+        1975,
+        12,
+        12
+      ],
+      "pesel": "7564932323"
+    },
+    "doctor": {
+      "name": "Adam",
+      "surname": "Balwan",
+      "specialization": "Chirurg"
+    },
+    "address": {
+      "city": "Lodz",
+      "country": "Poland",
+      "zipCode": "30-521",
+      "street": "Warszawska",
+      "houseNumber": "8",
+      "flatNumber": "76"
+    },
+    "hasInsurance": true
   },
-  "doctor" : {
-    "name" : "Adam",
-    "surname" : "Balwan",
-    "specialization" : "Chirurg"
-  },
-  "address" : {
-    "city" : "Lodz",
-    "country" : "Poland",
-    "zipCode" : "30-521",
-    "street" : "Warszawska",
-    "houseNumber" : "8",
-    "flatNumber" : "76"
-  },
-  "hasInsurance" : true
-} ]
+  {
+    "personDetails": {
+      "name": "Tomasz",
+      "surname": "Grzadka",
+      "phoneNumber": "222-4444-333",
+      "birthDate": [
+        1975,
+        12,
+        12
+      ],
+      "pesel": "7564932323"
+    },
+    "doctor": {
+      "name": "Martyna",
+      "surname": "Balwan",
+      "specialization": "Chirurg"
+    },
+    "address": {
+      "city": "Lodz",
+      "country": "Poland",
+      "zipCode": "30-521",
+      "street": "Warszawska",
+      "houseNumber": "8",
+      "flatNumber": "76"
+    },
+    "hasInsurance": true
+  }
+]

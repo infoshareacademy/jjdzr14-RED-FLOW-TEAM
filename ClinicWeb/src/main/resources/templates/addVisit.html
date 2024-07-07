@@ -49,9 +49,8 @@
                 <div>
                         <select class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" name="specialization">
                             <option th:each="specOpt : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
-                                    th:value="${specOpt}" th:text="${specOpt}"></option>
+                                    th:value="${specOpt}" th:text="${specOpt.getDescription()}"></option>
                         </select>
-
 
                     <span id="selected-specialization" class="ms-3"></span>
                 </div>

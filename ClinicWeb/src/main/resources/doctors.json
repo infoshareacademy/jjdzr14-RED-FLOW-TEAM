@@ -17,4 +17,61 @@
   "specialization" : "Neurolog",
   "online" : false,
   "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "444-444-333",
+    "surname" : "Trawka",
+    "name" : "Wlodek",
+    "pesel" : "7564932323",
+    "birthDate" : [ 1975, 12, 12 ]
+  },
+  "address" : {
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "city" : "Lodz",
+    "street" : "Warszawska",
+    "flatNumber" : "76",
+    "houseNumber" : "8"
+  },
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "444-444-333",
+    "surname" : "Trawka",
+    "name" : "Wlodek",
+    "pesel" : "7564932323",
+    "birthDate" : [ 1975, 12, 12 ]
+  },
+  "address" : {
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "city" : "Lodz",
+    "street" : "Warszawska",
+    "flatNumber" : "76",
+    "houseNumber" : "8"
+  },
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Lodz",
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "street" : "Warszawska",
+    "houseNumber" : "8",
+    "flatNumber" : "76"
+  },
+  "personDetails" : {
+    "name" : "Wlodek",
+    "surname" : "Trawka",
+    "phoneNumber" : "444-444-333",
+    "birthDate" : [ 1975, 12, 12 ],
+    "pesel" : "7564932323"
+  }
 } ]
