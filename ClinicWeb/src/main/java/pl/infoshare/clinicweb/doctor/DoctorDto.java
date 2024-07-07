@@ -1,12 +1,13 @@
-package pl.infoshare.clinicweb.patient;
+package pl.infoshare.clinicweb.doctor;
 
-public class PatientDto {
+public class DoctorDto {
 
     private String name;
     private String surname;
-    private String phoneNumber;
+    private String specialization;
 
-    public PatientDto() {
+    public DoctorDto() {
+
     }
 
     public String getName() {
@@ -25,11 +26,11 @@ public class PatientDto {
         this.surname = surname;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getSpecialization() {
+        return specialization;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
     }
 }

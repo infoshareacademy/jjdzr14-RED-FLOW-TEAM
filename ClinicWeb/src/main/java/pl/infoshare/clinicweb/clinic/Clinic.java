@@ -1,18 +1,16 @@
 package pl.infoshare.clinicweb.clinic;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Embedded;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Address;
+import pl.infoshare.clinicweb.patient.Patient;
 
-@Data
-@AllArgsConstructor
-@Embeddable
+import java.util.Set;
 
 public class Clinic {
+
     private String clinicName;
-    @Embedded
+    private Set<Patient> patients;
+    private Set<Doctor> doctors;
     private Address address;
 
 
@@ -37,6 +35,21 @@ public class Clinic {
         this.address = address;
     }
 
+    public Set<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(Set<Patient> patients) {
+        this.patients = patients;
+    }
+
+    public Set<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(Set<Doctor> doctors) {
+        this.doctors = doctors;
+    }
 
     public Clinic(Address address, String clinicName) {
         this.address = address;

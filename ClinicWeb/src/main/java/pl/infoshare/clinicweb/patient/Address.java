@@ -10,9 +10,6 @@ public class Address {
     private String houseNumber;
     private String flatNumber;
 
-    public Address() {
-    }
-
 
     public String getCity() {
         return city;
@@ -61,6 +58,7 @@ public class Address {
     public void setFlatNumber(String flatNumber) {
         this.flatNumber = flatNumber;
     }
+
 
     @Override
     public String toString() {

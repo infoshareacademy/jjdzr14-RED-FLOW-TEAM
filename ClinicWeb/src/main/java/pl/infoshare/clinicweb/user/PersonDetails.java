@@ -1,18 +1,13 @@
 package pl.infoshare.clinicweb.user;
-
-import jakarta.persistence.Column;
-
 import java.time.LocalDate;
-
 
 public class PersonDetails {
 
     private String name;
     private String surname;
     private String phoneNumber;
-    @Column(unique = true)
-    private String pesel;
     private LocalDate birthDate;
+    private String pesel;
 
     public PersonDetails() {
 

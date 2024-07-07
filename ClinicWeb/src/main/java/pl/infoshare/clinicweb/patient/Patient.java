@@ -1,30 +1,22 @@
 package pl.infoshare.clinicweb.patient;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import pl.infoshare.clinicweb.clinic.Clinic;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
-
-@Builder
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Patient {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long ID;
     private PersonDetails personDetails;
     private Clinic clinic;
     private Doctor doctor;
     private Address address;
 
+    public Patient() {
+
+    }
+
     public Patient(PersonDetails patientDetails, Address patientAddress) {
+
         this.personDetails = patientDetails;
         this.address = patientAddress;
     }
@@ -68,7 +60,6 @@ public class Patient {
     @Override
     public String toString() {
         return "Patient{" +
-                "ID=" + ID +
                 ", personDetails=" + personDetails +
                 ", clinic=" + clinic +
                 ", doctor=" + doctor +
