@@ -1,49 +1,20 @@
 [ {
   "personDetails" : {
-    "phoneNumber" : null,
-    "surname" : null,
-    "name" : null,
-    "idNumber" : 0,
-    "pesel" : null,
-    "birthDate" : null
+    "phoneNumber" : "444-444-333",
+    "surname" : "Wojtkowski",
+    "name" : "Wojciech",
+    "pesel" : "7564932323",
+    "birthDate" : [ 1975, 12, 12 ]
   },
   "address" : {
     "country" : null,
     "zipCode" : null,
     "city" : null,
-    "street" : null
+    "street" : null,
+    "flatNumber" : null,
+    "houseNumber" : null
   },
   "specialization" : "Neurolog",
   "online" : false,
-  "availability" : false,
-  "user" : {
-    "password" : null,
-    "role" : null,
-    "login" : null,
-    "email" : null
-  }
-}, {
-  "user" : {
-    "login" : null,
-    "password" : null,
-    "email" : null,
-    "role" : null
-  },
-  "specialization" : "Neurolog",
-  "online" : false,
-  "availability" : false,
-  "address" : {
-    "city" : null,
-    "country" : null,
-    "zipCode" : null,
-    "street" : null
-  },
-  "personDetails" : {
-    "name" : null,
-    "surname" : null,
-    "phoneNumber" : null,
-    "idNumber" : 0,
-    "pesel" : null,
-    "birthDate" : null
-  }
+  "availability" : false
 } ]

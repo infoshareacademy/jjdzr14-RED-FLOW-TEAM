@@ -1,15 +1,14 @@
 package pl.infoshare.clinicweb.doctor;
 
-import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.clinic.Clinic;
+import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
-import pl.infoshare.clinicweb.user.User;
 
 import java.util.List;
 
 public class Doctor {
-    private User user;
+
     private String specialization;
     private List<Patient> patient;
     private Clinic clinic;
@@ -21,15 +20,14 @@ public class Doctor {
     public Doctor() {
     }
 
-    public Doctor(User user, PersonDetails details, Address address, String specialization, boolean online, boolean availability) {
-
-        this.user = user;
-        this.details = details;
-        this.address = address;
+    public Doctor(String specialization, List<Patient> patient, Clinic clinic, boolean online, boolean availability, PersonDetails details, Address address) {
         this.specialization = specialization;
+        this.patient = patient;
+        this.clinic = clinic;
         this.online = online;
         this.availability = availability;
-
+        this.details = details;
+        this.address = address;
     }
 
     public PersonDetails getPersonDetails() {
@@ -64,13 +62,7 @@ public class Doctor {
         this.availability = availability;
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public Address getAddress() {
         return address;
@@ -83,9 +75,8 @@ public class Doctor {
     @Override
     public String toString() {
         return "Doctor{" +
-                "user=" + user +
                 "address=" + address +
-                ", specialization='" + specialization  +
+                ", specialization='" + specialization +
                 ", patient=" + patient +
                 ", clinic=" + clinic +
                 ", online=" + online +

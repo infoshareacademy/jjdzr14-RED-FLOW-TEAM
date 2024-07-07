@@ -1,29 +1,25 @@
 package pl.infoshare.clinicweb.user;
-
 import java.time.LocalDate;
-import java.util.Date;
 
 public class PersonDetails {
+
     private String name;
     private String surname;
     private String phoneNumber;
-    private long idNumber;
-    private String pesel;
     private LocalDate birthDate;
+    private String pesel;
 
     public PersonDetails() {
 
     }
 
-    public PersonDetails(String name, String surname, long idNumber, String phoneNumber, String pesel, LocalDate birthDate) {
+    public PersonDetails(String name, String surname, String phoneNumber, String pesel, LocalDate birthDate) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
-        this.idNumber = idNumber;
         this.pesel = pesel;
         this.birthDate = birthDate;
     }
-
 
 
     public String getName() {
@@ -50,14 +46,6 @@ public class PersonDetails {
         this.phoneNumber = phoneNumber;
     }
 
-    public long getIdNumber() {
-        return idNumber;
-    }
-
-    public void setIdNumber() {
-        this.idNumber = generateID();
-    }
-
     public String getPesel() {
         return pesel;
     }
@@ -75,23 +63,14 @@ public class PersonDetails {
     }
 
 
-    private long generateID() {
-        Date date = new Date();
-        long IDNumber = date.getTime() % 10000;
-
-        return IDNumber;
-    }
-
     @Override
     public String toString() {
-        return "Person details{" +
+        return "PersonDetails{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", idNumber=" + idNumber +
-                ", pesel=" + pesel +
-                ", birtbDate=" + birthDate +
+                ", pesel='" + pesel + '\'' +
+                ", birthDate=" + birthDate +
                 '}';
     }
-
 }
