@@ -3,42 +3,31 @@ package pl.infoshare.clinicweb.patient;
 import pl.infoshare.clinicweb.clinic.Clinic;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.user.PersonDetails;
-import pl.infoshare.clinicweb.user.User;
 
 public class Patient {
 
-    private PersonDetails details;
+    private PersonDetails personDetails;
     private Clinic clinic;
     private Doctor doctor;
     private Address address;
 
-    public Patient () {
+    public Patient() {
 
     }
 
-    public Patient(PersonDetails details, Address address) {
+    public Patient(PersonDetails patientDetails, Address patientAddress) {
 
-        this.details = details;
-        this.address = address;
-
+        this.personDetails = patientDetails;
+        this.address = patientAddress;
     }
 
-    public Patient(PersonDetails details, Address address, Clinic clinic, Doctor doctor) {
-
-
-        this.details = details;
-        this.address = address;
-        this.clinic = clinic;
-        this.doctor = doctor;
-
-    }
 
     public PersonDetails getPersonDetails() {
-        return details;
+        return personDetails;
     }
 
-    public void setPersonDetails(PersonDetails details) {
-        this.details = details;
+    public void setPersonDetails(PersonDetails personDetails) {
+        this.personDetails = personDetails;
     }
 
 
@@ -70,11 +59,11 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{\n" +
-                "details=" + details +
-                " , clinic=" + clinic +
-                " , doctor=" + doctor +
-                " , address=" + address +
+        return "Patient{" +
+                ", personDetails=" + personDetails +
+                ", clinic=" + clinic +
+                ", doctor=" + doctor +
+                ", address=" + address +
                 '}';
     }
 }

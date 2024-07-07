@@ -17,6 +17,7 @@
         <div class="card">
             <div class="card-body">
                 <div th:action="register" th:method="post" th:object="${personDetails}">
+
                     <label class="form-label">Imię :</label>
                     <input class="form-control" type="text" th:field="*{name}">
 
@@ -52,6 +53,7 @@
 
                         <label>Kod pocztowy :</label>
                         <input class="form-control" type="text" th:field="*{zipCode}">
+
 
                         <label class="form-label">Miasto :</label>
                         <input class="form-control" type="text" th:field="*{city}">

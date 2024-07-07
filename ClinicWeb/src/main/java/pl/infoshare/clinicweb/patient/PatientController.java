@@ -6,7 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import pl.infoshare.clinicweb.file.FileService;
 import pl.infoshare.clinicweb.user.PersonDetails;
+
+import java.util.List;
 
 
 @Controller
@@ -14,9 +18,12 @@ import pl.infoshare.clinicweb.user.PersonDetails;
 public class PatientController {
 
     private final PatientService patientService;
+    private final FileService fileService;
 
-    public PatientController(PatientService patientService) {
+    public PatientController(PatientService patientService, FileService fileService) {
+
         this.patientService = patientService;
+        this.fileService = fileService;
     }
 
     @GetMapping("/patient")
@@ -39,6 +46,13 @@ public class PatientController {
 
         return "result";
 
+    }
+
+    @GetMapping("/patients-list")
+    @ResponseBody
+    public List<PatientDto> viewPatients() {
+
+        return patientService.findAll();
     }
 
 
