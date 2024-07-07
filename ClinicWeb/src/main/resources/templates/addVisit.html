@@ -41,18 +41,18 @@
                 </div>
 
                 <div class="btn-group mb-3">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        Do jakiego lekarza chcesz zapisać
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Lekarz rodzinny')">Lekarz rodzinny</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Pediatra')">Pediatra</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Kardiolog')">Kardiolog</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Dermatolog')">Dermatolog</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Ortopeda')">Ortopeda</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Ginekolog')">Ginekolog</button></li>
-                    </ul>
+
+                    <span> Do jakiego lekarza chcesz zapisać </span>
+
+                </div>
+
+                <div>
+                        <select class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" name="specialization">
+                            <option th:each="specOpt : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
+                                    th:value="${specOpt}" th:text="${specOpt}"></option>
+                        </select>
+
+
                     <span id="selected-specialization" class="ms-3"></span>
                 </div>
 
