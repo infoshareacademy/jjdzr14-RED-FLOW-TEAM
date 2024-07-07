@@ -13,7 +13,8 @@ public class Visit {
    private List<Medicines>medicines;
    private int numberOfVisits;
 
-    public int getNumberOfVisits() {
+
+   public int getNumberOfVisits() {
         return numberOfVisits;
     }
 
@@ -24,6 +25,7 @@ public class Visit {
     public Visit(Doctor doctor, Patient patient) {
         this.doctor = doctor;
         this.patient = patient;
+        boolean insured = false;
     }
 
     public Doctor getDoctor() {
