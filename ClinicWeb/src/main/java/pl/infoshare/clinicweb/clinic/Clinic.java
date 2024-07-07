@@ -18,7 +18,6 @@ public class Clinic {
 
     }
 
-
     public String getClinicName() {
         return clinicName;
     }

@@ -1,6 +1,5 @@
 package pl.infoshare.clinicweb.doctor;
 
-import pl.infoshare.clinicweb.clinic.Clinic;
 import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
@@ -11,7 +10,6 @@ public class Doctor {
 
     private String specialization;
     private List<Patient> patient;
-    private Clinic clinic;
     private boolean online;
     private boolean availability;
     private PersonDetails details;
@@ -20,10 +18,9 @@ public class Doctor {
     public Doctor() {
     }
 
-    public Doctor(String specialization, List<Patient> patient, Clinic clinic, boolean online, boolean availability, PersonDetails details, Address address) {
+    public Doctor(String specialization, List<Patient> patient, boolean online, boolean availability, PersonDetails details, Address address) {
         this.specialization = specialization;
         this.patient = patient;
-        this.clinic = clinic;
         this.online = online;
         this.availability = availability;
         this.details = details;
@@ -62,8 +59,6 @@ public class Doctor {
         this.availability = availability;
     }
 
-
-
     public Address getAddress() {
         return address;
     }
@@ -78,7 +73,6 @@ public class Doctor {
                 "address=" + address +
                 ", specialization='" + specialization +
                 ", patient=" + patient +
-                ", clinic=" + clinic +
                 ", online=" + online +
                 ", availability=" + availability +
                 ", details=" + details +

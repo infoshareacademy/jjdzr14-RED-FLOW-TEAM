@@ -1,15 +1,14 @@
 package pl.infoshare.clinicweb.patient;
 
-import pl.infoshare.clinicweb.clinic.Clinic;
-import pl.infoshare.clinicweb.doctor.Doctor;
+import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 public class Patient {
 
     private PersonDetails personDetails;
-    private Clinic clinic;
-    private Doctor doctor;
+    private DoctorDto doctor;
     private Address address;
+    boolean hasInsurance;
 
     public Patient() {
 
@@ -19,6 +18,7 @@ public class Patient {
 
         this.personDetails = patientDetails;
         this.address = patientAddress;
+        this.hasInsurance = false;
     }
 
 
@@ -30,23 +30,13 @@ public class Patient {
         this.personDetails = personDetails;
     }
 
-
-    public Clinic getClinic() {
-        return clinic;
-    }
-
-    public void setClinic(Clinic clinic) {
-        this.clinic = clinic;
-    }
-
-    public Doctor getDoctor() {
+    public DoctorDto getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(Doctor doctor) {
+    public void setDoctor(DoctorDto doctor) {
         this.doctor = doctor;
     }
-
 
     public Address getAddress() {
         return address;
@@ -56,14 +46,21 @@ public class Patient {
         this.address = address;
     }
 
+    public boolean isHasInsurance() {
+        return hasInsurance;
+    }
+
+    public void setHasInsurance(boolean hasInsurance) {
+        this.hasInsurance = hasInsurance;
+    }
 
     @Override
     public String toString() {
         return "Patient{" +
-                ", personDetails=" + personDetails +
-                ", clinic=" + clinic +
+                "personDetails=" + personDetails +
                 ", doctor=" + doctor +
                 ", address=" + address +
+                ", hasInsurance=" + hasInsurance +
                 '}';
     }
 }
