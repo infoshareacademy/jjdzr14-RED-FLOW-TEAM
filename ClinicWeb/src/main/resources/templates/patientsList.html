@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Patients List</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" type="text/css">
 
 </head>
 <body>
-    <thead>
-    <tr>
-        <th>Imię</th>
-        <th>Nazwisko</th>
-        <th>Lekarz</th>
 
+
+<table class="table table-striped tfixed" th:object="${patient}">
+
+    <h3>Lista pacjentow </h3>
+
+    <thead >
+    <tr bgcolor="d3d3d3">
+        <td>Imię</td>
+        <td>Nazwisko</td>
+        <td>Lekarz</td>
     </tr>
-
     </thead>
-    <tbody>
+
+    <tbody bgcolor="lightsteelblue">
 
     <tr th:each="patient:${listPatient}">
 
@@ -25,5 +31,6 @@
 
     </tr>
     </tbody>
+</table>
 </body>
 </html>

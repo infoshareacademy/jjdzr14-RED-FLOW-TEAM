@@ -1,6 +1,7 @@
 package pl.infoshare.clinicweb.doctor;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,16 +17,18 @@ public class DoctorController {
     }
 
     @GetMapping("/doctors-list")
-    @ResponseBody
-    public List<DoctorDto> viewDoctors() {
+    public String viewDoctors(Model model) {
 
-        return doctorService.findAll();
+        model.addAttribute("listDoctor", doctorService.findAll());
+
+        return "allDoctorsList";
     }
 
     @GetMapping("/specializations-list")
-    @ResponseBody
-    public List<DoctorDto> viewSpecializations() {
+    public String viewSpecializations(Model model) {
 
-        return doctorService.findBySpecialization("Neurolog");
+        model.addAttribute("filteredDoctors", doctorService.findBySpecialization("Neurolog"));
+
+        return "filteredDoctorsList";
     }
 }
