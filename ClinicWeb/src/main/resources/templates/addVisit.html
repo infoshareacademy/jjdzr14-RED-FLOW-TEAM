@@ -18,20 +18,22 @@
 
             <form th:action="saveVisit" th:method="post" th:object="${visit}">
 
-                    <div class="form-group mb-3" th:action="visits" th:method="post" th:object="${patient}">
-                        <label>Imię</label>
-                        <input type="text" class="form-control" id="username" placeholder="podaj imię" th:field="${patient.name}">
+                <div class="form-group mb-3" th:action="visits" th:method="post" th:object="${patient}">
+                    <label>Imię</label>
+                    <input type="text" class="form-control" id="username" placeholder="podaj imię"
+                           th:field="${patient.name}">
 
-                        <label>Nazwisko</label>
-                        <input type="text" class="form-control" id="userSurname" placeholder="podaj nazwisko" th:field="${patient.surname}">
+                    <label>Nazwisko</label>
+                    <input type="text" class="form-control" id="userSurname" placeholder="podaj nazwisko"
+                           th:field="${patient.surname}">
 
-                        <label for="pesel">Pesel</label>
-                        <input type="text" class="form-control" id="pesel" placeholder="pesel" th:field="${patient.pesel}">
+                    <label for="pesel">Pesel</label>
+                    <input type="text" class="form-control" id="pesel" placeholder="pesel" th:field="${patient.pesel}">
 
-                    </div>
+                </div>
 
-<!--                    <label>Data wizyty</label>-->
-<!--                    <input type="datetime-local" class="form-control" id="visitDate" th:field="*{visitDate}">-->
+                <label>Data wizyty</label>
+                <input type="datetime-local" class="form-control" id="visitDate">
 
                 <div class="form-check form-switch mb-3">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
@@ -46,17 +48,19 @@
 
                 <div>
 
-                        <select class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" name="specialization">
-                            <option th:each="specOpt : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
-                                    th:value="${specOpt}" th:text="${specOpt.getDescription()}"></option>
-                        </select>
+                    <select class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" name="specialization">
+                        <option th:each="specOpt : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
+                                th:value="${specOpt}" th:text="${specOpt.getDescription()}"></option>
+                    </select>
 
 
                     <span id="selected-specialization" class="ms-3"></span>
 
                 </div>
 
-              <div><button type="submit" class="btn btn-primary btn-block">Zarejestruj się</button></div>
+                <div>
+                    <button type="submit" class="btn btn-primary btn-block">Zarejestruj się</button>
+                </div>
 
             </form>
         </div>

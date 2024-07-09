@@ -13,29 +13,29 @@
     <div class="card">
         <table class="table table-striped tfixed" th:object="${patient}">
 
-        <h3 class="card-title text-center">Lista pacjentow </h3>
+            <h3 class="card-title text-center">Lista pacjentow </h3>
 
-        <thead >
-        <tr bgcolor="d3d3d3">
-            <td>Imię</td>
-            <td>Nazwisko</td>
-            <td>Numer telefonu</td>
-            <td>Lekarz prowadzacy</td>
-        </tr>
-        </thead>
+            <thead>
+            <tr bgcolor="d3d3d3">
+                <td>Imię</td>
+                <td>Nazwisko</td>
+                <td>Numer telefonu</td>
+                <td>Lekarz prowadzacy</td>
+            </tr>
+            </thead>
 
-        <tbody bgcolor="lightsteelblue">
+            <tbody bgcolor="lightsteelblue">
 
-        <tr th:each="patient:${listPatient}">
+            <tr th:each="patient:${listPatient}">
 
-        <td th:text="${patient.name}"></td>
-        <td th:text="${patient.surname}"></td>
-        <td th:text="${patient.phoneNumber}"></td>
-        <td th:text="${patient.doctor}"></td>
+                <td th:text="${patient.name}"></td>
+                <td th:text="${patient.surname}"></td>
+                <td th:text="${patient.phoneNumber}"></td>
+                <td th:text="${patient.doctor}"></td>
 
-    </tr>
-    </tbody>
-</table>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>

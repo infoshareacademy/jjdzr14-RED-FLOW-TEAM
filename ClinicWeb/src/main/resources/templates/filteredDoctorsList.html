@@ -7,29 +7,31 @@
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-<table class="table table-striped tfixed" th:object="${doctor}">
+<div class="container-xl">
+    <div class="card">
+        <table class="table table-striped tfixed" th:object="${doctor}">
 
-    <h3>Lista lekarzy </h3>
+            <h3 class="card-title text-center">Lista lekarzy </h3>
 
-    <thead >
-    <tr bgcolor="d3d3d3">
-        <td>Imię</td>
-        <td>Nazwisko</td>
-        <td>Specjalizacja</td>
-    </tr>
-    </thead>
+            <thead>
+            <tr bgcolor="d3d3d3">
+                <td>Imię</td>
+                <td>Nazwisko</td>
+                <td>Specjalizacja</td>
+            </tr>
+            </thead>
 
-    <tbody>
+            <tbody>
 
-    <tr th:each="doctor:${filteredDoctors}">
+            <tr th:each="doctor:${filteredDoctors}">
 
-        <td th:text="${doctor.name}"></td>
-        <td th:text="${doctor.surname}"></td>
-        <td th:text="${doctor.specialization}"></td>
+                <td th:text="${doctor.name}"></td>
+                <td th:text="${doctor.surname}"></td>
+                <td th:text="${doctor.specialization}"></td>
 
-    </tr>
-    </tbody>
-</table>
+            </tr>
+            </tbody>
+        </table>
 
 </body>
 </html>
