@@ -1,8 +1,9 @@
 package pl.infoshare.clinicweb.visit;
 
-import pl.infoshare.clinicweb.doctor.Doctor;
+import org.springframework.format.annotation.DateTimeFormat;
+import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.medicines.Medicines;
-import pl.infoshare.clinicweb.patient.Patient;
+import pl.infoshare.clinicweb.patient.PatientDto;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,14 +11,19 @@ import java.util.Objects;
 
 public class Visit {
 
-    private Doctor doctor;
-    private Patient patient;
+    private DoctorDto doctor;
+    private PatientDto patient;
     private List<Medicines> medicines;
     private int numberOfVisits;
+    @DateTimeFormat(pattern = "MM-dd-yyyy HH:mm")
     private LocalDateTime visitDate;
 
 
     public Visit() {
+    }
+
+    public Visit(PatientDto patient) {
+        this.patient = patient;
     }
 
     public int getNumberOfVisits() {
@@ -28,19 +34,11 @@ public class Visit {
         this.numberOfVisits = numberOfVisits;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-
-    public Patient getPatient() {
+    public PatientDto getPatient() {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
+    public void setPatient(PatientDto patient) {
         this.patient = patient;
     }
 
@@ -74,10 +72,10 @@ public class Visit {
         return Objects.hash(doctor, patient, medicines, numberOfVisits, visitDate);
     }
 
+
     @Override
     public String toString() {
         return "Visit{" +
-                "doctor=" + doctor +
                 ", patient=" + patient +
                 ", medicines=" + medicines +
                 ", numberOfVisits=" + numberOfVisits +

@@ -23,12 +23,11 @@ public class PatientController {
         this.fileService = fileService;
     }
 
-    @GetMapping("/patient")
+    @GetMapping("/patientForm")
     public String patientForm(Model model) {
 
         model.addAttribute("personDetails", new PersonDetails());
         model.addAttribute("address", new Address());
-
         return "patientForm";
     }
 
@@ -37,7 +36,6 @@ public class PatientController {
 
         model.addAttribute("personDetails", new PersonDetails());
         model.addAttribute("address", new Address());
-
 
         patientService.savePatient(new Patient(patientDetails, patientAddress));
 

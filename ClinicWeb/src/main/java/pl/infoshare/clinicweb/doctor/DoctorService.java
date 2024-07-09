@@ -3,6 +3,7 @@ package pl.infoshare.clinicweb.doctor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.infoshare.clinicweb.file.FileService;
 import pl.infoshare.clinicweb.user.User;
 
@@ -66,11 +67,11 @@ public class DoctorService implements DoctorRepository {
 
     }
 
-    public List<DoctorDto> findBySpecialization(String specialization) {
+    public List<DoctorDto> findBySpecialization(Specialization specialization) {
 
         return getAll()
                 .stream()
-                .filter(doctor -> doctor.getSpecialization().equals(specialization))
+                .filter(doctor -> doctor.getSpecialization().equals(specialization.getDescription()))
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
 

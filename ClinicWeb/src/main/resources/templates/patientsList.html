@@ -3,34 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Patients List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link th:href="@{/styles/style.css}" rel="stylesheet" type="text/css">
 
 </head>
 <body>
+<div class="container-xl">
+    <div class="card">
+        <table class="table table-striped tfixed" th:object="${patient}">
 
+        <h3 class="card-title text-center">Lista pacjentow </h3>
 
-<table class="table table-striped tfixed" th:object="${patient}">
+        <thead >
+        <tr bgcolor="d3d3d3">
+            <td>Imię</td>
+            <td>Nazwisko</td>
+            <td>Numer telefonu</td>
+            <td>Lekarz prowadzacy</td>
+        </tr>
+        </thead>
 
-    <h3>Lista pacjentow </h3>
+        <tbody bgcolor="lightsteelblue">
 
-    <thead >
-    <tr bgcolor="d3d3d3">
-        <td>Imię</td>
-        <td>Nazwisko</td>
-        <td>Lekarz</td>
-    </tr>
-    </thead>
-
-    <tbody bgcolor="lightsteelblue">
-
-    <tr th:each="patient:${listPatient}">
+        <tr th:each="patient:${listPatient}">
 
         <td th:text="${patient.name}"></td>
         <td th:text="${patient.surname}"></td>
         <td th:text="${patient.phoneNumber}"></td>
+        <td th:text="${patient.doctor}"></td>
 
     </tr>
     </tbody>
 </table>
+    </div>
+</div>
 </body>
 </html>

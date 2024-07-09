@@ -39,8 +39,8 @@
 }, {
   "personDetails" : {
     "phoneNumber" : "444-444-333",
-    "surname" : "Trawka",
-    "name" : "Wlodek",
+    "surname" : "Kantek",
+    "name" : "Kamil",
     "pesel" : "7564932323",
     "birthDate" : [ 1975, 12, 12 ]
   },
@@ -68,8 +68,8 @@
     "flatNumber" : "76"
   },
   "personDetails" : {
-    "name" : "Wlodek",
-    "surname" : "Trawka",
+    "name" : "Aneta",
+    "surname" : "Zajac",
     "phoneNumber" : "444-444-333",
     "birthDate" : [ 1975, 12, 12 ],
     "pesel" : "7564932323"

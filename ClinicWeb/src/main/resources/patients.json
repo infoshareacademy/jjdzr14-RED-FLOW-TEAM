@@ -3,7 +3,7 @@
     "personDetails": {
       "name": "Damian",
       "surname": "Korzen",
-      "phoneNumber": "444-444-333",
+      "phoneNumber": "678-444-313",
       "birthDate": [
         1975,
         12,
@@ -30,7 +30,7 @@
     "personDetails": {
       "name": "Tomasz",
       "surname": "Grzadka",
-      "phoneNumber": "222-4444-333",
+      "phoneNumber": "575-123-234",
       "birthDate": [
         1975,
         12,
@@ -40,7 +40,7 @@
     },
     "doctor": {
       "name": "Martyna",
-      "surname": "Balwan",
+      "surname": "Kiszonka",
       "specialization": "Chirurg"
     },
     "address": {

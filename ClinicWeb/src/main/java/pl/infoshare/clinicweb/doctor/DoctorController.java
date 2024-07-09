@@ -3,6 +3,7 @@ package pl.infoshare.clinicweb.doctor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -25,9 +26,9 @@ public class DoctorController {
     }
 
     @GetMapping("/specializations-list")
-    public String viewSpecializations(Model model) {
+    public String viewSpecializations(Model model, @RequestParam("specialization") Specialization specialization) {
 
-        model.addAttribute("filteredDoctors", doctorService.findBySpecialization("Neurolog"));
+        model.addAttribute("filteredDoctors", doctorService.findBySpecialization(specialization));
 
         return "filteredDoctorsList";
     }

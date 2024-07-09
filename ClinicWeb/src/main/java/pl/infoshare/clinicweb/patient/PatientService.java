@@ -2,6 +2,7 @@ package pl.infoshare.clinicweb.patient;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.stereotype.Service;
+import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.file.FileService;
 
 import java.util.List;
@@ -46,10 +47,12 @@ public class PatientService implements PatientRepository {
     private PatientDto convertToDto(Patient patient) {
 
         PatientDto patientDto = new PatientDto();
+        DoctorDto doctorDto = new DoctorDto();
 
         patientDto.setName(patient.getPersonDetails().getName());
         patientDto.setSurname(patient.getPersonDetails().getSurname());
         patientDto.setPhoneNumber(patient.getPersonDetails().getPhoneNumber());
+        patientDto.setDoctor(doctorDto);
 
         return patientDto;
     }

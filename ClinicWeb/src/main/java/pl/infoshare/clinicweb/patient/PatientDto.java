@@ -1,10 +1,14 @@
 package pl.infoshare.clinicweb.patient;
 
+import pl.infoshare.clinicweb.doctor.DoctorDto;
+
 public class PatientDto {
 
     private String name;
     private String surname;
     private String phoneNumber;
+    private String pesel;
+    private DoctorDto doctor;
 
     public PatientDto() {
     }
@@ -31,5 +35,21 @@ public class PatientDto {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getPesel() {
+        return pesel;
+    }
+
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
+    }
+
+    public DoctorDto getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(DoctorDto doctor) {
+        this.doctor = doctor;
     }
 }
