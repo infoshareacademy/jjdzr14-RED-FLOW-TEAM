@@ -18,37 +18,67 @@
 
             <form th:action="saveVisit" th:method="post" th:object="${visit}">
 
-                <div class="form-group mb-3" th:action="visits" th:method="post" th:object="${patient}">
+                <div class="form-group mb-3" th:action="saveVisit" th:method="post" th:object="${patient}">
                     <label>Imię</label>
-                    <input type="text" class="form-control" id="username" placeholder="podaj imię"
-                           th:field="${patient.name}">
+                    <input type="text"
+                           th:field="${patient.name}"
+                           class="form-control"
+                           id="name"
+                           placeholder="podaj imię"
+                    >
+                    <p th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="${patient.name}">Name
+                        error</p>
 
                     <label>Nazwisko</label>
-                    <input type="text" class="form-control" id="userSurname" placeholder="podaj nazwisko"
-                           th:field="${patient.surname}">
+                    <input type="text"
+                           th:field="${patient.surname}"
+                           class="form-control"
+                           id="userSurname"
+                           placeholder="podaj nazwisko"
+                    >
+                    <p th:if="${#fields.hasErrors('surname')}" class="text-danger" th:errors="${patient.surname}">
+                        Surname
+                        error</p>
 
                     <label for="pesel">Pesel</label>
-                    <input type="text" class="form-control" id="pesel" placeholder="pesel" th:field="${patient.pesel}">
+                    <input type="text"
+                           th:field="${patient.pesel}"
+                           class="form-control"
+                           id="pesel" placeholder="pesel"
+                    >
+                    <p th:if="${#fields.hasErrors('pesel')}" class="text-danger" th:errors="${patient.pesel}">Pesel
+                        error</p>
 
                 </div>
 
                 <label>Data wizyty</label>
-                <input type="datetime-local" class="form-control" id="visitDate">
+
+                <input type="datetime-local"
+                       th:field="${visit.visitDate}"
+                       name="visitDate">
+                <p th:if="${#fields.hasErrors('visitDate')}" class="text-danger" th:errors="${visit.visitDate}">
+                    visitDate
+                    error</p>
+
 
                 <div class="form-check form-switch mb-3">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <input class="form-check-input"
+                           type="checkbox"
+                           id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Pacjent jest ubezpieczony</label>
                 </div>
 
-                <div class="btn-group mb-3">
+                <div class="btn-group mb-3" th:action="saveVisit" th:method="post" th:object="${doctor}">
 
-                    <span> Do jakiego lekarza chcesz zapisać </span>
+                    <span> Do jakiego lekarza chcesz zapisać? </span>
 
                 </div>
 
                 <div>
 
-                    <select class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" name="specialization">
+                    <select class="btn btn-primary dropdown-toggle"
+                            data-bs-toggle="dropdown"
+                            name="specialization">
                         <option th:each="specOpt : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
                                 th:value="${specOpt}" th:text="${specOpt.getDescription()}"></option>
                     </select>

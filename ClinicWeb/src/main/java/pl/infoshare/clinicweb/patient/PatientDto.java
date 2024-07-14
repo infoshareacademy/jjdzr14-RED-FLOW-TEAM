@@ -1,12 +1,26 @@
 package pl.infoshare.clinicweb.patient;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 
 public class PatientDto {
 
+    @NotEmpty(message = "Pole nie może być puste.")
+    @Size(min = 2, max = 20, message = "Pole musi zawierać od 2 do 20 znaków.")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Pole musi składać się z samych liter")
     private String name;
+
+    @NotEmpty(message = "Pole nie może być puste.")
+    @Size(min = 2, max = 20, message = "Pole musi zawierać od 2 do 20 znaków.")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Pole musi składać się z samych liter")
     private String surname;
+
     private String phoneNumber;
+
+    @NotEmpty(message = "Pole nie może być puste.")
+    @Pattern(regexp = "[0-9]{11}", message = "Pole musi zawierać 11 cyfr. ")
     private String pesel;
     private DoctorDto doctor;
 
@@ -52,4 +66,5 @@ public class PatientDto {
     public void setDoctor(DoctorDto doctor) {
         this.doctor = doctor;
     }
+
 }

@@ -2,9 +2,7 @@ package pl.infoshare.clinicweb.file;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import net.bytebuddy.implementation.bind.annotation.Empty;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -16,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,13 +33,13 @@ public class FileService implements FileRepository {
         try {
             mapper.registerModule(new JavaTimeModule());
 
-           byte [] fileBytes = Files.readAllBytes(Path.of(filePath));
+            byte[] fileBytes = Files.readAllBytes(Path.of(filePath));
 
             return mapper.readValue(fileBytes, typeReference);
 
         } catch (IOException e) {
 
-            throw new RuntimeException(e);
+            return new ArrayList<>();
         }
     }
 
@@ -84,7 +83,7 @@ public class FileService implements FileRepository {
 
         try {
             return (JSONArray) parser.parse(new FileReader(filePath));
-            
+
         } catch (ParseException e) {
 
             return new JSONArray();
