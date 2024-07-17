@@ -7,7 +7,8 @@
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-<div class="container-xl">
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="container-xl" style="padding-top:30px">
     <div class="card">
         <table class="table table-striped tfixed" th:object="${doctor}">
 

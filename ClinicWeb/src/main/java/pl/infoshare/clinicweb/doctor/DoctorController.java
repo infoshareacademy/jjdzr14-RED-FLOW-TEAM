@@ -4,9 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 @Controller
 public class DoctorController {
@@ -17,7 +14,7 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @GetMapping("/doctors-list")
+    @GetMapping("/doctors")
     public String viewDoctors(Model model) {
 
         model.addAttribute("listDoctor", doctorService.findAll());
@@ -25,7 +22,7 @@ public class DoctorController {
         return "allDoctorsList";
     }
 
-    @GetMapping("/specializations-list")
+    @GetMapping("/specializations")
     public String viewSpecializations(Model model, @RequestParam("specialization") Specialization specialization) {
 
         model.addAttribute("filteredDoctors", doctorService.findBySpecialization(specialization));
