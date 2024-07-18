@@ -11,6 +11,7 @@ public class Patient {
     private Doctor doctor;
     private Address address;
 
+
     public Patient() {
 
     }

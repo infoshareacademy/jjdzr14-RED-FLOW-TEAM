@@ -11,7 +11,7 @@ public interface FileRepository {
 
     void readPatients(String filePatient);
 
-    void readDoctors(String fileDoctors);
+//    void readDoctors(String fileDoctors);
 
     void writeToFile(Object object, String filePath);
 

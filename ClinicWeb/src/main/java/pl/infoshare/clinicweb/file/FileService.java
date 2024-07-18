@@ -2,9 +2,7 @@ package pl.infoshare.clinicweb.file;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import net.bytebuddy.implementation.bind.annotation.Empty;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -49,10 +47,10 @@ public class FileService implements FileRepository {
 
     }
 
-    @Override
-    public void readDoctors(String fileDoctors) {
-
-    }
+//    @Override
+//    public void readDoctors(String fileDoctors) {
+//
+//    }
 
     @Override
     public void writeToFile(Object object, String filePath) {

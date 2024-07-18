@@ -12,13 +12,13 @@ import java.util.stream.Collectors;
 @Service
 public class DoctorService implements DoctorRepository {
 
-    private static final String DOCTOR_PATH = "ClinicWeb/src/main/resources/doctors.json";
-    private final List<Doctor> doctorList;
+    private static final String DOCTOR_PATH = "/ClinicWeb/src/main/resources/doctors.json";
+//    private final List<Doctor> doctorList;
     private final FileService fileService;
 
     @Autowired
     public DoctorService(List<Doctor> doctorList, FileService fileService)  {
-        this.doctorList = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {});
+//        this.doctorList = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {});
         this.fileService = fileService;
 
     }
@@ -53,13 +53,14 @@ public class DoctorService implements DoctorRepository {
 
     }
 
-    public List<Doctor> getAll() {
-        return doctorList;
-    }
+//    public List<Doctor> getAll() {
+//        return doctorList;
+//    }
+
 
     public List<DoctorDto> findAll() {
-
-        return getAll()
+List<Doctor>listDoctor = fileService.readFromFile(DOCTOR_PATH,new TypeReference<List<Doctor>>() {});
+        return      listDoctor
                 .stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
@@ -68,10 +69,8 @@ public class DoctorService implements DoctorRepository {
 
     public List<DoctorDto> findBySpecialization(String specialization) {
 
-        return getAll()
-                .stream()
+        return findAll().stream()
                 .filter(doctor -> doctor.getSpecialization().equals(specialization))
-                .map(this::convertToDto)
                 .collect(Collectors.toList());
 
     }

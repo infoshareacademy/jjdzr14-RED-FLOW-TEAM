@@ -12,7 +12,7 @@ public interface PatientRepository {
 
     List<Patient> getAll();
 
-
+    Patient findByPesel(String pesel);
 
 
 }
