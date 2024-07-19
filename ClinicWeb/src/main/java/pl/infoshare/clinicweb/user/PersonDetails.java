@@ -8,19 +8,28 @@ public class PersonDetails {
     private String phoneNumber;
     private LocalDate birthDate;
     private String pesel;
+    private Gender gender;
 
     public PersonDetails() {
 
     }
 
-    public PersonDetails(String name, String surname, String phoneNumber, String pesel, LocalDate birthDate) {
+    public PersonDetails(String name, String surname, String phoneNumber, String pesel, LocalDate birthDate, Gender gender) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.pesel = pesel;
         this.birthDate = birthDate;
+        this.gender = gender;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
 
     public String getName() {
         return name;
@@ -69,8 +78,9 @@ public class PersonDetails {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", pesel='" + pesel + '\'' +
                 ", birthDate=" + birthDate +
+                ", pesel='" + pesel + '\'' +
+                ", gender=" + gender +
                 '}';
     }
 }

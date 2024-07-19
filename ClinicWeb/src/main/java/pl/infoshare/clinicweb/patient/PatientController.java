@@ -47,17 +47,20 @@ public class PatientController {
 
     }
 
-    //        @GetMapping("/patients-list")
-//    @ResponseBody
-//    public List<PatientDto> viewPatients() {
-//
-//        return patientService.findAll();
-//    }
-    @GetMapping("/addVisit")
+            @GetMapping("/patients-list")
+    @ResponseBody
+    public List<PatientDto> viewPatients() {
+
+        return patientService.findAll();
+    }
+    @PostMapping("/addVisit")
     public String showSearchForm(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
         if (pesel != null && !pesel.isEmpty()) {
             Patient byPesel = patientService.findByPesel(pesel);
             model.addAttribute("searchForPesel", byPesel);
+        }
+        else if (patientService.findByPesel(pesel) != null) {
+            model.addAttribute("searchForPesel", patientService.findByPesel(pesel));
         }
         return "addVisit";
     }

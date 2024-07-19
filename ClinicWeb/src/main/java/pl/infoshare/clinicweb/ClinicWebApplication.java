@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ClinicWebApplication {
 
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args){
 
         SpringApplication.run(ClinicWebApplication.class, args);
 
