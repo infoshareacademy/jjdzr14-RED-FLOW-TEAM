@@ -1,6 +1,7 @@
 package pl.infoshare.clinicweb.patient;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ public class PatientController {
     private final PatientService patientService;
     private final FileService fileService;
 
+    @Autowired
     public PatientController(PatientService patientService, FileService fileService) {
 
         this.patientService = patientService;
@@ -43,7 +45,7 @@ public class PatientController {
 
     }
 
-    @GetMapping("/patients-list")
+    @GetMapping("/patients")
     public String viewPatients(Model model) {
 
         model.addAttribute("listPatient", patientService.findAll());
