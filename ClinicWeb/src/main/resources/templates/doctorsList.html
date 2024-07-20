@@ -29,19 +29,17 @@
 
                     <form th:action="@{/doctors}">
                     <td>Specjalizacja
-                        <select
-                                type="text"
-                                name="specialization"
+                        <select name="specialization"
                                 id="specialization"
                                 class="btn btn-primary dropdown-toggle"
                                 data-bs-toggle="dropdown">
+                        <option selected="selected">
                         <option th:each="specialization:${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
                                 th:value="${specialization}" th:text="${specialization.getDescription()}"></option>
-                    </select>
-                    </td>
+                    </select></td>
                     <td>
                         <button type="submit"
-                                class="btn btn-primary btn-success form-control">Filtruj
+                                class="btn btn-primary btn-block">Filtruj
                         </button>
                     </td>
                     </form>
