@@ -3,7 +3,6 @@ package pl.infoshare.clinicweb.doctor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import pl.infoshare.clinicweb.file.FileService;
 import pl.infoshare.clinicweb.user.User;
 
@@ -18,8 +17,9 @@ public class DoctorService implements DoctorRepository {
     private final FileService fileService;
 
     @Autowired
-    public DoctorService(List<Doctor> doctorList, FileService fileService)  {
-        this.doctorList = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {});
+    public DoctorService(List<Doctor> doctorList, FileService fileService) {
+        this.doctorList = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {
+        });
         this.fileService = fileService;
 
     }

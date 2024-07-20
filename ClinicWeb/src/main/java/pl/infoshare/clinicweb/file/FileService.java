@@ -8,10 +8,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -31,6 +28,12 @@ public class FileService implements FileRepository {
     public <T> List<T> readFromFile(String filePath, TypeReference<List<T>> typeReference) {
 
         try {
+
+            File file = new File(filePath);
+            if (!file.exists()) {
+                return new ArrayList<>();
+            }
+
             mapper.registerModule(new JavaTimeModule());
 
             byte[] fileBytes = Files.readAllBytes(Path.of(filePath));
@@ -38,8 +41,7 @@ public class FileService implements FileRepository {
             return mapper.readValue(fileBytes, typeReference);
 
         } catch (IOException e) {
-
-            return new ArrayList<>();
+            throw new RuntimeException(e);
         }
     }
 
