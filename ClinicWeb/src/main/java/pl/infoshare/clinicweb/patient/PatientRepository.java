@@ -3,6 +3,7 @@ package pl.infoshare.clinicweb.patient;
 
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository

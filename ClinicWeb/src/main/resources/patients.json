@@ -152,12 +152,183 @@
   "clinic" : null
 }, {
   "personDetails" : {
-    "name" : "Roman",
-    "surname" : "Pazdzioch",
     "phoneNumber" : "88825963",
-    "birthDate" : "2024-07-18",
+    "gender" : null,
+    "surname" : "Pazdzioch",
+    "name" : "Roman",
     "pesel" : "5502120313",
-    "gender" : null
+    "birthDate" : "2024-07-18"
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "city" : "Zamiasto",
+    "street" : "Koperkowa",
+    "flatNumber" : "2",
+    "houseNumber" : "22"
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "phoneNumber" : "88825963",
+    "gender" : null,
+    "surname" : "Pazdzioch",
+    "name" : "Roman",
+    "pesel" : "91030472422",
+    "birthDate" : null
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "city" : "Zamiasto",
+    "street" : "Koperkowa",
+    "flatNumber" : "2",
+    "houseNumber" : "22"
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "phoneNumber" : "88825963",
+    "gender" : null,
+    "surname" : "Pazdzioch",
+    "name" : "Roman",
+    "pesel" : "91030472422",
+    "birthDate" : null
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "10-022",
+    "city" : "Wyczechowo",
+    "street" : "Koperkowa",
+    "flatNumber" : "12",
+    "houseNumber" : "22"
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "phoneNumber" : "999639966",
+    "gender" : null,
+    "surname" : "Nowak",
+    "name" : "Adam",
+    "pesel" : "97110672177",
+    "birthDate" : null
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "10-022",
+    "city" : "Wyczechowo",
+    "street" : "Produkcyjna",
+    "flatNumber" : "12",
+    "houseNumber" : "22"
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "phoneNumber" : "88825963",
+    "gender" : null,
+    "surname" : "Pazdzioch",
+    "name" : "Kamila",
+    "pesel" : "91030472422",
+    "birthDate" : null
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "city" : "Zamiasto",
+    "street" : "Produkcyjna",
+    "flatNumber" : "12",
+    "houseNumber" : "22"
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "phoneNumber" : "999639966",
+    "gender" : null,
+    "surname" : "Kowalska",
+    "name" : "Roman",
+    "pesel" : "91030472422",
+    "birthDate" : null
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "city" : "Zamiasto",
+    "street" : "Produkcyjna",
+    "flatNumber" : "2",
+    "houseNumber" : "5"
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "phoneNumber" : "999639966",
+    "gender" : null,
+    "surname" : "Nowak",
+    "name" : "Kamila",
+    "pesel" : "95102826883",
+    "birthDate" : null
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "city" : "Wyczechowo",
+    "street" : "Produkcyjna",
+    "flatNumber" : "12",
+    "houseNumber" : "5"
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "phoneNumber" : "999639966",
+    "gender" : null,
+    "surname" : "Pazdzioch",
+    "name" : "Roman",
+    "pesel" : "95102826883",
+    "birthDate" : null
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "city" : "Zamiasto",
+    "street" : "Produkcyjna",
+    "flatNumber" : "12",
+    "houseNumber" : "22"
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "phoneNumber" : "999639966",
+    "gender" : null,
+    "surname" : "Pazdzioch",
+    "name" : "Adam",
+    "pesel" : "5502120313",
+    "birthDate" : "1955-02-12"
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "city" : "Zamiasto",
+    "street" : "Koperkowa",
+    "flatNumber" : "12",
+    "houseNumber" : "22"
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "name" : "Kamila",
+    "surname" : "Pazdzioch",
+    "phoneNumber" : "999639966",
+    "birthDate" : "1997-11-06",
+    "pesel" : "97110672177",
+    "gender" : "WOMAN"
   },
   "clinic" : null,
   "doctor" : null,
@@ -165,8 +336,8 @@
     "city" : "Zamiasto",
     "country" : "Polska",
     "zipCode" : "02-200",
-    "street" : "Koperkowa",
-    "houseNumber" : "22",
+    "street" : "Produkcyjna",
+    "houseNumber" : "5",
     "flatNumber" : "2"
   }
 } ]

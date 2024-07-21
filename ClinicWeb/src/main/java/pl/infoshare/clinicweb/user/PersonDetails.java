@@ -1,4 +1,5 @@
 package pl.infoshare.clinicweb.user;
+
 import java.time.LocalDate;
 
 public class PersonDetails {
@@ -70,7 +71,6 @@ public class PersonDetails {
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
-
 
     @Override
     public String toString() {
