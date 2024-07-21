@@ -4,7 +4,10 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.Specialization;
 import pl.infoshare.clinicweb.patient.PatientDto;
@@ -21,7 +24,7 @@ public class VisitController {
         this.visitService = visitService;
     }
 
-    @RequestMapping("/addVisit")
+    @GetMapping("/addVisit")
     public String visitForm(@ModelAttribute("visit") Visit visit, @ModelAttribute("patient") PatientDto patient, @ModelAttribute("doctor") DoctorDto doctor) {
 
 
@@ -47,6 +50,8 @@ public class VisitController {
             return "addVisit";
         }
 
+
+        //do poprawy, musi wyladowac w service
 
         visit.setPatient(patient);
         patient.setDoctor(doctor);

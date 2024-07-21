@@ -1,7 +1,6 @@
 package pl.infoshare.clinicweb.visit;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.validation.Valid;
@@ -26,7 +25,6 @@ public class Visit {
     @FutureOrPresent(message = "Wybierz datę w przyszłości. ")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
-    @JsonProperty("visitDate")
     private LocalDateTime visitDate;
 
 

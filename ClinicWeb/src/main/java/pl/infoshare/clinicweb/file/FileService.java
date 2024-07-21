@@ -3,6 +3,7 @@ package pl.infoshare.clinicweb.file;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -10,11 +11,13 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class FileService implements FileRepository {
 
     private final ObjectMapper mapper;
@@ -41,22 +44,13 @@ public class FileService implements FileRepository {
             return mapper.readValue(fileBytes, typeReference);
 
         } catch (IOException e) {
+
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void readPatients(String filePatient) {
-
-    }
-
-//    @Override
-//    public void readDoctors(String fileDoctors) {
-//
-//    }
-
-    @Override
-    public void writeToFile(Object object, String filePath) {
+    public void writeToFile(Object object, String filePath) throws RuntimeException {
 
         mapper.registerModule(new JavaTimeModule());
 
@@ -72,8 +66,10 @@ public class FileService implements FileRepository {
             fileWriter.write(jsonPretty);
 
 
-        } catch (IOException e) {
+        } catch (NoSuchFileException | FileNotFoundException e) {
+            log.error(e.getMessage());
 
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 

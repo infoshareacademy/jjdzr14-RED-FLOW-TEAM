@@ -15,49 +15,49 @@
 <div class="jumbotron jumbotron-md">
 
 
-<div class="container-xl" style="padding-top:30px">
-    <div class="card">
-        <div class="card-body">
-            <table class="table table-striped tfixed" th:object="${doctor}">
+    <div class="container-xl" style="padding-top:30px">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped tfixed" th:object="${doctor}">
 
-                <h3 class="card-title text-center">Lista lekarzy </h3>
+                    <h3 class="card-title text-center">Lista lekarzy </h3>
 
-                <thead>
-                <tr bgcolor="d3d3d3">
-                    <td>Imię</td>
-                    <td>Nazwisko</td>
+                    <thead>
+                    <tr bgcolor="d3d3d3">
+                        <td>Imię</td>
+                        <td>Nazwisko</td>
 
-                    <form th:action="@{/doctors}">
-                    <td>Specjalizacja
-                        <select name="specialization"
-                                id="specialization"
-                                class="btn btn-primary dropdown-toggle"
-                                data-bs-toggle="dropdown">
-                        <option selected="selected">
-                        <option th:each="specialization:${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
-                                th:value="${specialization}" th:text="${specialization.getDescription()}"></option>
-                    </select></td>
-                    <td>
-                        <button type="submit"
-                                class="btn btn-primary btn-success form-control">Filtruj</button>
-                    </td>
-                    </form>
-                </tr>
-                </thead>
+                        <form th:action="@{/doctors}">
+                            <td>Specjalizacja
+                                <select name="specialization"
+                                        id="specialization"
+                                        class="btn btn-primary dropdown-toggle"
+                                        data-bs-toggle="dropdown">
+                                    <option selected="selected">
+                                    <option th:each="specialization:${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
+                                            th:value="${specialization}" th:text="${specialization.getDescription()}"></option>
+                                </select></td>
+                            <td>
+                                <button type="submit"
+                                        class="btn btn-primary btn-block form-control">Filtruj</button>
+                            </td>
+                        </form>
+                    </tr>
+                    </thead>
 
-                <tbody bgcolor="white">
+                    <tbody bgcolor="white">
 
-                <tr th:each="doctor:${listDoctor}">
+                    <tr th:each="doctor:${listDoctor}">
 
-                    <td th:text="${doctor.name}"></td>
-                    <td th:text="${doctor.surname}"></td>
-                    <td th:text="${doctor.specialization}"></td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+                        <td th:text="${doctor.name}"></td>
+                        <td th:text="${doctor.surname}"></td>
+                        <td th:text="${doctor.specialization}"></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>

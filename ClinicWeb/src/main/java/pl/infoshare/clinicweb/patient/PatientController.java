@@ -1,6 +1,5 @@
 package pl.infoshare.clinicweb.patient;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,15 +22,15 @@ public class PatientController {
         this.fileService = fileService;
     }
 
-    @GetMapping("/patientForm")
+    @GetMapping("/patient")
     public String patientForm(Model model) {
 
         model.addAttribute("personDetails", new PersonDetails());
         model.addAttribute("address", new Address());
-        return "patientForm";
+        return "patient";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/patient")
     public String patientFormSubmission(@ModelAttribute PersonDetails patientDetails, @ModelAttribute Address patientAddress, Model model) {
 
         model.addAttribute("personDetails", new PersonDetails());
