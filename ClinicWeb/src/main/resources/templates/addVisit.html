@@ -8,55 +8,90 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link th:href="@{/styles/style.css}" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <div class="container-xl">
     <div class="card">
         <div class="card-body">
             <h3 class="card-title text-center">Rejestracja nowej wizyty</h3>
-            <form>
-                <div class="form-group mb-3">
-                    <label for="username">Imię</label>
-                    <input type="text" class="form-control" id="username" placeholder="podaj imię">
-                </div>
 
-                <div class="form-group mb-3">
-                    <label for="userSurname">Nazwisko</label>
-                    <input type="text" class="form-control" id="userSurname" placeholder="podaj nazwisko">
-                </div>
+            <form th:action="saveVisit" th:method="post" th:object="${visit}">
 
-                <div class="form-group mb-3">
+                <div class="form-group mb-3" th:action="saveVisit" th:method="post" th:object="${patient}">
+                    <label>Imię</label>
+                    <input type="text"
+                           th:field="${patient.name}"
+                           class="form-control"
+                           id="name"
+                           placeholder="podaj imię"
+                    >
+                    <p th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="${patient.name}">Name
+                        error</p>
+
+                    <label>Nazwisko</label>
+                    <input type="text"
+                           th:field="${patient.surname}"
+                           class="form-control"
+                           id="userSurname"
+                           placeholder="podaj nazwisko"
+                    >
+                    <p th:if="${#fields.hasErrors('surname')}" class="text-danger" th:errors="${patient.surname}">
+                        Surname
+                        error</p>
+
                     <label for="pesel">Pesel</label>
-                    <input type="text" class="form-control" id="pesel" placeholder="pesel">
+                    <input type="text"
+                           th:field="${patient.pesel}"
+                           class="form-control"
+                           id="pesel" placeholder="pesel"
+                    >
+                    <p th:if="${#fields.hasErrors('pesel')}" class="text-danger" th:errors="${patient.pesel}">Pesel
+                        error</p>
+
                 </div>
 
-                <div class="form-group mb-3">
-                    <label for="visitDate">Data wizyty</label>
-                    <input type="date" class="form-control" id="visitDate">
-                </div>
+                <label>Data wizyty</label>
+
+                <input type="datetime-local"
+                       th:field="${visit.visitDate}"
+                       name="visitDate">
+                <p th:if="${#fields.hasErrors('visitDate')}" class="text-danger" th:errors="${visit.visitDate}">
+                    visitDate
+                    error</p>
+
 
                 <div class="form-check form-switch mb-3">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <input class="form-check-input"
+                           type="checkbox"
+                           id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Pacjent jest ubezpieczony</label>
                 </div>
 
-                <div class="btn-group mb-3">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        Do jakiego lekarza chcesz zapisać
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Lekarz rodzinny')">Lekarz rodzinny</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Pediatra')">Pediatra</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Kardiolog')">Kardiolog</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Dermatolog')">Dermatolog</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Ortopeda')">Ortopeda</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="selectSpecialization('Ginekolog')">Ginekolog</button></li>
-                    </ul>
-                    <span id="selected-specialization" class="ms-3"></span>
+                <div class="btn-group mb-3" th:action="saveVisit" th:method="post" th:object="${doctor}">
+
+                    <span> Do jakiego lekarza chcesz zapisać? </span>
+
                 </div>
 
-              <p>  <button type="submit" class="btn btn-primary btn-block">Zarejestruj się</button></p>
+                <div>
+
+                    <select class="btn btn-primary dropdown-toggle"
+                            data-bs-toggle="dropdown"
+                            name="specialization">
+                        <option th:each="specOpt : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
+                                th:value="${specOpt}" th:text="${specOpt.getDescription()}"></option>
+                    </select>
+
+
+                    <span id="selected-specialization" class="ms-3"></span>
+
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary btn-block">Zarejestruj się</button>
+                </div>
+
             </form>
         </div>
     </div>

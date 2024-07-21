@@ -1,20 +1,40 @@
 package pl.infoshare.clinicweb.visit;
 
-import pl.infoshare.clinicweb.doctor.Doctor;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotNull;
 import pl.infoshare.clinicweb.medicines.Medicines;
-import pl.infoshare.clinicweb.patient.Patient;
+import pl.infoshare.clinicweb.patient.PatientDto;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
 public class Visit {
-   private Doctor doctor;
-    private Patient patient;
-   private List<Visit>visits;
-   private List<Medicines>medicines;
-   private int numberOfVisits;
+
+    @Valid
+    private PatientDto patient;
+
+    private List<Medicines> medicines;
+    private int numberOfVisits;
+
+    @NotNull(message = "Pole data nie moze byc puste. ")
+    @FutureOrPresent(message = "Wybierz datę w przyszłości. ")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
+    @JsonProperty("visitDate")
+    private LocalDateTime visitDate;
 
 
-   public int getNumberOfVisits() {
+    public Visit(PatientDto patient) {
+        this.patient = patient;
+    }
+
+    public int getNumberOfVisits() {
         return numberOfVisits;
     }
 
@@ -22,34 +42,12 @@ public class Visit {
         this.numberOfVisits = numberOfVisits;
     }
 
-    public Visit(Doctor doctor, Patient patient) {
-        this.doctor = doctor;
-        this.patient = patient;
-        boolean insured = false;
-    }
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-
-    public Patient getPatient() {
+    public PatientDto getPatient() {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
+    public void setPatient(PatientDto patient) {
         this.patient = patient;
-    }
-
-    public List<Visit> getVisits() {
-        return visits;
-    }
-
-    public void setVisits(List<Visit> visits) {
-        this.visits = visits;
     }
 
     public List<Medicines> getMedicines() {
@@ -60,27 +58,37 @@ public class Visit {
         this.medicines = medicines;
     }
 
+    public LocalDateTime getVisitDate() {
+        return visitDate;
+    }
+
+    public void setVisitDate(LocalDateTime visitDate) {
+        this.visitDate = visitDate;
+
+    }
+
+
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Visit visit = (Visit) o;
-        return Objects.equals(doctor, visit.doctor) && Objects.equals(patient, visit.patient) && Objects.equals(visits, visit.visits) && Objects.equals(medicines, visit.medicines);
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Visit visit = (Visit) object;
+        return numberOfVisits == visit.numberOfVisits && Objects.equals(patient, visit.patient) && Objects.equals(medicines, visit.medicines) && Objects.equals(visitDate, visit.visitDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(doctor, patient, visits, medicines);
+        return Objects.hash(patient, medicines, numberOfVisits, visitDate);
     }
+
 
     @Override
     public String toString() {
         return "Visit{" +
-                "doctor=" + doctor +
                 ", patient=" + patient +
-                ", visits=" + visits +
                 ", medicines=" + medicines +
                 ", numberOfVisits=" + numberOfVisits +
+                ", visitDate=" + visitDate +
                 '}';
     }
 }

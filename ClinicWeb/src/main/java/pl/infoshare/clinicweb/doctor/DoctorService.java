@@ -17,8 +17,9 @@ public class DoctorService implements DoctorRepository {
     private final FileService fileService;
 
     @Autowired
-    public DoctorService(List<Doctor> doctorList, FileService fileService)  {
-        this.doctorList = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {});
+    public DoctorService(List<Doctor> doctorList, FileService fileService) {
+        this.doctorList = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {
+        });
         this.fileService = fileService;
 
     }
@@ -66,11 +67,11 @@ public class DoctorService implements DoctorRepository {
 
     }
 
-    public List<DoctorDto> findBySpecialization(String specialization) {
+    public List<DoctorDto> findBySpecialization(Specialization specialization) {
 
         return getAll()
                 .stream()
-                .filter(doctor -> doctor.getSpecialization().equals(specialization))
+                .filter(doctor -> doctor.getSpecialization().equals(specialization.getDescription()))
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
 
