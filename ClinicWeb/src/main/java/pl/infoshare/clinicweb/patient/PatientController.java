@@ -1,24 +1,22 @@
 package pl.infoshare.clinicweb.patient;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.infoshare.clinicweb.file.FileService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 
 @Controller
-@Slf4j
 public class PatientController {
 
     private final PatientService patientService;
     private final FileService fileService;
 
-    @Autowired
     public PatientController(PatientService patientService, FileService fileService) {
 
         this.patientService = patientService;
@@ -52,6 +50,16 @@ public class PatientController {
 
         return "patientsList";
     }
-
+    @PostMapping("/addVisit")
+    public String showSearchForm(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
+        if (pesel != null && !pesel.isEmpty()) {
+            Patient byPesel = patientService.findByPesel(pesel);
+            model.addAttribute("searchForPesel", byPesel);
+        }
+        else if (patientService.findByPesel(pesel) != null) {
+            model.addAttribute("searchForPesel", patientService.findByPesel(pesel));
+        }
+        return "addVisit";
+    }
 
 }

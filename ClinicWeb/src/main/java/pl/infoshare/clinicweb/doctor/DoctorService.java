@@ -13,15 +13,11 @@ import java.util.stream.Collectors;
 public class DoctorService implements DoctorRepository {
 
     private static final String DOCTOR_PATH = "ClinicWeb/src/main/resources/doctors.json";
-    private final List<Doctor> doctorList;
     private final FileService fileService;
 
     @Autowired
-    public DoctorService(List<Doctor> doctorList, FileService fileService) {
-        this.doctorList = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {
-        });
+    public DoctorService(FileService fileService) {
         this.fileService = fileService;
-
     }
 
 
@@ -69,10 +65,8 @@ public class DoctorService implements DoctorRepository {
 
     public List<DoctorDto> findBySpecialization(Specialization specialization) {
 
-        return getAll()
-                .stream()
-                .filter(doctor -> doctor.getSpecialization().equals(specialization.getDescription()))
-                .map(this::convertToDto)
+        return findAll().stream()
+                .filter(doctor -> doctor.getSpecialization().equals(specialization))
                 .collect(Collectors.toList());
 
     }

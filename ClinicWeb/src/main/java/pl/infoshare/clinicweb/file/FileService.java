@@ -50,10 +50,10 @@ public class FileService implements FileRepository {
 
     }
 
-    @Override
-    public void readDoctors(String fileDoctors) {
-
-    }
+//    @Override
+//    public void readDoctors(String fileDoctors) {
+//
+//    }
 
     @Override
     public void writeToFile(Object object, String filePath) {

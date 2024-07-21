@@ -1,14 +1,17 @@
 package pl.infoshare.clinicweb.patient;
 
-import pl.infoshare.clinicweb.doctor.DoctorDto;
+import pl.infoshare.clinicweb.clinic.Clinic;
+import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.user.PersonDetails;
+
+import java.time.LocalDate;
 
 public class Patient {
 
     private PersonDetails personDetails;
-    private DoctorDto doctor;
+    private Clinic clinic;
+    private Doctor doctor;
     private Address address;
-    boolean hasInsurance;
 
     public Patient() {
 
@@ -18,7 +21,6 @@ public class Patient {
 
         this.personDetails = patientDetails;
         this.address = patientAddress;
-        this.hasInsurance = false;
     }
 
 
@@ -30,13 +32,23 @@ public class Patient {
         this.personDetails = personDetails;
     }
 
-    public DoctorDto getDoctor() {
+
+    public Clinic getClinic() {
+        return clinic;
+    }
+
+    public void setClinic(Clinic clinic) {
+        this.clinic = clinic;
+    }
+
+    public Doctor getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(DoctorDto doctor) {
+    public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
+
 
     public Address getAddress() {
         return address;
@@ -46,21 +58,42 @@ public class Patient {
         this.address = address;
     }
 
-    public boolean isHasInsurance() {
-        return hasInsurance;
-    }
+    public void setDateOfBirth(Patient patient) {
+        String pesel = personDetails.getPesel();
+        String decodedYearPart = "";
+        String secondYearPart = pesel.substring(0, 2);
+        String month = pesel.substring(2, 4);
+        int day = Integer.parseInt(pesel.substring(4, 6));
 
-    public void setHasInsurance(boolean hasInsurance) {
-        this.hasInsurance = hasInsurance;
+        if (month.startsWith("8") || month.startsWith("9")) {
+            decodedYearPart = "18";
+        } else if (month.startsWith("0") || month.startsWith("1")) {
+            decodedYearPart = "19";
+        } else if (month.startsWith("2") || month.startsWith("3")) {
+            decodedYearPart = "20";
+        } else if (month.startsWith("4") || month.startsWith("5")) {
+            decodedYearPart = "21";
+        } else {
+            decodedYearPart = "22";
+        }
+
+        int decodedMonthPartBeginning = Character.getNumericValue(month.charAt(0)) % 2;
+        String decodedMonthPart = Integer.toString(decodedMonthPartBeginning) + month.charAt(1);
+
+        int fullYear = Integer.parseInt(decodedYearPart + secondYearPart);
+
+
+        LocalDate dateOfBirth = LocalDate.of(fullYear, Integer.parseInt(decodedMonthPart), day);
+        patient.personDetails.setBirthDate(dateOfBirth);
     }
 
     @Override
     public String toString() {
         return "Patient{" +
-                "personDetails=" + personDetails +
+                ", personDetails=" + personDetails +
+                ", clinic=" + clinic +
                 ", doctor=" + doctor +
                 ", address=" + address +
-                ", hasInsurance=" + hasInsurance +
                 '}';
     }
 }
