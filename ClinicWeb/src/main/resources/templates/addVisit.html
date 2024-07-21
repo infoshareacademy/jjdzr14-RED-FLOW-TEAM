@@ -38,8 +38,6 @@
             margin-top: 10px;
         }
     </style>
-    <link th:href="@{/styles/style.css}" rel="stylesheet" type="text/css">
-
 </head>
 <body>
 <div class="container">
@@ -52,65 +50,20 @@
                     <button class="btn btn-primary" type="submit" id="button-addon2">Wyszukaj</button>
                 </div>
 
-            <form th:action="saveVisit" th:method="post" th:object="${visit}">
-
                 <div th:if="${searchForPesel}" class="mt-4">
                     <p><strong>Imię:</strong> <span th:text="${searchForPesel.personDetails.name}">Imię pacjenta</span></p>
                     <p><strong>Nazwisko :</strong> <span th:text="${searchForPesel.personDetails.surname}">Nazwisko pacjenta</span></p>
                 </div>
                 <div th:if="${searchForPesel}" class="mt-4">
                     <p><strong>Pesel :</strong> <span th:text="${searchForPesel.personDetails.pesel}">Pesel Pacjenta</span></p>
-                <div class="form-group mb-3" th:action="saveVisit" th:method="post" th:object="${patient}">
-                    <label>Imię</label>
-                    <input type="text"
-                           th:field="${patient.name}"
-                           class="form-control"
-                           id="name"
-                           placeholder="podaj imię"
-                    >
-                    <p th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="${patient.name}">Name
-                        error</p>
-
-                    <label>Nazwisko</label>
-                    <input type="text"
-                           th:field="${patient.surname}"
-                           class="form-control"
-                           id="userSurname"
-                           placeholder="podaj nazwisko"
-                    >
-                    <p th:if="${#fields.hasErrors('surname')}" class="text-danger" th:errors="${patient.surname}">
-                        Surname
-                        error</p>
-
-                    <label for="pesel">Pesel</label>
-                    <input type="text"
-                           th:field="${patient.pesel}"
-                           class="form-control"
-                           id="pesel" placeholder="pesel"
-                    >
-                    <p th:if="${#fields.hasErrors('pesel')}" class="text-danger" th:errors="${patient.pesel}">Pesel
-                        error</p>
-
                 </div>
                 <div class="form-group mb-3">
                     <label for="visitDate" class="form-label">Data wizyty</label>
                     <input type="date" class="form-control" id="visitDate">
                 </div>
 
-                <label>Data wizyty</label>
-
-                <input type="datetime-local"
-                       th:field="${visit.visitDate}"
-                       name="visitDate">
-                <p th:if="${#fields.hasErrors('visitDate')}" class="text-danger" th:errors="${visit.visitDate}">
-                    visitDate
-                    error</p>
-
-
                 <div class="form-check form-switch mb-3">
-                    <input class="form-check-input"
-                           type="checkbox"
-                           id="flexSwitchCheckDefault">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Pacjent jest ubezpieczony</label>
                 </div>
 
@@ -119,32 +72,9 @@
                     <select name="specialization" class="form-select">
                         <option th:each="spec : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}" th:value="${spec.getDescription()}" th:text="${spec.getDescription()}"></option>
                     </select>
-                <div class="btn-group mb-3" th:action="saveVisit" th:method="post" th:object="${doctor}">
-
-                    <span> Do jakiego lekarza chcesz zapisać? </span>
-
-                </div>
-
-                <div>
-
-                    <select class="btn btn-primary dropdown-toggle"
-                            data-bs-toggle="dropdown"
-                            name="specialization">
-                        <option th:each="specOpt : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
-                                th:value="${specOpt}" th:text="${specOpt.getDescription()}"></option>
-                    </select>
-
-
-                    <span id="selected-specialization" class="ms-3"></span>
-
                 </div>
                 <button type="submit" class="btn btn-primary">Zarejestruj się</button>
                 <a class="btn btn-primary" th:href="@{/}">Wróć do strony głównej</a>
-
-                <div>
-                    <button type="submit" class="btn btn-primary btn-block">Zarejestruj się</button>
-                </div>
-
             </form>
         </div>
     </div>
