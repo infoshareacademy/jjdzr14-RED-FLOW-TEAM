@@ -2,9 +2,9 @@ package pl.infoshare.clinicweb.patient;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.stereotype.Service;
-import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.file.FileService;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,8 +13,9 @@ import java.util.stream.Collectors;
 @Service
 public class PatientService implements PatientRepository {
 
-    private static final String PATIENT_PATH = "ClinicWeb/src/main/resources/patients.json";
+    private static final String PATIENT_PATH = "src/main/resources/patients.json";
     private final FileService fileService;
+    private List<Patient> patientList;
 
 
     public PatientService(FileService fileService, List<Patient> patientList) {
@@ -48,12 +49,10 @@ public class PatientService implements PatientRepository {
     private PatientDto convertToDto(Patient patient) {
 
         PatientDto patientDto = new PatientDto();
-        DoctorDto doctorDto = new DoctorDto();
 
         patientDto.setName(patient.getPersonDetails().getName());
         patientDto.setSurname(patient.getPersonDetails().getSurname());
         patientDto.setPhoneNumber(patient.getPersonDetails().getPhoneNumber());
-        patientDto.setDoctor(doctorDto);
 
         return patientDto;
     }
@@ -72,4 +71,3 @@ public class PatientService implements PatientRepository {
 
 
 }
-
