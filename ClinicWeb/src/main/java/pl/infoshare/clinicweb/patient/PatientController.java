@@ -47,15 +47,16 @@ public class PatientController {
 
         model.addAttribute("listPatient", patientService.findAll());
 
+
         return "patientsList";
     }
+
     @PostMapping("/addVisit")
     public String showSearchForm(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
         if (pesel != null && !pesel.isEmpty()) {
             Patient byPesel = patientService.findByPesel(pesel);
             model.addAttribute("searchForPesel", byPesel);
-        }
-        else if (patientService.findByPesel(pesel) != null) {
+        } else if (patientService.findByPesel(pesel) != null) {
             model.addAttribute("searchForPesel", patientService.findByPesel(pesel));
         }
         return "addVisit";
