@@ -65,9 +65,7 @@
     <h3>Wszyscy nasi pacjenci</h3>
     <table>
         <div class="card">
-            <table class="table table-striped tfixed" th:object="${patient}">
-
-
+            <table class="table table-striped tfixed">
                 <thead>
                 <tr>
                     <td>Imię</td>
@@ -78,15 +76,13 @@
 
                 </tr>
                 </thead>
-                <tr th:each="patient:${listPatiaent}">
+                <tr th:each="patient:${listPatient}">
                     <td th:text="${patient.name}"></td>
                     <td th:text="${patient.surname}"></td>
                     <td th:text="${patient.phoneNumber}"></td>
                     <td th:text="${patient.doctor}"></td>
                     <td>
-                        <form th:action="patient" th:method="">
-                        <button class="edit-btn" type="submit">Edytuj</button>
-                        </form>
+
                     </td>
                 </tr>
             </table>

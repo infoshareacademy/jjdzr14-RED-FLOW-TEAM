@@ -323,21 +323,97 @@
   "clinic" : null
 }, {
   "personDetails" : {
-    "name" : "Kamila",
-    "surname" : "Pazdzioch",
     "phoneNumber" : "999639966",
-    "birthDate" : "1997-11-06",
+    "gender" : "WOMAN",
+    "surname" : "Pazdzioch",
+    "name" : "Kamila",
     "pesel" : "97110672177",
-    "gender" : "WOMAN"
+    "birthDate" : "1997-11-06"
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "city" : "Zamiasto",
+    "street" : "Produkcyjna",
+    "flatNumber" : "2",
+    "houseNumber" : "5"
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "phoneNumber" : null,
+    "gender" : null,
+    "surname" : "Romanowska",
+    "name" : "Kamila",
+    "pesel" : "95102826883",
+    "birthDate" : "1995-10-28"
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : null,
+    "zipCode" : null,
+    "city" : null,
+    "street" : null,
+    "flatNumber" : null,
+    "houseNumber" : null
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "phoneNumber" : null,
+    "gender" : null,
+    "surname" : "Nowa",
+    "name" : "Kamila",
+    "pesel" : "95102826883",
+    "birthDate" : "1995-10-28"
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : null,
+    "zipCode" : null,
+    "city" : null,
+    "street" : null,
+    "flatNumber" : null,
+    "houseNumber" : null
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "phoneNumber" : null,
+    "gender" : null,
+    "surname" : "Zdzisławski",
+    "name" : "Antoni",
+    "pesel" : "75010112345",
+    "birthDate" : "1975-01-01"
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : null,
+    "zipCode" : null,
+    "city" : null,
+    "street" : null,
+    "flatNumber" : null,
+    "houseNumber" : null
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "name" : "Antonina",
+    "surname" : "Jarzabek",
+    "phoneNumber" : null,
+    "birthDate" : "1975-01-01",
+    "pesel" : "75010112345",
+    "gender" : null
   },
   "clinic" : null,
   "doctor" : null,
   "address" : {
-    "city" : "Zamiasto",
-    "country" : "Polska",
-    "zipCode" : "02-200",
-    "street" : "Produkcyjna",
-    "houseNumber" : "5",
-    "flatNumber" : "2"
+    "city" : null,
+    "country" : null,
+    "zipCode" : null,
+    "street" : null,
+    "houseNumber" : null,
+    "flatNumber" : null
   }
 } ]
