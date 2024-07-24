@@ -1,6 +1,7 @@
 package pl.infoshare.clinicweb.patient;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.file.FileService;
 
@@ -15,7 +16,6 @@ public class PatientService implements PatientRepository {
     private static final String PATIENT_PATH = "src/main/resources/patients.json";
     private final FileService fileService;
     private List<Patient> patientList;
-
 
     public PatientService(FileService fileService, List<Patient> patientList) {
 
@@ -45,7 +45,7 @@ public class PatientService implements PatientRepository {
 
     }
 
-    private PatientDto convertToDto(Patient patient) {
+    public PatientDto convertToDto(Patient patient) {
 
         PatientDto patientDto = new PatientDto();
 
@@ -68,8 +68,14 @@ public class PatientService implements PatientRepository {
                 .orElse(null);
     }
 
-    public void updatePatient(Patient patient) {
-        patient.getPersonDetails().setName(patient.getPersonDetails().getName());
-        patient.getPersonDetails().setSurname(patient.getPersonDetails().getSurname());
+    public void saveOrUpdatePatient(Patient patient) {
+        Patient patientByPesel = findByPesel(patient.getPersonDetails().getPesel());
+        if (patientByPesel != null) {
+            patientByPesel.getPersonDetails().setName(patient.getPersonDetails().getName());
+            patientByPesel.getPersonDetails().setSurname(patient.getPersonDetails().getSurname());
+            savePatient(patientByPesel);
+        } else {
+            savePatient(patient);
+        }
     }
 }

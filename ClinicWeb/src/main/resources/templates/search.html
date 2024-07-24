@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,23 +18,23 @@
         </div>
     </form>
 
-
     <div th:if="${error != null}" class="mt-4 alert alert-danger" role="alert">
         <p th:text="${error}">Błąd</p>
     </div>
-    <div th:if="${searchForPesel}" class="mt-4">
-        <form  th:action="@{/search}" th:method="post" >
+
+    <div th:if="${patient != null}" class="mt-4">
+        <form th:action="@{/edit}" th:method="post" th:object="${patient}">
             <div class="form-group">
                 <label for="name">Imię:</label>
-                <input type="text" class="form-control" id="name" name="name" th:value="${searchForPesel.personDetails.name}">
+                <input type="text" class="form-control" id="name" th:field="*{personDetails.name}">
             </div>
             <div class="form-group">
                 <label for="surname">Nazwisko:</label>
-                <input type="text" class="form-control" id="surname" name="surname" th:value="${searchForPesel.personDetails.surname}">
+                <input type="text" class="form-control" id="surname" th:field="*{personDetails.surname}">
             </div>
             <div class="form-group">
                 <label for="pesel">PESEL:</label>
-                <input type="text" class="form-control" id="pesel" name="pesel" th:value="${searchForPesel.personDetails.pesel}">
+                <input type="text" class="form-control" id="pesel" th:field="*{personDetails.pesel}">
             </div>
             <button type="submit" class="btn btn-success">Zapisz zmiany</button>
         </form>
@@ -44,5 +44,9 @@
         <p th:text="${success}">Sukces</p>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+DVQT20Iw6j5mDaTwtjz6fBLv9gI6"
+        crossorigin="anonymous"></script>
 </body>
 </html>

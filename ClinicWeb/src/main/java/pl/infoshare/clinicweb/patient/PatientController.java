@@ -15,6 +15,7 @@ public class PatientController {
 
     private final PatientService patientService;
     private final FileService fileService;
+    private PatientDto patientDto;
 
     public PatientController(PatientService patientService, FileService fileService) {
 
@@ -63,26 +64,27 @@ public class PatientController {
     }
 
     @GetMapping("/search")
-    public String searchForm() {
+    public String searchForm(Model model) {
+        model.addAttribute("patient", new Patient());
+        return "search";
+    }
+
+    @PostMapping("/search")
+    public String searchPatient(@RequestParam("pesel") String pesel, Model model) {
+        Patient patient = patientService.findByPesel(pesel);
+        if (patient != null) {
+            model.addAttribute("patient", patient);
+        } else {
+            model.addAttribute("error", "Patient not found");
+        }
         return "search";
     }
 
     @PostMapping("/edit")
-    public String editPatient(@ModelAttribute Patient patient, Model model) {
-        patientService.savePatient(patient);
-        model.addAttribute("searchForPesel", patient);
+    public String editPatient(@ModelAttribute("patient") Patient patient, Model model) {
+        patientService.saveOrUpdatePatient(patient);
+        model.addAttribute("patient", patient);
         model.addAttribute("success", "Patient data updated successfully");
-        return "result";
-    }
-
-    @PostMapping("/search")
-    public String searchPatient(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
-        if (pesel != null && !pesel.isEmpty()) {
-            Patient byPesel = patientService.findByPesel(pesel);
-            model.addAttribute("searchForPesel", byPesel);
-        } else if (patientService.findByPesel(pesel) != null) {
-            model.addAttribute("searchForPesel", patientService.findByPesel(pesel));
-        }
         return "search";
     }
 }
