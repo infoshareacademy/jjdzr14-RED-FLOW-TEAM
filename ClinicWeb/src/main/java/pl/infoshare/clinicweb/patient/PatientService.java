@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.file.FileService;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -69,5 +68,8 @@ public class PatientService implements PatientRepository {
                 .orElse(null);
     }
 
-
+    public void updatePatient(Patient patient) {
+        patient.getPersonDetails().setName(patient.getPersonDetails().getName());
+        patient.getPersonDetails().setSurname(patient.getPersonDetails().getSurname());
+    }
 }

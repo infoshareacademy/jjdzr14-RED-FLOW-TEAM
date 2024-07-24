@@ -67,24 +67,22 @@ public class PatientController {
         return "search";
     }
 
-    @PostMapping("/search")
-    public String searchPatient(@RequestParam(value = "pesel", required = false) String name,  String surname, String pesel, Model model) {
+    @PostMapping("/edit")
+    public String editPatient(@ModelAttribute Patient patient, Model model) {
+        patientService.savePatient(patient);
+        model.addAttribute("searchForPesel", patient);
+        model.addAttribute("success", "Patient data updated successfully");
+        return "result";
+    }
 
+    @PostMapping("/search")
+    public String searchPatient(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
         if (pesel != null && !pesel.isEmpty()) {
             Patient byPesel = patientService.findByPesel(pesel);
             model.addAttribute("searchForPesel", byPesel);
-         byPesel.getPersonDetails().setName(name);
-         byPesel.getPersonDetails().setSurname(surname);
         } else if (patientService.findByPesel(pesel) != null) {
             model.addAttribute("searchForPesel", patientService.findByPesel(pesel));
-        }return "search";
-    }
-
-    @PostMapping("/edit")
-    public String editPatient(Patient patient, Model model) {
-        patientService.savePatient(patient);
-        model.addAttribute("patient", patient);
-        model.addAttribute("success", "Patient data updated successfully");
-        return "patientsList";
+        }
+        return "search";
     }
 }

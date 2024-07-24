@@ -23,7 +23,7 @@
         <p th:text="${error}">Błąd</p>
     </div>
     <div th:if="${searchForPesel}" class="mt-4">
-        <form  th:action="@{/patient}" th:method="post" >
+        <form  th:action="@{/search}" th:method="post" >
             <div class="form-group">
                 <label for="name">Imię:</label>
                 <input type="text" class="form-control" id="name" name="name" th:value="${searchForPesel.personDetails.name}">
