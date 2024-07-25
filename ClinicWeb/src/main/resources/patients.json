@@ -1,105 +1,10 @@
 [ {
   "personDetails" : {
-    "phoneNumber" : "785-432-123",
-    "gender" : "MAN",
-    "surname" : "Jarzabek",
-    "name" : "Antoni",
-    "pesel" : "75010112345",
-    "birthDate" : "1975-01-01"
-  },
-  "doctor" : null,
-  "address" : {
-    "country" : "Polska",
-    "zipCode" : "30-836",
-    "city" : "Krakow",
-    "street" : "Kwiatowa",
-    "flatNumber" : "1",
-    "houseNumber" : "11"
-  },
-  "clinic" : null
-}, {
-  "personDetails" : {
-    "phoneNumber" : "546-763-444",
-    "gender" : "WOMAN",
-    "surname" : "Osiolek",
     "name" : "Aleksandra",
-    "pesel" : "75010112345",
-    "birthDate" : "1995-01-01"
-  },
-  "doctor" : null,
-  "address" : {
-    "country" : "Polska",
-    "zipCode" : "30-836",
-    "city" : "Krakow",
-    "street" : "Jerzmanowskiego",
-    "flatNumber" : "111",
-    "houseNumber" : "23"
-  },
-  "clinic" : null
-}, {
-  "personDetails" : {
-    "phoneNumber" : "546-555-444",
-    "gender" : "WOMAN",
-    "surname" : "Kazimmiejczak",
-    "name" : "Kamila",
-    "pesel" : "95102826883",
-    "birthDate" : "1995-10-28"
-  },
-  "doctor" : null,
-  "address" : {
-    "country" : "Polska",
-    "zipCode" : "30-836",
-    "city" : "Krakow",
-    "street" : "Jerzmanowskiego",
-    "flatNumber" : "111",
-    "houseNumber" : "23"
-  },
-  "clinic" : null
-}, {
-  "personDetails" : {
-    "phoneNumber" : "88825963",
-    "gender" : null,
-    "surname" : "Kowalska",
-    "name" : "Kamila",
-    "pesel" : "91030472422",
-    "birthDate" : "1991-03-04"
-  },
-  "doctor" : null,
-  "address" : {
-    "country" : "Polska",
-    "zipCode" : "02-200",
-    "city" : "Wyczechowo",
-    "street" : "Koperkowa",
-    "flatNumber" : "12",
-    "houseNumber" : "5"
-  },
-  "clinic" : null
-}, {
-  "personDetails" : {
-    "phoneNumber" : "88825963",
-    "gender" : null,
-    "surname" : "Pazdzioch",
-    "name" : "Roman",
-    "pesel" : "5502120313",
-    "birthDate" : "2024-07-18"
-  },
-  "doctor" : null,
-  "address" : {
-    "country" : "Polska",
-    "zipCode" : "02-200",
-    "city" : "Zamiasto",
-    "street" : "Koperkowa",
-    "flatNumber" : "2",
-    "houseNumber" : "22"
-  },
-  "clinic" : null
-}, {
-  "personDetails" : {
-    "name" : "Kamila",
-    "surname" : "KOWALCZYK",
-    "phoneNumber" : "546-555-444",
-    "birthDate" : "1995-10-28",
-    "pesel" : "95102826883",
+    "surname" : "Osiolek",
+    "phoneNumber" : "546-763-444",
+    "birthDate" : [ 1995, 1, 1 ],
+    "pesel" : "75010112348",
     "gender" : "WOMAN"
   },
   "clinic" : null,
@@ -111,5 +16,62 @@
     "street" : "Jerzmanowskiego",
     "houseNumber" : "23",
     "flatNumber" : "111"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Teofil",
+    "surname" : "Lewandowski",
+    "phoneNumber" : "555-858-214",
+    "birthDate" : [ 1991, 5, 15 ],
+    "pesel" : "91051562694",
+    "gender" : "MAN"
+  },
+  "clinic" : null,
+  "doctor" : null,
+  "address" : {
+    "city" : "GDYNIA",
+    "country" : "POLSKA",
+    "zipCode" : "20-222",
+    "street" : "Produkcyjna",
+    "houseNumber" : "2",
+    "flatNumber" : "25"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Michael",
+    "surname" : "Musiał",
+    "phoneNumber" : "888-528-000",
+    "birthDate" : [ 1968, 10, 11 ],
+    "pesel" : "68101126810",
+    "gender" : "MAN"
+  },
+  "clinic" : null,
+  "doctor" : null,
+  "address" : {
+    "city" : "Ruda Śląska",
+    "country" : "POLSKA",
+    "zipCode" : "61-862",
+    "street" : "PRZYRODNICZA",
+    "houseNumber" : "8",
+    "flatNumber" : "7"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Leokadia",
+    "surname" : "Kowalska",
+    "phoneNumber" : "505-666-158",
+    "birthDate" : [ 1992, 4, 23 ],
+    "pesel" : "92042326741",
+    "gender" : "WOMAN"
+  },
+  "clinic" : null,
+  "doctor" : null,
+  "address" : {
+    "city" : "Grudziądz",
+    "country" : "POLSKA",
+    "zipCode" : "57-843",
+    "street" : "ZAKŁADOWA",
+    "houseNumber" : "14",
+    "flatNumber" : "8"
   }
 } ]

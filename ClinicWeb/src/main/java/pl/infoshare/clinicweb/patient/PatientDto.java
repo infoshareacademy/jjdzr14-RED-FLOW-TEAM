@@ -8,7 +8,6 @@ import pl.infoshare.clinicweb.user.PersonDetails;
 
 public class PatientDto {
 
- private PersonDetails personDetails;
     @NotEmpty(message = "Pole nie może być puste.")
     @Size(min = 2, max = 20, message = "Pole musi zawierać od 2 do 20 znaków.")
     @Pattern(regexp = "^[a-zA-Z]+$", message = "Pole musi składać się z samych liter")
@@ -27,7 +26,6 @@ public class PatientDto {
     private DoctorDto doctor;
 
     public PatientDto(PersonDetails personDetails) {
-        this.personDetails = personDetails;
     }
 
     public PatientDto() {
