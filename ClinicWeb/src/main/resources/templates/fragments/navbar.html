@@ -1,37 +1,38 @@
-<div th:fragment="navbar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Klinika zespołu red flow team </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">O nas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/addVisit}">Umów się na wizytę</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarViewDoctorSpecialization" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="true">
-                            Wyświetl Listę : </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" th:href="@{/patients}">Lista naszych pacjentów</a></li>
-                            <li><a class="dropdown-item" 91051562694>Lista naszych lekarzy</a></li>
-                        </ul>
-
-                    <li class="nav-item">
-                        <a class="nav-link enable" th:href="@{patient}" tabindex="-1" aria-disabled="true">Utwórz konto nowego pacjenta</a>
-                    </li>
-                </ul>
-            </div>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark navbar-custom">
+    <a class="navbar-brand" href="#">Klinika zespołu Red Flow Team</a>
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">O nas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/addVisit}">Umów się na wizytę</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarViewDoctorSpecialization" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Wyświetl Listę
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarViewDoctorSpecialization">
+                        <li><a class="dropdown-item" th:href="@{/patients}">Lista naszych pacjentów</a></li>
+                        <li><a class="dropdown-item" th:href="@{/search}">wyszukaj i edytuj dane pacjenta</a></li>
+                        <li><a class="dropdown-item" th:href="@{/doctors}">Lista naszych lekarzy</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link enable" th:href="@{patient}" tabindex="-1" aria-disabled="true">Utwórz konto
+                        nowego pacjenta</a>
+                </li>
+            </ul>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>

@@ -41,7 +41,8 @@
 
     <form action="/search" method="post" class="mb-3">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL" aria-label="Search" aria-describedby="button-addon2">
+            <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL" aria-label="Search"
+                   aria-describedby="button-addon2">
             <button class="btn btn-primary" type="submit" id="button-addon2">Wyszukaj</button>
         </div>
     </form>
@@ -67,14 +68,12 @@
             <button type="submit" class="btn btn-success">Zapisz zmiany</button>
         </form>
     </div>
+    <a th:href="@{/}" class="btn btn-primary" role="button"
+       aria-pressed="true">Powrót do strony głównej</a>
 
     <div th:if="${success != null}" class="mt-4 alert alert-success" role="alert">
         <p th:text="${success}">Sukces</p>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+DVQT20Iw6j5mDaTwtjz6fBLv9gI6"
-        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -85,12 +85,12 @@ public class PatientController {
         patientService.saveOrUpdatePatient(patient);
         model.addAttribute("patient", patient);
         model.addAttribute("success", "Patient data updated successfully");
-        return "search";
+        return "redirect:patients";
     }
     @GetMapping("/fullDetailsPatient")
     public String fullDetailPatient(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
         model.addAttribute("fullDetailPatient", patientService.findByPesel(pesel));
-        return "fullDetailsPatient";
+        return "/fullDetailsPatient";
     }
 
 }
