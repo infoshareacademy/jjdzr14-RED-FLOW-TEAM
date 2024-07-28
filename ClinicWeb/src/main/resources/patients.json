@@ -1,30 +1,11 @@
 [ {
   "personDetails" : {
-    "name" : "Teofil",
-    "surname" : "Lewandowski",
-    "phoneNumber" : "555-858-214",
-    "birthDate" : [ 1991, 5, 15 ],
-    "pesel" : "91051562694",
-    "gender" : "MAN"
-  },
-  "clinic" : null,
-  "doctor" : null,
-  "address" : {
-    "city" : "GDYNIA",
-    "country" : "POLSKA",
-    "zipCode" : "20-222",
-    "street" : "Produkcyjna",
-    "houseNumber" : "2",
-    "flatNumber" : "25"
-  }
-}, {
-  "personDetails" : {
     "name" : "Michael",
     "surname" : "Musiał",
     "phoneNumber" : "888-528-000",
     "birthDate" : [ 1968, 10, 11 ],
     "pesel" : "68101126810",
-    "gender" : "MAN"
+    "gender" : "Mężczyzna"
   },
   "clinic" : null,
   "doctor" : null,
@@ -39,11 +20,11 @@
 }, {
   "personDetails" : {
     "name" : "Leokadia",
-    "surname" : "Kowalska",
+    "surname" : "KOZAK",
     "phoneNumber" : "505-666-158",
     "birthDate" : [ 1992, 4, 23 ],
     "pesel" : "92042326741",
-    "gender" : "WOMAN"
+    "gender" : "Kobieta"
   },
   "clinic" : null,
   "doctor" : null,
@@ -62,16 +43,35 @@
     "phoneNumber" : "546-763-444",
     "birthDate" : [ 1975, 1, 1 ],
     "pesel" : "75010112348",
-    "gender" : "WOMAN"
+    "gender" : "Kobieta"
   },
   "clinic" : null,
   "doctor" : null,
   "address" : {
-    "city" : "Krakow",
-    "country" : "Polska",
+    "city" : null,
+    "country" : null,
     "zipCode" : "30-836",
-    "street" : "Jerzmanowskiego",
+    "street" : "Jerzmenowskiego",
     "houseNumber" : "23",
     "flatNumber" : "111"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Teofil",
+    "surname" : "Lewandowski",
+    "phoneNumber" : "555-858-214",
+    "birthDate" : [ 1991, 5, 15 ],
+    "pesel" : "91051562694",
+    "gender" : "Mężczyzna"
+  },
+  "clinic" : null,
+  "doctor" : null,
+  "address" : {
+    "city" : "Test",
+    "country" : "Słowacja",
+    "zipCode" : "20-222",
+    "street" : "Produkcyjna",
+    "houseNumber" : "2",
+    "flatNumber" : "25"
   }
 } ]

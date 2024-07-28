@@ -60,6 +60,7 @@ public class PatientService implements PatientRepository {
         patientDto.setPhoneNumber(patient.getPersonDetails().getPhoneNumber());
         patientDto.setPesel(patient.getPersonDetails().getPesel());
 
+
         return patientDto;
     }
 
@@ -75,11 +76,13 @@ public class PatientService implements PatientRepository {
                 .orElse(null);
     }
 
-    public void saveOrUpdatePatient(Patient patient) {
+    public void saveOrUpdatePatient(Patient patient, Address address) {
         Patient patientByPesel = findByPesel(patient.getPersonDetails().getPesel());
         if (patientByPesel != null) {
             patientByPesel.getPersonDetails().setName(patient.getPersonDetails().getName());
             patientByPesel.getPersonDetails().setSurname(patient.getPersonDetails().getSurname());
+            patientByPesel.getAddress().setCountry(patient.getAddress().getCountry());
+            patientByPesel.getAddress().setCity(patient.getAddress().getCity());
             savePatient(patientByPesel);
             removeFromFile(patientByPesel.getPersonDetails().getPesel(), PATIENT_PATH);
 

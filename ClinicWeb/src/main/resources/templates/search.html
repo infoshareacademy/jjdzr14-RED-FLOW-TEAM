@@ -54,6 +54,10 @@
     <div th:if="${patient != null}" class="mt-4">
         <form th:action="@{/edit}" th:method="post" th:object="${patient}">
             <div class="form-group">
+                <label for="pesel">PESEL:</label>
+                <input type="text" class="form-control" id="pesel" th:field="*{personDetails.pesel}" >
+            </div>
+            <div class="form-group">
                 <label for="name">Imię:</label>
                 <input type="text" class="form-control" id="name" th:field="*{personDetails.name}">
             </div>
@@ -62,8 +66,25 @@
                 <input type="text" class="form-control" id="surname" th:field="*{personDetails.surname}">
             </div>
             <div class="form-group">
-                <label for="pesel">PESEL:</label>
-                <input type="text" class="form-control" id="pesel" th:field="*{personDetails.pesel}">
+                <label for="country">Państwo:</label>
+                <input type="text" class="form-control" id="country" th:field="*{address.country}">
+            </div>
+
+            <div class="form-group">
+                <label for="city">Miasto:</label>
+                <input type="text" class="form-control" id="city" th:field="*{address.city}">
+            </div>
+            <div class="form-group">
+                <label for="street">Ulica:</label>
+                <input type="text" class="form-control" id="street" th:field="*{address.street}">
+            </div>
+            <div class="form-group">
+                <label for="houseNumber">Numer domu:</label>
+                <input type="text" class="form-control" id="houseNumber" th:field="*{address.houseNumber}">
+            </div>
+            <div class="form-group">
+                <label for="flatNumber">numer mieszkania:</label>
+                <input type="text" class="form-control" id="flatNumber" th:field="*{address.flatNumber}">
             </div>
             <button type="submit" class="btn btn-success">Zapisz zmiany</button>
         </form>
