@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Internetowa Przychodnia</title>
@@ -22,11 +22,6 @@
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            height: 99%;
-        }
-
-        .jumbotron-md {
-            height: 100%;
         }
 
         h3 {
@@ -35,31 +30,15 @@
             color: #007bff;
         }
 
+        .form-label {
+            margin-top: 10px;
+        }
+
         .btn-primary {
             background-color: #007bff;
             border-color: #007bff;
             width: 100%;
             margin-top: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #007bff;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
         }
     </style>
 </head>
