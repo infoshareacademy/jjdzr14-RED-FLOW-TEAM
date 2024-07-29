@@ -12,7 +12,6 @@ public class PersonDetails {
     private Gender gender;
 
     public PersonDetails() {
-
     }
 
     public PersonDetails(String name, String surname, String phoneNumber, String pesel, LocalDate birthDate, Gender gender) {
@@ -22,6 +21,11 @@ public class PersonDetails {
         this.pesel = pesel;
         this.birthDate = birthDate;
         this.gender = gender;
+    }
+
+    public PersonDetails(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
     }
 
     public Gender getGender() {

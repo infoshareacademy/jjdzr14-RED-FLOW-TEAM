@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
+import pl.infoshare.clinicweb.user.PersonDetails;
 
 public class PatientDto {
 
@@ -23,6 +24,9 @@ public class PatientDto {
     @Pattern(regexp = "[0-9]{11}", message = "Pole musi zawierać 11 cyfr. ")
     private String pesel;
     private DoctorDto doctor;
+
+    public PatientDto(PersonDetails personDetails) {
+    }
 
     public PatientDto() {
     }

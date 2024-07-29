@@ -59,6 +59,10 @@ public class Patient {
     }
 
     public void setDateOfBirth(Patient patient) {
+        if (patient.personDetails.getPesel() == null) {
+            throw new IllegalArgumentException("Pesel cannot be null");
+        }
+
         String pesel = personDetails.getPesel();
         String decodedYearPart = "";
         String secondYearPart = pesel.substring(0, 2);
