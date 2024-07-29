@@ -40,22 +40,29 @@
     </style>
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 <div class="container">
-    <div class="card bg-transparent">
+    <div class="container-fluid">
         <div class="card-body">
             <h3 class="card-title text-center">Rejestracja nowej wizyty</h3>
-            <form th:action="@{/addVisit}" th:method="post" >
+            <form th:action="@{/addVisit}" th:method="post">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL" aria-label="Search" aria-describedby="button-addon2">
+                    <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL"
+                           aria-label="Search"
+                           aria-describedby="button-addon2">
                     <button class="btn btn-primary" type="submit" id="button-addon2">Wyszukaj</button>
                 </div>
 
                 <div th:if="${searchForPesel}" class="mt-4">
-                    <p><strong>Imię:</strong> <span th:text="${searchForPesel.personDetails.name}">Imię pacjenta</span></p>
-                    <p><strong>Nazwisko :</strong> <span th:text="${searchForPesel.personDetails.surname}">Nazwisko pacjenta</span></p>
+                    <p><strong>Imię:</strong> <span th:text="${searchForPesel.personDetails.name}">Imię pacjenta</span>
+                    </p>
+                    <p><strong>Nazwisko :</strong> <span
+                            th:text="${searchForPesel.personDetails.surname}">Nazwisko pacjenta</span></p>
                 </div>
                 <div th:if="${searchForPesel}" class="mt-4">
-                    <p><strong>Pesel :</strong> <span  th:text="${searchForPesel.personDetails.pesel}">Pesel Pacjenta</span></p>
+                    <p><strong>Pesel :</strong> <span
+                            th:text="${searchForPesel.personDetails.pesel}">Pesel Pacjenta</span>
+                    </p>
                 </div>
                 <div class="form-group mb-3">
                     <label for="visitDate" class="form-label">Data wizyty</label>
@@ -68,9 +75,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <label  class="form-label">Do jakiego lekarza chcesz zapisać</label>
+                    <label class="form-label">Do jakiego lekarza chcesz zapisać</label>
                     <select name="specialization" class="form-select">
-                        <option th:each="spec : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}" th:value="${spec.getDescription()}" th:text="${spec.getDescription()}"></option>
+                        <option th:each="spec : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
+                                th:value="${spec.getDescription()}" th:text="${spec.getDescription()}"></option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Zarejestruj się</button>
@@ -79,7 +87,6 @@
         </div>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

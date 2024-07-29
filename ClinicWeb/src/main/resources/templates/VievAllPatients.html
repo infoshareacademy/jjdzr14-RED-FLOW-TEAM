@@ -27,17 +27,6 @@
             color: #007bff;
         }
 
-        .form-label {
-            margin-top: 10px;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            width: 100%;
-            margin-top: 10px;
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -64,33 +53,33 @@
 <div class="container">
     <h3>Wszyscy nasi pacjenci</h3>
 
-        <div class="card">
-            <table class="table table-striped tfixed" th:object="${patient}">
+    <div class="card">
+        <table class="table table-striped tfixed" th:object="${patient}">
 
-                <h3 class="card-title text-center">Lista pacjentow </h3>
+            <h3 class="card-title text-center">Lista pacjentow </h3>
 
-                <thead>
-                <tr>
-                    <td>Imię</td>
-                    <td>Nazwisko</td>
-                    <td>Numer telefonu</td>
-                    <td>Lekarz prowadzacy</td>
-                </tr>
-                </thead>
+            <thead>
+            <tr>
+                <td>Imię</td>
+                <td>Nazwisko</td>
+                <td>Numer telefonu</td>
+                <td>Lekarz prowadzacy</td>
+            </tr>
+            </thead>
 
-                <tbody bgcolor="lightsteelblue">
+            <tbody bgcolor="lightsteelblue">
 
-                <tr th:each="patient:${listPatient}">
+            <tr th:each="patient:${listPatient}">
 
-                    <td th:text="${patient.name}"></td>
-                    <td th:text="${patient.surname}"></td>
-                    <td th:text="${patient.phoneNumber}"></td>
-                    <td th:text="${patient.doctor}"></td>
+                <td th:text="${patient.name}"></td>
+                <td th:text="${patient.surname}"></td>
+                <td th:text="${patient.phoneNumber}"></td>
+                <td th:text="${patient.doctor}"></td>
 
-                </tr>
-                </tbody>
-            </table>
-        </div>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
 </div>
 </body>

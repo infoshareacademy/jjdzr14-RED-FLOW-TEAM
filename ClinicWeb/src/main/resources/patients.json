@@ -1,77 +1,96 @@
 [ {
   "personDetails" : {
-    "name" : "Michael",
-    "surname" : "Musiał",
     "phoneNumber" : "888-528-000",
-    "birthDate" : [ 1968, 10, 11 ],
+    "gender" : "MAN",
+    "surname" : "Musiał",
+    "name" : "Michael",
     "pesel" : "68101126810",
-    "gender" : "Mężczyzna"
+    "birthDate" : [ 1968, 10, 11 ]
   },
-  "clinic" : null,
   "doctor" : null,
   "address" : {
-    "city" : "Ruda Śląska",
     "country" : "POLSKA",
     "zipCode" : "61-862",
+    "city" : "Ruda Śląska",
     "street" : "PRZYRODNICZA",
-    "houseNumber" : "8",
-    "flatNumber" : "7"
-  }
+    "flatNumber" : "7",
+    "houseNumber" : "8"
+  },
+  "clinic" : null
 }, {
   "personDetails" : {
-    "name" : "Leokadia",
-    "surname" : "KOZAK",
     "phoneNumber" : "505-666-158",
-    "birthDate" : [ 1992, 4, 23 ],
+    "gender" : "WOMAN",
+    "surname" : "KOZAK",
+    "name" : "Leokadia",
     "pesel" : "92042326741",
-    "gender" : "Kobieta"
+    "birthDate" : [ 1992, 4, 23 ]
   },
-  "clinic" : null,
   "doctor" : null,
   "address" : {
-    "city" : "Grudziądz",
     "country" : "POLSKA",
     "zipCode" : "57-843",
+    "city" : "Grudziądz",
     "street" : "ZAKŁADOWA",
-    "houseNumber" : "14",
-    "flatNumber" : "8"
-  }
+    "flatNumber" : "8",
+    "houseNumber" : "14"
+  },
+  "clinic" : null
 }, {
   "personDetails" : {
-    "name" : "Aleksandra",
-    "surname" : "Tomaszewska",
     "phoneNumber" : "546-763-444",
-    "birthDate" : [ 1975, 1, 1 ],
+    "gender" : "WOMAN",
+    "surname" : "Tomaszewska",
+    "name" : "Aleksandra",
     "pesel" : "75010112348",
-    "gender" : "Kobieta"
+    "birthDate" : [ 1975, 1, 1 ]
   },
-  "clinic" : null,
   "doctor" : null,
   "address" : {
-    "city" : null,
     "country" : null,
     "zipCode" : "30-836",
+    "city" : null,
     "street" : "Jerzmenowskiego",
-    "houseNumber" : "23",
-    "flatNumber" : "111"
-  }
+    "flatNumber" : "111",
+    "houseNumber" : "23"
+  },
+  "clinic" : null
 }, {
   "personDetails" : {
-    "name" : "Teofil",
-    "surname" : "Lewandowski",
     "phoneNumber" : "555-858-214",
-    "birthDate" : [ 1991, 5, 15 ],
+    "gender" : "MAN",
+    "surname" : "Lewandowski",
+    "name" : "Teofil",
     "pesel" : "91051562694",
-    "gender" : "Mężczyzna"
+    "birthDate" : [ 1991, 5, 15 ]
+  },
+  "doctor" : null,
+  "address" : {
+    "country" : "Słowacja",
+    "zipCode" : "20-222",
+    "city" : "Koszyce",
+    "street" : "Produkcyjna",
+    "flatNumber" : "25",
+    "houseNumber" : "2"
+  },
+  "clinic" : null
+}, {
+  "personDetails" : {
+    "name" : "Kamila",
+    "surname" : "Pazdzioch",
+    "phoneNumber" : "888-259-632",
+    "birthDate" : "1995-10-28",
+    "pesel" : "95102826883",
+    "gender" : "WOMAN"
   },
   "clinic" : null,
   "doctor" : null,
   "address" : {
-    "city" : "Test",
-    "country" : "Słowacja",
-    "zipCode" : "20-222",
-    "street" : "Produkcyjna",
-    "houseNumber" : "2",
-    "flatNumber" : "25"
+    "city" : "Zamiasto",
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "street" : "Koperkowa",
+    "houseNumber" : "22",
+    "flatNumber" : "12"
   }
 } ]

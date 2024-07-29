@@ -53,6 +53,11 @@
             position: absolute;
             bottom: 0;
         }
+        .btn-secondary{
+            margin-top: 20px;
+            width: 50%;
+            text-emphasis-color: grey;
+        }
     </style>
 </head>
 <body>
@@ -74,6 +79,10 @@
         <p>Jeśli masz jakieś pytania lub potrzebujesz porady, nie krępuj się z nami skontaktować. Twoje zdrowie jest dla
             nas najważniejsze! 💙</p>
         <p>Z pozdrowieniami, <br>Zespół Internetowej Przychodni</p>
+
+        <a th:href="@{/addVisit}" class="btn btn-secondary btn-lg btn-block" role="button"
+           aria-pressed="true">Umów się na wizytę</a>
+
     </div>
 </div>
 <footer>

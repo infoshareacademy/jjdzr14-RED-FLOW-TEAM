@@ -29,8 +29,7 @@ public class PatientController {
     }
 
     @PostMapping("/patient")
-    public String patientFormSubmission(@ModelAttribute PersonDetails patientDetails, @ModelAttribute Address patientAddress, Model model, @ModelAttribute DoctorService doctorService) {
-        model.addAttribute("doctors", doctorService.findAll());
+    public String patientFormSubmission(@ModelAttribute PersonDetails patientDetails, @ModelAttribute Address patientAddress, Model model) {
         model.addAttribute("personDetails", new PersonDetails());
         model.addAttribute("address", new Address());
 
