@@ -39,11 +39,12 @@ public class VisitController {
     }
 
     @GetMapping("/saveVisit")
-    public String saveVisit( Model model) {
+    public String saveVisit( Model model, Visit visit, Patient patient, PersonDetails personDetails) {
 
-        model.addAttribute("visit", new Visit());
-        model.addAttribute("patient", new Patient());
-        model.addAttribute("person", new PersonDetails());
+        model.addAttribute("visit", visit);
+        model.addAttribute("patient", patient);
+        model.addAttribute("person", personDetails);
+
 
 
         return "saveVisit";

@@ -99,6 +99,8 @@ public class PatientController {
             redirectAttributes.addFlashAttribute("patient", patient);
             redirectAttributes.addFlashAttribute("address", address);
 
+            return "redirect:saveVisit";
+
         } else {
 
             model.addAttribute("error", "Nie znaleziono takiego pacjenta.");
