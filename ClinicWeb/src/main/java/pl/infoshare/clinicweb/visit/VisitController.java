@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
-import pl.infoshare.clinicweb.doctor.Specialization;
-import pl.infoshare.clinicweb.patient.PatientDto;
+import pl.infoshare.clinicweb.patient.Patient;
+import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.time.LocalDateTime;
 
@@ -25,10 +25,11 @@ public class VisitController {
     }
 
     @GetMapping("/addVisit")
-    public String visitForm(@ModelAttribute("visit") Visit visit, @ModelAttribute("patient") PatientDto patient, @ModelAttribute("doctor") DoctorDto doctor) {
+    public String patientVisitForm(Model model) {
 
+        model.addAttribute("patient", new Patient());
 
-        return "addVisit";
+        return "createVisit";
     }
 
     @GetMapping("/result")
@@ -37,28 +38,28 @@ public class VisitController {
         return "result";
     }
 
+    @GetMapping("/saveVisit")
+    public String saveVisit( Model model) {
+
+        model.addAttribute("visit", new Visit());
+        model.addAttribute("patient", new Patient());
+        model.addAttribute("person", new PersonDetails());
+
+
+        return "saveVisit";
+    }
+
     @PostMapping("/saveVisit")
     public String visitFormSubmission(@ModelAttribute(value = "visit") @Valid Visit visit, BindingResult bindingResulVisit,
                                       @RequestParam(value = "visitDate", required = false) LocalDateTime visitDate,
-                                      @ModelAttribute(value = "patient") @Valid PatientDto patient, BindingResult bindingResultPatient,
-                                      DoctorDto doctor,
-                                      @RequestParam("specialization") Specialization specialization
+                                      @RequestParam(value = "patient") @Valid Patient patient,
+                                      BindingResult bindingResultPatient, Model model
     ) {
 
 
         if (bindingResulVisit.hasErrors() || bindingResultPatient.hasErrors()) {
-            return "addVisit";
+            return "saveVisit";
         }
-
-
-        //do poprawy, musi wyladowac w service
-
-        visit.setPatient(patient);
-        patient.setDoctor(doctor);
-        doctor.setSpecialization(specialization.getDescription());
-        doctor.setName("testowe");
-        doctor.setSurname("testoweNazwisko");
-
 
         visitService.saveVisit(visit);
 

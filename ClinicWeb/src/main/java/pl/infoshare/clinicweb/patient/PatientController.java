@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
@@ -49,16 +50,6 @@ public class PatientController {
         return "patientsList";
     }
 
-    @PostMapping("/addVisit")
-    public String showSearchForm(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
-        if (pesel != null && !pesel.isEmpty()) {
-            Patient byPesel = patientService.findByPesel(pesel);
-            model.addAttribute("searchForPesel", byPesel);
-        } else if (patientService.findByPesel(pesel) != null) {
-            model.addAttribute("searchForPesel", patientService.findByPesel(pesel));
-        }
-        return "addVisit";
-    }
 
     @GetMapping("/search")
     public String searchForm(Model model) {
@@ -91,6 +82,30 @@ public class PatientController {
     public String fullDetailPatient(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
         model.addAttribute("fullDetailPatient", patientService.findByPesel(pesel));
         return "/fullDetailsPatient";
+    }
+
+    @PostMapping("/addVisit")
+    public String savePatientVisit(@RequestParam("pesel") String pesel, Address address, RedirectAttributes redirectAttributes, Model model) {
+
+        model.addAttribute("address", new Address());
+        model.addAttribute("personDetails", new PersonDetails());
+
+        Patient patient = patientService.findByPesel(pesel);
+
+        if (patient != null) {
+
+            model.addAttribute("patient", patient);
+            model.addAttribute("address", address);
+            redirectAttributes.addFlashAttribute("patient", patient);
+            redirectAttributes.addFlashAttribute("address", address);
+
+        } else {
+
+            model.addAttribute("error", "Nie znaleziono takiego pacjenta.");
+
+
+        }
+        return "createVisit";
     }
 
 }

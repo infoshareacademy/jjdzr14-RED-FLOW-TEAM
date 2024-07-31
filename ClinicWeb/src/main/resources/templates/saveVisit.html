@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz rejestracji</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('/pxfuel.jpg');
+            background-size: cover;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .form-label {
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card bg-transparent">
+        <div class="card-body">
+            <h3 class="card-title text-center">Rejestracja nowej wizyty</h3>
+
+            <form th:action="@{/saveVisit}" th:object="${visit}">
+
+                <div th:if="${patient != null}" class="mt-4" th:object="${patient}">
+
+                    <div class="form-group">
+                        <label for="pesel">PESEL:</label>
+                        <input type="text" class="form-control" id="pesel" th:field="*{personDetails.pesel}">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Imię:</label>
+                        <input type="text" class="form-control" id="name" th:field="*{personDetails.name}">
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Nazwisko:</label>
+                        <input type="text" class="form-control" id="surname" th:field="*{personDetails.surname}">
+                    </div>
+                    <label>Data wizyty</label>
+
+                    <input type="datetime-local"
+                           name="visitDate">
+                    <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+                </div>
+            </form>
+
+            <a class="btn btn-primary" th:href="@{/}">Wróć do strony głównej</a>
+
+
+        </div>
+    </div>
+
+    <div th:if="${success != null}" class="mt-4 alert alert-success" role="alert">
+        <p th:text="${success}">Sukces</p>
+    </div>
+</div>
+</body>
+</html>

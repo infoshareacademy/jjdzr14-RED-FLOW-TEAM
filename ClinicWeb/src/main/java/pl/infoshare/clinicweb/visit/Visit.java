@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import pl.infoshare.clinicweb.medicines.Medicines;
+import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientDto;
 
 import java.time.LocalDateTime;
@@ -16,7 +17,7 @@ import java.util.Objects;
 public class Visit {
 
     @Valid
-    private PatientDto patient;
+    private Patient patient;
 
     private List<Medicines> medicines;
     private int numberOfVisits;
@@ -27,8 +28,10 @@ public class Visit {
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     private LocalDateTime visitDate;
 
+    public Visit() {
+    };
 
-    public Visit(PatientDto patient) {
+    public Visit(Patient patient) {
         this.patient = patient;
     }
 
@@ -40,11 +43,11 @@ public class Visit {
         this.numberOfVisits = numberOfVisits;
     }
 
-    public PatientDto getPatient() {
+    public Patient getPatient() {
         return patient;
     }
 
-    public void setPatient(PatientDto patient) {
+    public void setPatient(Patient patient) {
         this.patient = patient;
     }
 
