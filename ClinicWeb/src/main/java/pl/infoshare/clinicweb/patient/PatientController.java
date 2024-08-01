@@ -86,10 +86,10 @@ public class PatientController {
         return "redirect:patients";
     }
 
-    @GetMapping("/fullDetailsPatient")
+    @GetMapping("/editPatient")
     public String fullDetailPatient(@RequestParam(value = "pesel", required = false)@ModelAttribute String pesel, Model model) {
-        model.addAttribute("fullDetailPatient", patientService.findByPesel(pesel));
-        return "/fullDetailsPatient";
+        model.addAttribute("editPatient", patientService.findByPesel(pesel));
+        return "editPatient";
     }
 
 }

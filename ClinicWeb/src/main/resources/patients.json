@@ -1,7 +1,7 @@
 [ {
   "personDetails" : {
     "name" : "Teofil",
-    "surname" : "Lewandowski",
+    "surname" : "Koperkowy",
     "phoneNumber" : "555-858-214",
     "birthDate" : [ 1991, 5, 15 ],
     "pesel" : "91051562694",
@@ -19,7 +19,7 @@
   }
 }, {
   "personDetails" : {
-    "name" : "Kamila",
+    "name" : "Roman",
     "surname" : "Pazdzioch",
     "phoneNumber" : "888-259-632",
     "birthDate" : [ 1995, 10, 28 ],
@@ -38,7 +38,7 @@
   }
 }, {
   "personDetails" : {
-    "name" : "Michael",
+    "name" : "Michał",
     "surname" : "Musiał",
     "phoneNumber" : "888-528-000",
     "birthDate" : [ 1968, 10, 11 ],
@@ -57,7 +57,7 @@
   }
 }, {
   "personDetails" : {
-    "name" : "Leokadia",
+    "name" : "Malwina",
     "surname" : "KOZAK",
     "phoneNumber" : "505-666-158",
     "birthDate" : [ 1992, 4, 23 ],
@@ -76,7 +76,7 @@
   }
 }, {
   "personDetails" : {
-    "name" : "Aleksandra",
+    "name" : "Małgorzata",
     "surname" : "Tomaszewska",
     "phoneNumber" : "546-763-444",
     "birthDate" : [ 1975, 1, 1 ],
