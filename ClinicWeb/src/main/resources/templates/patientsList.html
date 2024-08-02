@@ -87,7 +87,7 @@
                         <td th:text="${patient.phoneNumber}">Phone number</td>
                         <td th:text="${patient.pesel}">Pesel</td>
                         <td th:text="${patient.doctor}">Prime doctor</td>
-                        <td><a th:href="@{/editPatient(pesel=${patient.pesel})}"
+                        <td><a th:href="@{/update-patient(pesel=${patient.pesel})}"
                                class="btn btn-primary btn-sm active" role="button"
                                aria-pressed="true">Pokaż i edytuj dane</a></td>
                     </tr>

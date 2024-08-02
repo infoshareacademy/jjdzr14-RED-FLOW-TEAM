@@ -83,6 +83,8 @@ public class PatientService implements PatientRepository {
             patientByPesel.getPersonDetails().setSurname(patient.getPersonDetails().getSurname());
             patientByPesel.getAddress().setCountry(patient.getAddress().getCountry());
             patientByPesel.getAddress().setCity(patient.getAddress().getCity());
+            patientByPesel.getAddress().setHouseNumber(patient.getAddress().getHouseNumber());
+            patientByPesel.getAddress().setFlatNumber(patient.getAddress().getFlatNumber());
             savePatient(patientByPesel);
             removeFromFile(patientByPesel.getPersonDetails().getPesel(), PATIENT_PATH);
 

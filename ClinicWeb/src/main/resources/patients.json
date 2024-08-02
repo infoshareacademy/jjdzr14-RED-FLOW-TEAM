@@ -1,43 +1,5 @@
 [ {
   "personDetails" : {
-    "name" : "Teofil",
-    "surname" : "Koperkowy",
-    "phoneNumber" : "555-858-214",
-    "birthDate" : [ 1991, 5, 15 ],
-    "pesel" : "91051562694",
-    "gender" : "MAN"
-  },
-  "clinic" : null,
-  "doctor" : null,
-  "address" : {
-    "city" : "Koszyce",
-    "country" : "Słowacja",
-    "zipCode" : "20-222",
-    "street" : "Produkcyjna",
-    "houseNumber" : "2",
-    "flatNumber" : "25"
-  }
-}, {
-  "personDetails" : {
-    "name" : "Roman",
-    "surname" : "Pazdzioch",
-    "phoneNumber" : "888-259-632",
-    "birthDate" : [ 1995, 10, 28 ],
-    "pesel" : "95102826883",
-    "gender" : "WOMAN"
-  },
-  "clinic" : null,
-  "doctor" : null,
-  "address" : {
-    "city" : "Zamiasto",
-    "country" : "Polska",
-    "zipCode" : "02-200",
-    "street" : "Koperkowa",
-    "houseNumber" : "22",
-    "flatNumber" : "12"
-  }
-}, {
-  "personDetails" : {
     "name" : "Michał",
     "surname" : "Musiał",
     "phoneNumber" : "888-528-000",
@@ -54,6 +16,44 @@
     "street" : "PRZYRODNICZA",
     "houseNumber" : "8",
     "flatNumber" : "7"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Małgorzata",
+    "surname" : "Tomaszewska",
+    "phoneNumber" : "546-763-444",
+    "birthDate" : [ 1975, 1, 1 ],
+    "pesel" : "75010112348",
+    "gender" : "WOMAN"
+  },
+  "clinic" : null,
+  "doctor" : null,
+  "address" : {
+    "city" : "Praga",
+    "country" : "Czechy",
+    "zipCode" : "30-836",
+    "street" : "Jerzmenowskiego",
+    "houseNumber" : "23",
+    "flatNumber" : "111"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Teofil",
+    "surname" : "Koperkowy",
+    "phoneNumber" : "555-858-214",
+    "birthDate" : [ 1991, 5, 15 ],
+    "pesel" : "91051562694",
+    "gender" : "MAN"
+  },
+  "clinic" : null,
+  "doctor" : null,
+  "address" : {
+    "city" : "Koszyce",
+    "country" : "Słowacja",
+    "zipCode" : "20-222",
+    "street" : "Produkcyjna",
+    "houseNumber" : "2",
+    "flatNumber" : "25"
   }
 }, {
   "personDetails" : {
@@ -76,21 +76,21 @@
   }
 }, {
   "personDetails" : {
-    "name" : "Małgorzata",
-    "surname" : "Tomaszewska",
-    "phoneNumber" : "546-763-444",
-    "birthDate" : [ 1975, 1, 1 ],
-    "pesel" : "75010112348",
+    "name" : "Roman",
+    "surname" : "Pazdzioch",
+    "phoneNumber" : "888-259-632",
+    "birthDate" : [ 1995, 10, 28 ],
+    "pesel" : "95102826883",
     "gender" : "WOMAN"
   },
   "clinic" : null,
   "doctor" : null,
   "address" : {
-    "city" : "Praga",
-    "country" : "Czechy",
-    "zipCode" : "30-836",
-    "street" : "Jerzmenowskiego",
-    "houseNumber" : "23",
-    "flatNumber" : "111"
+    "city" : "Zamiasto",
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "street" : "Koperkowa",
+    "houseNumber" : "223",
+    "flatNumber" : "122"
   }
 } ]

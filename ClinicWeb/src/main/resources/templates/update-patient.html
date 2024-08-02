@@ -75,7 +75,7 @@
             <div th:if="${error != null}" class="mt-4 alert alert-danger" role="alert">
                 <p th:text="${error}">Błąd</p>
             </div>
-            <form th:action="@{/edit}" th:method="post" th:object="${editPatient}">
+            <form th:action="@{/edit}" th:method="post" th:object="${updatePatient}">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
