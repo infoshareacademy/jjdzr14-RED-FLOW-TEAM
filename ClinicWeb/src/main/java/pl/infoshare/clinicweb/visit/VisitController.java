@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.infoshare.clinicweb.doctor.DoctorDto;
+import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
+import pl.infoshare.clinicweb.patient.PatientDto;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.time.LocalDateTime;
@@ -18,10 +19,12 @@ import java.time.LocalDateTime;
 public class VisitController {
 
     private final VisitService visitService;
+    private final DoctorService doctorService;
 
-    public VisitController(VisitService visitService) {
+    public VisitController(VisitService visitService, DoctorService doctorService) {
 
         this.visitService = visitService;
+        this.doctorService = doctorService;
     }
 
     @GetMapping("/addVisit")
@@ -39,30 +42,30 @@ public class VisitController {
     }
 
     @GetMapping("/saveVisit")
-    public String saveVisit( Model model, Visit visit, Patient patient, PersonDetails personDetails) {
-
-        model.addAttribute("visit", visit);
-        model.addAttribute("patient", patient);
-        model.addAttribute("person", personDetails);
+    public String saveVisit( Model model, @ModelAttribute("visit") Visit visit, @ModelAttribute("patient") Patient patient, @ModelAttribute PersonDetails personDetails) {
 
 
+        model.addAttribute("doctors", doctorService.findAll());
 
-        return "saveVisit";
+
+
+        return "saveVisitForm";
     }
 
     @PostMapping("/saveVisit")
     public String visitFormSubmission(@ModelAttribute(value = "visit") @Valid Visit visit, BindingResult bindingResulVisit,
                                       @RequestParam(value = "visitDate", required = false) LocalDateTime visitDate,
-                                      @RequestParam(value = "patient") @Valid Patient patient,
-                                      BindingResult bindingResultPatient, Model model
-    ) {
+                                      @ModelAttribute(value="patient") @Valid Patient patient, BindingResult bindingResultPatient,
+                                      @ModelAttribute(value = "personDetails") @Valid PersonDetails personDetails, BindingResult bindingResultDetails,
+                                      Model model) {
 
 
-        if (bindingResulVisit.hasErrors() || bindingResultPatient.hasErrors()) {
-            return "saveVisit";
+
+        if (bindingResulVisit.hasErrors()) {
+            return "saveVisitForm";
         }
 
-        visitService.saveVisit(visit);
+        visitService.saveVisit(new Visit(patient));
 
         return "redirect:/result";
     }

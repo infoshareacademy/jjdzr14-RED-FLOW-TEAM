@@ -68,35 +68,11 @@
 
             </div>
 
-
-            <div th:if="${patient != null}" class="mt-4">
-                <form th:action="@{/addVisit}" th:method="post" th:object="${patient}">
-                    <div class="form-group">
-                        <label for="pesel">PESEL:</label>
-                        <input type="text" class="form-control" id="pesel" th:field="*{personDetails.pesel}">
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Imię:</label>
-                        <input type="text" class="form-control" id="name" th:field="*{personDetails.name}">
-                    </div>
-                    <div class="form-group">
-                        <label for="surname">Nazwisko:</label>
-                        <input type="text" class="form-control" id="surname" th:field="*{personDetails.surname}">
-                    </div>
-                    <a class="btn btn-primary" th:href="@{/}">Wróć do strony głównej</a>
-                </form>
-
-            </div>
         </div>
 
         <div th:if="${success != null}" class="mt-4 alert alert-success" role="alert">
             <p th:text="${success}">Sukces</p>
         </div>
     </div>
-</body>
-</html></title>
-</head>
-<body>
-
 </body>
 </html>
