@@ -29,8 +29,7 @@ public class PatientController {
     }
 
     @PostMapping("/patient")
-    public String patientFormSubmission(@ModelAttribute PersonDetails patientDetails, @ModelAttribute Address patientAddress, Model model, @ModelAttribute DoctorService doctorService) {
-        model.addAttribute("doctors", doctorService.findAll());
+    public String patientFormSubmission(@ModelAttribute PersonDetails patientDetails, @ModelAttribute Address patientAddress, Model model) {
         model.addAttribute("personDetails", new PersonDetails());
         model.addAttribute("address", new Address());
 
@@ -87,10 +86,10 @@ public class PatientController {
         return "redirect:patients";
     }
 
-    @GetMapping("/fullDetailsPatient")
-    public String fullDetailPatient(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
-        model.addAttribute("fullDetailPatient", patientService.findByPesel(pesel));
-        return "/fullDetailsPatient";
+    @GetMapping("/update-patient")
+    public String fullDetailPatient(@RequestParam(value = "pesel", required = false)@ModelAttribute String pesel, Model model) {
+        model.addAttribute("updatePatient", patientService.findByPesel(pesel));
+        return "update-patient";
     }
 
 }

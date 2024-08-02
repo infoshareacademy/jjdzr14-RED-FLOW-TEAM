@@ -1,22 +1,12 @@
 package pl.infoshare.clinicweb.user;
 
-import com.fasterxml.jackson.annotation.JsonValue;
-import lombok.Getter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public enum Gender {
-    MAN("Mężczyzna"),
-    WOMAN("Kobieta");
+    MAN,
+    WOMAN;
 
-    Gender(String description) {
-        this.description = description;
-    }
-
-    final String description;
-
-    @JsonValue
-    public String getDescription() {
-        return description;
-    }
 }
+
 
