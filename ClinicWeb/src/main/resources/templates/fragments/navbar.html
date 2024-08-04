@@ -1,34 +1,32 @@
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark navbar-custom">
-    <a class="navbar-brand" href="#">Klinika zespołu Red Flow Team</a>
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/addVisit}">Umów się na wizytę</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarViewDoctorSpecialization" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Wyświetl Listę
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarViewDoctorSpecialization">
-                        <li><a class="dropdown-item" th:href="@{/patients}">Lista naszych pacjentów</a></li>
-                        <li><a class="dropdown-item" th:href="@{/doctors}">Lista naszych lekarzy</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link enable" th:href="@{patient}" tabindex="-1" aria-disabled="true">Utwórz konto
-                        nowego pacjenta</a>
-                </li>
-            </ul>
-        </div>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg   ">
+
+    <div class="logo">
+
+        <a th:href="@{/}"><img width="442" height="57" src="/new%20logo%20black.png" alt="logo2"></a>
     </div>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/addVisit}">Umów się na wizytę</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarViewDoctorSpecialization" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    Wyświetl Listę
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarViewDoctorSpecialization">
+                    <li><a class="dropdown-item" th:href="@{/patients}">Lista naszych pacjentów</a></li>
+                    <li><a class="dropdown-item" th:href="@{/doctors}">Lista naszych lekarzy</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link enable" th:href="@{patient}" tabindex="-1" aria-disabled="true">Utwórz konto
+                    nowego pacjenta</a>
+            </li>
+        </ul>
+    </div>
+
 </nav>
