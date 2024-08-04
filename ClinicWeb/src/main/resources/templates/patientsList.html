@@ -6,98 +6,50 @@
     <title>Lista wszystkich pacjentów</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <style>
-        body {
-            background-image: url('/pxfuel.jpg');
-            background-size: cover;
-        }
-
-        .container {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-
-        h3 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #007bff;
-        }
-
-        .form-label {
-            margin-top: 10px;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #007bff;
-            color: white;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
+    <link th:href="@{styles/newStyle.css}" rel="stylesheet"/>
 </head>
 <body>
-<div class="container-fluid">
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <div class="container clearfix">
-        <h3>Wszyscy nasi pacjenci</h3>
-        <table>
-            <div class="card">
-                <table class="table table-striped tfixed">
-                    <thead>
-                    <tr>
-                        <td>Imię</td>
-                        <td>Nazwisko</td>
-                        <td>Numer telefonu</td>
-                        <td>Pesel</td>
-                        <td>Lekarz prowadzacy</td>
-                        <td>Wszystkie dane</td>
-
-
-                    </tr>
-                    </thead>
-                    <tr th:each="patient:${listPatient}">
-                        <td th:text="${patient.name}">Name</td>
-                        <td th:text="${patient.surname}">Surname</td>
-                        <td th:text="${patient.phoneNumber}">Phone number</td>
-                        <td th:text="${patient.pesel}">Pesel</td>
-                        <td th:text="${patient.doctor}">Prime doctor</td>
-                        <td><a th:href="@{/update-patient(pesel=${patient.pesel})}"
-                               class="btn btn-primary btn-sm active" role="button"
-                               aria-pressed="true">Pokaż i edytuj dane</a></td>
-                    </tr>
-                </table>
-                <a th:href="@{/}" class="btn btn-primary" role="button"
-                   aria-pressed="true">Powrót do strony głównej</a>
-            </div>
-        </table>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
     </div>
+</nav>
+<div class="container">
+    <h3>Wszyscy nasi pacjenci</h3>
+    <table>
+        <div class="card">
+            <table class="table table-striped tfixed">
+                <thead>
+                <tr>
+                    <td>Imię</td>
+                    <td>Nazwisko</td>
+                    <td>Numer telefonu</td>
+                    <td>Pesel</td>
+                    <td>Lekarz prowadzacy</td>
+                    <td>Wszystkie dane</td>
+
+
+                </tr>
+                </thead>
+                <tr th:each="patient:${listPatient}">
+                    <td th:text="${patient.name}">Name</td>
+                    <td th:text="${patient.surname}">Surname</td>
+                    <td th:text="${patient.phoneNumber}">Phone number</td>
+                    <td th:text="${patient.pesel}">Pesel</td>
+                    <td th:text="${patient.doctor}">Prime doctor</td>
+                    <td><a th:href="@{/update-patient(pesel=${patient.pesel})}"
+                           class="btn btn-primary btn-sm active" role="button"
+                           aria-pressed="true">Pokaż i edytuj dane</a></td>
+                </tr>
+            </table>
+            <a th:href="@{/}" class="btn btn-primary" role="button"
+               aria-pressed="true">Powrót do strony głównej</a>
+        </div>
+    </table>
 </div>
+<footer>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

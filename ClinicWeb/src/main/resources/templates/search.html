@@ -27,84 +27,96 @@
             color: #007bff;
         }
 
+        .form-label {
+            margin-top: 10px;
+        }
+
         .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
             width: 100%;
             margin-top: 10px;
+        }
+
+        .navbar-custom {
+            background-color: #000000;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-<div class="container-fluid">
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <div class="container mt-5">
-        <h1>Wyszukaj i edytuj dane pacjenta</h1>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
+    </div>
+</nav>
+<div class="container">
+    <h1>Wyszukaj i edytuj dane pacjenta</h1>
 
-        <form action="/search" method="post" class="mb-3">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL" aria-label="Search"
-                       aria-describedby="button-addon2">
-                <button class="btn btn-primary" type="submit" id="button-addon2">Wyszukaj</button>
-            </div>
-        </form>
-
-        <div th:if="${error != null}" class="mt-4 alert alert-danger" role="alert">
-            <p th:text="${error}">Błąd</p>
+    <form action="/search" method="post" class="mb-3">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL" aria-label="Search"
+                   aria-describedby="button-addon2">
+            <button class="btn btn-primary" type="submit" id="button-addon2">Wyszukaj</button>
         </div>
+    </form>
 
-        <div th:if="${patient != null}" class="mt-4">
-            <form th:action="@{/edit}" th:method="post" th:object="${patient}">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="pesel">PESEL:</label>
-                            <input type="text" class="form-control" id="pesel" th:field="*{personDetails.pesel}">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Imię:</label>
-                            <input type="text" class="form-control" id="name" th:field="*{personDetails.name}">
-                        </div>
-                        <div class="form-group">
-                            <label for="surname">Nazwisko:</label>
-                            <input type="text" class="form-control" id="surname" th:field="*{personDetails.surname}">
-                        </div>
-                        <div class="form-group">
-                            <label for="country">Państwo:</label>
-                            <input type="text" class="form-control" id="country" th:field="*{address.country}">
-                        </div>
+    <div th:if="${error != null}" class="mt-4 alert alert-danger" role="alert">
+        <p th:text="${error}">Błąd</p>
+    </div>
+
+    <div th:if="${patient != null}" class="mt-4">
+        <form th:action="@{/edit}" th:method="post" th:object="${patient}">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="pesel">PESEL:</label>
+                        <input type="text" class="form-control" id="pesel" th:field="*{personDetails.pesel}">
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="city">Miasto:</label>
-                            <input type="text" class="form-control" id="city" th:field="*{address.city}">
-                        </div>
-                        <div class="form-group">
-                            <label for="street">Ulica:</label>
-                            <input type="text" class="form-control" id="street" th:field="*{address.street}">
-                        </div>
-                        <div class="form-group">
-                            <label for="houseNumber">Numer domu:</label>
-                            <input type="text" class="form-control" id="houseNumber" th:field="*{address.houseNumber}">
-                        </div>
-                        <div class="form-group">
-                            <label for="flatNumber">Numer mieszkania:</label>
-                            <input type="text" class="form-control" id="flatNumber" th:field="*{address.flatNumber}">
-                        </div>
+                    <div class="form-group">
+                        <label for="name">Imię:</label>
+                        <input type="text" class="form-control" id="name" th:field="*{personDetails.name}">
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Nazwisko:</label>
+                        <input type="text" class="form-control" id="surname" th:field="*{personDetails.surname}">
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Państwo:</label>
+                        <input type="text" class="form-control" id="country" th:field="*{address.country}">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success">Zapisz zmiany</button>
-            </form>
-        </div>
-        <a th:href="@{/}" class="btn btn-primary" role="button" aria-pressed="true">Powrót do strony głównej</a>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="city">Miasto:</label>
+                        <input type="text" class="form-control" id="city" th:field="*{address.city}">
+                    </div>
+                    <div class="form-group">
+                        <label for="street">Ulica:</label>
+                        <input type="text" class="form-control" id="street" th:field="*{address.street}">
+                    </div>
+                    <div class="form-group">
+                        <label for="houseNumber">Numer domu:</label>
+                        <input type="text" class="form-control" id="houseNumber" th:field="*{address.houseNumber}">
+                    </div>
+                    <div class="form-group">
+                        <label for="flatNumber">Numer mieszkania:</label>
+                        <input type="text" class="form-control" id="flatNumber" th:field="*{address.flatNumber}">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Zapisz zmiany</button>
+        </form>
+    </div>
+    <a th:href="@{/}" class="btn btn-primary" role="button" aria-pressed="true">Powrót do strony głównej</a>
 
-        <div th:if="${success != null}" class="mt-4 alert alert-success" role="alert">
-            <p th:text="${success}">Sukces</p>
-        </div>
+    <div th:if="${success != null}" class="mt-4 alert alert-success" role="alert">
+        <p th:text="${success}">Sukces</p>
     </div>
 </div>
 
 </body>
+<footer>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
