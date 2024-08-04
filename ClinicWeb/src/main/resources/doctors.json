@@ -12,12 +12,12 @@
       ]
     },
     "address": {
-      "country": null,
-      "zipCode": null,
-      "city": null,
-      "street": null,
-      "flatNumber": null,
-      "houseNumber": null
+      "country": "Polska",
+      "zipCode": "85-255",
+      "city": "Trzebina",
+      "street": "Zawodzie",
+      "flatNumber": 15,
+      "houseNumber": 1
     },
     "specialization": "Neurolog",
     "online": false,
@@ -72,28 +72,28 @@
     "availability": false
   },
   {
-    "specialization": "Internista",
-    "online": false,
-    "availability": false,
-    "address": {
-      "city": "Lodz",
-      "country": "Poland",
-      "zipCode": "30-521",
-      "street": "Warszawska",
-      "houseNumber": "8",
-      "flatNumber": "76"
-    },
     "personDetails": {
-      "name": "Aneta",
-      "surname": "Zajac",
       "phoneNumber": "444-444-333",
+      "surname": "Zajac",
+      "name": "Aneta",
+      "pesel": "7564932323",
       "birthDate": [
         1975,
         12,
         12
-      ],
-      "pesel": "7564932323"
-    }
+      ]
+    },
+    "address": {
+      "country": "Poland",
+      "zipCode": "30-521",
+      "city": "Lodz",
+      "street": "Warszawska",
+      "flatNumber": "76",
+      "houseNumber": "8"
+    },
+    "specialization": "Internista",
+    "online": false,
+    "availability": false
   },
   {
     "personDetails": {
@@ -108,12 +108,12 @@
       ]
     },
     "address": {
-      "country": null,
-      "zipCode": null,
-      "city": null,
-      "street": null,
-      "flatNumber": null,
-      "houseNumber": null
+      "country": "Deutschland",
+      "zipCode":"44555",
+      "city": "Lubeka",
+      "street": "Gartenstr",
+      "flatNumber": 90,
+      "houseNumber": "empty"
     },
     "specialization": "Chirurg",
     "online": false,
@@ -168,27 +168,27 @@
     "availability": false
   },
   {
-    "specialization": "Chirurg",
-    "online": false,
-    "availability": false,
-    "address": {
-      "city": "Lodz",
-      "country": "Poland",
-      "zipCode": "30-521",
-      "street": "Warszawska",
-      "houseNumber": "8",
-      "flatNumber": "76"
-    },
     "personDetails": {
-      "name": "Malwina",
-      "surname": "Panda",
       "phoneNumber": "123-456-789",
+      "surname": "Panda",
+      "name": "Malwina",
+      "pesel": "7564932323",
       "birthDate": [
         1975,
         12,
         12
-      ],
-      "pesel": "7564932323"
-    }
+      ]
+    },
+    "address": {
+      "country": "Poland",
+      "zipCode": "30-521",
+      "city": "Lodz",
+      "street": "Warszawska",
+      "flatNumber": "76",
+      "houseNumber": "8"
+    },
+    "specialization": "Chirurg",
+    "online": false,
+    "availability": false
   }
 ]

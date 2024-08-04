@@ -34,17 +34,18 @@
                     <td>Data wizyty</td>
                     <td>Godzina wizyty</td>
 
-
                 </tr>
                 <tr>
-                    <td th:text="Krzesimir">Imię</td>
-                    <td th:text="Kowalski">Nazwisko</td>
-                    <td th:text="8520260441">Pesel</td>
-                    <td th:text="Kazik">Imię</td>
-                    <td th:text="Kowalczyk">Nazwisko</td>
-                    <td th:text="Kardiolog">Specjalizacja</td>
-                    <td th:text="12-08-2024"> ">Data wizyty</td>
-                    <td th:text="|15:45|" >Godzina wizyty</td>
+                <tr th:each="visits:${allVisits}">
+                    <td th:text="${visits.patient.personDetails.name}">Imię</td>
+                    <td th:text="${visits.patient.personDetails.surname}">Nazwisko</td>
+                    <td th:text="${visits.patient.personDetails.pesel}">Pesel</td>
+                    <td th:text="${visits.doctor.personDetails.name}">Imię</td>
+                    <td th:text="${visits.doctor.personDetails.surname}">Nazwisko</td>
+                    <td th:text="${visits.doctor.specialization}">Specjalizacja</td>
+                    <td th:text="${visits.visitDate.toLocalDate()}"> ">Data wizyty</td>
+                    <td th:text="${visits.visitDate.toLocalTime() }"> ">Godzina wizyty
+                    </td>
                 </tr>
 
                 </thead>
