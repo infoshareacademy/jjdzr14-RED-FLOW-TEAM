@@ -4,10 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.Specialization;
 import pl.infoshare.clinicweb.patient.PatientDto;
@@ -65,4 +62,8 @@ public class VisitController {
         return "redirect:/result";
     }
 
+    @RequestMapping("/visits")
+    public String allVisits() {
+        return "visits";
+    }
 }
