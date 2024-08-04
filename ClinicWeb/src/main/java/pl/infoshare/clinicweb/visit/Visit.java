@@ -32,9 +32,6 @@ public class Visit {
     public Visit() {
     };
 
-    public Visit(Patient patient) {
-        this.patient = patient;
-    }
 
     public int getNumberOfVisits() {
         return numberOfVisits;
@@ -45,10 +42,12 @@ public class Visit {
     }
 
     public Patient getPatient() {
+
         return patient;
     }
 
     public void setPatient(Patient patient) {
+
         this.patient = patient;
     }
 

@@ -85,7 +85,7 @@ public class PatientController {
     }
 
     @PostMapping("/addVisit")
-    public String savePatientVisit(@RequestParam("pesel") String pesel, Address address, RedirectAttributes redirectAttributes, Model model) {
+    public String savePatientVisit(@RequestParam("pesel") String pesel, Address address, PersonDetails personDetails, RedirectAttributes redirectAttributes, Model model) {
 
         model.addAttribute("address", new Address());
         model.addAttribute("personDetails", new PersonDetails());
@@ -95,9 +95,7 @@ public class PatientController {
         if (patient != null) {
 
             model.addAttribute("patient", patient);
-            model.addAttribute("address", address);
             redirectAttributes.addFlashAttribute("patient", patient);
-            redirectAttributes.addFlashAttribute("address", address);
 
             return "redirect:saveVisit";
 

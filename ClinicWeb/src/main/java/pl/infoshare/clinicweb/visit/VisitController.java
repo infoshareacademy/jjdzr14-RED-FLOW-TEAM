@@ -1,20 +1,15 @@
 package pl.infoshare.clinicweb.visit;
 
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
-import pl.infoshare.clinicweb.patient.PatientDto;
-import pl.infoshare.clinicweb.user.PersonDetails;
 
-import java.time.LocalDateTime;
-
+@SessionAttributes("patient")
 @Controller
 public class VisitController {
 
@@ -42,30 +37,21 @@ public class VisitController {
     }
 
     @GetMapping("/saveVisit")
-    public String saveVisit( Model model, @ModelAttribute("visit") Visit visit, @ModelAttribute("patient") Patient patient, @ModelAttribute PersonDetails personDetails) {
-
+    public String saveVisit(@ModelAttribute("visit") Visit visit, @ModelAttribute("patient") Patient patient, Model model) {
 
         model.addAttribute("doctors", doctorService.findAll());
-
-
 
         return "saveVisitForm";
     }
 
     @PostMapping("/saveVisit")
-    public String visitFormSubmission(@ModelAttribute(value = "visit") @Valid Visit visit, BindingResult bindingResulVisit,
-                                      @RequestParam(value = "visitDate", required = false) LocalDateTime visitDate,
-                                      @ModelAttribute(value="patient") @Valid Patient patient, BindingResult bindingResultPatient,
-                                      @ModelAttribute(value = "personDetails") @Valid PersonDetails personDetails, BindingResult bindingResultDetails,
-                                      Model model) {
+    public String visitFormSubmission(Visit visit, Patient patient, Model model) {
 
-
-
-        if (bindingResulVisit.hasErrors()) {
-            return "saveVisitForm";
+        if (patient == null) {
+            return "redirect:/addVisit";
         }
+        visitService.saveVisit(visit);
 
-        visitService.saveVisit(new Visit(patient));
 
         return "redirect:/result";
     }

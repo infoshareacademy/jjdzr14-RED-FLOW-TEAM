@@ -45,57 +45,58 @@
         <div class="card-body">
             <h3 class="card-title text-center">Rejestracja nowej wizyty</h3>
 
-            <form th:action="saveVisit" th:method="post" th:object="${visit}">
+            <form th:action="@{/saveVisit}" th:method="post" th:object="${visit}">
 
-                <div class="mt-4" th:action="saveVisit" th:method="post" th:object="${patient}">
+                <div class="mt-4">
 
-                    <div class="form-group">
-                        <label for="pesel">PESEL:</label>
-                        <input type="text" class="form-control" id="pesel" th:field="*{personDetails.pesel}">
-                        <!--                        <p th:if="${#fields.hasErrors('pesel')}" class="text-danger" th:errors="*{personDetails.pesel}">Pesel-->
-                        <!--                            error</p>-->
+                    <div th:action="@{/saveVisit}" th:method="post" th:object="${patient}">
+
+                        <div class="form-group">
+                            <label class="form-label">PESEL:</label>
+                            <input type="text" class="form-control" id="pesel" name="pesel" th:field="*{personDetails.pesel}">
+                            <!--                        <p th:if="${#fields.hasErrors('pesel')}" class="text-danger" th:errors="*{personDetails.pesel}">Pesel-->
+                            <!--                            error</p>-->
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Imię:</label>
+                            <input  class="form-control" type="text" id="name" name="name" th:field="*{personDetails.name}">
+                        </div>
+                        <!--                    <p th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="*{personDetails.name}">Name-->
+                        <!--                        error</p>-->
+                        <div class="form-group">
+                            <label class="form-label">Nazwisko:</label>
+                            <input class="form-control" type="text" id="surname" name="surname" th:field="*{personDetails.surname}">
+                        </div>
+                        <!--                    <p th:if="${#fields.hasErrors('surname')}" class="text-danger" th:errors="*{personDetails.surname}">Surname-->
+                        <!--                        error</p>-->
+                        <div class="form-group">
+                            <label class="form-label">Numer telefonu:</label>
+                            <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" th:field="*{personDetails.phoneNumber}">
+                        </div>
+                        <!--                    <p th:if="${#fields.hasErrors('phoneNumber')}" class="text-danger" th:errors="*{personDetails.phoneNumber}">PhoneNumber-->
+                        <!--                        error</p>-->
+                        <div class="form-group">
+                            <label class="form-label">Data urodzenia:</label>
+                            <input class="form-control" type="text" id="birthDate" name="birthDate" th:field="*{personDetails.birthDate}">
+                        </div>
+                        <!--                    <p th:if="${#fields.hasErrors('birthDate')}" class="text-danger" th:errors="*{personDetails.birthDate}">birthDate-->
+                        <!--                        error</p>-->
+                        <div class="form-group">
+                            <label class="form-label">Płeć:</label>
+                            <input class="form-control" type="text" id="gender" name="gender" th:field="*{personDetails.gender}">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="name">Imię:</label>
-                        <input type="text" class="form-control" id="name" th:field="*{personDetails.name}">
-                    </div>
-                    <!--                    <p th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="*{personDetails.name}">Name-->
-                    <!--                        error</p>-->
-                    <div class="form-group">
-                        <label for="surname">Nazwisko:</label>
-                        <input type="text" class="form-control" id="surname" th:field="*{personDetails.surname}">
-                    </div>
-                    <!--                    <p th:if="${#fields.hasErrors('surname')}" class="text-danger" th:errors="*{personDetails.surname}">Surname-->
-                    <!--                        error</p>-->
-                    <div class="form-group">
-                        <label for="surname">Numer telefonu:</label>
-                        <input type="text" class="form-control" id="phoneNumber"
-                               th:field="*{personDetails.phoneNumber}">
-                    </div>
-                    <!--                    <p th:if="${#fields.hasErrors('phoneNumber')}" class="text-danger" th:errors="*{personDetails.phoneNumber}">PhoneNumber-->
-                    <!--                        error</p>-->
-                    <div class="form-group">
-                        <label for="birthDate">Data urodzenia:</label>
-                        <input type="text" class="form-control" id="birthDate" th:field="*{personDetails.birthDate}">
-                    </div>
-                    <!--                    <p th:if="${#fields.hasErrors('birthDate')}" class="text-danger" th:errors="*{personDetails.birthDate}">birthDate-->
-                    <!--                        error</p>-->
-                    <div class="form-group">
-                        <label for="gender">Płeć:</label>
-                        <input type="text" class="form-control" id="gender" th:field="*{personDetails.gender}">
-                    </div>
 
                 </div>
-
                 <label>Data wizyty</label>
-                <div class="form-control">
+                <div class="form-group">
                     <input type="datetime-local"
                            th:field="${visit.visitDate}"
-                           name="visitDate"
-                           id="visitDate">
+                           name="visitDate">
                 </div>
-
+                
                 <button type="submit" class="btn btn-primary">Zarejestruj się</button>
 
 

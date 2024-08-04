@@ -1,14 +1,22 @@
 package pl.infoshare.clinicweb.user;
 
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 
 public class PersonDetails {
 
+    @NotNull
     private String name;
+    @NotNull
     private String surname;
+    @NotNull
     private String phoneNumber;
+    @NotNull
     private LocalDate birthDate;
+    @NotNull
     private String pesel;
+    @NotNull
     private Gender gender;
 
     public PersonDetails() {
