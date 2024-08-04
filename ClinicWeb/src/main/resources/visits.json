@@ -1,0 +1,130 @@
+[ {
+  "doctor" : {
+    "personDetails" : {
+      "phoneNumber" : "444-444-333",
+      "gender" : null,
+      "surname" : "Wojtkowski",
+      "name" : "Wojciech",
+      "pesel" : "7564932323",
+      "birthDate" : [ 1975, 12, 12 ]
+    },
+    "address" : {
+      "country" : "Polska",
+      "zipCode" : "85-255",
+      "city" : "Trzebina",
+      "street" : "Zawodzie",
+      "flatNumber" : "15",
+      "houseNumber" : "1"
+    },
+    "specialization" : "Neurolog",
+    "online" : false,
+    "availability" : false
+  },
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "888-528-000",
+      "gender" : "MAN",
+      "surname" : "Musiał",
+      "name" : "Michał",
+      "pesel" : "68101126810",
+      "birthDate" : [ 1968, 10, 11 ]
+    },
+    "doctor" : null,
+    "address" : {
+      "country" : "POLSKA",
+      "zipCode" : "61-862",
+      "city" : "Ruda Śląska",
+      "street" : "PRZYRODNICZA",
+      "flatNumber" : "7",
+      "houseNumber" : "8"
+    },
+    "clinic" : null
+  },
+  "visitDate" : [ 2024, 8, 4, 10, 30 ]
+}, {
+  "doctor" : {
+    "personDetails" : {
+      "phoneNumber" : "444-444-333",
+      "gender" : null,
+      "surname" : "Kantek",
+      "name" : "Kamil",
+      "pesel" : "7564932323",
+      "birthDate" : [ 1975, 12, 12 ]
+    },
+    "address" : {
+      "country" : "Poland",
+      "zipCode" : "30-521",
+      "city" : "Lodz",
+      "street" : "Warszawska",
+      "flatNumber" : "76",
+      "houseNumber" : "8"
+    },
+    "specialization" : "Internista",
+    "online" : false,
+    "availability" : false
+  },
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "546-763-444",
+      "gender" : "WOMAN",
+      "surname" : "Tomaszewska",
+      "name" : "Małgorzata",
+      "pesel" : "75010112348",
+      "birthDate" : [ 1975, 1, 1 ]
+    },
+    "doctor" : null,
+    "address" : {
+      "country" : "Czechy",
+      "zipCode" : "30-836",
+      "city" : "Praga",
+      "street" : "Jerzmenowskiego",
+      "flatNumber" : "111",
+      "houseNumber" : "23"
+    },
+    "clinic" : null
+  },
+  "visitDate" : [ 2024, 8, 4, 14, 20 ]
+}, {
+  "doctor" : {
+    "specialization" : "Internista",
+    "online" : false,
+    "availability" : false,
+    "address" : {
+      "city" : "Lodz",
+      "country" : "Poland",
+      "zipCode" : "30-521",
+      "street" : "Warszawska",
+      "houseNumber" : "8",
+      "flatNumber" : "76"
+    },
+    "personDetails" : {
+      "name" : "Aneta",
+      "surname" : "Zajac",
+      "phoneNumber" : "444-444-333",
+      "birthDate" : [ 1975, 12, 12 ],
+      "pesel" : "7564932323",
+      "gender" : null
+    }
+  },
+  "visitDate" : [ 2024, 7, 25, 15, 45 ],
+  "patient" : {
+    "personDetails" : {
+      "name" : "Teofil",
+      "surname" : "Koperkowy",
+      "phoneNumber" : "555-858-214",
+      "birthDate" : [ 1991, 5, 15 ],
+      "pesel" : "91051562694",
+      "gender" : "MAN"
+    },
+    "clinic" : null,
+    "doctor" : null,
+    "address" : {
+      "city" : "Koszyce",
+      "country" : "Słowacja",
+      "zipCode" : "20-222",
+      "street" : "Produkcyjna",
+      "houseNumber" : "2",
+      "flatNumber" : "25"
+    }
+  }
+} ]

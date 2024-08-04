@@ -22,7 +22,7 @@ public class Visit {
     private int numberOfVisits;
 
     @NotNull(message = "Pole data nie moze byc puste. ")
-    @FutureOrPresent(message = "Wybierz datę w przyszłości. ")
+    @FutureOrPresent(message = "Wybierz datę z przyszłości. ")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     private LocalDateTime visitDate;
@@ -65,6 +65,8 @@ public class Visit {
 
     }
 
+    public Visit() {
+    }
 
     @Override
     public boolean equals(Object object) {
