@@ -26,12 +26,14 @@ body {
 }
 
 .navbar-custom {
-    background-color: #000000;
     width: 100%;
+
 }
 
 .navbar-nav .nav-link {
     color: white;
+    :hover none;
+
 }
 
 footer {
@@ -45,5 +47,12 @@ footer {
 .btn-secondary{
     margin-top: 20px;
     width: 50%;
+}
+.navbar-custom {
+    background-color: #000000;
+    width: 100%;
 
+}
+.navbar-nav .nav-link:hover {
+    color: red;
 }
