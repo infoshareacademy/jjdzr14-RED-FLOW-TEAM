@@ -18,48 +18,41 @@
     <h3 class="card-title text-center">Wyszukiwanie pacjenta po pesel</h3>
     <form th:action="@{/searchPatient}" th:method="post">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL"
-                   aria-label="Search"
-                   aria-describedby="button-addon2">
+            <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL" aria-label="Search" aria-describedby="button-addon2">
             <button class="btn btn-primary" type="submit" id="button-addon2">Wyszukaj</button>
         </div>
     </form>
     <div th:if="${error != null}" class="mt-4 alert alert-danger" role="alert">
         <p th:text="${error}">Błąd</p>
-        <a th:href="@{/patient}" class="btn btn-primary" role="button"
-           aria-pressed="true">Dodaj pacjenta do bazy</a>
+        <a th:href="@{/patient}" class="btn btn-primary" role="button" aria-pressed="true">Dodaj pacjenta do bazy</a>
     </div>
-    <table>
-        <div class="card">
-            <table class="table table-striped tfixed">
-                <thead>
-                <tr>
-                    <td>Imię</td>
-                    <td>Nazwisko</td>
-                    <td>Numer telefonu</td>
-                    <td>Pesel</td>
-                    <td>Lekarz prowadzacy</td>
-                    <td>Wszystkie dane</td>
-
-
-                </tr>
-                </thead>
-                <tr th:each="patient:${searchForPesel}">
-                    <td th:text="${searchForPesel.personDetails.name}">Name</td>
-                    <td th:text="${searchForPesel.personDetails.surname}">Surname</td>
-                    <td th:text="${searchForPesel.personDetails.phoneNumber}">Phone number</td>
-                    <td th:text="${searchForPesel.personDetails.phoneNumber}">Pesel</td>
-                    <td th:text="${searchForPesel.doctor}">Prime doctor</td>
-                    <td><a th:href="@{/update-patient(pesel=${searchForPesel.personDetails.pesel})}"
-                           class="btn btn-primary btn-sm active" role="button"
-                           aria-pressed="true">Pokaż i edytuj dane</a></td>
-                </tr>
-            </table>
-            <a th:href="@{/patients}" class="btn btn-primary" role="button"
-               aria-pressed="true">Powrót do listy pacjentów</a>
-
-        </div>
-    </table>
+    <div th:if="${searchForPesel != null}" class="card mt-4">
+        <table class="table table-striped tfixed">
+            <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Numer telefonu</th>
+                <th>Pesel</th>
+                <th>Lekarz prowadzacy</th>
+                <th>Wszystkie dane</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="patient : ${searchForPesel}">
+                <td th:text="${patient.personDetails.name}">Name</td>
+                <td th:text="${patient.personDetails.surname}">Surname</td>
+                <td th:text="${patient.personDetails.phoneNumber}">Phone number</td>
+                <td th:text="${patient.personDetails.pesel}">Pesel</td>
+                <td th:text="${patient.doctor}">Prime doctor</td>
+                <td>
+                    <a th:href="@{/update-patient(pesel=${patient.personDetails.pesel})}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Pokaż i edytuj dane</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/patients}" class="btn btn-primary" role="button" aria-pressed="true">Powrót do listy pacjentów</a>
+    </div>
 </div>
 </body>
 </html>
