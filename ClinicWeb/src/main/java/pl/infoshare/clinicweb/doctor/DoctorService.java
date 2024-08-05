@@ -86,4 +86,12 @@ public class DoctorService implements DoctorRepository {
 
         return doctorDto;
     }
+
+    public DoctorDto findByPesel(String pesel) {
+        return getAll()
+                .stream()
+                .filter(doctor -> doctor.getPersonDetails().getPesel().equals(pesel))
+                .map(this::convertToDto)
+                .findAny().orElse(null);
+    }
 }

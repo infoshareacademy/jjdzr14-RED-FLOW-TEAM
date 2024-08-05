@@ -100,27 +100,26 @@
                     </div>
 
 
-                    <!--                    <div class="mb-3">-->
-                    <!--                        <label class="form-label">Do jakiego lekarza chcesz zapisać</label>-->
+                    <div class="mb-3">
+                        <label class="form-label">Do jakiego lekarza chcesz zapisać</label>
 
-                    <!--                        <select th:field="${doctor}" name="doctor" class="form-select">-->
-                    <!--                            <option th:each="doctor : ${doctors}"-->
-                    <!--                                    th:value="${doctor}"-->
-                    <!--                                    th:text="${doctor.name + ' ' + doctor.surname + ' ' + doctor.specialization} "></option>-->
+                        <select id="doctorPesel"
+                                name="doctorPesel"
+                                class="btn btn-primary btn-block"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                required
+                                oninvalid="setCustomValidity('Wybierz lekarza')"
+                                oninput="setCustomValidity('')">
+                            <option value="" selected>----WYBIERZ LEKARZA----</option>
+                            <option th:each="doctor : ${doctors}"
+                                    th:value="${doctor.personDetails.pesel}"
+                                    th:text="${doctor.personDetails.name + ' ' + doctor.personDetails.surname + ' ' + doctor.specialization} "></option>
 
-                    <!--                            <input type="hidden" name="doctorName" th:field="${doctor.name}">-->
-                    <!--                            <input type="hidden" name="doctorSurname" th:field="${doctor.surname}">-->
-                    <!--                            <input type="hidden" name="doctorSpecialization" th:field="${doctor.specialization}">-->
-
-                    <!--                        </select>-->
-
-                    <!--                        <span id="selected-specialization" class="ms-3"></span>-->
-
-                    <!--&lt;!&ndash;                        <p th:if="${#fields.hasErrors('doctor')}" class="text-danger"&ndash;&gt;-->
-                    <!--&lt;!&ndash;                           th:errors="*{doctor}">Gender error</p>&ndash;&gt;-->
-
-                    <!--                    </div>-->
+                        </select>
+                    </div>
                 </div>
+
                 <label>Data wizyty</label>
                 <div class="form-group">
                     <input type="datetime-local"
@@ -131,7 +130,6 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Zarejestruj się</button>
-
 
             </form>
 

@@ -25,6 +25,8 @@ public class Doctor {
         this.availability = availability;
         this.details = details;
         this.address = address;
+
+
     }
 
     public PersonDetails getPersonDetails() {
@@ -70,12 +72,14 @@ public class Doctor {
     @Override
     public String toString() {
         return "Doctor{" +
-                "address=" + address +
-                ", specialization='" + specialization +
+                "specialization='" + specialization + '\'' +
                 ", patient=" + patient +
                 ", online=" + online +
                 ", availability=" + availability +
                 ", details=" + details +
+                ", address=" + address +
                 '}';
     }
 }
+
+
