@@ -1,11 +1,14 @@
 package pl.infoshare.clinicweb.visit;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
 
@@ -37,7 +40,7 @@ public class VisitController {
     }
 
     @GetMapping("/saveVisit")
-    public String saveVisit(@ModelAttribute("visit") Visit visit, @ModelAttribute("patient") Patient patient, Model model) {
+    public String saveVisit(@ModelAttribute("patient") Patient patient, @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") DoctorDto doctor, Model model) {
 
         model.addAttribute("doctors", doctorService.findAll());
 
@@ -45,13 +48,16 @@ public class VisitController {
     }
 
     @PostMapping("/saveVisit")
-    public String visitFormSubmission(Visit visit, Patient patient, Model model) {
+    public String visitFormSubmission(@Valid Visit visit, BindingResult visitBindingResult,
+                                      @Valid Patient patient, BindingResult patientBindingResult,
+                                      @Valid DoctorDto doctor, Model model) {
 
-        if (patient == null) {
-            return "redirect:/addVisit";
+        if (visitBindingResult.hasErrors() || patientBindingResult.hasErrors()) {
+            return "saveVisitForm";
         }
-        visitService.saveVisit(visit);
 
+        visitService.setVisitAttributes(patient, doctor, visit);
+        visitService.saveVisit(visit);
 
         return "redirect:/result";
     }

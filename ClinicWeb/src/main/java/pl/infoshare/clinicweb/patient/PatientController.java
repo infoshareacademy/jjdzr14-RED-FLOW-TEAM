@@ -85,16 +85,16 @@ public class PatientController {
     }
 
     @PostMapping("/addVisit")
-    public String savePatientVisit(@RequestParam("pesel") String pesel, Address address, PersonDetails personDetails, RedirectAttributes redirectAttributes, Model model) {
+    public String savePatientVisit(@RequestParam("pesel") String pesel, @ModelAttribute("patient") Patient patient,
+                                   RedirectAttributes redirectAttributes, Model model) {
 
         model.addAttribute("address", new Address());
         model.addAttribute("personDetails", new PersonDetails());
 
-        Patient patient = patientService.findByPesel(pesel);
+        patient = patientService.findByPesel(pesel);
 
         if (patient != null) {
 
-            model.addAttribute("patient", patient);
             redirectAttributes.addFlashAttribute("patient", patient);
 
             return "redirect:saveVisit";
@@ -102,7 +102,6 @@ public class PatientController {
         } else {
 
             model.addAttribute("error", "Nie znaleziono takiego pacjenta.");
-
 
         }
         return "createVisit";

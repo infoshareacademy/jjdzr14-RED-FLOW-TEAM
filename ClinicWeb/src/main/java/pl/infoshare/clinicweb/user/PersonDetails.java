@@ -1,22 +1,30 @@
 package pl.infoshare.clinicweb.user;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
 public class PersonDetails {
 
-    @NotNull
+    @NotEmpty(message = "Pole nie może być puste")
+    @Size(min = 2, max = 20, message = "Pole musi zawierać od 2 do 20 znaków.")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Pole musi składać się z samych liter")
     private String name;
-    @NotNull
+    @NotEmpty(message = "Pole nie może być puste")
+    @Size(min = 2, max = 20, message = "Pole musi zawierać od 2 do 20 znaków.")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Pole musi składać się z samych liter")
     private String surname;
-    @NotNull
+    @NotEmpty(message = "Pole nie może być puste")
     private String phoneNumber;
-    @NotNull
+    @NotNull(message = "Pole nie może być puste")
     private LocalDate birthDate;
-    @NotNull
+    @NotEmpty(message = "Pole nie może być puste")
+    @Pattern(regexp = "[0-9]{11}", message = "Pole musi zawierać 11 cyfr. ")
     private String pesel;
-    @NotNull
+    @NotNull(message = "Pole nie może być puste")
     private Gender gender;
 
     public PersonDetails() {

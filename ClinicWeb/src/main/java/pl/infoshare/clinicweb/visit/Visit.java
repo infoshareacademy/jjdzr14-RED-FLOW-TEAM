@@ -1,24 +1,25 @@
 package pl.infoshare.clinicweb.visit;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
+import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.medicines.Medicines;
 import pl.infoshare.clinicweb.patient.Patient;
-import pl.infoshare.clinicweb.patient.PatientDto;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+
 public class Visit {
 
     @Valid
     private Patient patient;
+    private DoctorDto doctor;
 
     private List<Medicines> medicines;
     private int numberOfVisits;
@@ -30,8 +31,7 @@ public class Visit {
     private LocalDateTime visitDate;
 
     public Visit() {
-    };
-
+    }
 
     public int getNumberOfVisits() {
         return numberOfVisits;
@@ -68,25 +68,32 @@ public class Visit {
 
     }
 
+    public DoctorDto getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(DoctorDto doctor) {
+        this.doctor = doctor;
+    }
 
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         Visit visit = (Visit) object;
-        return numberOfVisits == visit.numberOfVisits && Objects.equals(patient, visit.patient) && Objects.equals(medicines, visit.medicines) && Objects.equals(visitDate, visit.visitDate);
+        return numberOfVisits == visit.numberOfVisits && Objects.equals(patient, visit.patient) && Objects.equals(doctor, visit.doctor) && Objects.equals(medicines, visit.medicines) && Objects.equals(visitDate, visit.visitDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(patient, medicines, numberOfVisits, visitDate);
+        return Objects.hash(patient, doctor, medicines, numberOfVisits, visitDate);
     }
-
 
     @Override
     public String toString() {
         return "Visit{" +
-                ", patient=" + patient +
+                "patient=" + patient +
+                ", doctor=" + doctor +
                 ", medicines=" + medicines +
                 ", numberOfVisits=" + numberOfVisits +
                 ", visitDate=" + visitDate +

@@ -1,6 +1,7 @@
 package pl.infoshare.clinicweb.patient;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
@@ -18,6 +19,7 @@ public class PatientDto {
     @Pattern(regexp = "^[a-zA-Z]+$", message = "Pole musi składać się z samych liter")
     private String surname;
 
+    @NotNull(message = "pole nie może być puste")
     private String phoneNumber;
 
     @NotEmpty(message = "Pole nie może być puste.")

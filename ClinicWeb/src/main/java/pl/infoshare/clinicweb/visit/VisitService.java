@@ -1,7 +1,9 @@
 package pl.infoshare.clinicweb.visit;
 
 import org.springframework.stereotype.Service;
+import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.file.FileService;
+import pl.infoshare.clinicweb.patient.Patient;
 
 @Service
 public class VisitService implements VisitRepository {
@@ -18,5 +20,16 @@ public class VisitService implements VisitRepository {
 
         fileService.writeToFile(visit, VISITS_PATH);
 
+    }
+
+    public void setVisitAttributes(Patient patient, DoctorDto doctor, Visit visit) {
+        if (patient != null) {
+            visit.setPatient(patient);
+
+        }
+
+        if (doctor != null) {
+            visit.setDoctor(doctor);
+        }
     }
 }

@@ -47,56 +47,89 @@
 
             <form th:action="@{/saveVisit}" th:method="post" th:object="${visit}">
 
-                <div class="mt-4">
+                <div th:object="${patient}">
 
-                    <div th:action="@{/saveVisit}" th:method="post" th:object="${patient}">
+                    <div class="form-group">
+                        <label class="form-label">PESEL:</label>
 
-                        <div class="form-group">
-                            <label class="form-label">PESEL:</label>
-                            <input type="text" class="form-control" id="pesel" name="pesel" th:field="*{personDetails.pesel}">
-                            <!--                        <p th:if="${#fields.hasErrors('pesel')}" class="text-danger" th:errors="*{personDetails.pesel}">Pesel-->
-                            <!--                            error</p>-->
-                        </div>
+                        <input type="text" readonly="readonly" class="form-control" id="pesel" name="pesel"
+                               th:field="*{personDetails.pesel}">
+                        <p th:if="${#fields.hasErrors('personDetails.pesel')}" class="text-danger"
+                           th:errors="*{personDetails.pesel}">Pesel error</p>
+                    </div>
 
-                        <div class="form-group">
-                            <label class="form-label">Imię:</label>
-                            <input  class="form-control" type="text" id="name" name="name" th:field="*{personDetails.name}">
-                        </div>
-                        <!--                    <p th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="*{personDetails.name}">Name-->
-                        <!--                        error</p>-->
-                        <div class="form-group">
-                            <label class="form-label">Nazwisko:</label>
-                            <input class="form-control" type="text" id="surname" name="surname" th:field="*{personDetails.surname}">
-                        </div>
-                        <!--                    <p th:if="${#fields.hasErrors('surname')}" class="text-danger" th:errors="*{personDetails.surname}">Surname-->
-                        <!--                        error</p>-->
-                        <div class="form-group">
-                            <label class="form-label">Numer telefonu:</label>
-                            <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" th:field="*{personDetails.phoneNumber}">
-                        </div>
-                        <!--                    <p th:if="${#fields.hasErrors('phoneNumber')}" class="text-danger" th:errors="*{personDetails.phoneNumber}">PhoneNumber-->
-                        <!--                        error</p>-->
-                        <div class="form-group">
-                            <label class="form-label">Data urodzenia:</label>
-                            <input class="form-control" type="text" id="birthDate" name="birthDate" th:field="*{personDetails.birthDate}">
-                        </div>
-                        <!--                    <p th:if="${#fields.hasErrors('birthDate')}" class="text-danger" th:errors="*{personDetails.birthDate}">birthDate-->
-                        <!--                        error</p>-->
-                        <div class="form-group">
-                            <label class="form-label">Płeć:</label>
-                            <input class="form-control" type="text" id="gender" name="gender" th:field="*{personDetails.gender}">
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">Imię:</label>
+                        <input class="form-control" type="text" id="name" name="name"
+                               th:field="*{personDetails.name}">
+                        <p th:if="${#fields.hasErrors('personDetails.name')}" class="text-danger"
+                           th:errors="*{personDetails.name}">Name error</p>
                     </div>
 
 
+                    <div class="form-group">
+                        <label class="form-label">Nazwisko:</label>
+                        <input class="form-control" type="text" id="surname" name="surname"
+                               th:field="*{personDetails.surname}">
+                        <p th:if="${#fields.hasErrors('personDetails.surname')}" class="text-danger"
+                           th:errors="*{personDetails.surname}">Surname error</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Numer telefonu:</label>
+                        <input class="form-control" type="text" id="phoneNumber" name="phoneNumber"
+                               th:field="*{personDetails.phoneNumber}">
+                        <p th:if="${#fields.hasErrors('personDetails.phoneNumber')}" class="text-danger"
+                           th:errors="*{personDetails.phoneNumber}">PhoneNumber error</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Data urodzenia:</label>
+                        <input class="form-control" type="text" id="birthDate" name="birthDate" readonly="readonly"
+                               th:field="*{personDetails.birthDate}">
+                        <p th:if="${#fields.hasErrors('personDetails.birthDate')}" class="text-danger"
+                           th:errors="*{personDetails.birthDate}">BirthDate error</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Płeć:</label>
+                        <input class="form-control" type="text" id="gender" name="gender" readonly="readonly"
+                               th:field="*{personDetails.gender}">
+                        <p th:if="${#fields.hasErrors('personDetails.gender')}" class="text-danger"
+                           th:errors="*{personDetails.gender}">Gender error</p>
+                    </div>
+
+
+                    <!--                    <div class="mb-3">-->
+                    <!--                        <label class="form-label">Do jakiego lekarza chcesz zapisać</label>-->
+
+                    <!--                        <select th:field="${doctor}" name="doctor" class="form-select">-->
+                    <!--                            <option th:each="doctor : ${doctors}"-->
+                    <!--                                    th:value="${doctor}"-->
+                    <!--                                    th:text="${doctor.name + ' ' + doctor.surname + ' ' + doctor.specialization} "></option>-->
+
+                    <!--                            <input type="hidden" name="doctorName" th:field="${doctor.name}">-->
+                    <!--                            <input type="hidden" name="doctorSurname" th:field="${doctor.surname}">-->
+                    <!--                            <input type="hidden" name="doctorSpecialization" th:field="${doctor.specialization}">-->
+
+                    <!--                        </select>-->
+
+                    <!--                        <span id="selected-specialization" class="ms-3"></span>-->
+
+                    <!--&lt;!&ndash;                        <p th:if="${#fields.hasErrors('doctor')}" class="text-danger"&ndash;&gt;-->
+                    <!--&lt;!&ndash;                           th:errors="*{doctor}">Gender error</p>&ndash;&gt;-->
+
+                    <!--                    </div>-->
                 </div>
                 <label>Data wizyty</label>
                 <div class="form-group">
                     <input type="datetime-local"
                            th:field="${visit.visitDate}"
                            name="visitDate">
+                    <p th:if="${#fields.hasErrors('visitDate')}" class="text-danger"
+                       th:errors="*{visitDate}">Date error</p>
                 </div>
-                
+
                 <button type="submit" class="btn btn-primary">Zarejestruj się</button>
 
 
