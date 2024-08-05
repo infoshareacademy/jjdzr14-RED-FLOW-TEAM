@@ -34,17 +34,14 @@ public class PatientController {
         model.addAttribute("address", new Address());
 
         patientService.savePatient(new Patient(patientDetails, patientAddress));
-
-        return "result";
+        model.addAttribute("listPatient", patientService.findAll());
+        return "patientsList";
 
     }
 
     @GetMapping("/patients")
     public String viewPatients(Model model) {
-
         model.addAttribute("listPatient", patientService.findAll());
-
-
         return "patientsList";
     }
 
@@ -100,13 +97,13 @@ public class PatientController {
         } else {
             model.addAttribute("error", "Nie znaleziono pacjenta o podanym numerze pesel: " + pesel);
         }
-        return "searchPatient";
+        return "search-patient";
     }
 
-    @GetMapping("/searchPatient")
+    @GetMapping("/search-patient")
     public String searchPatientByPesel(Model model) {
         model.addAttribute("patient", new Patient());
-        return "searchPatient";
+        return "search-patient";
     }
 
 }

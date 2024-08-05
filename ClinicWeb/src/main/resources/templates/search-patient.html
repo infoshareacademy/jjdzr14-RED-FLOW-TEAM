@@ -16,9 +16,10 @@
 </nav>
 <div class="container">
     <h3 class="card-title text-center">Wyszukiwanie pacjenta po pesel</h3>
-    <form th:action="@{/searchPatient}" th:method="post">
+    <form th:action="@{/search-patient}" th:method="post">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL" aria-label="Search" aria-describedby="button-addon2">
+            <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL" aria-label="Search"
+                   aria-describedby="button-addon2">
             <button class="btn btn-primary" type="submit" id="button-addon2">Wyszukaj</button>
         </div>
     </form>
@@ -26,6 +27,8 @@
         <p th:text="${error}">Błąd</p>
         <a th:href="@{/patient}" class="btn btn-primary" role="button" aria-pressed="true">Dodaj pacjenta do bazy</a>
     </div>
+    <a th:href="@{/patients}" class="btn btn-primary" role="button" aria-pressed="true">Powrót do listy
+        pacjentów</a>
     <div th:if="${searchForPesel != null}" class="card mt-4">
         <table class="table table-striped tfixed">
             <thead>
@@ -46,13 +49,19 @@
                 <td th:text="${patient.personDetails.pesel}">Pesel</td>
                 <td th:text="${patient.doctor}">Prime doctor</td>
                 <td>
-                    <a th:href="@{/update-patient(pesel=${patient.personDetails.pesel})}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Pokaż i edytuj dane</a>
+                    <a th:href="@{/update-patient(pesel=${patient.personDetails.pesel})}"
+                       class="btn btn-primary btn-sm active"
+                       role="button" aria-pressed="true">Pokaż i edytuj dane</a>
                 </td>
             </tr>
             </tbody>
         </table>
-        <a th:href="@{/patients}" class="btn btn-primary" role="button" aria-pressed="true">Powrót do listy pacjentów</a>
+
     </div>
 </div>
+<footer>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ body {
     background-image: url('/pxfuel.jpg');
     background-size: cover;
     background-position: center;
-    color: #fff;
+
 }
 
 .container-fluid {
@@ -22,7 +22,7 @@ body {
     background: rgba(0, 0, 0, 0.7);
     padding: 2rem;
     border-radius: 15px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .navbar-custom {
@@ -39,13 +39,16 @@ body {
 footer {
     background: rgba(0, 0, 0, 0.8);
     text-align: center;
-    padding: 10px 0;
+    padding: 5px ;
     width: 100%;
     position: absolute;
     bottom: 0;
 }
 .btn-secondary{
-    margin-top: 20px;
+    margin-top: 10px;
+    width: 50%;
+}.btn-primary{
+    margin-top: 10px;
     width: 50%;
 }
 .navbar-custom {
