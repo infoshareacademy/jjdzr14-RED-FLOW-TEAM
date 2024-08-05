@@ -92,13 +92,13 @@ public class PatientController {
         return "update-patient";
     }
 
-    @PostMapping("/searchPatient")
+    @PostMapping("/search-patient")
     public String searchPatientByPesel(@RequestParam("pesel") String pesel, Model model, Address address) {
         Patient byPesel = patientService.findByPesel(pesel);
         if (patientService.findByPesel(pesel) != null) {
             model.addAttribute("searchForPesel", byPesel);
         } else {
-            model.addAttribute("error", "Nie znaleziono pacjenta o podanym numerze pesel");
+            model.addAttribute("error", "Nie znaleziono pacjenta o podanym numerze pesel: " + pesel);
         }
         return "searchPatient";
     }
