@@ -15,6 +15,20 @@
     </div>
 </nav>
 <div class="container">
+    <h3 class="card-title text-center">Wyszukiwanie pacjenta po pesel</h3>
+    <form th:action="@{/search-patient}" th:method="post">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL"
+                   aria-label="Search"
+                   aria-describedby="button-addon2">
+            <button class="btn btn-primary" type="submit" id="button-addon2">Wyszukaj</button>
+        </div>
+    </form>
+    <div th:if="${error != null}" class="mt-4 alert alert-danger" role="alert">
+        <p th:text="${error}">Błąd</p>
+        <a th:href="@{/patient}" class="btn btn-primary" role="button"
+           aria-pressed="true">Dodaj pacjenta do bazy</a>
+    </div>
     <h3>Wszyscy nasi pacjenci</h3>
     <table>
         <div class="card">
@@ -42,10 +56,10 @@
                            aria-pressed="true">Pokaż i edytuj dane</a></td>
                 </tr>
             </table>
-            <a th:href="@{/}" class="btn btn-primary" role="button"
-               aria-pressed="true">Powrót do strony głównej</a>
+
         </div>
     </table>
+
 </div>
 <footer>
     <div th:replace="~{fragments/footer :: footer}"></div>

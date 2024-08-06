@@ -87,7 +87,6 @@ public class PatientService implements PatientRepository {
             patientByPesel.getAddress().setFlatNumber(patient.getAddress().getFlatNumber());
             savePatient(patientByPesel);
             removeFromFile(patientByPesel.getPersonDetails().getPesel(), PATIENT_PATH);
-
         } else {
             savePatient(new Patient());
         }
