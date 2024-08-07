@@ -15,21 +15,29 @@
     </div>
 </nav>
 <div class="container">
-    <h3 class="card-title text-center">Wyszukiwanie pacjenta po pesel</h3>
+    <h3 class="card-title text-center">Wyszukiwanie pacjenta po numerze pesel</h3>
     <form th:action="@{/search-patient}" th:method="post">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL"
+
+        <div class="input-group mb-2 ">
+            <input type="text" class="form-control form-control-sm" name="pesel" placeholder="Wpisz numer PESEL"
                    aria-label="Search"
-                   aria-describedby="button-addon2">
-            <button class="btn btn-primary" type="submit" id="button-addon2">Wyszukaj</button>
+                   aria-describedby="button-addon2" required>
+
+            <div class=" ms-2">
+                <button type="submit" class="btn btn-outline-primary" id="button-addon2">Wyszukaj</button>
+            </div>
+
         </div>
     </form>
-    <div th:if="${error != null}" class="mt-4 alert alert-danger" role="alert">
+    <div th:if="${error != null}" class="mt-2 alert alert-danger" role="alert">
         <p th:text="${error}">Błąd</p>
-        <a th:href="@{/patient}" class="btn btn-primary" role="button"
-           aria-pressed="true">Dodaj pacjenta do bazy</a>
     </div>
-    <h3>Wszyscy nasi pacjenci</h3>
+
+    <a th:href="@{/patient}" class="btn btn-primary mt-1" role="button"
+       aria-pressed="true">Dodaj pacjenta do bazy</a>
+
+    <h4>Wszyscy nasi pacjenci</h4>
+
     <table>
         <div class="card">
             <table class="table table-striped tfixed">
@@ -56,16 +64,15 @@
                            aria-pressed="true">Pokaż i edytuj dane</a></td>
                 </tr>
             </table>
-
         </div>
     </table>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+crossorigin="anonymous"></script>
+</body>
 <footer>
     <div th:replace="~{fragments/footer :: footer}"></div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-</body>
 </html>
