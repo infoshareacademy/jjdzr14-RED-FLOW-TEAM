@@ -94,7 +94,7 @@
                     <div class="form-group">
                         <label class="form-label">Płeć:</label>
                         <input class="form-control" type="text" id="gender" name="gender" readonly="readonly"
-                               th:field="*{personDetails.gender}">
+                               th:value="*{personDetails.gender.getDescription()}">
                         <p th:if="${#fields.hasErrors('personDetails.gender')}" class="text-danger"
                            th:errors="*{personDetails.gender}">Gender error</p>
                     </div>

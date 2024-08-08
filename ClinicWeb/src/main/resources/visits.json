@@ -1,0 +1,53 @@
+[ {
+  "doctor" : {
+    "surname" : "Wojtkowski",
+    "name" : "Wojciech",
+    "specialization" : "Neurolog"
+  },
+  "numberOfVisits" : 0,
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "555-858-214",
+      "gender" : "Mężczyzna",
+      "surname" : "Lewandowski",
+      "name" : "Teofil",
+      "pesel" : "91051562694",
+      "birthDate" : "1991-05-15"
+    },
+    "address" : {
+      "country" : "Słowacja",
+      "zipCode" : "20-222",
+      "city" : "Test",
+      "street" : "Produkcyjna",
+      "flatNumber" : "25",
+      "houseNumber" : "2"
+    }
+  },
+  "visitDate" : "22-08-2024 18:36"
+}, {
+  "patient" : {
+    "personDetails" : {
+      "name" : "Teofil",
+      "surname" : "Lewandowski",
+      "phoneNumber" : "555-858-214",
+      "birthDate" : "1991-05-15",
+      "pesel" : "91051562694",
+      "gender" : "Mężczyzna"
+    },
+    "address" : {
+      "city" : "Test",
+      "country" : "Słowacja",
+      "zipCode" : "20-222",
+      "street" : "Produkcyjna",
+      "houseNumber" : "2",
+      "flatNumber" : "25"
+    }
+  },
+  "doctor" : {
+    "name" : "Kamil",
+    "surname" : "Kantek",
+    "specialization" : "Internista"
+  },
+  "numberOfVisits" : 0,
+  "visitDate" : "23-08-2024 18:41"
+} ]
