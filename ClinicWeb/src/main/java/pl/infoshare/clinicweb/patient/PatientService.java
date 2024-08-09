@@ -111,5 +111,11 @@ public class PatientService implements PatientRepository {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    public Object remove(Patient pesel) {
+        removeFromFile(pesel.getPersonDetails().getPesel(), PATIENT_PATH);
+        return null;
     }
 }
