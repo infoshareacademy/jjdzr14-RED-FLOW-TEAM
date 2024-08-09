@@ -91,6 +91,7 @@ public class PatientController {
         Patient byPesel = patientService.findByPesel(pesel);
         if (patientService.findByPesel(pesel) != null) {
             model.addAttribute("searchForPesel", byPesel);
+            patientService.remove(byPesel);
         } else {
             model.addAttribute("error", "Nie znaleziono pacjenta o podanym numerze pesel: " + pesel);
         }
@@ -98,8 +99,10 @@ public class PatientController {
     }
 
     @GetMapping("/search-patient")
-    public String searchPatientByPesel(Model model) {
+    public String searchPatientByPesel( @RequestParam("pesel") Model model,String pesel) {
+        Patient byPesel = patientService.findByPesel(pesel);
         model.addAttribute("patient", new Patient());
+
         return "search-patient";
     }
 
@@ -109,7 +112,7 @@ public class PatientController {
         if (byPesel != null) {
             patientService.remove(byPesel);
         }
-        return "redirect:/patients";
+        return "redirect:/patients"; // Przekierowanie na stronę z listą pacjentów po usunięciu
     }
 
     @GetMapping("/delete-patient")

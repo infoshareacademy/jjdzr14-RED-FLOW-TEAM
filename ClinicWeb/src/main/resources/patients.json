@@ -1,24 +1,5 @@
 [ {
   "personDetails" : {
-    "name" : "Małgorzata",
-    "surname" : "Tomaszewska",
-    "phoneNumber" : "546-763-444",
-    "birthDate" : [ 1975, 1, 1 ],
-    "pesel" : "75010112348",
-    "gender" : "WOMAN"
-  },
-  "clinic" : null,
-  "doctor" : null,
-  "address" : {
-    "city" : "Praga",
-    "country" : "Czechy",
-    "zipCode" : "30-836",
-    "street" : "Jerzmenowskiego",
-    "houseNumber" : "23",
-    "flatNumber" : "111"
-  }
-}, {
-  "personDetails" : {
     "name" : "Malwina",
     "surname" : "Margot",
     "phoneNumber" : "505-666-158",

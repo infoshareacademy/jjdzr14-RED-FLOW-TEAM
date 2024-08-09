@@ -29,7 +29,12 @@
     </form>
     <div th:if="${error != null}" class="alert alert-danger mt-4" role="alert">
         <p th:text="${error}">Błąd</p>
-        <a th:href="@{/patient}" class="btn btn-primary" role="button" aria-pressed="true">Dodaj pacjenta do bazy</a>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a th:href="@{/patient}" class="btn btn-success" role="button" aria-pressed="true">Dodaj pacjenta do
+                bazy</a>
+            <a th:href="@{/patients}" class="btn btn-primary " role="button" aria-pressed="true">Powrót do listy
+                pacjentów</a>
+        </div>
     </div>
     <div th:if="${searchForPesel != null}" class="card mt-4">
         <table class="table table-striped table-hover">
@@ -56,11 +61,15 @@
                        class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Pokaż i edytuj dane</a>
                 </td>
                 <td>
-                    <a th:href="@{/patient}" class="btn btn-danger btn-sm" role="button" aria-pressed="true">Usuń</a>
+                    <form th:action="@{/delete-patient}" th:method="post" class="d-inline">
+                        <input type="hidden" name="pesel" th:value="${searchForPesel.personDetails.pesel}">
+                        <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+                    </form>
                 </td>
             </tr>
-            <a th:href="@{/patients}" class="btn btn-primary mt-3" role="button" aria-pressed="true">Powrót do listy pacjentów</a>
             </tbody>
+            <a th:href="@{/patients}" class="btn btn-primary mt-3" role="button" aria-pressed="true">Powrót do listy
+                pacjentów</a>
         </table>
     </div>
 </div>
