@@ -3,10 +3,7 @@ package pl.infoshare.clinicweb.patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
@@ -105,5 +102,22 @@ public class PatientController {
         model.addAttribute("patient", new Patient());
         return "search-patient";
     }
+
+    @PostMapping("/delete-patient")
+    public String deletePatient(@RequestParam("pesel") String pesel, Model model) {
+        Patient byPesel = patientService.findByPesel(pesel);
+        if (byPesel != null) {
+            patientService.remove(byPesel);
+        }
+        return "redirect:/patients";
+    }
+
+    @GetMapping("/delete-patient")
+    public String showDeletePatientForm(@RequestParam("pesel") String pesel, Model model) {
+        Patient byPesel = patientService.findByPesel(pesel);
+        model.addAttribute("patient", byPesel);
+        return "delete-patient";
+    }
+
 
 }
