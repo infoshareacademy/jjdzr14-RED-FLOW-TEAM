@@ -34,19 +34,53 @@
   }
 }, {
   "personDetails" : {
-    "name" : "Magdalena",
-    "surname" : "Grzyb",
     "phoneNumber" : "564-344-544",
-    "birthDate" : "1991-02-04",
+    "gender" : "Kobieta",
+    "surname" : "Grzyb",
+    "name" : "Magdalena",
     "pesel" : "91020412432",
-    "gender" : "Kobieta"
+    "birthDate" : "1991-02-04"
   },
   "address" : {
-    "city" : "Gorlice",
     "country" : "Polska",
     "zipCode" : "30-232",
+    "city" : "Gorlice",
     "street" : "Legionow Polskich",
-    "houseNumber" : "22",
-    "flatNumber" : "55"
+    "flatNumber" : "55",
+    "houseNumber" : "22"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "564-675-444",
+    "gender" : "Mężczyzna",
+    "surname" : "Kot",
+    "name" : "Marek",
+    "pesel" : "84010212345",
+    "birthDate" : "1984-01-02"
+  },
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "30-836",
+    "city" : "Krakow",
+    "street" : "Kanciasta",
+    "flatNumber" : "34",
+    "houseNumber" : "129"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Marek",
+    "surname" : "Kot",
+    "phoneNumber" : "564-675-444",
+    "birthDate" : "1984-01-02",
+    "pesel" : "84010212345",
+    "gender" : "Mężczyzna"
+  },
+  "address" : {
+    "city" : "Krakow",
+    "country" : "Polska",
+    "zipCode" : "30-836",
+    "street" : "Kanciasta",
+    "houseNumber" : "129",
+    "flatNumber" : "34"
   }
 } ]
