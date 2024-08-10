@@ -1,31 +1,5 @@
 [ {
   "doctor" : {
-    "surname" : "Wojtkowski",
-    "name" : "Wojciech",
-    "specialization" : "Neurolog"
-  },
-  "numberOfVisits" : 0,
-  "patient" : {
-    "personDetails" : {
-      "phoneNumber" : "555-858-214",
-      "gender" : "Mężczyzna",
-      "surname" : "Lewandowski",
-      "name" : "Teofil",
-      "pesel" : "91051562694",
-      "birthDate" : "1991-05-15"
-    },
-    "address" : {
-      "country" : "Słowacja",
-      "zipCode" : "20-222",
-      "city" : "Test",
-      "street" : "Produkcyjna",
-      "flatNumber" : "25",
-      "houseNumber" : "2"
-    }
-  },
-  "visitDate" : "22-08-2024 18:36"
-}, {
-  "doctor" : {
     "surname" : "Kantek",
     "name" : "Kamil",
     "specialization" : "Internista"
@@ -33,49 +7,23 @@
   "numberOfVisits" : 0,
   "patient" : {
     "personDetails" : {
-      "phoneNumber" : "555-858-214",
-      "gender" : "Mężczyzna",
-      "surname" : "Lewandowski",
-      "name" : "Teofil",
-      "pesel" : "91051562694",
-      "birthDate" : "1991-05-15"
-    },
-    "address" : {
-      "country" : "Słowacja",
-      "zipCode" : "20-222",
-      "city" : "Test",
-      "street" : "Produkcyjna",
-      "flatNumber" : "25",
-      "houseNumber" : "2"
-    }
-  },
-  "visitDate" : "23-08-2024 18:41"
-}, {
-  "doctor" : {
-    "surname" : "Zajac",
-    "name" : "Aneta",
-    "specialization" : "Internista"
-  },
-  "numberOfVisits" : 0,
-  "patient" : {
-    "personDetails" : {
-      "phoneNumber" : "546-763-444",
+      "phoneNumber" : "505-666-158",
       "gender" : "Kobieta",
-      "surname" : "Tomaszewska",
-      "name" : "Aleksandra",
-      "pesel" : "75010112348",
-      "birthDate" : "1975-01-01"
+      "surname" : "Kozak",
+      "name" : "Leokadia",
+      "pesel" : "92042326741",
+      "birthDate" : "1992-04-23"
     },
     "address" : {
-      "country" : null,
-      "zipCode" : "30-836",
-      "city" : null,
-      "street" : "Jerzmenowskiego",
-      "flatNumber" : "111",
-      "houseNumber" : "23"
+      "country" : "POLSKA",
+      "zipCode" : "57-843",
+      "city" : "Grudziądz",
+      "street" : "ZAKŁADOWA",
+      "flatNumber" : "8",
+      "houseNumber" : "14"
     }
   },
-  "visitDate" : "23-08-2024 12:48"
+  "visitDate" : "16-08-2024 13:02"
 }, {
   "doctor" : {
     "surname" : "Trawka",
@@ -101,31 +49,83 @@
       "houseNumber" : "8"
     }
   },
-  "visitDate" : "16-08-2024 12:50"
+  "visitDate" : "22-08-2024 13:07"
 }, {
+  "doctor" : {
+    "surname" : "Wojtkowski",
+    "name" : "Wojciech",
+    "specialization" : "Neurolog"
+  },
+  "numberOfVisits" : 0,
   "patient" : {
     "personDetails" : {
-      "name" : "Michael",
-      "surname" : "Musiał",
       "phoneNumber" : "888-528-000",
-      "birthDate" : "1968-10-11",
+      "gender" : "Mężczyzna",
+      "surname" : "Musiał",
+      "name" : "Michael",
       "pesel" : "68101126810",
-      "gender" : "Mężczyzna"
+      "birthDate" : "1968-10-11"
     },
     "address" : {
-      "city" : "Ruda Śląska",
       "country" : "POLSKA",
       "zipCode" : "61-862",
+      "city" : "Ruda Śląska",
       "street" : "PRZYRODNICZA",
-      "houseNumber" : "8",
-      "flatNumber" : "7"
+      "flatNumber" : "7",
+      "houseNumber" : "8"
     }
   },
+  "visitDate" : "23-08-2024 13:08"
+}, {
   "doctor" : {
-    "name" : "Wlodek",
-    "surname" : "Trawka",
+    "surname" : "Kantek",
+    "name" : "Kamil",
     "specialization" : "Internista"
   },
   "numberOfVisits" : 0,
-  "visitDate" : "17-08-2024 12:51"
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "555-858-214",
+      "gender" : "Mężczyzna",
+      "surname" : "Mnichowski",
+      "name" : "Teofil",
+      "pesel" : "91051562694",
+      "birthDate" : "1991-05-15"
+    },
+    "address" : {
+      "country" : "Słowacja",
+      "zipCode" : "20-222",
+      "city" : "Test",
+      "street" : "Produkcyjna",
+      "flatNumber" : "25",
+      "houseNumber" : "2"
+    }
+  },
+  "visitDate" : "22-08-2024 13:09"
+}, {
+  "patient" : {
+    "personDetails" : {
+      "name" : "Aleksandra",
+      "surname" : "Tomaszewska",
+      "phoneNumber" : "546-763-444",
+      "birthDate" : "1975-01-01",
+      "pesel" : "75010112348",
+      "gender" : "Kobieta"
+    },
+    "address" : {
+      "city" : "Krakow",
+      "country" : "Polska",
+      "zipCode" : "30-836",
+      "street" : "Jerzmenowskiego",
+      "houseNumber" : "23",
+      "flatNumber" : "111"
+    }
+  },
+  "doctor" : {
+    "name" : "Damian",
+    "surname" : "Koziol",
+    "specialization" : "Onkolog"
+  },
+  "numberOfVisits" : 0,
+  "visitDate" : "30-08-2024 13:13"
 } ]

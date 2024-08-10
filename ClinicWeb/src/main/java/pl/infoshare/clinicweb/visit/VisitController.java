@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
@@ -45,22 +46,29 @@ public class VisitController {
                                       @RequestParam(value = "patientPesel", required = false) String patientPesel,
                                       @Valid Patient patient,
                                       @RequestParam(value = "doctorPesel", required = false) String doctorPesel,
-                                      @Valid DoctorDto doctor, Model model) {
+                                      @Valid DoctorDto doctor, Model model, RedirectAttributes redirectAttributes) {
 
         model.addAttribute("doctors", doctorService.getAll());
         model.addAttribute("patients", patientService.getAll());
 
+
         if (visitBindingResult.hasErrors()) {
+
             return "addVisit";
+
+        } else {
+
+            redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. " +
+                    "Dziękujemy za rejestrację!");
+
+            doctor = doctorService.findByPesel(doctorPesel);
+            patient = patientService.findByPesel(patientPesel);
+            visitService.setVisitAttributes(patient, doctor, visit);
+            visitService.saveVisit(visit);
+
+            return "redirect:/addVisit";
         }
 
-        doctor = doctorService.findByPesel(doctorPesel);
-        patient = patientService.findByPesel(patientPesel);
-
-        visitService.setVisitAttributes(patient, doctor, visit);
-        visitService.saveVisit(visit);
-
-        return "redirect:/result";
     }
 
 }

@@ -7,8 +7,6 @@
     "pesel" : "68101126810",
     "gender" : "Mężczyzna"
   },
-  "clinic" : null,
-  "doctor" : null,
   "address" : {
     "city" : "Ruda Śląska",
     "country" : "POLSKA",
@@ -26,8 +24,6 @@
     "pesel" : "92042326741",
     "gender" : "Kobieta"
   },
-  "clinic" : null,
-  "doctor" : null,
   "address" : {
     "city" : "Grudziądz",
     "country" : "POLSKA",
@@ -45,8 +41,6 @@
     "pesel" : "75010112348",
     "gender" : "Kobieta"
   },
-  "clinic" : null,
-  "doctor" : null,
   "address" : {
     "city" : "Krakow",
     "country" : "Polska",
@@ -58,14 +52,12 @@
 }, {
   "personDetails" : {
     "name" : "Teofil",
-    "surname" : "Lewandowski",
+    "surname" : "Mnichowski",
     "phoneNumber" : "555-858-214",
     "birthDate" : [ 1991, 5, 15 ],
     "pesel" : "91051562694",
     "gender" : "Mężczyzna"
   },
-  "clinic" : null,
-  "doctor" : null,
   "address" : {
     "city" : "Test",
     "country" : "Słowacja",

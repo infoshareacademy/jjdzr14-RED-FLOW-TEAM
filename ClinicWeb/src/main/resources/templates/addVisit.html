@@ -101,15 +101,16 @@
                 <button type="submit" class="btn btn-primary">Zarejestruj się</button>
 
             </form>
+            <div th:align="center" th:if="${success}" class="mt-4 alert alert-success" role="alert">
+                <p th:text="${success}">Sukces</p>
+            </div>
 
             <a class="btn btn-primary" th:href="@{/}">Wróć do strony głównej</a>
 
         </div>
     </div>
 
-    <div th:if="${success != null}" class="mt-4 alert alert-success" role="alert">
-        <p th:text="${success}">Sukces</p>
-    </div>
+
 </div>
 </body>
 </html>
