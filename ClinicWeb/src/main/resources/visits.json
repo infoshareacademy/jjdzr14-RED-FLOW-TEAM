@@ -25,29 +25,107 @@
   },
   "visitDate" : "22-08-2024 18:36"
 }, {
-  "patient" : {
-    "personDetails" : {
-      "name" : "Teofil",
-      "surname" : "Lewandowski",
-      "phoneNumber" : "555-858-214",
-      "birthDate" : "1991-05-15",
-      "pesel" : "91051562694",
-      "gender" : "Mężczyzna"
-    },
-    "address" : {
-      "city" : "Test",
-      "country" : "Słowacja",
-      "zipCode" : "20-222",
-      "street" : "Produkcyjna",
-      "houseNumber" : "2",
-      "flatNumber" : "25"
-    }
-  },
   "doctor" : {
-    "name" : "Kamil",
     "surname" : "Kantek",
+    "name" : "Kamil",
     "specialization" : "Internista"
   },
   "numberOfVisits" : 0,
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "555-858-214",
+      "gender" : "Mężczyzna",
+      "surname" : "Lewandowski",
+      "name" : "Teofil",
+      "pesel" : "91051562694",
+      "birthDate" : "1991-05-15"
+    },
+    "address" : {
+      "country" : "Słowacja",
+      "zipCode" : "20-222",
+      "city" : "Test",
+      "street" : "Produkcyjna",
+      "flatNumber" : "25",
+      "houseNumber" : "2"
+    }
+  },
   "visitDate" : "23-08-2024 18:41"
+}, {
+  "doctor" : {
+    "surname" : "Zajac",
+    "name" : "Aneta",
+    "specialization" : "Internista"
+  },
+  "numberOfVisits" : 0,
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "546-763-444",
+      "gender" : "Kobieta",
+      "surname" : "Tomaszewska",
+      "name" : "Aleksandra",
+      "pesel" : "75010112348",
+      "birthDate" : "1975-01-01"
+    },
+    "address" : {
+      "country" : null,
+      "zipCode" : "30-836",
+      "city" : null,
+      "street" : "Jerzmenowskiego",
+      "flatNumber" : "111",
+      "houseNumber" : "23"
+    }
+  },
+  "visitDate" : "23-08-2024 12:48"
+}, {
+  "doctor" : {
+    "surname" : "Trawka",
+    "name" : "Wlodek",
+    "specialization" : "Internista"
+  },
+  "numberOfVisits" : 0,
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "888-528-000",
+      "gender" : "Mężczyzna",
+      "surname" : "Musiał",
+      "name" : "Michael",
+      "pesel" : "68101126810",
+      "birthDate" : "1968-10-11"
+    },
+    "address" : {
+      "country" : "POLSKA",
+      "zipCode" : "61-862",
+      "city" : "Ruda Śląska",
+      "street" : "PRZYRODNICZA",
+      "flatNumber" : "7",
+      "houseNumber" : "8"
+    }
+  },
+  "visitDate" : "16-08-2024 12:50"
+}, {
+  "patient" : {
+    "personDetails" : {
+      "name" : "Michael",
+      "surname" : "Musiał",
+      "phoneNumber" : "888-528-000",
+      "birthDate" : "1968-10-11",
+      "pesel" : "68101126810",
+      "gender" : "Mężczyzna"
+    },
+    "address" : {
+      "city" : "Ruda Śląska",
+      "country" : "POLSKA",
+      "zipCode" : "61-862",
+      "street" : "PRZYRODNICZA",
+      "houseNumber" : "8",
+      "flatNumber" : "7"
+    }
+  },
+  "doctor" : {
+    "name" : "Wlodek",
+    "surname" : "Trawka",
+    "specialization" : "Internista"
+  },
+  "numberOfVisits" : 0,
+  "visitDate" : "17-08-2024 12:51"
 } ]

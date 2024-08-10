@@ -20,7 +20,7 @@
 }, {
   "personDetails" : {
     "name" : "Leokadia",
-    "surname" : "KOZAK",
+    "surname" : "Kozak",
     "phoneNumber" : "505-666-158",
     "birthDate" : [ 1992, 4, 23 ],
     "pesel" : "92042326741",
@@ -48,8 +48,8 @@
   "clinic" : null,
   "doctor" : null,
   "address" : {
-    "city" : null,
-    "country" : null,
+    "city" : "Krakow",
+    "country" : "Polska",
     "zipCode" : "30-836",
     "street" : "Jerzmenowskiego",
     "houseNumber" : "23",

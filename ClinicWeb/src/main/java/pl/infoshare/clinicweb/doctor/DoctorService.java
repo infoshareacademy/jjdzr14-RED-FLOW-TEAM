@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.file.FileService;
 import pl.infoshare.clinicweb.user.User;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,7 +55,7 @@ public class DoctorService implements DoctorRepository {
 
         List<Doctor> doctorList = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {
         });
-        return doctorList;
+        return doctorList != null ? doctorList : new ArrayList<>();
     }
 
     public List<DoctorDto> findAll() {

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
@@ -84,27 +83,5 @@ public class PatientController {
         return "/fullDetailsPatient";
     }
 
-    @PostMapping("/addVisit")
-    public String savePatientVisit(@RequestParam("pesel") String pesel, @ModelAttribute("patient") Patient patient,
-                                   RedirectAttributes redirectAttributes, Model model) {
-
-        model.addAttribute("address", new Address());
-        model.addAttribute("personDetails", new PersonDetails());
-
-        patient = patientService.findByPesel(pesel);
-
-        if (patient != null) {
-
-            redirectAttributes.addFlashAttribute("patient", patient);
-
-            return "redirect:saveVisit";
-
-        } else {
-
-            model.addAttribute("error", "Nie znaleziono takiego pacjenta.");
-
-        }
-        return "createVisit";
-    }
 
 }

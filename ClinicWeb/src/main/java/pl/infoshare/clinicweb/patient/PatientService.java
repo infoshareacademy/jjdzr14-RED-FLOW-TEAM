@@ -19,10 +19,9 @@ public class PatientService implements PatientRepository {
 
     private static final String PATIENT_PATH = "ClinicWeb/src/main/resources/patients.json";
     private final FileService fileService;
-    private List<Patient> patientList;
     ObjectMapper mapper = new ObjectMapper();
 
-    public PatientService(FileService fileService, List<Patient> patientList) {
+    public PatientService(FileService fileService) {
 
         this.fileService = fileService;
     }

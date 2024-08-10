@@ -45,63 +45,32 @@
         <div class="card-body">
             <h3 class="card-title text-center">Rejestracja nowej wizyty</h3>
 
-            <form th:action="@{/saveVisit}" th:method="post" th:object="${visit}">
+            <form th:action="@{/addVisit}" th:method="post" th:object="${visit}">
 
                 <div th:object="${patient}">
 
-                    <div class="form-group">
-                        <label class="form-label">PESEL:</label>
+                    <div class="mb-3">
+                        <label class="form-label">Wybierz pacjenta:</label>
 
-                        <input type="text" readonly="readonly" class="form-control" id="pesel" name="pesel"
-                               th:field="*{personDetails.pesel}">
-                        <p th:if="${#fields.hasErrors('personDetails.pesel')}" class="text-danger"
-                           th:errors="*{personDetails.pesel}">Pesel error</p>
-                    </div>
+                        <select id="patientPesel"
+                                name="patientPesel"
+                                class="btn btn-primary btn-block"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                required
+                                oninvalid="setCustomValidity('Wybierz pacjenta')"
+                                oninput="setCustomValidity('')">
+                            <option value="" selected>----WYBIERZ PACJENTA----</option>
+                            <option th:each="patient : ${patients}"
+                                    th:value="${patient.personDetails.pesel}"
+                                    th:text="${patient.personDetails.name + ' ' + patient.personDetails.surname + '  Pesel: ' + patient.personDetails.pesel} "></option>
 
-                    <div class="form-group">
-                        <label class="form-label">Imię:</label>
-                        <input class="form-control" type="text" id="name" name="name"
-                               th:field="*{personDetails.name}">
-                        <p th:if="${#fields.hasErrors('personDetails.name')}" class="text-danger"
-                           th:errors="*{personDetails.name}">Name error</p>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="form-label">Nazwisko:</label>
-                        <input class="form-control" type="text" id="surname" name="surname"
-                               th:field="*{personDetails.surname}">
-                        <p th:if="${#fields.hasErrors('personDetails.surname')}" class="text-danger"
-                           th:errors="*{personDetails.surname}">Surname error</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Numer telefonu:</label>
-                        <input class="form-control" type="text" id="phoneNumber" name="phoneNumber"
-                               th:field="*{personDetails.phoneNumber}">
-                        <p th:if="${#fields.hasErrors('personDetails.phoneNumber')}" class="text-danger"
-                           th:errors="*{personDetails.phoneNumber}">PhoneNumber error</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Data urodzenia:</label>
-                        <input class="form-control" type="text" id="birthDate" name="birthDate" readonly="readonly"
-                               th:field="*{personDetails.birthDate}">
-                        <p th:if="${#fields.hasErrors('personDetails.birthDate')}" class="text-danger"
-                           th:errors="*{personDetails.birthDate}">BirthDate error</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Płeć:</label>
-                        <input class="form-control" type="text" id="gender" name="gender" readonly="readonly"
-                               th:value="*{personDetails.gender.getDescription()}">
-                        <p th:if="${#fields.hasErrors('personDetails.gender')}" class="text-danger"
-                           th:errors="*{personDetails.gender}">Gender error</p>
+                        </select>
                     </div>
 
 
                     <div class="mb-3">
-                        <label class="form-label">Do jakiego lekarza chcesz zapisać</label>
+                        <label class="form-label">Do jakiego lekarza chcesz sie zapisać?</label>
 
                         <select id="doctorPesel"
                                 name="doctorPesel"
