@@ -102,8 +102,8 @@
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                 <option th:each="gender: ${T(pl.infoshare.clinicweb.user.Gender).values()}"
-                                        th:value="${gender.name()}"
-                                        th:text="${gender.name()}"></option>
+                                        th:value="${gender.getDescription()}"
+                                        th:text="${gender.getDescription()}"></option>
                             </select>
                         </label>
                     </div>
