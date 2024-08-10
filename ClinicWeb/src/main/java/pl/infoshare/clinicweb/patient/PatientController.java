@@ -3,10 +3,7 @@ package pl.infoshare.clinicweb.patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
@@ -94,6 +91,7 @@ public class PatientController {
         Patient byPesel = patientService.findByPesel(pesel);
         if (patientService.findByPesel(pesel) != null) {
             model.addAttribute("searchForPesel", byPesel);
+            patientService.remove(byPesel);
         } else {
             model.addAttribute("error", "Nie znaleziono pacjenta o podanym numerze pesel: " + pesel);
         }
@@ -101,9 +99,28 @@ public class PatientController {
     }
 
     @GetMapping("/search-patient")
-    public String searchPatientByPesel(Model model) {
+    public String searchPatientByPesel( @RequestParam("pesel") Model model,String pesel) {
+        Patient byPesel = patientService.findByPesel(pesel);
         model.addAttribute("patient", new Patient());
+
         return "search-patient";
     }
+
+    @PostMapping("/delete-patient")
+    public String deletePatient(@RequestParam("pesel") String pesel, Model model) {
+        Patient byPesel = patientService.findByPesel(pesel);
+        if (byPesel != null) {
+            patientService.remove(byPesel);
+        }
+        return "redirect:/patients"; // Przekierowanie na stronę z listą pacjentów po usunięciu
+    }
+
+    @GetMapping("/delete-patient")
+    public String showDeletePatientForm(@RequestParam("pesel") String pesel, Model model) {
+        Patient byPesel = patientService.findByPesel(pesel);
+        model.addAttribute("patient", byPesel);
+        return "delete-patient";
+    }
+
 
 }
