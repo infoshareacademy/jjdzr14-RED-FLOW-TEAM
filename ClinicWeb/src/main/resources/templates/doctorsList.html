@@ -21,7 +21,6 @@
         <div class="form-group">
             <label for="specialization">Specjalizacja</label>
             <select name="specialization" id="specialization" class="form-control">
-                <option selected="selected"></option>
                 <option th:each="specialization : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
                         th:value="${specialization}"
                         th:text="${specialization.getDescription()}">
@@ -46,6 +45,9 @@
         </tr>
         </tbody>
     </table>
+    <a th:href="@{/doctor}"
+       class="btn btn-primary btn-sm active" role="button"
+       aria-pressed="true">Dodaj lekarza</a>
 </div>
 <footer>
     <div th:replace="~{fragments/footer :: footer}"></div>

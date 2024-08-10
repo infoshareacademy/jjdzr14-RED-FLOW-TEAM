@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Service
 public class PatientService implements PatientRepository {
 
-    private static final String PATIENT_PATH = "src/main/resources/patients.json";
+    private static final String PATIENT_PATH = "ClinicWeb/src/main/resources/patients.json";
     private final FileService fileService;
     private List<Patient> patientList;
     ObjectMapper mapper = new ObjectMapper();
