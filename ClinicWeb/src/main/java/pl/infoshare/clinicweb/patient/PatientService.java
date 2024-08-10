@@ -82,9 +82,10 @@ public class PatientService implements PatientRepository {
             patientByPesel.getPersonDetails().setSurname(patient.getPersonDetails().getSurname());
             patientByPesel.getAddress().setCountry(patient.getAddress().getCountry());
             patientByPesel.getAddress().setCity(patient.getAddress().getCity());
+            patientByPesel.getAddress().setHouseNumber(patient.getAddress().getHouseNumber());
+            patientByPesel.getAddress().setFlatNumber(patient.getAddress().getFlatNumber());
             savePatient(patientByPesel);
             removeFromFile(patientByPesel.getPersonDetails().getPesel(), PATIENT_PATH);
-
         } else {
             savePatient(new Patient());
         }
@@ -109,5 +110,11 @@ public class PatientService implements PatientRepository {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    public Object remove(Patient pesel) {
+        removeFromFile(pesel.getPersonDetails().getPesel(), PATIENT_PATH);
+        return null;
     }
 }

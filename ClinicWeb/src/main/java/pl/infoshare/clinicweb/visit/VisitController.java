@@ -71,4 +71,9 @@ public class VisitController {
 
     }
 
+    @GetMapping("/visits")
+    public String allVisits(Model model) {
+        model.addAttribute("allVisits", visitService.getAll());
+        return "visits";
+    }
 }
