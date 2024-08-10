@@ -15,63 +15,60 @@
     </div>
 </nav>
 <div class="container">
-    <h3 class="card-title text-center">Wyszukiwanie pacjenta po numerze pesel</h3>
+    <h3 class="card-title text-center">Wyszukiwanie pacjenta po numerze PESEL</h3>
     <form th:action="@{/search-patient}" th:method="post">
-
-        <div class="input-group mb-2 ">
+        <div class="input-group mb-3">
             <input type="text" class="form-control form-control-sm" name="pesel" placeholder="Wpisz numer PESEL"
                    aria-label="Search"
                    aria-describedby="button-addon2" required>
-
-            <div class=" ms-2">
-                <button type="submit" class="btn btn-outline-primary" id="button-addon2">Wyszukaj</button>
-            </div>
-
+            <button type="submit" class="btn btn-outline-primary" id="button-addon2">Wyszukaj</button>
         </div>
     </form>
     <div th:if="${error != null}" class="mt-2 alert alert-danger" role="alert">
         <p th:text="${error}">Błąd</p>
     </div>
-
-    <a th:href="@{/patient}" class="btn btn-primary mt-1" role="button"
-       aria-pressed="true">Dodaj pacjenta do bazy</a>
-
     <h4>Wszyscy nasi pacjenci</h4>
-
-    <table>
-        <div class="card">
-            <table class="table table-striped tfixed">
-                <thead>
-                <tr>
-                    <td>Imię</td>
-                    <td>Nazwisko</td>
-                    <td>Numer telefonu</td>
-                    <td>Pesel</td>
-                    <td>Lekarz prowadzacy</td>
-                    <td>Wszystkie dane</td>
-
-
-                </tr>
-                </thead>
-                <tr th:each="patient:${listPatient}">
-                    <td th:text="${patient.name}">Name</td>
-                    <td th:text="${patient.surname}">Surname</td>
-                    <td th:text="${patient.phoneNumber}">Phone number</td>
-                    <td th:text="${patient.pesel}">Pesel</td>
-                    <td th:text="${patient.doctor}">Prime doctor</td>
-                    <td><a th:href="@{/update-patient(pesel=${patient.pesel})}"
-                           class="btn btn-primary btn-sm active" role="button"
-                           aria-pressed="true">Pokaż i edytuj dane</a></td>
-                </tr>
-            </table>
-        </div>
-    </table>
-
+    <div class="card mt-3">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Numer telefonu</th>
+                <th>PESEL</th>
+                <th>Wszystkie dane</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="patient:${listPatient}">
+                <td th:text="${patient.name}">Imię</td>
+                <td th:text="${patient.surname}">Nazwisko</td>
+                <td th:text="${patient.phoneNumber}">Numer telefonu</td>
+                <td th:text="${patient.pesel}">PESEL</td>
+                <td>
+                    <a th:href="@{/update-patient(pesel=${patient.pesel})}"
+                       class="btn btn-primary btn-sm" role="button">Pokaż i edytuj dane</a>
+                </td>
+                <td>
+                    <form th:action="@{/delete-patient}" th:method="post" class="d-inline">
+                        <input type="hidden" name="pesel" th:value="${patient.pesel}">
+                        <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5"></td>
+                <td>
+                    <a th:href="@{/patient}" class="btn btn-success btn-sm" role="button">Dodaj</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-crossorigin="anonymous"></script>
-</body>
+        crossorigin="anonymous"></script>
 <footer>
     <div th:replace="~{fragments/footer :: footer}"></div>
 </footer>

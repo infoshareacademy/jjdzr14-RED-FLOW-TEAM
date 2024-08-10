@@ -1,3 +1,4 @@
+
 [
   {
     "personDetails": {
@@ -117,5 +118,61 @@
       "flatNumber": "122",
       "houseNumber": "223"
     }
+=======
+[ {
+  "personDetails" : {
+    "name" : "Malwina",
+    "surname" : "Margot",
+    "phoneNumber" : "505-666-158",
+    "birthDate" : [ 1992, 4, 23 ],
+    "pesel" : "92042326741",
+    "gender" : "WOMAN"
+  },
+  "clinic" : null,
+  "doctor" : null,
+  "address" : {
+    "city" : "Grudziądz",
+    "country" : "POLSKA",
+    "zipCode" : "57-843",
+    "street" : "ZAKŁADOWA",
+    "houseNumber" : "14",
+    "flatNumber" : "8"
   }
-]
+}, {
+  "personDetails" : {
+    "name" : "Jan",
+    "surname" : "Nowak",
+    "phoneNumber" : "888-585-693",
+    "birthDate" : [ 1975, 1, 1 ],
+    "pesel" : "75010112343",
+    "gender" : "MAN"
+  },
+  "clinic" : null,
+  "doctor" : null,
+  "address" : {
+    "city" : "Trzebiatów",
+    "country" : "Polska",
+    "zipCode" : "80-150",
+    "street" : "węglowa",
+    "houseNumber" : "9",
+    "flatNumber" : "9"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Roman",
+    "surname" : "Pazdzioch",
+    "phoneNumber" : "888-259-632",
+    "birthDate" : [ 1995, 10, 28 ],
+    "pesel" : "95102826883",
+    "gender" : "WOMAN"
+  },
+  "clinic" : null,
+  "doctor" : null,
+  "address" : {
+    "city" : "Zamiasto",
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "street" : "Koperkowa",
+    "houseNumber" : "223",
+    "flatNumber" : "122"
+} ]
