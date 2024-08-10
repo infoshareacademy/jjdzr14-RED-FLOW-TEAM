@@ -42,7 +42,7 @@
 </head>
 <body style="background-image:url(/pxfuel.jpg)">
 
-<h3> formularz utworzenia nowego pacjenta w bazie </h3>
+<h3> Formularz utworzenia nowego pacjenta w bazie </h3>
 
 <form th:action="patient" th:method="post" th:object="${personDetails}">
     <div class="container  clearfix">
@@ -60,7 +60,7 @@
                     <p th:if="${#fields.hasErrors('surname')}" class="text-danger"
                        th:errors="*{surname}">Surname error</p>
                 </div>
-                <div class="mb-3">
+                <div class="form-group">
                     <label class="form-label">Do jakiego lekarza chcesz zapisać</label>
                     <select name="doctor"
                             class="form-select"
@@ -72,27 +72,19 @@
                                 th:value="${doctor.getName()}"
                                 th:text="${doctor.getName() + ' ' + doctor.getSurname()}"></option>
                     </select>
-                    <span id="selected-specialization" class="ms-3"></span>
                 </div>
                 <div class="form-group">
-
-                    <div class="btn-group mb-3 block-list">
-                        <label class="form-label">Płeć : </label>
-                        <label class="block">
-                            <select name="gender" class="btn  dropdown-toggle"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                    required
-                                    oninvalid="setCustomValidity('Wybierz płeć')"
-                                    oninput="setCustomValidity('')">
-                                <option value="" selected>----Wybierz płeć----</option>
-                                <option th:each="gender : ${T(pl.infoshare.clinicweb.user.Gender).values()}"
-                                        th:value="${gender}"
-                                        th:text="${gender.getDescription()}"></option>
-                            </select>
-                        </label>
-                    </div>
-
+                    <label class="form-label">Płeć : </label>
+                    <select name="gender"
+                            class="form-select"
+                            required
+                            oninvalid="setCustomValidity('Wybierz płeć')"
+                            oninput="setCustomValidity('')">
+                        <option value="" selected>----Wybierz płeć----</option>
+                        <option th:each="gender : ${T(pl.infoshare.clinicweb.user.Gender).values()}"
+                                th:value="${gender}"
+                                th:text="${gender.getDescription()}"></option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Numer telefonu :</label>
@@ -148,14 +140,13 @@
                 </div>
             </div>
         </div>
-        <div th:align="center" th:if="${success}" class="mt-4 alert alert-success" role="alert">
-            <p th:text="${success}">Sukces</p>
-        </div>
         <button class="btn btn-primary" type="submit">Prześlij formularz</button>
         <a class="btn btn-primary" th:href="@{/}">Anuluj</a>
     </div>
 </form>
-
+<div th:align="center" th:if="${success}" class="mt-4 alert alert-success" role="alert">
+    <p th:text="${success}">Sukces</p>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
