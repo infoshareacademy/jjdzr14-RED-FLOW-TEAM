@@ -1,13 +1,21 @@
 package pl.infoshare.clinicweb.patient;
 
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class Address {
 
+    @NotEmpty(message = "Pole nie może być puste")
     private String city;
+    @NotEmpty(message = "Pole nie może być puste")
     private String country;
+    @NotEmpty(message = "Pole nie może być puste")
     private String zipCode;
+    @NotEmpty(message = "Pole nie może być puste")
     private String street;
+    @NotEmpty(message = "Pole nie może być puste")
     private String houseNumber;
+    @NotEmpty(message = "Pole nie może być puste")
     private String flatNumber;
 
 

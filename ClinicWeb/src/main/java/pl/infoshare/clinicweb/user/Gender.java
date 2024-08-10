@@ -1,8 +1,6 @@
 package pl.infoshare.clinicweb.user;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-import lombok.Getter;
-
 
 public enum Gender {
     MAN("Mężczyzna"),

@@ -50,22 +50,29 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Imię :</label>
-                    <input class="form-control" type="text" th:field="*{name}" required>
+                    <input class="form-control" type="text" th:field="*{name}">
+                    <p th:if="${#fields.hasErrors('name')}" class="text-danger"
+                       th:errors="*{name}">Name error</p>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Nazwisko :</label>
-                    <input class="form-control" type="text" th:field="*{surname}" required>
+                    <input class="form-control" type="text" th:field="*{surname}">
+                    <p th:if="${#fields.hasErrors('surname')}" class="text-danger"
+                       th:errors="*{surname}">Surname error</p>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Do jakiego lekarza chcesz zapisać</label>
-                    <select name="doctor" class="form-select">
+                    <select name="doctor"
+                            class="form-select"
+                            required
+                            oninvalid="setCustomValidity('Wybierz lekarza')"
+                            oninput="setCustomValidity('')">>
+                        <option value="" selected>----Wybierz lekarza----</option>
                         <option th:each="doctor : ${doctors}"
                                 th:value="${doctor.getName()}"
                                 th:text="${doctor.getName() + ' ' + doctor.getSurname()}"></option>
-
                     </select>
                     <span id="selected-specialization" class="ms-3"></span>
-
                 </div>
                 <div class="form-group">
 
@@ -74,10 +81,14 @@
                         <label class="block">
                             <select name="gender" class="btn  dropdown-toggle"
                                     data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                    aria-expanded="false"
+                                    required
+                                    oninvalid="setCustomValidity('Wybierz płeć')"
+                                    oninput="setCustomValidity('')">
+                                <option value="" selected>----Wybierz płeć----</option>
                                 <option th:each="gender : ${T(pl.infoshare.clinicweb.user.Gender).values()}"
-                                        th:value="${gender.description}"
-                                        th:text="${gender.description}"></option>
+                                        th:value="${gender}"
+                                        th:text="${gender.getDescription()}"></option>
                             </select>
                         </label>
                     </div>
@@ -85,46 +96,66 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Numer telefonu :</label>
-                    <input class="form-control" type="text" th:field="*{phoneNumber}" required>
+                    <input class="form-control" type="text" th:field="*{phoneNumber}">
+                    <p th:if="${#fields.hasErrors('phoneNumber')}" class="text-danger"
+                       th:errors="*{phoneNumber}">Phone number error</p>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Pesel :</label>
-                    <input class="form-control" type="text" th:field="*{pesel}" required>
+                    <input class="form-control" type="text" th:field="*{pesel}">
+                    <p th:if="${#fields.hasErrors('pesel')}" class="text-danger"
+                       th:errors="*{pesel}">Pesel error</p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div th:action="register" th:method="post" th:object="${address}">
                     <div class="form-group">
                         <label class="form-label">Ulica :</label>
-                        <input class="form-control" type="text" th:field="*{street}" required>
+                        <input class="form-control" type="text" th:field="*{street}">
+                        <p th:if="${#fields.hasErrors('street')}" class="text-danger"
+                           th:errors="*{street}">Street error</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Numer domu :</label>
-                        <input class="form-control" type="text" th:field="*{houseNumber}" required>
+                        <input class="form-control" type="text" th:field="*{houseNumber}">
+                        <p th:if="${#fields.hasErrors('houseNumber')}" class="text-danger"
+                           th:errors="*{houseNumber}">House Number error</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Numer mieszkania :</label>
-                        <input class="form-control" type="text" th:field="*{flatNumber}" required>
+                        <input class="form-control" type="text" th:field="*{flatNumber}">
+                        <p th:if="${#fields.hasErrors('flatNumber')}" class="text-danger"
+                           th:errors="*{flatNumber}">Flat Number error</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Kod pocztowy :</label>
-                        <input class="form-control" type="text" th:field="*{zipCode}" required>
+                        <input class="form-control" type="text" th:field="*{zipCode}">
+                        <p th:if="${#fields.hasErrors('zipCode')}" class="text-danger"
+                           th:errors="*{zipCode}">zipCode error</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Miasto :</label>
-                        <input class="form-control" type="text" th:field="*{city}" required>
+                        <input class="form-control" type="text" th:field="*{city}">
+                        <p th:if="${#fields.hasErrors('city')}" class="text-danger"
+                           th:errors="*{city}">City error</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Kraj :</label>
-                        <input class="form-control" type="text" th:field="*{country}" required>
+                        <input class="form-control" type="text" th:field="*{country}">
+                        <p th:if="${#fields.hasErrors('country')}" class="text-danger"
+                           th:errors="*{country}">Country error</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div th:align="center" th:if="${success}" class="mt-4 alert alert-success" role="alert">
+            <p th:text="${success}">Sukces</p>
+        </div>
         <button class="btn btn-primary" type="submit">Prześlij formularz</button>
-        <a class="btn btn-primary" th:href="@{/}">Wróć do strony głównej</a>
+        <a class="btn btn-primary" th:href="@{/}">Anuluj</a>
     </div>
 </form>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

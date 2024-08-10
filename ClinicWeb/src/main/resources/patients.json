@@ -1,69 +1,52 @@
 [ {
   "personDetails" : {
-    "name" : "Michael",
-    "surname" : "Musiał",
-    "phoneNumber" : "888-528-000",
-    "birthDate" : [ 1968, 10, 11 ],
-    "pesel" : "68101126810",
-    "gender" : "Mężczyzna"
+    "phoneNumber" : "55555555",
+    "gender" : "Mężczyzna",
+    "surname" : "Lolek",
+    "name" : "Kamil",
+    "pesel" : "99031562694",
+    "birthDate" : "1999-03-15"
   },
   "address" : {
-    "city" : "Ruda Śląska",
-    "country" : "POLSKA",
-    "zipCode" : "61-862",
-    "street" : "PRZYRODNICZA",
-    "houseNumber" : "8",
-    "flatNumber" : "7"
-  }
-}, {
-  "personDetails" : {
-    "name" : "Leokadia",
-    "surname" : "Kozak",
-    "phoneNumber" : "505-666-158",
-    "birthDate" : [ 1992, 4, 23 ],
-    "pesel" : "92042326741",
-    "gender" : "Kobieta"
-  },
-  "address" : {
-    "city" : "Grudziądz",
-    "country" : "POLSKA",
-    "zipCode" : "57-843",
-    "street" : "ZAKŁADOWA",
-    "houseNumber" : "14",
-    "flatNumber" : "8"
-  }
-}, {
-  "personDetails" : {
-    "name" : "Aleksandra",
-    "surname" : "Tomaszewska",
-    "phoneNumber" : "546-763-444",
-    "birthDate" : [ 1975, 1, 1 ],
-    "pesel" : "75010112348",
-    "gender" : "Kobieta"
-  },
-  "address" : {
-    "city" : "Krakow",
     "country" : "Polska",
     "zipCode" : "30-836",
-    "street" : "Jerzmenowskiego",
-    "houseNumber" : "23",
-    "flatNumber" : "111"
+    "city" : "Krakow",
+    "street" : "Kwiatowa",
+    "flatNumber" : "39",
+    "houseNumber" : "11"
   }
 }, {
   "personDetails" : {
-    "name" : "Teofil",
-    "surname" : "Mnichowski",
-    "phoneNumber" : "555-858-214",
-    "birthDate" : [ 1991, 5, 15 ],
-    "pesel" : "91051562694",
-    "gender" : "Mężczyzna"
+    "phoneNumber" : "123-564-456",
+    "gender" : "Mężczyzna",
+    "surname" : "Kopacz",
+    "name" : "Antoni",
+    "pesel" : "92030812345",
+    "birthDate" : "1992-03-08"
   },
   "address" : {
-    "city" : "Test",
-    "country" : "Słowacja",
-    "zipCode" : "20-222",
-    "street" : "Produkcyjna",
-    "houseNumber" : "2",
-    "flatNumber" : "25"
+    "country" : "Polska",
+    "zipCode" : "32-300",
+    "city" : "Olkusz",
+    "street" : "Majora",
+    "flatNumber" : "34",
+    "houseNumber" : "22"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Magdalena",
+    "surname" : "Grzyb",
+    "phoneNumber" : "564-344-544",
+    "birthDate" : "1991-02-04",
+    "pesel" : "91020412432",
+    "gender" : "Kobieta"
+  },
+  "address" : {
+    "city" : "Gorlice",
+    "country" : "Polska",
+    "zipCode" : "30-232",
+    "street" : "Legionow Polskich",
+    "houseNumber" : "22",
+    "flatNumber" : "55"
   }
 } ]

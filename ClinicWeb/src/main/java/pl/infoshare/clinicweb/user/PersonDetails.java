@@ -19,12 +19,10 @@ public class PersonDetails {
     private String surname;
     @NotEmpty(message = "Pole nie może być puste")
     private String phoneNumber;
-    @NotNull(message = "Pole nie może być puste")
     private LocalDate birthDate;
     @NotEmpty(message = "Pole nie może być puste")
     @Pattern(regexp = "[0-9]{11}", message = "Pole musi zawierać 11 cyfr. ")
     private String pesel;
-    @NotNull(message = "Pole nie może być puste")
     private Gender gender;
 
     public PersonDetails() {

@@ -1,7 +1,6 @@
 package pl.infoshare.clinicweb.patient;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import jakarta.validation.Valid;
 import pl.infoshare.clinicweb.clinic.Clinic;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.user.PersonDetails;
@@ -12,7 +11,6 @@ import java.time.LocalDate;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Patient {
 
-    @Valid
     private PersonDetails personDetails;
     private Clinic clinic;
     private Doctor doctor;

@@ -103,29 +103,55 @@
   },
   "visitDate" : "22-08-2024 13:09"
 }, {
-  "patient" : {
-    "personDetails" : {
-      "name" : "Aleksandra",
-      "surname" : "Tomaszewska",
-      "phoneNumber" : "546-763-444",
-      "birthDate" : "1975-01-01",
-      "pesel" : "75010112348",
-      "gender" : "Kobieta"
-    },
-    "address" : {
-      "city" : "Krakow",
-      "country" : "Polska",
-      "zipCode" : "30-836",
-      "street" : "Jerzmenowskiego",
-      "houseNumber" : "23",
-      "flatNumber" : "111"
-    }
-  },
   "doctor" : {
-    "name" : "Damian",
     "surname" : "Koziol",
+    "name" : "Damian",
     "specialization" : "Onkolog"
   },
   "numberOfVisits" : 0,
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "546-763-444",
+      "gender" : "Kobieta",
+      "surname" : "Tomaszewska",
+      "name" : "Aleksandra",
+      "pesel" : "75010112348",
+      "birthDate" : "1975-01-01"
+    },
+    "address" : {
+      "country" : "Polska",
+      "zipCode" : "30-836",
+      "city" : "Krakow",
+      "street" : "Jerzmenowskiego",
+      "flatNumber" : "111",
+      "houseNumber" : "23"
+    }
+  },
   "visitDate" : "30-08-2024 13:13"
+}, {
+  "patient" : {
+    "personDetails" : {
+      "name" : "Michael",
+      "surname" : "Musiał",
+      "phoneNumber" : "888-528-000",
+      "birthDate" : "1968-10-11",
+      "pesel" : "68101126810",
+      "gender" : "Mężczyzna"
+    },
+    "address" : {
+      "city" : "Ruda Śląska",
+      "country" : "POLSKA",
+      "zipCode" : "61-862",
+      "street" : "PRZYRODNICZA",
+      "houseNumber" : "8",
+      "flatNumber" : "7"
+    }
+  },
+  "doctor" : {
+    "name" : "Wlodek",
+    "surname" : "Trawka",
+    "specialization" : "Internista"
+  },
+  "numberOfVisits" : 0,
+  "visitDate" : "16-08-2024 14:27"
 } ]

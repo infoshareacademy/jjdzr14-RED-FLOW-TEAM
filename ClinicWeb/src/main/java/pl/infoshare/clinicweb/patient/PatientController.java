@@ -1,12 +1,15 @@
 package pl.infoshare.clinicweb.patient;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
@@ -29,14 +32,24 @@ public class PatientController {
     }
 
     @PostMapping("/patient")
-    public String patientFormSubmission(@ModelAttribute PersonDetails patientDetails, @ModelAttribute Address patientAddress, Model model, @ModelAttribute DoctorService doctorService) {
+    public String patientFormSubmission(@Valid PersonDetails patientDetails, BindingResult detailsBinding,
+                                        @Valid Address patientAddress, BindingResult addressBinding,
+                                        Model model, RedirectAttributes redirectAttributes) {
+
         model.addAttribute("doctors", doctorService.findAll());
-        model.addAttribute("personDetails", new PersonDetails());
-        model.addAttribute("address", new Address());
 
-        patientService.savePatient(new Patient(patientDetails, patientAddress));
+        if (detailsBinding.hasErrors() || addressBinding.hasErrors()) {
 
-        return "result";
+            return "patient";
+
+        } else {
+
+            redirectAttributes.addFlashAttribute("success", "Utworzono nowego pacjenta w bazie.");
+            patientService.savePatient(new Patient(patientDetails, patientAddress));
+
+            return "redirect:/patient";
+        }
+
 
     }
 
