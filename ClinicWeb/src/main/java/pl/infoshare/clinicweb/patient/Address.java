@@ -1,5 +1,7 @@
 package pl.infoshare.clinicweb.patient;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 
 import jakarta.validation.constraints.NotEmpty;
 
@@ -14,8 +16,9 @@ public class Address {
     @NotEmpty(message = "Pole nie może być puste")
     private String street;
     @NotEmpty(message = "Pole nie może być puste")
+    @Pattern(regexp = "[0-9]{1,6}", message = "Pole musi zawierać same cyfry. ")
     private String houseNumber;
-    @NotEmpty(message = "Pole nie może być puste")
+    @Pattern(regexp = "[0-9]{0,6}", message = "Pole musi zawierać same cyfry. ")
     private String flatNumber;
 
 

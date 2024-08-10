@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RequiredArgsConstructor
 @Controller
 public class PatientController {
@@ -55,7 +58,9 @@ public class PatientController {
 
     @GetMapping("/patients")
     public String viewPatients(Model model) {
+
         model.addAttribute("listPatient", patientService.findAll());
+
         return "patientsList";
     }
 
