@@ -6,15 +6,12 @@ import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.file.FileService;
 import pl.infoshare.clinicweb.patient.Patient;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class VisitService implements VisitRepository {
 
-    private static final String VISITS_PATH = "src/main/resources/visits.json";
+    private static final String VISITS_PATH = "ClinicWeb/src/main/resources/visits.json";
     private final FileService fileService;
 
     public VisitService(FileService fileService) {

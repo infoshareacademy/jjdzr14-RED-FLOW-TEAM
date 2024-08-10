@@ -68,21 +68,26 @@ public class Visit {
         this.visitDate = visitDate;
 
     }
+    public void setDoctor(DoctorDto doctor) {
+        this.doctor = doctor;
+
+
+
+    }
   
     public DoctorDto getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(DoctorDto doctor) {
-        this.doctor = doctor;
-
     @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        Visit visit = (Visit) object;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Visit visit = (Visit) o;
         return numberOfVisits == visit.numberOfVisits && Objects.equals(patient, visit.patient) && Objects.equals(doctor, visit.doctor) && Objects.equals(medicines, visit.medicines) && Objects.equals(visitDate, visit.visitDate);
     }
+
+
 
     @Override
     public int hashCode() {

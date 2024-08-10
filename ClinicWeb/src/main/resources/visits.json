@@ -1,0 +1,27 @@
+[ {
+  "patient" : {
+    "personDetails" : {
+      "name" : "Antoni",
+      "surname" : "Kopacz",
+      "phoneNumber" : "123-564-456",
+      "birthDate" : "1992-03-08",
+      "pesel" : "92030812345",
+      "gender" : "Mężczyzna"
+    },
+    "address" : {
+      "city" : "Olkusz",
+      "country" : "Polska",
+      "zipCode" : "32-300",
+      "street" : "Majora",
+      "houseNumber" : "22",
+      "flatNumber" : "34"
+    }
+  },
+  "doctor" : {
+    "name" : "Wojciech",
+    "surname" : "Wojtkowski",
+    "specialization" : "Neurolog"
+  },
+  "numberOfVisits" : 0,
+  "visitDate" : "30-08-2024 17:19"
+} ]

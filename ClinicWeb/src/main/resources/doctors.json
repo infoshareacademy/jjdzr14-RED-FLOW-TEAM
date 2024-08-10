@@ -70,17 +70,28 @@
     "specialization": "Internista",
     "online": false,
     "availability": false
+  }, {
+  "personDetails": {
+    "phoneNumber": "444-444-333",
+    "surname": "Krol",
+    "name": "Mateusz",
+    "pesel": "75011668910",
+    "birthDate": [
+      1975,
+      1,
+      16
+    ]
   },
-  {
-    "personDetails": {
-      "phoneNumber": "444-444-333",
-      "surname": "Zajac",
-      "name": "Aneta",
-      "pesel": "7564932323",
-      "birthDate": [
-        1975,
-        12,
-        12
-
-  }
+  "address": {
+    "country": "Polska",
+    "zipCode": "85-255",
+    "city": "Trzebina",
+    "street": "Zawodzie",
+    "flatNumber": 15,
+    "houseNumber": 1
+  },
+  "specialization": "Neurolog",
+  "online": false,
+  "availability": false
+}
 ]
