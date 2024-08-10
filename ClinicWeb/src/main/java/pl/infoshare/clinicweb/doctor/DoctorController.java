@@ -7,7 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.patient.Address;
-import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.util.List;
@@ -22,8 +21,8 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @GetMapping("/doctors")
-    public String viewDoctors(Model model, @RequestParam(required = false, value="specialization") Specialization specialization) {
+    @RequestMapping("/doctors")
+    public String viewDoctors(Model model, @RequestParam(required = false, value = "specialization") Specialization specialization) {
 
         List<DoctorDto> doctors;
 
@@ -44,9 +43,12 @@ public class DoctorController {
     }
 
     @PostMapping("/doctor")
-    public String doctorFormSubmission(@Valid PersonDetails doctorDetails, BindingResult detailsBinding,
-                                        @Valid Address doctorAddress, BindingResult addressBinding,
-                                        Model model, RedirectAttributes redirectAttributes) {
+    public String doctorFormSubmission(@ModelAttribute Doctor doctor,
+                                       @Valid PersonDetails doctorDetails, BindingResult detailsBinding,
+                                       @Valid Address doctorAddress, BindingResult addressBinding,
+                                       @RequestParam("specialization") Specialization specialization,
+                                       RedirectAttributes redirectAttributes) {
+
 
         if (detailsBinding.hasErrors() || addressBinding.hasErrors()) {
 
@@ -55,7 +57,9 @@ public class DoctorController {
         } else {
 
             redirectAttributes.addFlashAttribute("success", "Utworzono nowego lekarza w bazie.");
-            doctorService.saveDoctor(new Doctor(doctorAddress, doctorDetails));
+
+            doctorService.setDoctorAttributes(doctor, doctorDetails, doctorAddress, specialization);
+            doctorService.saveDoctor(doctor);
 
             return "redirect:/doctor";
         }

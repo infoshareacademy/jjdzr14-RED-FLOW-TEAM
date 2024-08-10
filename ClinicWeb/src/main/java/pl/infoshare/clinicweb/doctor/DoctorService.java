@@ -2,9 +2,12 @@ package pl.infoshare.clinicweb.doctor;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.rsocket.RSocketProperties;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.file.FileService;
+import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.patient.Patient;
+import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.User;
 
 import java.util.List;
@@ -94,5 +97,11 @@ public class DoctorService implements DoctorRepository {
 
         fileService.writeToFile(doctor, DOCTOR_PATH);
 
+    }
+    public void setDoctorAttributes(Doctor doctor, PersonDetails personDetails, Address address, Specialization specialization) {
+
+        doctor.setSpecialization(specialization.getDescription());
+        doctor.setAddress(address);
+        doctor.setPersonDetails(personDetails);
     }
 }

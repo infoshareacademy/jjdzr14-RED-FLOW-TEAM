@@ -151,22 +151,83 @@
   "online" : false,
   "availability" : false
 }, {
+  "personDetails" : {
+    "phoneNumber" : "123-456-789",
+    "gender" : "Mężczyzna",
+    "surname" : "Kamilowski",
+    "name" : "Antoni",
+    "pesel" : "94020412345",
+    "birthDate" : "1994-02-04"
+  },
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "30-212",
+    "city" : "Krakow",
+    "street" : "Kamienna",
+    "flatNumber" : "",
+    "houseNumber" : "7"
+  },
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "243-344-333",
+    "gender" : "Mężczyzna",
+    "surname" : "Jarzabek",
+    "name" : "Antoni",
+    "pesel" : "97020812345",
+    "birthDate" : "1997-02-04"
+  },
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "30-622",
+    "city" : "Olkusz",
+    "street" : "Polna",
+    "flatNumber" : "39",
+    "houseNumber" : "20"
+  },
+  "specialization" : "Dermatolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "456-433-334",
+    "gender" : "Kobieta",
+    "surname" : "Orlowska",
+    "name" : "Aldona",
+    "pesel" : "56010112456",
+    "birthDate" : "1956-01-01"
+  },
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "32-300",
+    "city" : "Olkusz",
+    "street" : "Kamienna",
+    "flatNumber" : "39",
+    "houseNumber" : "11"
+  },
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false
+}, {
+  "specialization" : "Internista",
   "online" : false,
   "availability" : false,
   "address" : {
-    "city" : "Krakow",
+    "city" : "Olkusz",
     "country" : "Polska",
-    "zipCode" : "30-212",
-    "street" : "Kamienna",
-    "houseNumber" : "7",
+    "zipCode" : "32-300",
+    "street" : "Malownicza",
+    "houseNumber" : "11",
     "flatNumber" : ""
   },
   "personDetails" : {
-    "name" : "Antoni",
-    "surname" : "Kamilowski",
-    "phoneNumber" : "123-456-789",
-    "birthDate" : "1994-02-04",
-    "pesel" : "94020412345",
-    "gender" : "Mężczyzna"
+    "name" : "Maja",
+    "surname" : "Kamienista",
+    "phoneNumber" : "456-433-334",
+    "birthDate" : "1959-01-01",
+    "pesel" : "59010112456",
+    "gender" : "Kobieta"
   }
 } ]
