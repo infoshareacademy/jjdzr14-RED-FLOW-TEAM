@@ -1,101 +1,3 @@
-
-[
-  {
-    "personDetails": {
-      "phoneNumber": "444-444-333",
-      "surname": "Wojtkowski",
-      "name": "Wojciech",
-      "pesel": "12345678910",
-      "birthDate": [
-        1975,
-        12,
-        12
-      ]
-    },
-    "address": {
-      "country": "Polska",
-      "zipCode": "85-255",
-      "city": "Trzebina",
-      "street": "Zawodzie",
-      "flatNumber": 15,
-      "houseNumber": 1
-    },
-    "specialization": "Neurolog",
-    "online": false,
-    "availability": false
-  },
-  {
-    "personDetails": {
-      "phoneNumber": "444-444-333",
-      "surname": "Trawka",
-      "name": "Wlodek",
-      "pesel": "7564432323",
-      "birthDate": [
-        1975,
-        12,
-        12
-      ]
-    },
-    "address": {
-      "country": "Poland",
-      "zipCode": "30-521",
-      "city": "Lodz",
-      "street": "Warszawska",
-      "flatNumber": "76",
-      "houseNumber": "8"
-    },
-    "specialization": "Internista",
-    "online": false,
-    "availability": false
-  },
-  {
-    "personDetails": {
-      "phoneNumber": "444-444-333",
-      "surname": "Kantek",
-      "name": "Kamil",
-      "pesel": "7764932323",
-      "birthDate": [
-        1975,
-        12,
-        12
-      ]
-    },
-    "address": {
-      "country": "Poland",
-      "zipCode": "30-521",
-      "city": "Lodz",
-      "street": "Warszawska",
-      "flatNumber": "76",
-      "houseNumber": "8"
-    },
-    "specialization": "Internista",
-    "online": false,
-    "availability": false
-  }, {
-  "personDetails": {
-    "phoneNumber": "444-444-333",
-    "surname": "Krol",
-    "name": "Mateusz",
-    "pesel": "75011668910",
-    "birthDate": [
-      1975,
-      1,
-      16
-    ]
-  },
-  "address": {
-    "country": "Polska",
-    "zipCode": "85-255",
-    "city": "Trzebina",
-    "street": "Zawodzie",
-    "flatNumber": 15,
-    "houseNumber": 1
-  },
-  "specialization": "Neurolog",
-  "online": false,
-  "availability": false
-}
-]
 [ {
   "personDetails" : {
     "phoneNumber" : "444-444-333",
@@ -249,84 +151,23 @@
   "online" : false,
   "availability" : false
 }, {
-  "personDetails" : {
-    "phoneNumber" : "123-456-789",
-    "gender" : "Mężczyzna",
-    "surname" : "Kamilowski",
-    "name" : "Antoni",
-    "pesel" : "94020412345",
-    "birthDate" : "1994-02-04"
-  },
-  "address" : {
-    "country" : "Polska",
-    "zipCode" : "30-212",
-    "city" : "Krakow",
-    "street" : "Kamienna",
-    "flatNumber" : "",
-    "houseNumber" : "7"
-  },
-  "specialization" : "Chirurg",
-  "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "243-344-333",
-    "gender" : "Mężczyzna",
-    "surname" : "Jarzabek",
-    "name" : "Antoni",
-    "pesel" : "97020812345",
-    "birthDate" : "1997-02-04"
-  },
-  "address" : {
-    "country" : "Polska",
-    "zipCode" : "30-622",
-    "city" : "Olkusz",
-    "street" : "Polna",
-    "flatNumber" : "39",
-    "houseNumber" : "20"
-  },
-  "specialization" : "Dermatolog",
-  "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "456-433-334",
-    "gender" : "Kobieta",
-    "surname" : "Orlowska",
-    "name" : "Aldona",
-    "pesel" : "56010112456",
-    "birthDate" : "1956-01-01"
-  },
-  "address" : {
-    "country" : "Polska",
-    "zipCode" : "32-300",
-    "city" : "Olkusz",
-    "street" : "Kamienna",
-    "flatNumber" : "39",
-    "houseNumber" : "11"
-  },
-  "specialization" : "Chirurg",
-  "online" : false,
-  "availability" : false
-}, {
-  "specialization" : "Internista",
+  "specialization" : "Onkolog",
   "online" : false,
   "availability" : false,
   "address" : {
-    "city" : "Olkusz",
+    "city" : "Wyczechowo",
     "country" : "Polska",
-    "zipCode" : "32-300",
-    "street" : "Malownicza",
-    "houseNumber" : "11",
-    "flatNumber" : ""
+    "zipCode" : "10-022",
+    "street" : "Spacerowa",
+    "houseNumber" : "5",
+    "flatNumber" : "12"
   },
   "personDetails" : {
-    "name" : "Maja",
-    "surname" : "Kamienista",
-    "phoneNumber" : "456-433-334",
-    "birthDate" : "1959-01-01",
-    "pesel" : "59010112456",
-    "gender" : "Kobieta"
+    "name" : "Kamila",
+    "surname" : "Kazimmiejczak",
+    "phoneNumber" : "999-221-321",
+    "birthDate" : "1986-07-03",
+    "pesel" : "86070358531",
+    "gender" : "Mężczyzna"
   }
 } ]
-

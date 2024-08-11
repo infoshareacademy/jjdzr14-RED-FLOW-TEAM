@@ -2,7 +2,9 @@ package pl.infoshare.clinicweb.file;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
@@ -13,6 +15,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +33,13 @@ public class FileService implements FileRepository {
 
     @Override
     public <T> List<T> readFromFile(String filePath, TypeReference<List<T>> typeReference) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        LocalDateTimeDeserializer deserializer = new LocalDateTimeDeserializer(formatter);
+
+        SimpleModule module = new SimpleModule();
+        module.addDeserializer(LocalDateTime.class, deserializer);
+
+        mapper.registerModule(module);
 
         try {
 
