@@ -1,11 +1,14 @@
 package pl.infoshare.clinicweb.patient;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import pl.infoshare.clinicweb.clinic.Clinic;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.time.LocalDate;
 
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Patient {
 
     private PersonDetails personDetails;

@@ -10,6 +10,7 @@ import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.User;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,7 +59,7 @@ public class DoctorService implements DoctorRepository {
 
         List<Doctor> doctorList = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {
         });
-        return doctorList;
+        return doctorList != null ? doctorList : new ArrayList<>();
     }
 
     public List<DoctorDto> findAll() {
@@ -91,6 +92,15 @@ public class DoctorService implements DoctorRepository {
         return doctorDto;
     }
 
+    public DoctorDto findByPesel(String pesel) {
+        return getAll()
+                .stream()
+                .filter(doctor -> doctor.getPersonDetails().getPesel().equals(pesel))
+                .map(this::convertToDto)
+                .findAny().orElse(null);
+
+    }
+  
     public void saveDoctor(Doctor doctor) {
 
         doctor.setDateOfBirth(doctor);
@@ -103,5 +113,6 @@ public class DoctorService implements DoctorRepository {
         doctor.setSpecialization(specialization.getDescription());
         doctor.setAddress(address);
         doctor.setPersonDetails(personDetails);
+
     }
 }

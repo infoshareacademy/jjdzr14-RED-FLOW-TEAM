@@ -21,6 +21,7 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
+
     @RequestMapping("/doctors")
     public String viewDoctors(Model model, @RequestParam(required = false, value = "specialization") Specialization specialization) {
 

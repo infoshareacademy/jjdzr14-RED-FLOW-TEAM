@@ -6,6 +6,7 @@ public class DoctorDto {
     private String surname;
     private String specialization;
 
+
     public DoctorDto() {
 
     }
@@ -32,5 +33,14 @@ public class DoctorDto {
 
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
+    }
+
+    @Override
+    public String toString() {
+        return "DoctorDto{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", specialization='" + specialization + '\'' +
+                '}';
     }
 }

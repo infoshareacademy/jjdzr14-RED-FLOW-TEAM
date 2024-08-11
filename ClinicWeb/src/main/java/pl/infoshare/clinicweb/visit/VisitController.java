@@ -5,27 +5,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
-import pl.infoshare.clinicweb.doctor.Specialization;
-import pl.infoshare.clinicweb.patient.PatientDto;
+import pl.infoshare.clinicweb.doctor.DoctorService;
+import pl.infoshare.clinicweb.patient.Patient;
+import pl.infoshare.clinicweb.patient.PatientService;
 
-import java.time.LocalDateTime;
 
 @Controller
 public class VisitController {
 
     private final VisitService visitService;
+    private final DoctorService doctorService;
+    private final PatientService patientService;
 
-    public VisitController(VisitService visitService) {
+    public VisitController(VisitService visitService, DoctorService doctorService, PatientService patientService) {
 
         this.visitService = visitService;
-    }
-
-    @GetMapping("/addVisit")
-    public String visitForm(@ModelAttribute("visit") Visit visit, @ModelAttribute("patient") PatientDto patient, @ModelAttribute("doctor") DoctorDto doctor) {
-
-
-        return "addVisit";
+        this.doctorService = doctorService;
+        this.patientService = patientService;
     }
 
     @GetMapping("/result")
@@ -34,32 +32,43 @@ public class VisitController {
         return "result";
     }
 
-    @PostMapping("/saveVisit")
-    public String visitFormSubmission(@ModelAttribute(value = "visit") @Valid Visit visit, BindingResult bindingResulVisit,
-                                      @RequestParam(value = "visitDate", required = false) LocalDateTime visitDate,
-                                      @ModelAttribute(value = "patient") @Valid PatientDto patient, BindingResult bindingResultPatient,
-                                      DoctorDto doctor,
-                                      @RequestParam("specialization") Specialization specialization
-    ) {
+    @GetMapping("/addVisit")
+    public String saveVisit(@ModelAttribute("patient") Patient patient, @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") DoctorDto doctor, Model model) {
+
+        model.addAttribute("doctors", doctorService.getAll());
+        model.addAttribute("patients", patientService.getAll());
+
+        return "addVisit";
+    }
+
+    @PostMapping("/addVisit")
+    public String visitFormSubmission(@Valid Visit visit, BindingResult visitBindingResult,
+                                      @RequestParam(value = "patientPesel", required = false) String patientPesel,
+                                      @Valid Patient patient,
+                                      @RequestParam(value = "doctorPesel", required = false) String doctorPesel,
+                                      @Valid DoctorDto doctor, Model model, RedirectAttributes redirectAttributes) {
+
+        model.addAttribute("doctors", doctorService.getAll());
+        model.addAttribute("patients", patientService.getAll());
 
 
-        if (bindingResulVisit.hasErrors() || bindingResultPatient.hasErrors()) {
+        if (visitBindingResult.hasErrors()) {
+
             return "addVisit";
+
+        } else {
+
+            redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. " +
+                    "Dziękujemy za rejestrację!");
+
+            doctor = doctorService.findByPesel(doctorPesel);
+            patient = patientService.findByPesel(patientPesel);
+            visitService.setVisitAttributes(patient, doctor, visit);
+            visitService.saveVisit(visit);
+
+            return "redirect:/addVisit";
         }
 
-
-        //do poprawy, musi wyladowac w service
-
-        visit.setPatient(patient);
-        patient.setDoctor(doctor);
-        doctor.setSpecialization(specialization.getDescription());
-        doctor.setName("testowe");
-        doctor.setSurname("testoweNazwisko");
-
-
-        visitService.saveVisit(visit);
-
-        return "redirect:/result";
     }
 
     @GetMapping("/visits")

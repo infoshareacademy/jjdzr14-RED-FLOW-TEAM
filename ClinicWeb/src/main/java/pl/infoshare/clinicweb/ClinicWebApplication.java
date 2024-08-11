@@ -22,9 +22,6 @@ String path = "src/main/resources/patients.json";
         FileService fileService = new FileService(mapper);
         List<Patient> patients = fileService.readFromFile(path, new TypeReference<List<Patient>>() {
         });
-        PatientService patientService = new PatientService(fileService,patients);
-        Patient byPesel = patientService.findByPesel("68101126810");
-//        patientService.remove(byPesel);
 
     }
 }

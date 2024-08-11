@@ -12,52 +12,79 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
-        <div th:replace="~{fragments/navbar :: navbar}"></div>
+        <div th:replace<<<<<<<< JJDZR14RE-35v2<<<<<< JJDZR14RE-35v2="~{fragments/navbar :: navbar}"></div>
     </div>
 </nav>
 <div class="container">
-    <h3 class="card-title text-center">Rejestracja nowej wizyty</h3>
-    <form th:action="@{/addVisit}" th:method="post">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL"
-                   aria-label="Search"
-                   aria-describedby="button-addon2">
-            <button class="btn btn-primary" type="submit" id="button-addon2">Wyszukaj</button>
-        </div>
+    <div class="card bg-transparent">
+        <div class="card-body">
+            <h3 class="card-title text-center">Rejestracja nowej wizyty</h3>
 
-        <div th:if="${searchForPesel}" class="mt-4">
-            <p><strong>Imię:</strong> <span th:text="${searchForPesel.personDetails.name}">Imię pacjenta</span>
-            </p>
-            <p><strong>Nazwisko :</strong> <span
-                    th:text="${searchForPesel.personDetails.surname}">Nazwisko pacjenta</span></p>
-        </div>
-        <div th:if="${searchForPesel}" class="mt-4">
-            <p><strong>Pesel :</strong> <span
-                    th:text="${searchForPesel.personDetails.pesel}">Pesel Pacjenta</span>
-            </p>
-        </div>
-        <div class="form-group mb-3">
-            <label for="visitDate" class="form-label">Data wizyty</label>
-            <input type="date" class="form-control" id="visitDate">
-        </div>
+            <form th:action="@{/addVisit}" th:method="post" th:object="${visit}">
 
-        <div class="form-check form-switch mb-3">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Pacjent jest ubezpieczony</label>
-        </div>
+                <div th:object="${patient}">
 
-        <div class="mb-3">
-            <label class="form-label">Do jakiego lekarza chcesz zapisać</label>
-            <select name="specialization" class="form-select">
-                <option th:each="spec : ${T(pl.infoshare.clinicweb.doctor.Specialization).values()}"
-                        th:value="${spec.getDescription()}" th:text="${spec.getDescription()}"></option>
-            </select>
+                    <div class="mb-3">
+                        <label class="form-label">Wybierz pacjenta:</label>
+
+                        <select id="patientPesel"
+                                name="patientPesel"
+                                class="btn btn-primary btn-block"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                required
+                                oninvalid="setCustomValidity('Wybierz pacjenta')"
+                                oninput="setCustomValidity('')">
+                            <option value="" selected>----WYBIERZ PACJENTA----</option>
+                            <option th:each="patient : ${patients}"
+                                    th:value="${patient.personDetails.pesel}"
+                                    th:text="${patient.personDetails.name + ' ' + patient.personDetails.surname + '  Pesel: ' + patient.personDetails.pesel} "></option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Do jakiego lekarza chcesz sie zapisać?</label>
+
+                        <select id="doctorPesel"
+                                name="doctorPesel"
+                                class="btn btn-primary btn-block"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                required
+                                oninvalid="setCustomValidity('Wybierz lekarza')"
+                                oninput="setCustomValidity('')">
+                            <option value="" selected>----WYBIERZ LEKARZA----</option>
+                            <option th:each="doctor : ${doctors}"
+                                    th:value="${doctor.personDetails.pesel}"
+                                    th:text="${doctor.personDetails.name + ' ' + doctor.personDetails.surname + ' ' + doctor.specialization} "></option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <label>Data wizyty</label>
+                <div class="form-group">
+                    <input type="datetime-local"
+                           th:field="${visit.visitDate}"
+                           name="visitDate">
+                    <p th:if="${#fields.hasErrors('visitDate')}" class="text-danger"
+                       th:errors="*{visitDate}">Date error</p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+
+            </form>
+            <div th:align="center" th:if="${success}" class="mt-4 alert alert-success" role="alert">
+                <p th:text="${success}">Sukces</p>
+            </div>
+
+            <a class="btn btn-primary" th:href="@{/}">Wróć do strony głównej</a>
+
         </div>
-        <button type="submit" class="btn btn-primary">Zarejestruj się</button>
-        <a class="btn btn-primary" th:href="@{/}">Anuluj</a>
-    </form>
+    </div>
 </div>
-
 <footer>
     <div th:replace="~{fragments/footer :: footer}"></div>
 </footer>

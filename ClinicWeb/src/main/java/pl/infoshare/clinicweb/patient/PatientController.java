@@ -1,8 +1,15 @@
 package pl.infoshare.clinicweb.patient;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.*;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
@@ -29,13 +36,23 @@ public class PatientController {
     }
 
     @PostMapping("/patient")
-    public String patientFormSubmission(@ModelAttribute PersonDetails patientDetails, @ModelAttribute Address patientAddress, Model model) {
-        model.addAttribute("personDetails", new PersonDetails());
-        model.addAttribute("address", new Address());
+    public String patientFormSubmission(@Valid PersonDetails patientDetails, BindingResult detailsBinding,
+                                        @Valid Address patientAddress, BindingResult addressBinding,
+                                        Model model, RedirectAttributes redirectAttributes) {
 
-        patientService.savePatient(new Patient(patientDetails, patientAddress));
-        model.addAttribute("listPatient", patientService.findAll());
-        return "patientsList";
+        model.addAttribute("doctors", doctorService.findAll());
+
+        if (detailsBinding.hasErrors() || addressBinding.hasErrors()) {
+
+            return "patient";
+
+        } else {
+
+            redirectAttributes.addFlashAttribute("success", "Utworzono nowego pacjenta w bazie.");
+            patientService.savePatient(new Patient(patientDetails, patientAddress));
+
+            return "redirect:/patient";
+        }
 
     }
 
@@ -47,16 +64,6 @@ public class PatientController {
         return "patientsList";
     }
 
-    @PostMapping("/addVisit")
-    public String showSearchForm(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
-        if (pesel != null && !pesel.isEmpty()) {
-            Patient byPesel = patientService.findByPesel(pesel);
-            model.addAttribute("searchForPesel", byPesel);
-        } else if (patientService.findByPesel(pesel) != null) {
-            model.addAttribute("searchForPesel", patientService.findByPesel(pesel));
-        }
-        return "addVisit";
-    }
 
     @GetMapping("/search")
     public String searchForm(Model model) {
@@ -126,6 +133,7 @@ public class PatientController {
         model.addAttribute("patient", byPesel);
         return "delete-patient";
     }
+
 
 
 }

@@ -3,6 +3,8 @@ package pl.infoshare.clinicweb.patient;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class Address {
 
     @NotEmpty(message = "Pole nie może być puste")

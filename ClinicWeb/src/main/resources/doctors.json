@@ -1,3 +1,101 @@
+
+[
+  {
+    "personDetails": {
+      "phoneNumber": "444-444-333",
+      "surname": "Wojtkowski",
+      "name": "Wojciech",
+      "pesel": "12345678910",
+      "birthDate": [
+        1975,
+        12,
+        12
+      ]
+    },
+    "address": {
+      "country": "Polska",
+      "zipCode": "85-255",
+      "city": "Trzebina",
+      "street": "Zawodzie",
+      "flatNumber": 15,
+      "houseNumber": 1
+    },
+    "specialization": "Neurolog",
+    "online": false,
+    "availability": false
+  },
+  {
+    "personDetails": {
+      "phoneNumber": "444-444-333",
+      "surname": "Trawka",
+      "name": "Wlodek",
+      "pesel": "7564432323",
+      "birthDate": [
+        1975,
+        12,
+        12
+      ]
+    },
+    "address": {
+      "country": "Poland",
+      "zipCode": "30-521",
+      "city": "Lodz",
+      "street": "Warszawska",
+      "flatNumber": "76",
+      "houseNumber": "8"
+    },
+    "specialization": "Internista",
+    "online": false,
+    "availability": false
+  },
+  {
+    "personDetails": {
+      "phoneNumber": "444-444-333",
+      "surname": "Kantek",
+      "name": "Kamil",
+      "pesel": "7764932323",
+      "birthDate": [
+        1975,
+        12,
+        12
+      ]
+    },
+    "address": {
+      "country": "Poland",
+      "zipCode": "30-521",
+      "city": "Lodz",
+      "street": "Warszawska",
+      "flatNumber": "76",
+      "houseNumber": "8"
+    },
+    "specialization": "Internista",
+    "online": false,
+    "availability": false
+  }, {
+  "personDetails": {
+    "phoneNumber": "444-444-333",
+    "surname": "Krol",
+    "name": "Mateusz",
+    "pesel": "75011668910",
+    "birthDate": [
+      1975,
+      1,
+      16
+    ]
+  },
+  "address": {
+    "country": "Polska",
+    "zipCode": "85-255",
+    "city": "Trzebina",
+    "street": "Zawodzie",
+    "flatNumber": 15,
+    "houseNumber": 1
+  },
+  "specialization": "Neurolog",
+  "online": false,
+  "availability": false
+}
+]
 [ {
   "personDetails" : {
     "phoneNumber" : "444-444-333",
@@ -231,3 +329,4 @@
     "gender" : "Kobieta"
   }
 } ]
+
