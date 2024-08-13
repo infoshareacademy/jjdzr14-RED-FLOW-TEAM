@@ -1,156 +1,52 @@
-
-[
-  {
-    "personDetails": {
-      "phoneNumber": "888-528-000",
-      "gender": "Mężczyzna",
-      "surname": "Musiał",
-      "name": "Michał",
-      "pesel": "68101126810",
-      "birthDate": [
-        1968,
-        10,
-        11
-      ]
-    },
-    "doctor": null,
-    "address": {
-      "country": "POLSKA",
-      "zipCode": "61-862",
-      "city": "Ruda Śląska",
-      "street": "PRZYRODNICZA",
-      "flatNumber": "7",
-      "houseNumber": "8"
-    },
-    "clinic": null
-  },
-  {
-    "personDetails": {
-      "phoneNumber": "546-763-444",
-      "gender": "Kobieta",
-      "surname": "Tomaszewska",
-      "name": "Małgorzata",
-      "pesel": "75010112348",
-      "birthDate": [
-        1975,
-        1,
-        1
-      ]
-    },
-    "doctor": null,
-    "address": {
-      "country": "Czechy",
-      "zipCode": "30-836",
-      "city": "Praga",
-      "street": "Jerzmenowskiego",
-      "flatNumber": "111",
-      "houseNumber": "23"
-    },
-    "clinic": null
-  },
-  {
-    "personDetails": {
-      "phoneNumber": "555-858-214",
-      "gender": "Mężczyzna",
-      "surname": "Koperkowy",
-      "name": "Teofil",
-      "pesel": "91051562694",
-      "birthDate": [
-        1991,
-        5,
-        15
-      ]
-    },
-    "doctor": null,
-    "address": {
-      "country": "Słowacja",
-      "zipCode": "20-222",
-      "city": "Koszyce",
-      "street": "Produkcyjna",
-      "flatNumber": "25",
-      "houseNumber": "2"
-    },
-    "clinic": null
-  },
-  {
-    "personDetails": {
-      "phoneNumber": "505-666-158",
-      "gender": "Kobieta",
-      "surname": "KOZAK",
-      "name": "Malwina",
-      "pesel": "92042326741",
-      "birthDate": [
-        1992,
-        4,
-        23
-      ]
-    },
-    "doctor": null,
-    "address": {
-      "country": "POLSKA",
-      "zipCode": "57-843",
-      "city": "Grudziądz",
-      "street": "ZAKŁADOWA",
-      "flatNumber": "8",
-      "houseNumber": "14"
-    },
-    "clinic": null
-  },
-  {
-    "personDetails": {
-      "phoneNumber": "888-259-632",
-      "gender": "Kobieta",
-      "surname": "Pazdzioch",
-      "name": "Roman",
-      "pesel": "95102826883",
-      "birthDate": [
-        1995,
-        10,
-        28
-      ]
-    },
-    "doctor": null,
-    "address": {
-      "country": "Polska",
-      "zipCode": "02-200",
-      "city": "Zamiasto",
-      "street": "Koperkowa",
-      "flatNumber": "122",
-      "houseNumber": "223"
-    }
 [ {
   "personDetails" : {
-    "phoneNumber" : "55555555",
-    "gender" : "Mężczyzna",
-    "surname" : "Lolek",
-    "name" : "Kamil",
-    "pesel" : "99031562694",
-    "birthDate" : "1999-03-15"
+    "name" : "Teofil",
+    "surname" : "Koperkowy",
+    "phoneNumber" : "555-858-214",
+    "birthDate" : [ 1991, 5, 15 ],
+    "pesel" : "91051562694",
+    "gender" : "Mężczyzna"
   },
   "address" : {
-    "country" : "Polska",
-    "zipCode" : "30-836",
-    "city" : "Krakow",
-    "street" : "Kwiatowa",
-    "flatNumber" : "39",
-    "houseNumber" : "11"
+    "city" : "Koszyce",
+    "country" : "Słowacja",
+    "zipCode" : "20-222",
+    "street" : "Produkcyjna",
+    "houseNumber" : "2",
+    "flatNumber" : "25"
   }
 }, {
   "personDetails" : {
-    "phoneNumber" : "123-564-456",
-    "gender" : "Mężczyzna",
-    "surname" : "Kopacz",
-    "name" : "Antoni",
-    "pesel" : "92030812345",
-    "birthDate" : "1992-03-08"
+    "name" : "Malwina",
+    "surname" : "KOZAK",
+    "phoneNumber" : "505-666-158",
+    "birthDate" : [ 1992, 4, 23 ],
+    "pesel" : "92042326741",
+    "gender" : "Kobieta"
   },
   "address" : {
+    "city" : "Grudziądz",
+    "country" : "POLSKA",
+    "zipCode" : "57-843",
+    "street" : "ZAKŁADOWA",
+    "houseNumber" : "14",
+    "flatNumber" : "8"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Roman",
+    "surname" : "Pazdzioch",
+    "phoneNumber" : "888-259-632",
+    "birthDate" : [ 1995, 10, 28 ],
+    "pesel" : "95102826883",
+    "gender" : "Kobieta"
+  },
+  "address" : {
+    "city" : "Zamiasto",
     "country" : "Polska",
-
-    "zipCode" : "32-300",
-    "city" : "Olkusz",
-    "street" : "Majora",
-    "flatNumber" : "34",
-    "houseNumber" : "22"
+    "zipCode" : "02-200",
+    "street" : "Koperkowa",
+    "houseNumber" : "223",
+    "flatNumber" : "122"
   }
 } ]

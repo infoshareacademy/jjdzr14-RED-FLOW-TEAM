@@ -6,6 +6,7 @@ import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.file.FileService;
 import pl.infoshare.clinicweb.patient.Patient;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -20,6 +21,7 @@ public class VisitService implements VisitRepository {
 
     @Override
     public void saveVisit(Visit visit) {
+
 
         fileService.writeToFile(visit, VISITS_PATH);
 
@@ -37,10 +39,10 @@ public class VisitService implements VisitRepository {
         }
     }
 
-    public List<Visits> getAll() {
-        List<Visits> visits = fileService.readFromFile(VISITS_PATH, new TypeReference<List<Visits>>() {
+    public List<Visit> getAll() {
+        List<Visit> visits = fileService.readFromFile(VISITS_PATH, new TypeReference<List<Visit>>() {
         });
-        return visits.stream().sorted((o1, o2) -> o2.getVisitDate().compareTo(o1.getVisitDate())).toList();
+        return visits.stream().sorted(Comparator.comparing(Visit::getVisitDate)).toList();
     }
 
 }

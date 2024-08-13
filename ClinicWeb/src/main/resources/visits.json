@@ -1,20 +1,151 @@
 [ {
+  "doctor" : {
+    "surname" : "Pazdzioch",
+    "name" : "Kamila",
+    "specialization" : "Chirurg"
+  },
+  "numberOfVisits" : 0,
   "patient" : {
     "personDetails" : {
-      "name" : "Antoni",
-      "surname" : "Kopacz",
-      "phoneNumber" : "123-564-456",
-      "birthDate" : "1992-03-08",
-      "pesel" : "92030812345",
-      "gender" : "Mężczyzna"
+      "phoneNumber" : "555-858-214",
+      "gender" : "Mężczyzna",
+      "surname" : "Koperkowy",
+      "name" : "Teofil",
+      "pesel" : "91051562694",
+      "birthDate" : "1991-05-15"
     },
     "address" : {
-      "city" : "Olkusz",
+      "country" : "Słowacja",
+      "zipCode" : "20-222",
+      "city" : "Koszyce",
+      "street" : "Produkcyjna",
+      "flatNumber" : "25",
+      "houseNumber" : "2"
+    }
+  },
+  "visitDate" : "15-08-2024 13:00"
+}, {
+  "doctor" : {
+    "surname" : "Pazdzioch",
+    "name" : "Kamila",
+    "specialization" : "Chirurg"
+  },
+  "numberOfVisits" : 0,
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "555-858-214",
+      "gender" : "Mężczyzna",
+      "surname" : "Koperkowy",
+      "name" : "Teofil",
+      "pesel" : "91051562694",
+      "birthDate" : "1991-05-15"
+    },
+    "address" : {
+      "country" : "Słowacja",
+      "zipCode" : "20-222",
+      "city" : "Koszyce",
+      "street" : "Produkcyjna",
+      "flatNumber" : "25",
+      "houseNumber" : "2"
+    }
+  },
+  "visitDate" : "16-08-2024 16:09"
+}, {
+  "doctor" : {
+    "surname" : "Pazdzioch",
+    "name" : "Kamila",
+    "specialization" : "Chirurg"
+  },
+  "numberOfVisits" : 0,
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "555-858-214",
+      "gender" : "Mężczyzna",
+      "surname" : "Koperkowy",
+      "name" : "Teofil",
+      "pesel" : "91051562694",
+      "birthDate" : "1991-05-15"
+    },
+    "address" : {
+      "country" : "Słowacja",
+      "zipCode" : "20-222",
+      "city" : "Koszyce",
+      "street" : "Produkcyjna",
+      "flatNumber" : "25",
+      "houseNumber" : "2"
+    }
+  },
+  "visitDate" : "11-08-2024 15:33"
+}, {
+  "doctor" : {
+    "surname" : "Pazdzioch",
+    "name" : "Kamila",
+    "specialization" : "Chirurg"
+  },
+  "numberOfVisits" : 0,
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "888-259-632",
+      "gender" : "Kobieta",
+      "surname" : "Pazdzioch",
+      "name" : "Roman",
+      "pesel" : "95102826883",
+      "birthDate" : "1995-10-28"
+    },
+    "address" : {
       "country" : "Polska",
-      "zipCode" : "32-300",
-      "street" : "Majora",
-      "houseNumber" : "22",
-      "flatNumber" : "34"
+      "zipCode" : "02-200",
+      "city" : "Zamiasto",
+      "street" : "Koperkowa",
+      "flatNumber" : "122",
+      "houseNumber" : "223"
+    }
+  },
+  "visitDate" : "24-08-2024 13:45"
+}, {
+  "doctor" : {
+    "surname" : "Pazdzioch",
+    "name" : "Kamila",
+    "specialization" : "Chirurg"
+  },
+  "numberOfVisits" : 0,
+  "patient" : {
+    "personDetails" : {
+      "phoneNumber" : "555-858-214",
+      "gender" : "Mężczyzna",
+      "surname" : "Koperkowy",
+      "name" : "Teofil",
+      "pesel" : "91051562694",
+      "birthDate" : "1991-05-15"
+    },
+    "address" : {
+      "country" : "Słowacja",
+      "zipCode" : "20-222",
+      "city" : "Koszyce",
+      "street" : "Produkcyjna",
+      "flatNumber" : "25",
+      "houseNumber" : "2"
+    }
+  },
+  "visitDate" : "23-08-2024 21:00"
+}, {
+  "visitDate" : "16-08-2024 23:11",
+  "patient" : {
+    "personDetails" : {
+      "name" : "Roman",
+      "surname" : "Pazdzioch",
+      "phoneNumber" : "888-259-632",
+      "birthDate" : "1995-10-28",
+      "pesel" : "95102826883",
+      "gender" : "Kobieta"
+    },
+    "address" : {
+      "city" : "Zamiasto",
+      "country" : "Polska",
+      "zipCode" : "02-200",
+      "street" : "Koperkowa",
+      "houseNumber" : "223",
+      "flatNumber" : "122"
     }
   },
   "doctor" : {
@@ -22,6 +153,5 @@
     "surname" : "Wojtkowski",
     "specialization" : "Neurolog"
   },
-  "numberOfVisits" : 0,
-  "visitDate" : "30-08-2024 17:19"
+  "numberOfVisits" : 0
 } ]

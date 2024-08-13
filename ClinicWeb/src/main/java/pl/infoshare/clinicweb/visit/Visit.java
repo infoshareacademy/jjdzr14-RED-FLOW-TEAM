@@ -7,6 +7,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.medicines.Medicines;
 import pl.infoshare.clinicweb.patient.Patient;
@@ -17,6 +18,13 @@ import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Visit {
+    @NotNull(message = "Pole data nie moze byc puste. ")
+    @FutureOrPresent(message = "Wybierz datę z przyszłości. ")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDateTime visitDate;
 
     @Valid
     private Patient patient;
@@ -25,11 +33,6 @@ public class Visit {
     private List<Medicines> medicines;
     private int numberOfVisits;
 
-    @NotNull(message = "Pole data nie moze byc puste. ")
-    @FutureOrPresent(message = "Wybierz datę z przyszłości. ")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
-    private LocalDateTime visitDate;
 
     public Visit() {
     }
@@ -65,16 +68,21 @@ public class Visit {
     }
 
     public void setVisitDate(LocalDateTime visitDate) {
-        this.visitDate = visitDate;
+
+        this.visitDate =   LocalDateTime.of(visitDate.getYear(),
+                visitDate.getMonth(),
+                visitDate.getDayOfMonth(),
+                visitDate.getHour(),
+                visitDate.getMinute(), 0);
 
     }
+
     public void setDoctor(DoctorDto doctor) {
         this.doctor = doctor;
 
 
-
     }
-  
+
     public DoctorDto getDoctor() {
         return doctor;
     }
@@ -86,7 +94,6 @@ public class Visit {
         Visit visit = (Visit) o;
         return numberOfVisits == visit.numberOfVisits && Objects.equals(patient, visit.patient) && Objects.equals(doctor, visit.doctor) && Objects.equals(medicines, visit.medicines) && Objects.equals(visitDate, visit.visitDate);
     }
-
 
 
     @Override
