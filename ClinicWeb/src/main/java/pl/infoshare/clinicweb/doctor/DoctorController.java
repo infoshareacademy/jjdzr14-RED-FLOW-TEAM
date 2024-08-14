@@ -25,9 +25,9 @@ public class DoctorController {
     @RequestMapping("/doctors")
     public String viewDoctors(Model model, @RequestParam(required = false, value = "specialization") Specialization specialization) {
 
-        List<DoctorDto> doctors;
+        List<Doctor> doctors;
 
-        doctors = specialization == null ? doctorService.findAll() : doctorService.findBySpecialization(specialization);
+        doctors = specialization == null ? doctorService.getAll() : doctorService.findBySpecialization(specialization);
 
         model.addAttribute("listDoctor", doctors);
 
@@ -65,6 +65,44 @@ public class DoctorController {
             return "redirect:/doctor";
         }
 
+    }
+
+    @GetMapping("/search-doctor")
+    public String searchDoctorByPesel(@ModelAttribute Doctor doctor) {
+
+        return "search-doctor";
+    }
+
+    @PostMapping("/search-doctor")
+    public String searchDoctorByPesel(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
+
+        Doctor byPesel = doctorService.findByPesel(pesel);
+
+        if (doctorService.findByPesel(pesel) != null) {
+            model.addAttribute("searchForPesel", byPesel);
+        } else {
+            model.addAttribute("error", "Nie znaleziono lekarza o podanym numerze pesel: " + pesel);
+        }
+        return "search-doctor";
+    }
+
+    @GetMapping("/update-doctor")
+    public String fullDetailDoctor(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
+
+        model.addAttribute("updateDoctor", doctorService.findByPesel(pesel));
+
+        return "update-doctor";
+    }
+
+    @PostMapping("/update-doctor")
+    public String editDoctor(@ModelAttribute("doctor") Doctor doctor, Model model, Address address, RedirectAttributes redirectAttributes) {
+
+        doctorService.saveOrUpdateDoctor(doctor, address);
+        model.addAttribute("doctor", doctor);
+        model.addAttribute("address", address);
+        redirectAttributes.addFlashAttribute("success", "Zaktualizowano dane lekarza.");
+
+        return "redirect:doctors";
     }
 
 

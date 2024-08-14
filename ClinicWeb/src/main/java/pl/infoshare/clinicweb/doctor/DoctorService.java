@@ -1,8 +1,9 @@
 package pl.infoshare.clinicweb.doctor;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.rsocket.RSocketProperties;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.file.FileService;
 import pl.infoshare.clinicweb.patient.Address;
@@ -10,7 +11,10 @@ import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.User;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +23,7 @@ public class DoctorService implements DoctorRepository {
 
     private static final String DOCTOR_PATH = "ClinicWeb/src/main/resources/doctors.json";
     private final FileService fileService;
+    private final ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
     public DoctorService(FileService fileService) {
@@ -71,12 +76,11 @@ public class DoctorService implements DoctorRepository {
 
     }
 
-    public List<DoctorDto> findBySpecialization(Specialization specialization) {
+    public List<Doctor> findBySpecialization(Specialization specialization) {
 
         return getAll()
                 .stream()
                 .filter(doctor -> doctor.getSpecialization().equals(specialization.getDescription()))
-                .map(this::convertToDto)
                 .collect(Collectors.toList());
 
     }
@@ -92,7 +96,15 @@ public class DoctorService implements DoctorRepository {
         return doctorDto;
     }
 
-    public DoctorDto findByPesel(String pesel) {
+    public Doctor findByPesel(String pesel) {
+        return getAll()
+                .stream()
+                .filter(doctor -> doctor.getPersonDetails().getPesel().equals(pesel))
+                .findAny().orElse(null);
+
+    }
+
+    public DoctorDto doctorDtoByPesel(String pesel) {
         return getAll()
                 .stream()
                 .filter(doctor -> doctor.getPersonDetails().getPesel().equals(pesel))
@@ -100,7 +112,7 @@ public class DoctorService implements DoctorRepository {
                 .findAny().orElse(null);
 
     }
-  
+
     public void saveDoctor(Doctor doctor) {
 
         doctor.setDateOfBirth(doctor);
@@ -108,6 +120,7 @@ public class DoctorService implements DoctorRepository {
         fileService.writeToFile(doctor, DOCTOR_PATH);
 
     }
+
     public void setDoctorAttributes(Doctor doctor, PersonDetails personDetails, Address address, Specialization specialization) {
 
         doctor.setSpecialization(specialization.getDescription());
@@ -115,4 +128,54 @@ public class DoctorService implements DoctorRepository {
         doctor.setPersonDetails(personDetails);
 
     }
+
+    public void saveOrUpdateDoctor(Doctor doctor, Address address) {
+        Doctor doctorByPesel = findByPesel(doctor.getPersonDetails().getPesel());
+        if (doctorByPesel != null) {
+            doctorByPesel.getPersonDetails().setName(doctor.getPersonDetails().getName());
+            doctorByPesel.getPersonDetails().setSurname(doctor.getPersonDetails().getSurname());
+            doctorByPesel.getAddress().setCountry(doctor.getAddress().getCountry());
+            doctorByPesel.getAddress().setStreet(doctor.getAddress().getStreet());
+            doctorByPesel.getAddress().setCity(doctor.getAddress().getCity());
+            doctorByPesel.getAddress().setHouseNumber(doctor.getAddress().getHouseNumber());
+            doctorByPesel.getAddress().setFlatNumber(doctor.getAddress().getFlatNumber());
+            doctorByPesel.getPersonDetails().setGender(doctor.getPersonDetails().getGender());
+            saveDoctor(doctorByPesel);
+
+            removeFromFile(doctorByPesel.getPersonDetails().getPesel(), DOCTOR_PATH);
+        } else {
+            saveDoctor(new Doctor());
+        }
+    }
+
+    public void removeFromFile(String pesel, String filePath) throws RuntimeException {
+
+        List<Doctor> doctors = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {
+        });
+
+        mapper.registerModule(new JavaTimeModule());
+
+        Iterator<Doctor> iterator = doctors.iterator();
+        while (iterator.hasNext()) {
+            Doctor doctor = iterator.next();
+            if (doctor.getPersonDetails().getPesel().equals(pesel)) {
+                iterator.remove();
+                break;
+            }
+        }
+
+        try (FileWriter fileWriter = new FileWriter(filePath, false)) {
+            String jsonPretty = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(doctors);
+            fileWriter.write(jsonPretty);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public Object remove(Patient pesel) {
+        removeFromFile(pesel.getPersonDetails().getPesel(), DOCTOR_PATH);
+        return null;
+    }
+
 }

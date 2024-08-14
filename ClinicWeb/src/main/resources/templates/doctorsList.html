@@ -30,26 +30,46 @@
         </div>
         <button type="submit" class="btn btn-primary">Filtruj</button>
     </form>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Specjalizacja</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="doctor : ${listDoctor}">
-            <td th:text="${doctor.name}"></td>
-            <td th:text="${doctor.surname}"></td>
-            <td th:text="${doctor.specialization}"></td>
-        </tr>
-        </tbody>
-    </table>
-    <a th:href="@{/doctor}"
-       class="btn btn-primary btn-sm active" role="button"
-       aria-pressed="true">Dodaj lekarza</a>
+    <div class="card mt-3">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Specjalizacja</th>
+                <th>Wszystkie dane</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="doctor : ${listDoctor}">
+                <td th:text="${doctor.personDetails.name}"></td>
+                <td th:text="${doctor.personDetails.surname}"></td>
+                <td th:text="${doctor.specialization}"></td>
+                <td>
+                    <a th:href="@{/update-doctor(pesel=${doctor.personDetails.pesel})}"
+                       class="btn btn-primary btn-sm" role="button">Pokaż i edytuj dane</a>
+                </td>
+                <td>
+                    <form th:action="@{/delete-doctor}" th:method="post" class="d-inline">
+                        <input type="hidden" name="pesel" th:value="${doctor.personDetails.pesel}">
+                        <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${success != null}" class="mt-4 alert alert-success" role="alert">
+        <p th:text="${success}">Sukces</p>
+    </div>
+    <div th:align="center">
+        <a th:href="@{/doctor}"
+           class="btn btn-primary btn-sm active" role="button" style="width: 770px"
+           aria-pressed="true">Dodaj lekarza</a>
+    </div>
 </div>
+
 <footer>
     <div th:replace="~{fragments/footer :: footer}"></div>
 </footer>
