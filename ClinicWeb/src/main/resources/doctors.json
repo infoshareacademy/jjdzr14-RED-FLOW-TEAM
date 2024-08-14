@@ -1,84 +1,4 @@
 [ {
-  "specialization" : "Neurolog",
-  "online" : false,
-  "availability" : false,
-  "address" : {
-    "city" : "Trzebina",
-    "country" : "Polska",
-    "zipCode" : "85-255",
-    "street" : "Zawodzie",
-    "houseNumber" : "1",
-    "flatNumber" : "15"
-  },
-  "personDetails" : {
-    "name" : "Wojciech",
-    "surname" : "Wojtkowski",
-    "phoneNumber" : "444-444-333",
-    "birthDate" : [ 1975, 12, 12 ],
-    "pesel" : "75010212345",
-    "gender" : null
-  }
-}, {
-  "specialization" : "Internista",
-  "online" : false,
-  "availability" : false,
-  "address" : {
-    "city" : "Lodz",
-    "country" : "Poland",
-    "zipCode" : "30-521",
-    "street" : "Warszawska",
-    "houseNumber" : "8",
-    "flatNumber" : "76"
-  },
-  "personDetails" : {
-    "name" : "Wlodek",
-    "surname" : "Trawka",
-    "phoneNumber" : "444-444-333",
-    "birthDate" : [ 1975, 12, 12 ],
-    "pesel" : "7564932323",
-    "gender" : null
-  }
-}, {
-  "specialization" : "Internista",
-  "online" : false,
-  "availability" : false,
-  "address" : {
-    "city" : "Lodz",
-    "country" : "Poland",
-    "zipCode" : "30-521",
-    "street" : "Warszawska",
-    "houseNumber" : "8",
-    "flatNumber" : "76"
-  },
-  "personDetails" : {
-    "name" : "Kamil",
-    "surname" : "Kantek",
-    "phoneNumber" : "444-444-333",
-    "birthDate" : [ 1975, 12, 12 ],
-    "pesel" : "7564932323",
-    "gender" : null
-  }
-}, {
-  "specialization" : "Internista",
-  "online" : false,
-  "availability" : false,
-  "address" : {
-    "city" : "Lodz",
-    "country" : "Poland",
-    "zipCode" : "30-521",
-    "street" : "Warszawska",
-    "houseNumber" : "8",
-    "flatNumber" : "76"
-  },
-  "personDetails" : {
-    "name" : "Aneta",
-    "surname" : "Zajac",
-    "phoneNumber" : "444-444-333",
-    "birthDate" : [ 1975, 12, 12 ],
-    "pesel" : "7564932323",
-    "gender" : null
-  }
-}, {
   "specialization" : "Onkolog",
   "online" : false,
   "availability" : false,
@@ -95,47 +15,7 @@
     "surname" : "Surman",
     "phoneNumber" : "444-444-333",
     "birthDate" : [ 1975, 12, 12 ],
-    "pesel" : "7564932323",
-    "gender" : null
-  }
-}, {
-  "specialization" : "Onkolog",
-  "online" : false,
-  "availability" : false,
-  "address" : {
-    "city" : "Lodz",
-    "country" : "Poland",
-    "zipCode" : "30-521",
-    "street" : "Warszawska",
-    "houseNumber" : "8",
-    "flatNumber" : "76"
-  },
-  "personDetails" : {
-    "name" : "Damian",
-    "surname" : "Koziol",
-    "phoneNumber" : "444-444-333",
-    "birthDate" : [ 1975, 12, 12 ],
-    "pesel" : "7564932323",
-    "gender" : null
-  }
-}, {
-  "specialization" : "Chirurg",
-  "online" : false,
-  "availability" : false,
-  "address" : {
-    "city" : "Lodz",
-    "country" : "Poland",
-    "zipCode" : "30-521",
-    "street" : "Warszawska",
-    "houseNumber" : "8",
-    "flatNumber" : "76"
-  },
-  "personDetails" : {
-    "name" : "Malwina",
-    "surname" : "Panda",
-    "phoneNumber" : "123-456-789",
-    "birthDate" : [ 1975, 12, 12 ],
-    "pesel" : "7564932323",
+    "pesel" : "91020304321",
     "gender" : null
   }
 }, {
@@ -176,6 +56,126 @@
     "phoneNumber" : "999-221-321",
     "birthDate" : [ 1986, 7, 3 ],
     "pesel" : "86070358531",
-    "gender" : null
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Dermatolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Gorlice",
+    "country" : "Polska",
+    "zipCode" : "30-232",
+    "street" : "Polna",
+    "houseNumber" : "2",
+    "flatNumber" : "27"
+  },
+  "personDetails" : {
+    "name" : "Kamil",
+    "surname" : "Jarzabek",
+    "phoneNumber" : "575-232-333",
+    "birthDate" : [ 1994, 1, 1 ],
+    "pesel" : "94010112344",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Trzebina",
+    "country" : "Polska",
+    "zipCode" : "85-255",
+    "street" : "Zawodzie",
+    "houseNumber" : "1",
+    "flatNumber" : "15"
+  },
+  "personDetails" : {
+    "name" : "Wojciech",
+    "surname" : "Wojtkowski",
+    "phoneNumber" : "444-444-333",
+    "birthDate" : [ 1975, 1, 2 ],
+    "pesel" : "75010212345",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Lodz",
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "street" : "Warszawska",
+    "houseNumber" : "8",
+    "flatNumber" : "76"
+  },
+  "personDetails" : {
+    "name" : "Mariusz",
+    "surname" : "Trawka",
+    "phoneNumber" : "444-444-333",
+    "birthDate" : [ 1975, 7, 8 ],
+    "pesel" : "75070812432",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Lodz",
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "street" : "Mocna",
+    "houseNumber" : "8",
+    "flatNumber" : "76"
+  },
+  "personDetails" : {
+    "name" : "Kamil",
+    "surname" : "Kantek",
+    "phoneNumber" : "444-444-333",
+    "birthDate" : [ 1975, 1, 2 ],
+    "pesel" : "7501022723",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Lodz",
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "street" : "Warszawska",
+    "houseNumber" : "8",
+    "flatNumber" : "76"
+  },
+  "personDetails" : {
+    "name" : "Malwina",
+    "surname" : "Panda",
+    "phoneNumber" : "123-456-789",
+    "birthDate" : [ 1976, 1, 1 ],
+    "pesel" : "76010154321",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Lodz",
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "street" : "Kamienna",
+    "houseNumber" : "8",
+    "flatNumber" : "76"
+  },
+  "personDetails" : {
+    "name" : "Aneta",
+    "surname" : "Zajac",
+    "phoneNumber" : "444-444-333",
+    "birthDate" : [ 1975, 8, 9 ],
+    "pesel" : "75080932321",
+    "gender" : "Kobieta"
   }
 } ]

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.file.FileService;
 import pl.infoshare.clinicweb.patient.Address;
-import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.User;
 
@@ -130,19 +129,22 @@ public class DoctorService implements DoctorRepository {
     }
 
     public void saveOrUpdateDoctor(Doctor doctor, Address address) {
+
         Doctor doctorByPesel = findByPesel(doctor.getPersonDetails().getPesel());
         if (doctorByPesel != null) {
             doctorByPesel.getPersonDetails().setName(doctor.getPersonDetails().getName());
             doctorByPesel.getPersonDetails().setSurname(doctor.getPersonDetails().getSurname());
+            doctorByPesel.getPersonDetails().setGender(doctor.getPersonDetails().getGender());
             doctorByPesel.getAddress().setCountry(doctor.getAddress().getCountry());
             doctorByPesel.getAddress().setStreet(doctor.getAddress().getStreet());
             doctorByPesel.getAddress().setCity(doctor.getAddress().getCity());
             doctorByPesel.getAddress().setHouseNumber(doctor.getAddress().getHouseNumber());
             doctorByPesel.getAddress().setFlatNumber(doctor.getAddress().getFlatNumber());
-            doctorByPesel.getPersonDetails().setGender(doctor.getPersonDetails().getGender());
+
             saveDoctor(doctorByPesel);
 
             removeFromFile(doctorByPesel.getPersonDetails().getPesel(), DOCTOR_PATH);
+
         } else {
             saveDoctor(new Doctor());
         }
@@ -173,7 +175,7 @@ public class DoctorService implements DoctorRepository {
 
     }
 
-    public Object remove(Patient pesel) {
+    public Object remove(Doctor pesel) {
         removeFromFile(pesel.getPersonDetails().getPesel(), DOCTOR_PATH);
         return null;
     }
