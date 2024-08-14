@@ -1,36 +1,36 @@
 [ {
   "personDetails" : {
-    "name" : "Teofil",
-    "surname" : "Koperkowy",
-    "phoneNumber" : "555-858-214",
-    "birthDate" : [ 1991, 5, 15 ],
-    "pesel" : "91051562694",
+    "name" : "Antoni",
+    "surname" : "Kazimmiejczak",
+    "phoneNumber" : "999-221-321",
+    "birthDate" : [ 1997, 4, 4 ],
+    "pesel" : "97040411556",
     "gender" : "Mężczyzna"
   },
   "address" : {
-    "city" : "Koszyce",
-    "country" : "Słowacja",
-    "zipCode" : "20-222",
-    "street" : "Produkcyjna",
-    "houseNumber" : "2",
-    "flatNumber" : "25"
+    "city" : "Zamiasto",
+    "country" : "Polska",
+    "zipCode" : "10-022",
+    "street" : "węglowa",
+    "houseNumber" : "5",
+    "flatNumber" : "12"
   }
 }, {
   "personDetails" : {
     "name" : "Malwina",
-    "surname" : "KOZAK",
+    "surname" : "Paskal",
     "phoneNumber" : "505-666-158",
     "birthDate" : [ 1992, 4, 23 ],
     "pesel" : "92042326741",
     "gender" : "Kobieta"
   },
   "address" : {
-    "city" : "Grudziądz",
+    "city" : "Poznań",
     "country" : "POLSKA",
     "zipCode" : "57-843",
     "street" : "ZAKŁADOWA",
-    "houseNumber" : "14",
-    "flatNumber" : "8"
+    "houseNumber" : "25",
+    "flatNumber" : "12"
   }
 }, {
   "personDetails" : {
@@ -39,14 +39,35 @@
     "phoneNumber" : "888-259-632",
     "birthDate" : [ 1995, 10, 28 ],
     "pesel" : "95102826883",
-    "gender" : "Kobieta"
+    "gender" : "Mężczyzna"
   },
   "address" : {
     "city" : "Zamiasto",
     "country" : "Polska",
     "zipCode" : "02-200",
-    "street" : "Koperkowa",
+    "street" : "Zrębkowa",
     "houseNumber" : "223",
     "flatNumber" : "122"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Adam",
+    "surname" : "Kazimmiejczak",
+    "phoneNumber" : "666-666-666",
+    "birthDate" : [ 1993, 10, 9 ],
+    "pesel" : "93100913479",
+    "gender" : "Mężczyzna"
+  },
+  "doctor" : {
+    "online" : false,
+    "availability" : false
+  },
+  "address" : {
+    "city" : "GDYNIA",
+    "country" : "Polska",
+    "zipCode" : "80-666",
+    "street" : "PRZYRODNICZA",
+    "houseNumber" : "1",
+    "flatNumber" : "1"
   }
 } ]

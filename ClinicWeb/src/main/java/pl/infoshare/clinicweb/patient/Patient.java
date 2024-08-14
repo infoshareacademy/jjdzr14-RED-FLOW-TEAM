@@ -26,6 +26,11 @@ public class Patient {
         this.address = patientAddress;
     }
 
+    public Patient(Address address, Doctor doctor, PersonDetails personDetails) {
+        this.address = address;
+        this.doctor = doctor;
+        this.personDetails = personDetails;
+    }
 
     public PersonDetails getPersonDetails() {
         return personDetails;

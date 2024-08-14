@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.*;
+import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
@@ -38,7 +39,7 @@ public class PatientController {
     @PostMapping("/patient")
     public String patientFormSubmission(@Valid PersonDetails patientDetails, BindingResult detailsBinding,
                                         @Valid Address patientAddress, BindingResult addressBinding,
-                                        Model model, RedirectAttributes redirectAttributes) {
+                                        Model model, RedirectAttributes redirectAttributes, Doctor doctor) {
 
         model.addAttribute("doctors", doctorService.findAll());
 
@@ -93,17 +94,16 @@ public class PatientController {
     }
 
     @GetMapping("/update-patient")
-    public String fullDetailPatient(@RequestParam(value = "pesel", required = false) @ModelAttribute String pesel, Model model) {
+    public String fullDetailPatient(@RequestParam(value = "pesel", required = false) @ModelAttribute String pesel, Model model, Address address) {
         model.addAttribute("updatePatient", patientService.findByPesel(pesel));
         return "update-patient";
     }
 
     @PostMapping("/search-patient")
-    public String searchPatientByPesel(@RequestParam("pesel") String pesel, Model model, Address address) {
+    public String searchPatientByPesel(@RequestParam("pesel") @ModelAttribute String pesel, Model model, Address address) {
         Patient byPesel = patientService.findByPesel(pesel);
         if (patientService.findByPesel(pesel) != null) {
             model.addAttribute("searchForPesel", byPesel);
-            patientService.remove(byPesel);
         } else {
             model.addAttribute("error", "Nie znaleziono pacjenta o podanym numerze pesel: " + pesel);
         }
@@ -111,7 +111,7 @@ public class PatientController {
     }
 
     @GetMapping("/search-patient")
-    public String searchPatientByPesel( @RequestParam("pesel") Model model,String pesel) {
+    public String searchPatientByPesel(@RequestParam("pesel") Model model, String pesel) {
         Patient byPesel = patientService.findByPesel(pesel);
         model.addAttribute("patient", new Patient());
 
@@ -124,7 +124,7 @@ public class PatientController {
         if (byPesel != null) {
             patientService.remove(byPesel);
         }
-        return "redirect:/patients"; // Przekierowanie na stronę z listą pacjentów po usunięciu
+        return "redirect:/patients";
     }
 
     @GetMapping("/delete-patient")
@@ -133,7 +133,6 @@ public class PatientController {
         model.addAttribute("patient", byPesel);
         return "delete-patient";
     }
-
 
 
 }
