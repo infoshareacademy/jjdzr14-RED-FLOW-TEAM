@@ -2,11 +2,9 @@ package pl.infoshare.clinicweb.doctor;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.rsocket.RSocketProperties;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.file.FileService;
 import pl.infoshare.clinicweb.patient.Address;
-import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.User;
 
@@ -100,7 +98,7 @@ public class DoctorService implements DoctorRepository {
                 .findAny().orElse(null);
 
     }
-  
+
     public void saveDoctor(Doctor doctor) {
 
         doctor.setDateOfBirth(doctor);
@@ -108,11 +106,29 @@ public class DoctorService implements DoctorRepository {
         fileService.writeToFile(doctor, DOCTOR_PATH);
 
     }
+
     public void setDoctorAttributes(Doctor doctor, PersonDetails personDetails, Address address, Specialization specialization) {
 
         doctor.setSpecialization(specialization.getDescription());
         doctor.setAddress(address);
         doctor.setPersonDetails(personDetails);
 
+    }
+
+    public boolean hasPeselCorrectDigits(String pesel) {
+
+        int checkDigit = Character.getNumericValue(pesel.charAt(10));
+
+        final int[] WEIGHTS = new int[]{1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1};
+
+        int sum = 0;
+        for (int i = 0; i < 10; i++) {
+            sum += Character.getNumericValue(pesel.charAt(i)) * WEIGHTS[i];
+        }
+
+        int modulo = sum % 10;
+        int calculatedDigits = 10 - modulo;
+
+        return modulo == 0 || calculatedDigits == checkDigit;
     }
 }

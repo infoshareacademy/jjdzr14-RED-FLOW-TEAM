@@ -1,73 +1,73 @@
 [ {
   "personDetails" : {
-    "name" : "Antoni",
-    "surname" : "Kazimmiejczak",
     "phoneNumber" : "999-221-321",
-    "birthDate" : [ 1997, 4, 4 ],
+    "gender" : "Mężczyzna",
+    "surname" : "Kazimmiejczak",
+    "name" : "Antoni",
     "pesel" : "97040411556",
-    "gender" : "Mężczyzna"
+    "birthDate" : [ 1997, 4, 4 ]
   },
   "address" : {
-    "city" : "Zamiasto",
     "country" : "Polska",
     "zipCode" : "10-022",
+    "city" : "Zamiasto",
     "street" : "węglowa",
-    "houseNumber" : "5",
-    "flatNumber" : "12"
+    "flatNumber" : "12",
+    "houseNumber" : "5"
   }
 }, {
   "personDetails" : {
-    "name" : "Malwina",
-    "surname" : "Paskal",
     "phoneNumber" : "505-666-158",
-    "birthDate" : [ 1992, 4, 23 ],
+    "gender" : "Kobieta",
+    "surname" : "Paskal",
+    "name" : "Malwina",
     "pesel" : "92042326741",
-    "gender" : "Kobieta"
+    "birthDate" : [ 1992, 4, 23 ]
   },
   "address" : {
-    "city" : "Poznań",
     "country" : "POLSKA",
     "zipCode" : "57-843",
+    "city" : "Poznań",
     "street" : "ZAKŁADOWA",
-    "houseNumber" : "25",
-    "flatNumber" : "12"
+    "flatNumber" : "12",
+    "houseNumber" : "25"
   }
 }, {
   "personDetails" : {
-    "name" : "Roman",
-    "surname" : "Pazdzioch",
     "phoneNumber" : "888-259-632",
-    "birthDate" : [ 1995, 10, 28 ],
+    "gender" : "Mężczyzna",
+    "surname" : "Pazdzioch",
+    "name" : "Roman",
     "pesel" : "95102826883",
-    "gender" : "Mężczyzna"
+    "birthDate" : [ 1995, 10, 28 ]
   },
   "address" : {
-    "city" : "Zamiasto",
     "country" : "Polska",
     "zipCode" : "02-200",
+    "city" : "Zamiasto",
     "street" : "Zrębkowa",
-    "houseNumber" : "223",
-    "flatNumber" : "122"
+    "flatNumber" : "122",
+    "houseNumber" : "223"
   }
 }, {
   "personDetails" : {
-    "name" : "Adam",
-    "surname" : "Kazimmiejczak",
     "phoneNumber" : "666-666-666",
-    "birthDate" : [ 1993, 10, 9 ],
+    "gender" : "Mężczyzna",
+    "surname" : "Kazimmiejczak",
+    "name" : "Adam",
     "pesel" : "93100913479",
-    "gender" : "Mężczyzna"
+    "birthDate" : [ 1993, 10, 9 ]
   },
   "doctor" : {
     "online" : false,
     "availability" : false
   },
   "address" : {
-    "city" : "GDYNIA",
     "country" : "Polska",
     "zipCode" : "80-666",
+    "city" : "GDYNIA",
     "street" : "PRZYRODNICZA",
-    "houseNumber" : "1",
-    "flatNumber" : "1"
+    "flatNumber" : "1",
+    "houseNumber" : "1"
   }
 } ]

@@ -151,23 +151,23 @@
   "online" : false,
   "availability" : false
 }, {
-  "specialization" : "Onkolog",
-  "online" : false,
-  "availability" : false,
+  "personDetails" : {
+    "phoneNumber" : "999-221-321",
+    "gender" : "Mężczyzna",
+    "surname" : "Kazimmiejczak",
+    "name" : "Kamila",
+    "pesel" : "86070358531",
+    "birthDate" : "1986-07-03"
+  },
   "address" : {
-    "city" : "Wyczechowo",
     "country" : "Polska",
     "zipCode" : "10-022",
+    "city" : "Wyczechowo",
     "street" : "Spacerowa",
-    "houseNumber" : "5",
-    "flatNumber" : "12"
+    "flatNumber" : "12",
+    "houseNumber" : "5"
   },
-  "personDetails" : {
-    "name" : "Kamila",
-    "surname" : "Kazimmiejczak",
-    "phoneNumber" : "999-221-321",
-    "birthDate" : "1986-07-03",
-    "pesel" : "86070358531",
-    "gender" : "Mężczyzna"
-  }
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false
 } ]

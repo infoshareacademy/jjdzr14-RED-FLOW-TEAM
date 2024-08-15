@@ -48,11 +48,13 @@ public class DoctorController {
                                        @Valid PersonDetails doctorDetails, BindingResult detailsBinding,
                                        @Valid Address doctorAddress, BindingResult addressBinding,
                                        @RequestParam("specialization") Specialization specialization,
-                                       RedirectAttributes redirectAttributes) {
+                                       @RequestParam("pesel") String pesel,
+                                       RedirectAttributes redirectAttributes, Model model) {
 
 
-        if (detailsBinding.hasErrors() || addressBinding.hasErrors()) {
+        if (detailsBinding.hasErrors() || addressBinding.hasErrors() || !doctorService.hasPeselCorrectDigits(pesel)) {
 
+            model.addAttribute("peselError", "Wprowadzony numer PESEL jest niepoprawny.");
             return "doctor";
 
         } else {
