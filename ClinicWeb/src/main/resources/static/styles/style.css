@@ -9,6 +9,7 @@ body {
     background-image: url('/pxfuel.jpg');
     background-size: cover;
     background-position: center;
+    min-height: 100vh;
 
 }
 
