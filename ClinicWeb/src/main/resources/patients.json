@@ -1,19 +1,19 @@
 [ {
   "personDetails" : {
     "name" : "Malwina",
-    "surname" : "KOZAK",
+    "surname" : "Paskal",
     "phoneNumber" : "505-666-158",
     "birthDate" : "1992-04-23",
     "pesel" : "92042326741",
     "gender" : "Kobieta"
   },
   "address" : {
-    "city" : "Grudziądz",
+    "city" : "Poznań",
     "country" : "POLSKA",
     "zipCode" : "57-843",
     "street" : "ZAKŁADOWA",
-    "houseNumber" : "14",
-    "flatNumber" : "8"
+    "houseNumber" : "25",
+    "flatNumber" : "12"
   }
 }, {
   "personDetails" : {
@@ -22,14 +22,35 @@
     "phoneNumber" : "888-259-632",
     "birthDate" : "1995-10-28",
     "pesel" : "95102826883",
-    "gender" : "Kobieta"
+    "gender" : "Mężczyzna"
   },
   "address" : {
     "city" : "Zamiasto",
     "country" : "Polska",
     "zipCode" : "02-200",
-    "street" : "Koperkowa",
+    "street" : "Zrębkowa",
     "houseNumber" : "223",
     "flatNumber" : "122"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Adam",
+    "surname" : "Kazimmiejczak",
+    "phoneNumber" : "666-666-666",
+    "birthDate" : [ 1993, 10, 9 ],
+    "pesel" : "93100913479",
+    "gender" : "Mężczyzna"
+  },
+  "doctor" : {
+    "online" : false,
+    "availability" : false
+  },
+  "address" : {
+    "city" : "GDYNIA",
+    "country" : "Polska",
+    "zipCode" : "80-666",
+    "street" : "PRZYRODNICZA",
+    "houseNumber" : "1",
+    "flatNumber" : "1"
   }
 } ]

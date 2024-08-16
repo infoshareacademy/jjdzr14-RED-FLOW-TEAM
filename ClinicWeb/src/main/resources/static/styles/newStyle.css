@@ -46,7 +46,9 @@ footer {
     margin-top: 5px;
 
 }
-
+ .btn{
+    display: none;
+ }
 .navbar-nav .nav-link {
     color: white;
 }
