@@ -124,7 +124,7 @@ public class PatientController {
         if (byPesel != null) {
             patientService.remove(byPesel);
         }
-        return "redirect:/patients"; // Przekierowanie na stronę z listą pacjentów po usunięciu
+        return "redirect:/patients";
     }
 
     @GetMapping("/delete-patient")

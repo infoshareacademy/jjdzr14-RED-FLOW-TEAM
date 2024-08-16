@@ -9,6 +9,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
+import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientService;
 
@@ -77,4 +78,24 @@ public class VisitController {
         model.addAttribute("allVisits", visitService.getAll());
         return "visits";
     }
+
+    @PostMapping("/cancel")
+    public String cancelVisit(@ModelAttribute Patient patient,
+                              @ModelAttribute Visit visit,
+                              @ModelAttribute DoctorDto doctor,
+                              Model model) {
+        model.addAttribute("allVisits", visitService.getAll());
+//        visit.setCancelVisit(true);
+        visitService.setVisitAttributes(patient, doctor, visit);
+        visitService.saveVisit(visit);
+
+        return "redirect:/visits";
+    }
+
+    @GetMapping("/cancel")
+    public String showCancelVisitForm(@ModelAttribute Patient patient, Model model) {
+        model.addAttribute("allVisits", visitService.getAll());
+        return "redirect:/visits";
+    }
 }
+

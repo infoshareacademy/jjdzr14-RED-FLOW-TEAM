@@ -8,6 +8,8 @@ import pl.infoshare.clinicweb.patient.Patient;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class VisitService implements VisitRepository {
@@ -44,5 +46,24 @@ public class VisitService implements VisitRepository {
         });
         return visits.stream().sorted(Comparator.comparing(Visit::getVisitDate)).toList();
     }
+
+    public void cancelVisit(Patient patient, DoctorDto doctor, Visit visit) {
+        if (patient != null && doctor != null && visit != null) {
+            visit.setCancelVisit(true);
+        }
+    }
+
+    public Visit getVisitFoeUUID(UUID uuid) {
+        List<Visit> visitList = getAll();
+        if (visitList == null) {
+            throw new RuntimeException("Visit list is null");
+        }
+
+        return visitList.stream()
+                .filter(visit -> visit.getNumberOfVisits().equals(uuid))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Visit not found"));
+    }
+
 
 }
