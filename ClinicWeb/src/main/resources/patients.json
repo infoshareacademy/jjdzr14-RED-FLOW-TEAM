@@ -1,26 +1,9 @@
 [ {
   "personDetails" : {
-    "name" : "Teofil",
-    "surname" : "Koperkowy",
-    "phoneNumber" : "555-858-214",
-    "birthDate" : [ 1991, 5, 15 ],
-    "pesel" : "91051562694",
-    "gender" : "Mężczyzna"
-  },
-  "address" : {
-    "city" : "Koszyce",
-    "country" : "Słowacja",
-    "zipCode" : "20-222",
-    "street" : "Produkcyjna",
-    "houseNumber" : "2",
-    "flatNumber" : "25"
-  }
-}, {
-  "personDetails" : {
     "name" : "Malwina",
     "surname" : "KOZAK",
     "phoneNumber" : "505-666-158",
-    "birthDate" : [ 1992, 4, 23 ],
+    "birthDate" : "1992-04-23",
     "pesel" : "92042326741",
     "gender" : "Kobieta"
   },
@@ -37,7 +20,7 @@
     "name" : "Roman",
     "surname" : "Pazdzioch",
     "phoneNumber" : "888-259-632",
-    "birthDate" : [ 1995, 10, 28 ],
+    "birthDate" : "1995-10-28",
     "pesel" : "95102826883",
     "gender" : "Kobieta"
   },

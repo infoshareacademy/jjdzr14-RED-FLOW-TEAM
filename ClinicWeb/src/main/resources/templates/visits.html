@@ -34,6 +34,7 @@
                 <td>Data wizyty</td>
                 <td>Godzina wizyty</td>
                 <td>Anuluj wizytę</td>
+                <td>Anuluj wizytę</td>
 
             </tr>
             <tr>
@@ -47,13 +48,19 @@
                 <td th:text="${visits.visitDate.toLocalDate()}"> ">Data wizyty</td>
                 <td th:text="${visits.visitDate.toLocalTime() }"> ">Godzina wizyty</td>
                 <td>
-                    <form th:action="@{/cancel}" th:method="post" class="d-inline">
-                        <input type="hidden" name="pesel" th:value="${visits.patient.personDetails.pesel}">
+                    <span th:if="${!visits.cancelVisit}"></span>
+                    <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${!visits.cancelVisit}">
+                        <input type="hidden" name="uuid" th:value="${visits.numberOfVisits}">
                         <button type="submit" class="btn btn-secondary btn-sm">Anuluj wizytę</button>
                     </form>
+                    <span th:if="${visits.cancelVisit}" class="text-muted"></span>
+                    <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${visits.cancelVisit}">
+                        <input type="hidden" name="uuid" th:value="${visits.numberOfVisits}">
+                        <button type="submit" class="btn btn-secondary btn-sm" disabled
+                                style="opacity: 0.5; pointer-events: none;">Wizyta Anulowana
+                        </button>
+                    </form>
                 </td>
-            </tr>
-
             </thead>
         </table>
         <a th:href="@{/addVisit}" class="btn btn-primary" role="button"

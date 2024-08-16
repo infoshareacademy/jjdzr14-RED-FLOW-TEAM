@@ -1,146 +1,11 @@
 [ {
-  "doctor" : {
-    "surname" : "Wojtkowski",
-    "name" : "Wojciech",
-    "specialization" : "Neurolog"
-  },
-  "numberOfVisits" : "bbe841eb-4ebe-4715-aed0-5a08210121f6",
-  "patient" : {
-    "personDetails" : {
-      "phoneNumber" : "555-858-214",
-      "gender" : "Mężczyzna",
-      "surname" : "Koperkowy",
-      "name" : "Teofil",
-      "pesel" : "91051562694",
-      "birthDate" : "1991-05-15"
-    },
-    "address" : {
-      "country" : "Słowacja",
-      "zipCode" : "20-222",
-      "city" : "Koszyce",
-      "street" : "Produkcyjna",
-      "flatNumber" : "25",
-      "houseNumber" : "2"
-    }
-  },
-  "visitDate" : "30-08-2024 15:02",
-  "cancelVisit" : false
-}, {
-  "doctor" : {
-    "surname" : "Wojtkowski",
-    "name" : "Wojciech",
-    "specialization" : "Neurolog"
-  },
-  "numberOfVisits" : "57d7f2eb-eefe-430f-9b92-0edb149afc31",
-  "patient" : {
-    "personDetails" : {
-      "phoneNumber" : "888-259-632",
-      "gender" : "Kobieta",
-      "surname" : "Pazdzioch",
-      "name" : "Roman",
-      "pesel" : "95102826883",
-      "birthDate" : "1995-10-28"
-    },
-    "address" : {
-      "country" : "Polska",
-      "zipCode" : "02-200",
-      "city" : "Zamiasto",
-      "street" : "Koperkowa",
-      "flatNumber" : "122",
-      "houseNumber" : "223"
-    }
-  },
-  "visitDate" : "31-08-2024 15:03",
-  "cancelVisit" : false
-}, {
-  "doctor" : {
-    "surname" : "Wojtkowski",
-    "name" : "Wojciech",
-    "specialization" : "Neurolog"
-  },
-  "numberOfVisits" : "375ee19f-eeed-401a-a6a4-fd6eb72b4925",
-  "patient" : {
-    "personDetails" : {
-      "phoneNumber" : "888-259-632",
-      "gender" : "Kobieta",
-      "surname" : "Pazdzioch",
-      "name" : "Roman",
-      "pesel" : "95102826883",
-      "birthDate" : "1995-10-28"
-    },
-    "address" : {
-      "country" : "Polska",
-      "zipCode" : "02-200",
-      "city" : "Zamiasto",
-      "street" : "Koperkowa",
-      "flatNumber" : "122",
-      "houseNumber" : "223"
-    }
-  },
-  "visitDate" : "29-08-2024 15:03",
-  "cancelVisit" : false
-}, {
-  "doctor" : {
-    "surname" : "Wojtkowski",
-    "name" : "Wojciech",
-    "specialization" : "Neurolog"
-  },
-  "numberOfVisits" : "75803bdc-3aac-467e-b9b6-da7bf4cc432b",
-  "patient" : {
-    "personDetails" : {
-      "phoneNumber" : "888-259-632",
-      "gender" : "Kobieta",
-      "surname" : "Pazdzioch",
-      "name" : "Roman",
-      "pesel" : "95102826883",
-      "birthDate" : "1995-10-28"
-    },
-    "address" : {
-      "country" : "Polska",
-      "zipCode" : "02-200",
-      "city" : "Zamiasto",
-      "street" : "Koperkowa",
-      "flatNumber" : "122",
-      "houseNumber" : "223"
-    }
-  },
-  "visitDate" : "04-09-2024 15:03",
-  "cancelVisit" : false
-}, {
-  "doctor" : {
-    "surname" : "Wojtkowski",
-    "name" : "Wojciech",
-    "specialization" : "Neurolog"
-  },
-  "numberOfVisits" : "e65f3202-954b-420b-a1b2-124c20f258d7",
-  "patient" : {
-    "personDetails" : {
-      "phoneNumber" : "555-858-214",
-      "gender" : "Mężczyzna",
-      "surname" : "Koperkowy",
-      "name" : "Teofil",
-      "pesel" : "91051562694",
-      "birthDate" : "1991-05-15"
-    },
-    "address" : {
-      "country" : "Słowacja",
-      "zipCode" : "20-222",
-      "city" : "Koszyce",
-      "street" : "Produkcyjna",
-      "flatNumber" : "25",
-      "houseNumber" : "2"
-    }
-  },
-  "visitDate" : "29-08-2024 15:04",
-  "cancelVisit" : false
-}, {
-  "visitDate" : "30-08-2024 15:04",
+  "visitDate" : "20-08-2024 16:52",
   "patient" : {
     "personDetails" : {
       "name" : "Roman",
       "surname" : "Pazdzioch",
       "phoneNumber" : "888-259-632",
-      "birthDate" : "1995-10-28",
+      "birthDate" : [ 1995, 10, 28 ],
       "pesel" : "95102826883",
       "gender" : "Kobieta"
     },
@@ -154,10 +19,37 @@
     }
   },
   "doctor" : {
-    "name" : "Kamila",
-    "surname" : "Kazimmiejczak",
-    "specialization" : "Onkolog"
+    "name" : "Roksana",
+    "surname" : "Adamska",
+    "specialization" : "Chirurg"
   },
-  "numberOfVisits" : "f712a624-c1fd-4813-8fb9-d8d921c46e3f",
+  "numberOfVisits" : "00b19d1a-0ed4-44a2-88ab-d952bdfc13a3",
   "cancelVisit" : false
+}, {
+  "visitDate" : "17-08-2024 16:52",
+  "patient" : {
+    "personDetails" : {
+      "name" : "Malwina",
+      "surname" : "KOZAK",
+      "phoneNumber" : "505-666-158",
+      "birthDate" : [ 1992, 4, 23 ],
+      "pesel" : "92042326741",
+      "gender" : "Kobieta"
+    },
+    "address" : {
+      "city" : "Grudziądz",
+      "country" : "POLSKA",
+      "zipCode" : "57-843",
+      "street" : "ZAKŁADOWA",
+      "houseNumber" : "14",
+      "flatNumber" : "8"
+    }
+  },
+  "doctor" : {
+    "name" : "Henryka",
+    "surname" : "Gorecka",
+    "specialization" : "Internista"
+  },
+  "numberOfVisits" : "ef3a7db2-43cf-4b60-a739-673821f7dd67",
+  "cancelVisit" : true
 } ]
