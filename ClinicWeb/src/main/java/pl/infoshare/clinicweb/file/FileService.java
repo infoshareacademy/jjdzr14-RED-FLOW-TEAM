@@ -44,7 +44,7 @@ public class FileService implements FileRepository {
         try {
 
             File file = new File(filePath);
-            if (!file.exists()) {
+            if (!file.exists()||file.length()==0) {
                 return new ArrayList<>();
             }
 
@@ -65,8 +65,15 @@ public class FileService implements FileRepository {
 
         mapper.registerModule(new JavaTimeModule());
 
-        JSONArray jsonArray = this.parseArrayFromFile(filePath);
+        JSONArray jsonArray;
 
+        File file = new File(filePath);
+
+        if (file.length() == 0) {
+            jsonArray = new JSONArray();
+        } else {
+            jsonArray = this.parseArrayFromFile(filePath);
+        }
 
         try (FileWriter fileWriter = new FileWriter(filePath, false)) {
 
@@ -76,15 +83,14 @@ public class FileService implements FileRepository {
 
             fileWriter.write(jsonPretty);
 
-
         } catch (NoSuchFileException | FileNotFoundException e) {
             log.error(e.getMessage());
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
+
 
     private JSONArray parseArrayFromFile(String filePath) {
 
