@@ -118,4 +118,7 @@ public class PatientService implements PatientRepository {
         removeFromFile(pesel.getPersonDetails().getPesel(), PATIENT_PATH);
         return null;
     }
+    public void deleteFilePaitent(){
+        fileService.deleteData(PATIENT_PATH);
+    }
 }

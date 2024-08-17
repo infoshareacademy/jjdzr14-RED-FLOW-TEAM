@@ -44,7 +44,7 @@ public class FileService implements FileRepository {
         try {
 
             File file = new File(filePath);
-            if (!file.exists()||file.length()==0) {
+            if (!file.exists() || file.length() == 0) {
                 return new ArrayList<>();
             }
 
@@ -112,4 +112,13 @@ public class FileService implements FileRepository {
         return new JSONArray();
 
     }
+
+    public void deleteData(String filePath) {
+        File file = new File(filePath);
+        if (file.exists()) {
+            file.delete();
+        }
+
+    }
+
 }
