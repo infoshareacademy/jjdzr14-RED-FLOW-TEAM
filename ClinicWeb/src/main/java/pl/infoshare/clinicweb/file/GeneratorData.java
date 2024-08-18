@@ -77,33 +77,3 @@ public class GeneratorData {
         }
     }
 }
-//        }
-//                }
-
-//private Doctor generateRandomDoctor() {
-//    String phoneNumber = faker.phoneNumber().phoneNumber();
-//    String name = faker.name().firstName();
-//    String surname = faker.name().lastName();
-//    String generatedPesel = PeselGenerator.generatePeselStatic();
-//    Pesel pesel = new Pesel(generatedPesel);
-//    LocalDate birthDate = pesel.getBirthDate();
-//    gender = PeselGeneratorParams.Gender.FEMALE;
-//    Gender genderName = Gender.WOMAN;
-//    String country = faker.address().country();
-//    String zip = faker.address().zipCode();
-//    String city = faker.address().city();
-//    String street = faker.address().streetAddress();
-//    String houseNumber = faker.address().buildingNumber();
-//    String flatNumber = faker.address().streetAddressNumber();
-//    PersonDetails personDetails = new PersonDetails(name, surname, phoneNumber, generatedPesel, birthDate, genderName);
-//    Address address = new Address(country, zip, houseNumber, street, zip, country);
-//    Doctor doctor = new Doctor();
-//    doctor.setPersonDetails(new PersonDetails(name, surname, phoneNumber, generatedPesel, birthDate, genderName));
-//    doctor.setAddress(new Address(city, flatNumber, houseNumber, street, zip, country));
-//    Specialization specialization = list.get(rand.nextInt(list.size()));
-//    doctor.setSpecialization(specialization.getDescription());
-//    return doctor;
-
-//}
-//}
-//}
