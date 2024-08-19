@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.stereotype.Service;
-import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.file.FileService;
 
 import java.io.FileWriter;
@@ -76,6 +75,7 @@ public class PatientService implements PatientRepository {
     }
 
     public void saveOrUpdatePatient(Patient patient, Address address) {
+
         Patient patientByPesel = findByPesel(patient.getPersonDetails().getPesel());
         if (patientByPesel != null) {
             patientByPesel.getPersonDetails().setName(patient.getPersonDetails().getName());

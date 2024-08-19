@@ -53,4 +53,21 @@
     "houseNumber" : "1",
     "flatNumber" : "1"
   }
+}, {
+  "personDetails" : {
+    "name" : "Antoni",
+    "surname" : "Kazimmiejczak",
+    "phoneNumber" : "999-221-321",
+    "birthDate" : [ 1997, 4, 4 ],
+    "pesel" : "97040411556",
+    "gender" : "Mężczyzna"
+  },
+  "address" : {
+    "city" : "Zamiasto",
+    "country" : "Polska",
+    "zipCode" : "10-022",
+    "street" : "Kamienna",
+    "houseNumber" : "5",
+    "flatNumber" : "12"
+  }
 } ]

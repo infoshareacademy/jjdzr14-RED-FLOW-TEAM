@@ -67,7 +67,7 @@ public class VisitController {
             redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. " +
                     "Dziękujemy za rejestrację!");
 
-            doctor = doctorService.findByPesel(doctorPesel);
+            doctor = doctorService.doctorDtoByPesel(doctorPesel);
             patient = patientService.findByPesel(patientPesel);
             visitService.setVisitAttributes(patient, doctor, visit);
             visitService.saveVisit(visit);
