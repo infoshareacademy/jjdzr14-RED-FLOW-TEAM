@@ -75,6 +75,7 @@ public class PatientService implements PatientRepository {
     }
 
     public void saveOrUpdatePatient(Patient patient, Address address) {
+
         Patient patientByPesel = findByPesel(patient.getPersonDetails().getPesel());
         if (patientByPesel != null) {
             patientByPesel.getPersonDetails().setName(patient.getPersonDetails().getName());

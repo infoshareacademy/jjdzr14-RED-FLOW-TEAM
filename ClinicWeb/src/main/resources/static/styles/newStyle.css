@@ -48,11 +48,9 @@ footer {
     margin-top: 5px;
 
 }
-
-.btn {
+ .btn{
     display: none;
-}
-
+ }
 .navbar-nav .nav-link {
     color: white;
 }
@@ -64,11 +62,9 @@ footer {
 .navbar-nav .nav-link:hover {
     color: red;
 }
-
-.col-auto {
+.col-auto{
     margin-left: 2px;
 }
-
-.card {
-    background-color: rgba(255, 255, 255, 0.8);
+.card{
+   background-color: rgba(255, 255, 255, 0.8);
 }

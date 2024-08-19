@@ -15,6 +15,7 @@ import pl.infoshare.clinicweb.patient.Patient;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Visit {
@@ -31,18 +32,28 @@ public class Visit {
     private DoctorDto doctor;
 
     private List<Medicines> medicines;
-    private int numberOfVisits;
+    private UUID numberOfVisits = UUID.randomUUID();
+    private boolean cancelVisit;
 
 
     public Visit() {
     }
 
-    public int getNumberOfVisits() {
+    public boolean isCancelVisit() {
+        return cancelVisit;
+    }
+
+    public void setCancelVisit(boolean cancelVisit) {
+        this.cancelVisit = cancelVisit;
+    }
+
+    public UUID getNumberOfVisits() {
         return numberOfVisits;
     }
 
-    public void setNumberOfVisits(int numberOfVisits) {
+    public UUID setNumberOfVisits(UUID numberOfVisits) {
         this.numberOfVisits = numberOfVisits;
+        return numberOfVisits;
     }
 
     public Patient getPatient() {
@@ -92,13 +103,12 @@ public class Visit {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Visit visit = (Visit) o;
-        return numberOfVisits == visit.numberOfVisits && Objects.equals(patient, visit.patient) && Objects.equals(doctor, visit.doctor) && Objects.equals(medicines, visit.medicines) && Objects.equals(visitDate, visit.visitDate);
+        return cancelVisit == visit.cancelVisit && Objects.equals(visitDate, visit.visitDate) && Objects.equals(patient, visit.patient) && Objects.equals(doctor, visit.doctor) && Objects.equals(medicines, visit.medicines) && Objects.equals(numberOfVisits, visit.numberOfVisits);
     }
-
 
     @Override
     public int hashCode() {
-        return Objects.hash(patient, doctor, medicines, numberOfVisits, visitDate);
+        return Objects.hash(visitDate, patient, doctor, medicines, numberOfVisits, cancelVisit);
     }
 
     @Override

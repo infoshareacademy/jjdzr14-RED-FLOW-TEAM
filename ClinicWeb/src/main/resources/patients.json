@@ -1,256 +1,73 @@
 [ {
   "personDetails" : {
-    "phoneNumber" : "23-175-41-02",
-    "gender" : "Kobieta",
-    "surname" : "Bartkowiak",
-    "name" : "Eleonora",
-    "pesel" : "55020680893",
-    "birthDate" : [ 1955, 2, 6 ]
+    "name" : "Antoni",
+    "surname" : "Kazimmiejczak",
+    "phoneNumber" : "999-221-321",
+    "birthDate" : [ 1997, 4, 4 ],
+    "pesel" : "97040411556",
+    "gender" : "Mężczyzna"
   },
   "address" : {
-    "country" : "Luksemburg",
-    "zipCode" : "32-485",
-    "city" : "Koźmin Wielkopolski",
-    "street" : "ul. Czerwiński 8098",
-    "flatNumber" : "194",
-    "houseNumber" : "2062"
+    "city" : "Zamiasto",
+    "country" : "Polska",
+    "zipCode" : "10-022",
+    "street" : "węglowa",
+    "houseNumber" : "5",
+    "flatNumber" : "12"
   }
 }, {
   "personDetails" : {
-    "phoneNumber" : "71-412-87-87",
-    "gender" : "Kobieta",
-    "surname" : "Zawada",
-    "name" : "Angelina",
-    "pesel" : "93031523862",
-    "birthDate" : [ 1993, 3, 15 ]
-  },
-  "address" : {
-    "country" : "Mongolia",
-    "zipCode" : "85-657",
-    "city" : "Nowy Sącz",
-    "street" : "al. Twardowski 2309",
-    "flatNumber" : "616",
-    "houseNumber" : "75720"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "32-950-66-13",
-    "gender" : "Kobieta",
-    "surname" : "Rosiak",
-    "name" : "Laurencja",
-    "pesel" : "29051685921",
-    "birthDate" : [ 1929, 5, 16 ]
-  },
-  "address" : {
-    "country" : "Wietnam",
-    "zipCode" : "42-184",
-    "city" : "Kutno",
-    "street" : "ul. Łuczak 2750",
-    "flatNumber" : "851",
-    "houseNumber" : "016"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "32-238-84-25",
-    "gender" : "Kobieta",
-    "surname" : "Woźniak",
-    "name" : "Albert",
-    "pesel" : "51100881303",
-    "birthDate" : [ 1951, 10, 8 ]
-  },
-  "address" : {
-    "country" : "Kazachstan",
-    "zipCode" : "85-110",
-    "city" : "Szklarska Poręba",
-    "street" : "al. Stępniak 470",
-    "flatNumber" : "289",
-    "houseNumber" : "1918"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "33-578-28-33",
-    "gender" : "Kobieta",
-    "surname" : "Piłat",
-    "name" : "Teresa",
-    "pesel" : "38040525102",
-    "birthDate" : [ 1938, 4, 5 ]
-  },
-  "address" : {
-    "country" : "Erytrea",
-    "zipCode" : "00-873",
-    "city" : "Dobrodzień",
-    "street" : "al. Gałązka 14095",
-    "flatNumber" : "367",
-    "houseNumber" : "690"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "71-202-15-23",
-    "gender" : "Kobieta",
-    "surname" : "Szwarc",
-    "name" : "Justyn",
-    "pesel" : "97120588941",
-    "birthDate" : [ 1997, 12, 5 ]
-  },
-  "address" : {
-    "country" : "Kolumbia",
-    "zipCode" : "61-577",
-    "city" : "Izbica Kujawska",
-    "street" : "ul. Rybak 90324",
-    "flatNumber" : "860",
-    "houseNumber" : "4319"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "24-928-08-65",
-    "gender" : "Kobieta",
-    "surname" : "Skrzypczak",
-    "name" : "Wanda",
-    "pesel" : "47072757704",
-    "birthDate" : [ 1947, 7, 27 ]
-  },
-  "address" : {
-    "country" : "Japonia",
-    "zipCode" : "70-665",
-    "city" : "Ińsko",
-    "street" : "al. Sokół 2670",
-    "flatNumber" : "110",
-    "houseNumber" : "8365"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "84-496-23-54",
-    "gender" : "Kobieta",
-    "surname" : "Lewicki",
-    "name" : "Rozalia",
-    "pesel" : "88011731182",
-    "birthDate" : [ 1988, 1, 17 ]
-  },
-  "address" : {
-    "country" : "Sri Lanka",
-    "zipCode" : "42-599",
-    "city" : "Krynki",
-    "street" : "ul. Szymański 477",
-    "flatNumber" : "858",
-    "houseNumber" : "0457"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "95-807-11-41",
-    "gender" : "Kobieta",
-    "surname" : "Michalski",
-    "name" : "Ryszard",
-    "pesel" : "45060743728",
-    "birthDate" : [ 1945, 6, 7 ]
-  },
-  "address" : {
-    "country" : "Madagaskar",
-    "zipCode" : "18-098",
-    "city" : "Pilzno",
-    "street" : "ul. Kot 55625",
-    "flatNumber" : "655",
-    "houseNumber" : "113"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "16-388-20-73",
-    "gender" : "Kobieta",
-    "surname" : "Kobus",
-    "name" : "Joanna",
-    "pesel" : "05252544166",
-    "birthDate" : [ 2005, 5, 25 ]
-  },
-  "address" : {
-    "country" : "Peru",
-    "zipCode" : "28-941",
-    "city" : "Poniec",
-    "street" : "ul. Adamczak 6239",
-    "flatNumber" : "410",
-    "houseNumber" : "89021"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "41-808-23-62",
-    "gender" : "Kobieta",
-    "surname" : "Panek",
-    "name" : "Benedykt",
-    "pesel" : "36100188315",
-    "birthDate" : [ 1936, 10, 1 ]
-  },
-  "address" : {
-    "country" : "Iran",
-    "zipCode" : "68-199",
-    "city" : "Halinów",
-    "street" : "ul. Leszczyński 50615",
-    "flatNumber" : "359",
-    "houseNumber" : "190"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "14-912-67-16",
-    "gender" : "Kobieta",
-    "surname" : "Sokołowski",
-    "name" : "Chloe",
-    "pesel" : "95083033270",
-    "birthDate" : [ 1995, 8, 30 ]
-  },
-  "address" : {
-    "country" : "Chorwacja",
-    "zipCode" : "88-521",
-    "city" : "Osieczna",
-    "street" : "ul. Borowski 4992",
-    "flatNumber" : "297",
-    "houseNumber" : "157"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "32-599-87-95",
-    "gender" : "Kobieta",
-    "surname" : "Mikulski",
-    "name" : "Laurentyna",
-    "pesel" : "74110802324",
-    "birthDate" : [ 1974, 11, 8 ]
-  },
-  "address" : {
-    "country" : "Saint Lucia",
-    "zipCode" : "81-359",
-    "city" : "Trzebiatów",
-    "street" : "ul. Wieczorek 27988",
-    "flatNumber" : "518",
-    "houseNumber" : "15774"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "95-708-49-31",
-    "gender" : "Kobieta",
-    "surname" : "Augustyn",
-    "name" : "Wirginia",
-    "pesel" : "42072314591",
-    "birthDate" : [ 1942, 7, 23 ]
-  },
-  "address" : {
-    "country" : "Vanuatu",
-    "zipCode" : "42-408",
-    "city" : "Radzyń Chełmiński",
-    "street" : "al. Cichocki 93431",
-    "flatNumber" : "710",
-    "houseNumber" : "8130"
-  }
-}, {
-  "personDetails" : {
-    "name" : "Ilona",
-    "surname" : "Gwóźdź",
-    "phoneNumber" : "15-419-61-49",
-    "birthDate" : [ 1979, 10, 14 ],
-    "pesel" : "79101426268",
+    "name" : "Malwina",
+    "surname" : "Paskal",
+    "phoneNumber" : "505-666-158",
+    "birthDate" : [ 1992, 4, 23 ],
+    "pesel" : "92042326741",
     "gender" : "Kobieta"
   },
   "address" : {
-    "city" : "Mieroszów",
-    "country" : "Uganda",
-    "zipCode" : "65-554",
-    "street" : "al. Stefaniak 35178",
-    "houseNumber" : "1717",
-    "flatNumber" : "392"
+    "city" : "Poznań",
+    "country" : "POLSKA",
+    "zipCode" : "57-843",
+    "street" : "ZAKŁADOWA",
+    "houseNumber" : "25",
+    "flatNumber" : "12"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Roman",
+    "surname" : "Pazdzioch",
+    "phoneNumber" : "888-259-632",
+    "birthDate" : [ 1995, 10, 28 ],
+    "pesel" : "95102826883",
+    "gender" : "Mężczyzna"
+  },
+  "address" : {
+    "city" : "Zamiasto",
+    "country" : "Polska",
+    "zipCode" : "02-200",
+    "street" : "Zrębkowa",
+    "houseNumber" : "223",
+    "flatNumber" : "122"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Adam",
+    "surname" : "Kazimmiejczak",
+    "phoneNumber" : "666-666-666",
+    "birthDate" : [ 1993, 10, 9 ],
+    "pesel" : "93100913479",
+    "gender" : "Mężczyzna"
+  },
+  "doctor" : {
+    "online" : false,
+    "availability" : false
+  },
+  "address" : {
+    "city" : "GDYNIA",
+    "country" : "Polska",
+    "zipCode" : "80-666",
+    "street" : "PRZYRODNICZA",
+    "houseNumber" : "1",
+    "flatNumber" : "1"
   }
 } ]

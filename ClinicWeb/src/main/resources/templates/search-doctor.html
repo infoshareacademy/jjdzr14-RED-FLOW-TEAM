@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyszukiwanie pacjenta po pesel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{styles/newStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
+    </div>
+</nav>
+<div class="container">
+    <h3 class="card-title text-center">Wyszukiwanie doktora</h3>
+    <form th:action="@{/search-doctor}" th:method="post" th:object="${doctor}">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL"
+                   aria-label="Search"
+                   aria-describedby="button-addon2" required>
+            <button type="submit" class="btn btn-outline-primary ms-2" id="button-addon2">Wyszukaj</button>
+        </div>
+    </form>
+    <div th:if="${error != null}" class="alert alert-danger mt-4" role="alert">
+        <p th:text="${error}">Błąd</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a th:href="@{/doctor}" class="btn btn-success" role="button" aria-pressed="true">Dodaj lekarza do
+                bazy</a>
+            <a th:href="@{/doctors}" class="btn btn-primary " role="button" aria-pressed="true">Powrót do listy
+                pacjentów</a>
+        </div>
+    </div>
+    <div th:if="${searchForPesel != null}" class="card mt-4">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Numer telefonu</th>
+                <th>Pesel</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="doctor : ${searchForPesel}">
+                <td th:text="${doctor.personDetails.name}">Name</td>
+                <td th:text="${doctor.personDetails.surname}">Surname</td>
+                <td th:text="${doctor.personDetails.phoneNumber}">Phone number</td>
+                <td th:text="${doctor.personDetails.pesel}">Pesel</td>
+                <td th:text="${doctor.specialization}">Specjalizacja</td>
+
+
+                <td class="d-flex align-items-center" th:text="Wszystkie dane">
+                    <a th:href="@{/update-doctor(pesel=${doctor.personDetails.pesel})}"
+                       class="btn btn-primary btn-sm active me-2" role="button" aria-pressed="true">Edytuj dane</a>
+                    <form th:action="@{/delete-doctor}" th:method="post" class="d-inline">
+                        <input type="hidden" name="pesel" th:value="${searchForPesel.personDetails.pesel}">
+                        <button type="submit" class="btn btn-danger btn-sm active">Usuń</button>
+                    </form>
+                </td>
+
+            </tr>
+            </tbody>
+            <a th:href="@{/doctors}" class="btn btn-primary mt-3" role="button" aria-pressed="true">Powrót do listy
+                lekarzy</a>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</footer>
+</html>

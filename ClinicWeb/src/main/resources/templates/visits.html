@@ -17,42 +17,55 @@
 <div class="container">
     <h3>Wszystkie nasze wizyty</h3>
 
-        <div class="card">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <td colspan="3">Pacjent</td>
-                    <td colspan="2">Lekarz</td>
-                </tr>
-                <tr>
-                    <td>Imię</td>
-                    <td>Nazwisko</td>
-                    <td>Pesel</td>
-                    <td>Imię</td>
-                    <td>Nazwisko</td>
-                    <td>Specjalizacja</td>
-                    <td>Data wizyty</td>
-                    <td>Godzina wizyty</td>
+    <div class="card">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td colspan="3">Pacjent</td>
+                <td colspan="2">Lekarz</td>
+            </tr>
+            <tr>
+                <td>Imię</td>
+                <td>Nazwisko</td>
+                <td>Pesel</td>
+                <td>Imię</td>
+                <td>Nazwisko</td>
+                <td>Specjalizacja</td>
+                <td>Data wizyty</td>
+                <td>Godzina wizyty</td>
+                <td>Anuluj wizytę</td>
+                <td>Anuluj wizytę</td>
 
-                </tr>
-                <tr>
-                <tr th:each="visits:${allVisits}">
-                    <td th:text="${visits.patient.personDetails.name}">Imię</td>
-                    <td th:text="${visits.patient.personDetails.surname}">Nazwisko</td>
-                    <td th:text="${visits.patient.personDetails.pesel}">Pesel</td>
-                    <td th:text="${visits.doctor.name}">Imię</td>
-                    <td th:text="${visits.doctor.surname}">Nazwisko</td>
-                    <td th:text="${visits.doctor.specialization}">Specjalizacja</td>
-                    <td th:text="${visits.visitDate.toLocalDate()}"> ">Data wizyty</td>
-                    <td th:text="${visits.visitDate.toLocalTime() }"> ">Godzina wizyty
-                    </td>
-                </tr>
-
-                </thead>
-            </table>
-            <a th:href="@{/addVisit}" class="btn btn-primary" role="button"
-               aria-pressed="true">Dodaj nowa wizytę</a>
-        </div>
+            </tr>
+            <tr>
+            <tr th:each="visits:${allVisits}">
+                <td th:text="${visits.patient.personDetails.name}">Imię</td>
+                <td th:text="${visits.patient.personDetails.surname}">Nazwisko</td>
+                <td th:text="${visits.patient.personDetails.pesel}">Pesel</td>
+                <td th:text="${visits.doctor.name}">Imię</td>
+                <td th:text="${visits.doctor.surname}">Nazwisko</td>
+                <td th:text="${visits.doctor.specialization}">Specjalizacja</td>
+                <td th:text="${visits.visitDate.toLocalDate()}"> ">Data wizyty</td>
+                <td th:text="${visits.visitDate.toLocalTime() }"> ">Godzina wizyty</td>
+                <td>
+                    <span th:if="${!visits.cancelVisit}"></span>
+                    <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${!visits.cancelVisit}">
+                        <input type="hidden" name="uuid" th:value="${visits.numberOfVisits}">
+                        <button type="submit" class="btn btn-secondary btn-sm">Anuluj wizytę</button>
+                    </form>
+                    <span th:if="${visits.cancelVisit}" class="text-muted"></span>
+                    <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${visits.cancelVisit}">
+                        <input type="hidden" name="uuid" th:value="${visits.numberOfVisits}">
+                        <button type="submit" class="btn btn-secondary btn-sm" disabled
+                                style="opacity: 0.5; pointer-events: none;">Wizyta Anulowana
+                        </button>
+                    </form>
+                </td>
+            </thead>
+        </table>
+        <a th:href="@{/addVisit}" class="btn btn-primary" role="button"
+           aria-pressed="true">Dodaj nowa wizytę</a>
+    </div>
 </div>
 <footer>
     <div th:replace="~{fragments/footer :: footer}"></div>

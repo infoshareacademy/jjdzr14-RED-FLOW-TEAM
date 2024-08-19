@@ -4,13 +4,18 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientService;
+
+import java.util.UUID;
 
 
 @Controller
@@ -62,7 +67,7 @@ public class VisitController {
             redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. " +
                     "Dziękujemy za rejestrację!");
 
-            doctor = doctorService.findByPesel(doctorPesel);
+            doctor = doctorService.doctorDtoByPesel(doctorPesel);
             patient = patientService.findByPesel(patientPesel);
             visitService.setVisitAttributes(patient, doctor, visit);
             visitService.saveVisit(visit);
@@ -77,4 +82,23 @@ public class VisitController {
         model.addAttribute("allVisits", visitService.getAll());
         return "visits";
     }
+
+    @PostMapping("/cancel")
+    public String cancelVisit(@RequestParam("uuid") UUID uuid, Model model) {
+        Visit visit = visitService.getVisitFoeUUID(uuid);
+        model.addAttribute("allVisits", visit);
+        visitService.cancelVisit(visit);
+        visitService.saveVisit(visit);
+        visitService.remove(uuid, visit);
+
+        return "redirect:/visits";
+    }
+
+
+    @GetMapping("/cancel")
+    public String showCancelVisitForm(@ModelAttribute Patient patient, Model model) {
+        model.addAttribute("allVisits", visitService.getAll());
+        return "redirect:/visits";
+    }
 }
+
