@@ -1,164 +1,52 @@
 [ {
-  "personDetails" : {
-    "phoneNumber" : "444-444-333",
-    "surname" : "Wojtkowski",
-    "name" : "Wojciech",
-    "pesel" : "7564932323",
-    "birthDate" : [ 1975, 12, 12 ]
-  },
-  "address" : {
-    "country" : "Polska",
-    "zipCode" : "85-255",
-    "city" : "Trzebina",
-    "street" : "Zawodzie",
-    "flatNumber" : 15,
-    "houseNumber" : 1
-  },
-  "specialization" : "Neurolog",
+  "specialization" : "Onkolog",
   "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "444-444-333",
-    "surname" : "Trawka",
-    "name" : "Wlodek",
-    "pesel" : "7564932323",
-    "birthDate" : [ 1975, 12, 12 ]
-  },
+  "availability" : false,
   "address" : {
+    "city" : "Lodz",
     "country" : "Poland",
     "zipCode" : "30-521",
-    "city" : "Lodz",
     "street" : "Warszawska",
-    "flatNumber" : "76",
-    "houseNumber" : "8"
+    "houseNumber" : "8",
+    "flatNumber" : "76"
   },
-  "specialization" : "Internista",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
+    "name" : "Aleksandra",
+    "surname" : "Surman",
     "phoneNumber" : "444-444-333",
-    "surname" : "Kantek",
-    "name" : "Kamil",
-    "pesel" : "7564932323",
-    "birthDate" : [ 1975, 12, 12 ]
-  },
-  "address" : {
-    "country" : "Poland",
-    "zipCode" : "30-521",
-    "city" : "Lodz",
-    "street" : "Warszawska",
-    "flatNumber" : "76",
-    "houseNumber" : "8"
-  },
-  "specialization" : "Internista",
-  "online" : false,
-  "availability" : false
+    "birthDate" : [ 1975, 12, 12 ],
+    "pesel" : "91020304321",
+    "gender" : null
+  }
 }, {
-  "personDetails" : {
-    "phoneNumber" : "444-444-333",
-    "surname" : "Zajac",
-    "name" : "Aneta",
-    "pesel" : "7564932323",
-    "birthDate" : [ 1975, 12, 12 ]
-  },
-  "address" : {
-    "country" : "Poland",
-    "zipCode" : "30-521",
-    "city" : "Lodz",
-    "street" : "Warszawska",
-    "flatNumber" : "76",
-    "houseNumber" : "8"
-  },
-  "specialization" : "Internista",
+  "specialization" : "Chirurg",
   "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "444-444-333",
-    "surname" : "Trojanowski",
-    "name" : "Wojciech",
-    "pesel" : "7564932323",
-    "birthDate" : [ 1975, 12, 12 ]
-  },
+  "availability" : false,
   "address" : {
+    "city" : "Lubeka",
     "country" : "Deutschland",
     "zipCode" : "44555",
-    "city" : "Lubeka",
-    "street" : "Gartenstr",
-    "flatNumber" : 90,
-    "houseNumber" : "empty"
+    "street" : "Schleissen",
+    "houseNumber" : "empty",
+    "flatNumber" : "90"
   },
-  "specialization" : "Chirurg",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
+    "name" : "Wojciech",
+    "surname" : "Trojanowski",
     "phoneNumber" : "444-444-333",
-    "surname" : "Surman",
-    "name" : "Aleksandra",
-    "pesel" : "7564932323",
-    "birthDate" : [ 1975, 12, 12 ]
-  },
-  "address" : {
-    "country" : "Poland",
-    "zipCode" : "30-521",
-    "city" : "Lodz",
-    "street" : "Warszawska",
-    "flatNumber" : "76",
-    "houseNumber" : "8"
-  },
-  "specialization" : "Onkolog",
-  "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "444-444-333",
-    "surname" : "Koziol",
-    "name" : "Damian",
-    "pesel" : "7564932323",
-    "birthDate" : [ 1975, 12, 12 ]
-  },
-  "address" : {
-    "country" : "Poland",
-    "zipCode" : "30-521",
-    "city" : "Lodz",
-    "street" : "Warszawska",
-    "flatNumber" : "76",
-    "houseNumber" : "8"
-  },
-  "specialization" : "Onkolog",
-  "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "123-456-789",
-    "surname" : "Panda",
-    "name" : "Malwina",
-    "pesel" : "7564932323",
-    "birthDate" : [ 1975, 12, 12 ]
-  },
-  "address" : {
-    "country" : "Poland",
-    "zipCode" : "30-521",
-    "city" : "Lodz",
-    "street" : "Warszawska",
-    "flatNumber" : "76",
-    "houseNumber" : "8"
-  },
-  "specialization" : "Chirurg",
-  "online" : false,
-  "availability" : false
+    "birthDate" : [ 1975, 7, 8 ],
+    "pesel" : "75070823231",
+    "gender" : "Mężczyzna"
+  }
 }, {
   "specialization" : "Onkolog",
   "online" : false,
   "availability" : false,
   "address" : {
-    "city" : "Wyczechowo",
+    "city" : "Poznan",
     "country" : "Polska",
     "zipCode" : "10-022",
-    "street" : "Spacerowa",
+    "street" : "Krzemienna",
     "houseNumber" : "5",
     "flatNumber" : "12"
   },
@@ -166,8 +54,128 @@
     "name" : "Kamila",
     "surname" : "Kazimmiejczak",
     "phoneNumber" : "999-221-321",
-    "birthDate" : "1986-07-03",
+    "birthDate" : [ 1986, 7, 3 ],
     "pesel" : "86070358531",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Dermatolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Gorlice",
+    "country" : "Polska",
+    "zipCode" : "30-232",
+    "street" : "Polna",
+    "houseNumber" : "2",
+    "flatNumber" : "27"
+  },
+  "personDetails" : {
+    "name" : "Kamil",
+    "surname" : "Jarzabek",
+    "phoneNumber" : "575-232-333",
+    "birthDate" : [ 1994, 1, 1 ],
+    "pesel" : "94010112344",
     "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Trzebina",
+    "country" : "Polska",
+    "zipCode" : "85-255",
+    "street" : "Zawodzie",
+    "houseNumber" : "1",
+    "flatNumber" : "15"
+  },
+  "personDetails" : {
+    "name" : "Wojciech",
+    "surname" : "Wojtkowski",
+    "phoneNumber" : "444-444-333",
+    "birthDate" : [ 1975, 1, 2 ],
+    "pesel" : "75010212345",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Lodz",
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "street" : "Warszawska",
+    "houseNumber" : "8",
+    "flatNumber" : "76"
+  },
+  "personDetails" : {
+    "name" : "Mariusz",
+    "surname" : "Trawka",
+    "phoneNumber" : "444-444-333",
+    "birthDate" : [ 1975, 7, 8 ],
+    "pesel" : "75070812432",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Lodz",
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "street" : "Mocna",
+    "houseNumber" : "8",
+    "flatNumber" : "76"
+  },
+  "personDetails" : {
+    "name" : "Kamil",
+    "surname" : "Kantek",
+    "phoneNumber" : "444-444-333",
+    "birthDate" : [ 1975, 1, 2 ],
+    "pesel" : "7501022723",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Lodz",
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "street" : "Warszawska",
+    "houseNumber" : "8",
+    "flatNumber" : "76"
+  },
+  "personDetails" : {
+    "name" : "Malwina",
+    "surname" : "Panda",
+    "phoneNumber" : "123-456-789",
+    "birthDate" : [ 1976, 1, 1 ],
+    "pesel" : "76010154321",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Lodz",
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "street" : "Kamienna",
+    "houseNumber" : "8",
+    "flatNumber" : "76"
+  },
+  "personDetails" : {
+    "name" : "Aneta",
+    "surname" : "Zajac",
+    "phoneNumber" : "444-444-333",
+    "birthDate" : [ 1975, 8, 9 ],
+    "pesel" : "75080932321",
+    "gender" : "Kobieta"
   }
 } ]

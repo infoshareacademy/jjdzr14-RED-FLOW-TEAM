@@ -129,29 +129,55 @@
   },
   "visitDate" : "23-08-2024 21:00"
 }, {
-  "visitDate" : "16-08-2024 23:11",
+  "doctor" : {
+    "surname" : "Wojtkowski",
+    "name" : "Wojciech",
+    "specialization" : "Neurolog"
+  },
+  "numberOfVisits" : 0,
   "patient" : {
     "personDetails" : {
-      "name" : "Roman",
-      "surname" : "Pazdzioch",
       "phoneNumber" : "888-259-632",
-      "birthDate" : "1995-10-28",
+      "gender" : "Kobieta",
+      "surname" : "Pazdzioch",
+      "name" : "Roman",
       "pesel" : "95102826883",
+      "birthDate" : "1995-10-28"
+    },
+    "address" : {
+      "country" : "Polska",
+      "zipCode" : "02-200",
+      "city" : "Zamiasto",
+      "street" : "Koperkowa",
+      "flatNumber" : "122",
+      "houseNumber" : "223"
+    }
+  },
+  "visitDate" : "16-08-2024 23:11"
+}, {
+  "visitDate" : "16-08-2024 16:21",
+  "patient" : {
+    "personDetails" : {
+      "name" : "Malwina",
+      "surname" : "Paskal",
+      "phoneNumber" : "505-666-158",
+      "birthDate" : "1992-04-23",
+      "pesel" : "92042326741",
       "gender" : "Kobieta"
     },
     "address" : {
-      "city" : "Zamiasto",
-      "country" : "Polska",
-      "zipCode" : "02-200",
-      "street" : "Koperkowa",
-      "houseNumber" : "223",
-      "flatNumber" : "122"
+      "city" : "Poznań",
+      "country" : "POLSKA",
+      "zipCode" : "57-843",
+      "street" : "ZAKŁADOWA",
+      "houseNumber" : "25",
+      "flatNumber" : "12"
     }
   },
   "doctor" : {
-    "name" : "Wojciech",
-    "surname" : "Wojtkowski",
-    "specialization" : "Neurolog"
+    "name" : "Kamila",
+    "surname" : "Kazimmiejczak",
+    "specialization" : "Onkolog"
   },
   "numberOfVisits" : 0
 } ]
