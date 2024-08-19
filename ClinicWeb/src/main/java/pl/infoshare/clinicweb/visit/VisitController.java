@@ -15,6 +15,8 @@ import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientService;
 
+import java.util.UUID;
+
 
 @Controller
 public class VisitController {
@@ -80,4 +82,23 @@ public class VisitController {
         model.addAttribute("allVisits", visitService.getAll());
         return "visits";
     }
+
+    @PostMapping("/cancel")
+    public String cancelVisit(@RequestParam("uuid") UUID uuid, Model model) {
+        Visit visit = visitService.getVisitFoeUUID(uuid);
+        model.addAttribute("allVisits", visit);
+        visitService.cancelVisit(visit);
+        visitService.saveVisit(visit);
+        visitService.remove(uuid, visit);
+
+        return "redirect:/visits";
+    }
+
+
+    @GetMapping("/cancel")
+    public String showCancelVisitForm(@ModelAttribute Patient patient, Model model) {
+        model.addAttribute("allVisits", visitService.getAll());
+        return "redirect:/visits";
+    }
 }
+
