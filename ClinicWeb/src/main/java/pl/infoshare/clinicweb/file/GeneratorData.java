@@ -13,10 +13,7 @@ import pl.infoshare.clinicweb.user.Gender;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
+import java.util.*;
 
 public class GeneratorData {
     static PeselGeneratorParams.Gender gender = PeselGeneratorParams.Gender.FEMALE;
@@ -31,23 +28,7 @@ public class GeneratorData {
     Faker faker = new Faker(new Locale("pl"));
 
 
-    public void writeRandomObjects(int count, Object object) {
-        ObjectMapper mapper = new ObjectMapper();
-        FileService fileService = new FileService(mapper);
-        for (int i = 0; i < count; i++) {
-            if (object instanceof Patient) {
-                Object o = generateRandomObject(object);
-                fileService.writeToFile(o, PATIENT_PATH);
-            } else if (object instanceof Doctor) {
-                Object doctor = generateRandomObject(object);
-                fileService.writeToFile(doctor, DOCTOR_PATH);
-            }
-
-        }
-
-    }
-
-    private Object generateRandomObject(Object object) {
+    private PersonDetails generatePersonDetails() {
         String firstName = faker.name().firstName();
         String surname = faker.name().lastName();
         String phoneNumber = faker.phoneNumber().phoneNumber();
@@ -56,24 +37,55 @@ public class GeneratorData {
         LocalDate birthDate = pesel.getBirthDate();
         gender = PeselGeneratorParams.Gender.FEMALE;
         Gender genderName = Gender.WOMAN;
+        return new PersonDetails(firstName, surname, phoneNumber, generatedPesel, birthDate, genderName);
+    }
+
+    private Address generateAddress() {
         String city = faker.address().city();
         String country = faker.address().country();
         String zip = faker.address().zipCode();
         String street = faker.address().streetAddress();
         String houseNumber = faker.address().buildingNumber();
         String flatNumber = faker.address().streetAddressNumber();
-        if (object instanceof Patient) {
-            Patient p = new Patient();
-            p.setPersonDetails(new PersonDetails(firstName, surname, phoneNumber, generatedPesel, birthDate, genderName));
-            p.setAddress(new Address(city, flatNumber, houseNumber, street, zip, country));
-            return p;
-        } else {
-            Doctor doctor = new Doctor();
-            Specialization specialization = list.get(rand.nextInt(list.size()));
-            doctor.setPersonDetails(new PersonDetails(firstName, surname, phoneNumber, generatedPesel, birthDate, genderName));
-            doctor.setAddress(new Address(city, flatNumber, houseNumber, street, zip, country));
-            doctor.setSpecialization(specialization.getDescription());
-            return doctor;
+        return new Address(city, flatNumber, houseNumber, street, zip, country);
+    }
+
+
+    public void writeRandomObjects(int count, Object object) {
+        ObjectMapper mapper = new ObjectMapper();
+        FileService fileService = new FileService(mapper);
+        for (int i = 0; i < count; i++) {
+            if (object instanceof Patient) {
+                Object o = generateRandomPatient(object);
+                fileService.writeToFile(o, PATIENT_PATH);
+            } else if (object instanceof Doctor) {
+                Object doctor = generateRandomDoctor(object);
+                fileService.writeToFile(doctor, DOCTOR_PATH);
+            }
+
         }
+
+    }
+
+    private Patient generateRandomPatient(Object object) {
+        Patient patient = new Patient();
+        if (object instanceof Patient) {
+            patient.setPersonDetails(generatePersonDetails());
+            patient.setAddress(generateAddress());
+        } else throw new NoSuchElementException();
+        return patient;
+    }
+
+
+    public Doctor generateRandomDoctor(Object o) {
+        Doctor doctor = new Doctor();
+        if (o instanceof Doctor) {
+            Specialization specialization = list.get(rand.nextInt(list.size()));
+            doctor.setPersonDetails(generatePersonDetails());
+            doctor.setAddress(generateAddress());
+            doctor.setSpecialization(specialization.getDescription());
+        } else throw new NoSuchElementException();
+        return doctor;
+
     }
 }
