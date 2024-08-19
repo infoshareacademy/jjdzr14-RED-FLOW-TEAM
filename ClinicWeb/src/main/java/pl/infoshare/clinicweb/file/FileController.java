@@ -7,16 +7,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.DoctorService;
-import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientService;
+
+import static pl.infoshare.clinicweb.file.GeneratorData.generateAndSaveData;
 
 @RequiredArgsConstructor
 @Controller
 public class FileController {
-    int count = 15;
-    GeneratorData generatorData = new GeneratorData();
+
 
     private DoctorService doctorService;
     private PatientService patientService;
@@ -35,7 +34,7 @@ public class FileController {
 
     @GetMapping("/create-Data")
     public String create(Model model) {
-        generateAndSaveData(model);
+        GeneratorData.generateAndSaveData(model);
         return "index";
     }
 
@@ -52,20 +51,6 @@ public class FileController {
         doctorService.deleteFileDoctor();
         patientService.deleteFilePaitent();
         return "index";
-    }
-
-    private void generateAndSaveData() {
-        generatorData.writeRandomObjects(count, new Patient());
-        generatorData.writeRandomObjects(count, new Doctor());
-    }
-
-    private void generateAndSaveData(Model model) {
-        Patient patient = new Patient();
-        Doctor doctor = new Doctor();
-        generatorData.writeRandomObjects(count, patient);
-        generatorData.writeRandomObjects(count, doctor);
-        model.addAttribute("patient", patient);
-        model.addAttribute("doctor", doctor);
     }
 }
 

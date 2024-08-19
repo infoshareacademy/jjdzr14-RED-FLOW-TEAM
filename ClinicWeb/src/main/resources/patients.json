@@ -1,73 +1,256 @@
 [ {
   "personDetails" : {
-    "name" : "Antoni",
-    "surname" : "Kazimmiejczak",
-    "phoneNumber" : "999-221-321",
-    "birthDate" : [ 1997, 4, 4 ],
-    "pesel" : "97040411556",
-    "gender" : "Mężczyzna"
+    "phoneNumber" : "77-196-22-82",
+    "gender" : "Kobieta",
+    "surname" : "Baran",
+    "name" : "Florian",
+    "pesel" : "36082277298",
+    "birthDate" : [ 1936, 8, 22 ]
   },
   "address" : {
-    "city" : "Zamiasto",
-    "country" : "Polska",
-    "zipCode" : "10-022",
-    "street" : "węglowa",
-    "houseNumber" : "5",
-    "flatNumber" : "12"
+    "country" : "Gwatemala",
+    "zipCode" : "00-944",
+    "city" : "Warszawa",
+    "street" : "ul. Małek 84422",
+    "flatNumber" : "154",
+    "houseNumber" : "0408"
   }
 }, {
   "personDetails" : {
-    "name" : "Malwina",
-    "surname" : "Paskal",
-    "phoneNumber" : "505-666-158",
-    "birthDate" : [ 1992, 4, 23 ],
-    "pesel" : "92042326741",
+    "phoneNumber" : "83-736-06-63",
+    "gender" : "Kobieta",
+    "surname" : "Konieczny",
+    "name" : "Klemens",
+    "pesel" : "24241800476",
+    "birthDate" : [ 2024, 4, 18 ]
+  },
+  "address" : {
+    "country" : "Burkina Faso",
+    "zipCode" : "07-446",
+    "city" : "Otmuchów",
+    "street" : "al. Kacprzak 10680",
+    "flatNumber" : "356",
+    "houseNumber" : "8920"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "68-385-36-62",
+    "gender" : "Kobieta",
+    "surname" : "Owczarek",
+    "name" : "Florian",
+    "pesel" : "54011559392",
+    "birthDate" : [ 1954, 1, 15 ]
+  },
+  "address" : {
+    "country" : "Bangladesz",
+    "zipCode" : "06-301",
+    "city" : "Dobrodzień",
+    "street" : "ul. Buczkowski 52209",
+    "flatNumber" : "106",
+    "houseNumber" : "278"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "75-747-53-60",
+    "gender" : "Kobieta",
+    "surname" : "Kalisz",
+    "name" : "Eugeniusz",
+    "pesel" : "03220522316",
+    "birthDate" : [ 2003, 2, 5 ]
+  },
+  "address" : {
+    "country" : "Angola",
+    "zipCode" : "50-178",
+    "city" : "Chodzież",
+    "street" : "ul. Wojtczak 51235",
+    "flatNumber" : "847",
+    "houseNumber" : "08912"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "24-247-27-98",
+    "gender" : "Kobieta",
+    "surname" : "Rogalski",
+    "name" : "Laura",
+    "pesel" : "92051094369",
+    "birthDate" : [ 1992, 5, 10 ]
+  },
+  "address" : {
+    "country" : "Demokratyczna Republika Konga",
+    "zipCode" : "01-098",
+    "city" : "Koziegłowy",
+    "street" : "al. Gąsiorowski 54080",
+    "flatNumber" : "600",
+    "houseNumber" : "8951"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "22-834-94-97",
+    "gender" : "Kobieta",
+    "surname" : "Zarzycki",
+    "name" : "Stella",
+    "pesel" : "73111933095",
+    "birthDate" : [ 1973, 11, 19 ]
+  },
+  "address" : {
+    "country" : "Haga",
+    "zipCode" : "69-802",
+    "city" : "Ząbki",
+    "street" : "al. Wojciechowski 61415",
+    "flatNumber" : "31",
+    "houseNumber" : "66945"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "54-795-01-30",
+    "gender" : "Kobieta",
+    "surname" : "Jóźwik",
+    "name" : "Patrycjusz",
+    "pesel" : "53112806604",
+    "birthDate" : [ 1953, 11, 28 ]
+  },
+  "address" : {
+    "country" : "Azerbejdżan",
+    "zipCode" : "20-740",
+    "city" : "Kazimierza Wielka",
+    "street" : "ul. Skóra 2297",
+    "flatNumber" : "909",
+    "houseNumber" : "76264"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "95-457-40-02",
+    "gender" : "Kobieta",
+    "surname" : "Brzozowski",
+    "name" : "Salomon",
+    "pesel" : "67052329750",
+    "birthDate" : [ 1967, 5, 23 ]
+  },
+  "address" : {
+    "country" : "Jamajka",
+    "zipCode" : "95-112",
+    "city" : "Lublin",
+    "street" : "al. Sokół 14392",
+    "flatNumber" : "580",
+    "houseNumber" : "43056"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "23-510-80-36",
+    "gender" : "Kobieta",
+    "surname" : "Burzyński",
+    "name" : "Patrycja",
+    "pesel" : "12310682421",
+    "birthDate" : [ 2012, 11, 6 ]
+  },
+  "address" : {
+    "country" : "Mauritius",
+    "zipCode" : "55-853",
+    "city" : "Zambrów",
+    "street" : "al. Pietras 7251",
+    "flatNumber" : "769",
+    "houseNumber" : "875"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "85-864-51-11",
+    "gender" : "Kobieta",
+    "surname" : "Gałka",
+    "name" : "Nadzieja",
+    "pesel" : "67041694115",
+    "birthDate" : [ 1967, 4, 16 ]
+  },
+  "address" : {
+    "country" : "Haga",
+    "zipCode" : "12-557",
+    "city" : "Gryfów Śląski",
+    "street" : "ul. Paluch 71261",
+    "flatNumber" : "851",
+    "houseNumber" : "2224"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "32-779-11-41",
+    "gender" : "Kobieta",
+    "surname" : "Szczepanik",
+    "name" : "Ariadna",
+    "pesel" : "81081374989",
+    "birthDate" : [ 1981, 8, 13 ]
+  },
+  "address" : {
+    "country" : "Stany Zjednoczone",
+    "zipCode" : "47-145",
+    "city" : "Żyrardów",
+    "street" : "al. Wojtczak 84915",
+    "flatNumber" : "45",
+    "houseNumber" : "03021"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "75-487-51-63",
+    "gender" : "Kobieta",
+    "surname" : "Gałka",
+    "name" : "Wirginia",
+    "pesel" : "84100383094",
+    "birthDate" : [ 1984, 10, 3 ]
+  },
+  "address" : {
+    "country" : "Liberia",
+    "zipCode" : "05-143",
+    "city" : "Olkusz",
+    "street" : "al. Rzepka 20625",
+    "flatNumber" : "201",
+    "houseNumber" : "3275"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "76-355-11-16",
+    "gender" : "Kobieta",
+    "surname" : "Krukowski",
+    "name" : "Ksawera",
+    "pesel" : "10272388799",
+    "birthDate" : [ 2010, 7, 23 ]
+  },
+  "address" : {
+    "country" : "Gujana",
+    "zipCode" : "48-740",
+    "city" : "Chełmno",
+    "street" : "al. Zabłocki 8869",
+    "flatNumber" : "748",
+    "houseNumber" : "6121"
+  }
+}, {
+  "personDetails" : {
+    "phoneNumber" : "46-242-04-27",
+    "gender" : "Kobieta",
+    "surname" : "Sikora",
+    "name" : "Angela",
+    "pesel" : "70120947437",
+    "birthDate" : [ 1970, 12, 9 ]
+  },
+  "address" : {
+    "country" : "Salwador",
+    "zipCode" : "55-725",
+    "city" : "Kobylin",
+    "street" : "al. Filipowicz 67056",
+    "flatNumber" : "352",
+    "houseNumber" : "75830"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Maja",
+    "surname" : "Jagielski",
+    "phoneNumber" : "13-359-63-08",
+    "birthDate" : [ 1961, 12, 14 ],
+    "pesel" : "61121400317",
     "gender" : "Kobieta"
   },
   "address" : {
-    "city" : "Poznań",
-    "country" : "POLSKA",
-    "zipCode" : "57-843",
-    "street" : "ZAKŁADOWA",
-    "houseNumber" : "25",
-    "flatNumber" : "12"
-  }
-}, {
-  "personDetails" : {
-    "name" : "Roman",
-    "surname" : "Pazdzioch",
-    "phoneNumber" : "888-259-632",
-    "birthDate" : [ 1995, 10, 28 ],
-    "pesel" : "95102826883",
-    "gender" : "Mężczyzna"
-  },
-  "address" : {
-    "city" : "Zamiasto",
-    "country" : "Polska",
-    "zipCode" : "02-200",
-    "street" : "Zrębkowa",
-    "houseNumber" : "223",
-    "flatNumber" : "122"
-  }
-}, {
-  "personDetails" : {
-    "name" : "Adam",
-    "surname" : "Kazimmiejczak",
-    "phoneNumber" : "666-666-666",
-    "birthDate" : [ 1993, 10, 9 ],
-    "pesel" : "93100913479",
-    "gender" : "Mężczyzna"
-  },
-  "doctor" : {
-    "online" : false,
-    "availability" : false
-  },
-  "address" : {
-    "city" : "GDYNIA",
-    "country" : "Polska",
-    "zipCode" : "80-666",
-    "street" : "PRZYRODNICZA",
-    "houseNumber" : "1",
-    "flatNumber" : "1"
+    "city" : "Kórnik",
+    "country" : "Gruzja",
+    "zipCode" : "28-290",
+    "street" : "al. Stachowicz 9658",
+    "houseNumber" : "3203",
+    "flatNumber" : "806"
   }
 } ]

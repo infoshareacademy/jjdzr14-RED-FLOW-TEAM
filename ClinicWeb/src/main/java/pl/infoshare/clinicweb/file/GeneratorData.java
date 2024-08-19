@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import io.github.viepovsky.polishutils.pesel.Pesel;
 import io.github.viepovsky.polishutils.pesel.PeselGenerator;
 import io.github.viepovsky.polishutils.pesel.PeselGeneratorParams;
+import org.springframework.ui.Model;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.Specialization;
 import pl.infoshare.clinicweb.patient.Address;
@@ -18,17 +19,19 @@ import java.util.*;
 public class GeneratorData {
     static PeselGeneratorParams.Gender gender = PeselGeneratorParams.Gender.FEMALE;
 
-    String PATIENT_PATH = "ClinicWeb/src/main/resources/patients.json";
-    String DOCTOR_PATH = "ClinicWeb/src/main/resources/doctors.json";
+    private static final int count = 15;
 
-    Specialization[] specializations = Specialization.values();
-    List<Specialization> list = Arrays.stream(specializations).toList();
+    static String PATIENT_PATH = "ClinicWeb/src/main/resources/patients.json";
+    static String DOCTOR_PATH = "ClinicWeb/src/main/resources/doctors.json";
 
-    Random rand = new Random();
-    Faker faker = new Faker(new Locale("pl"));
+    static Specialization[] specializations = Specialization.values();
+    static List<Specialization> list = Arrays.stream(specializations).toList();
+
+    static Random rand = new Random();
+    static Faker faker = new Faker(new Locale("pl"));
 
 
-    private PersonDetails generatePersonDetails() {
+    private static PersonDetails generatePersonDetails() {
         String firstName = faker.name().firstName();
         String surname = faker.name().lastName();
         String phoneNumber = faker.phoneNumber().phoneNumber();
@@ -40,7 +43,7 @@ public class GeneratorData {
         return new PersonDetails(firstName, surname, phoneNumber, generatedPesel, birthDate, genderName);
     }
 
-    private Address generateAddress() {
+    private static Address generateAddress() {
         String city = faker.address().city();
         String country = faker.address().country();
         String zip = faker.address().zipCode();
@@ -51,10 +54,10 @@ public class GeneratorData {
     }
 
 
-    public void writeRandomObjects(int count, Object object) {
+    private static void writeRandomObjects(Object object) {
         ObjectMapper mapper = new ObjectMapper();
         FileService fileService = new FileService(mapper);
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < GeneratorData.count; i++) {
             if (object instanceof Patient) {
                 Object o = generateRandomPatient(object);
                 fileService.writeToFile(o, PATIENT_PATH);
@@ -67,7 +70,7 @@ public class GeneratorData {
 
     }
 
-    private Patient generateRandomPatient(Object object) {
+    private static Patient generateRandomPatient(Object object) {
         Patient patient = new Patient();
         if (object instanceof Patient) {
             patient.setPersonDetails(generatePersonDetails());
@@ -77,7 +80,7 @@ public class GeneratorData {
     }
 
 
-    public Doctor generateRandomDoctor(Object o) {
+    private static Doctor generateRandomDoctor(Object o) {
         Doctor doctor = new Doctor();
         if (o instanceof Doctor) {
             Specialization specialization = list.get(rand.nextInt(list.size()));
@@ -87,5 +90,19 @@ public class GeneratorData {
         } else throw new NoSuchElementException();
         return doctor;
 
+    }
+
+    public static void generateAndSaveData() {
+        writeRandomObjects(new Patient());
+        writeRandomObjects(new Doctor());
+    }
+
+    public static void generateAndSaveData(Model model) {
+        Patient patient = new Patient();
+        Doctor doctor = new Doctor();
+        writeRandomObjects(patient);
+        writeRandomObjects(doctor);
+        model.addAttribute("patient", patient);
+        model.addAttribute("doctor", doctor);
     }
 }
