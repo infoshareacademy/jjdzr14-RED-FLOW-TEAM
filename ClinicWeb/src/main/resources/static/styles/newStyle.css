@@ -49,7 +49,7 @@ footer {
 
 }
  .btn{
-    display: none;
+    display: inline-block;
  }
 .navbar-nav .nav-link {
     color: white;

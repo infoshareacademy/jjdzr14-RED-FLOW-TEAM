@@ -46,6 +46,9 @@ public class VisitService implements VisitRepository {
     public List<Visit> getAll() {
         List<Visit> visits = fileService.readFromFile(VISITS_PATH, new TypeReference<List<Visit>>() {
         });
+        if (visits == null||visits.isEmpty()) {
+            return new ArrayList<>();
+        }
         return visits.stream().sorted(Comparator.comparing(Visit::getVisitDate)).toList();
     }
 
