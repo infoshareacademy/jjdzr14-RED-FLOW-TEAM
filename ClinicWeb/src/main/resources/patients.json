@@ -1,73 +1,72 @@
-[ {
-  "personDetails" : {
-    "name" : "Malwina",
-    "surname" : "Paskal",
-    "phoneNumber" : "505-666-158",
-    "birthDate" : "1992-04-23",
-    "pesel" : "92042326741",
-    "gender" : "Kobieta"
+[
+  {
+    "personDetails": {
+      "name": "Roman",
+      "surname": "Pazdzioch",
+      "phoneNumber": "888-259-632",
+      "birthDate": [
+        1995,
+        10,
+        28
+      ],
+      "pesel": "95102826883",
+      "gender": "Mężczyzna"
+    },
+    "address": {
+      "city": "Zamiasto",
+      "country": "Polska",
+      "zipCode": "02-200",
+      "street": "Zrębkowa",
+      "houseNumber": "223",
+      "flatNumber": "122"
+    }
   },
-  "address" : {
-    "city" : "Poznań",
-    "country" : "POLSKA",
-    "zipCode" : "57-843",
-    "street" : "ZAKŁADOWA",
-    "houseNumber" : "25",
-    "flatNumber" : "12"
+  {
+    "personDetails": {
+      "name": "Adam",
+      "surname": "Kazimmiejczak",
+      "phoneNumber": "666-666-666",
+      "birthDate": [
+        1993,
+        10,
+        9
+      ],
+      "pesel": "93100913479",
+      "gender": "Mężczyzna"
+    },
+    "doctor": {
+      "online": false,
+      "availability": false
+    },
+    "address": {
+      "city": "GDYNIA",
+      "country": "Polska",
+      "zipCode": "80-666",
+      "street": "PRZYRODNICZA",
+      "houseNumber": "1",
+      "flatNumber": "1"
+    }
+  },
+  {
+    "personDetails": {
+      "name": "Antoni",
+      "surname": "Kazimmiejczak",
+      "phoneNumber": "999-221-321",
+      "birthDate": [
+        1997,
+        4,
+        4
+      ],
+      "pesel": "97040411556",
+      "gender": "Mężczyzna"
+    },
+    "address": {
+      "city": "Zamiasto",
+      "country": "Polska",
+      "zipCode": "10-022",
+      "street": "Kamienna",
+      "houseNumber": "5",
+      "flatNumber": "12"
+    }
   }
-}, {
-  "personDetails" : {
-    "name" : "Roman",
-    "surname" : "Pazdzioch",
-    "phoneNumber" : "888-259-632",
-    "birthDate" : "1995-10-28",
-    "pesel" : "95102826883",
-    "gender" : "Mężczyzna"
-  },
-  "address" : {
-    "city" : "Zamiasto",
-    "country" : "Polska",
-    "zipCode" : "02-200",
-    "street" : "Zrębkowa",
-    "houseNumber" : "223",
-    "flatNumber" : "122"
-  }
-}, {
-  "personDetails" : {
-    "name" : "Adam",
-    "surname" : "Kazimmiejczak",
-    "phoneNumber" : "666-666-666",
-    "birthDate" : [ 1993, 10, 9 ],
-    "pesel" : "93100913479",
-    "gender" : "Mężczyzna"
-  },
-  "doctor" : {
-    "online" : false,
-    "availability" : false
-  },
-  "address" : {
-    "city" : "GDYNIA",
-    "country" : "Polska",
-    "zipCode" : "80-666",
-    "street" : "PRZYRODNICZA",
-    "houseNumber" : "1",
-    "flatNumber" : "1"
-  }
-}, {
-  "personDetails" : {
-    "name" : "Antoni",
-    "surname" : "Kazimmiejczak",
-    "phoneNumber" : "999-221-321",
-    "birthDate" : [ 1997, 4, 4 ],
-    "pesel" : "97040411556",
-    "gender" : "Mężczyzna"
-  },
-  "address" : {
-    "city" : "Zamiasto",
-    "country" : "Polska",
-    "zipCode" : "10-022",
-    "street" : "Kamienna",
-    "houseNumber" : "5",
-    "flatNumber" : "12"
-  }
-} ]
+]
