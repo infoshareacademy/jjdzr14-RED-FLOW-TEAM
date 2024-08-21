@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.Utils;
 
 @RequiredArgsConstructor
 @Controller
@@ -35,12 +36,14 @@ public class PatientController {
     @PostMapping("/patient")
     public String patientFormSubmission(@Valid PersonDetails patientDetails, BindingResult detailsBinding,
                                         @Valid Address patientAddress, BindingResult addressBinding,
+                                        @RequestParam("pesel") String pesel,
                                         Model model, RedirectAttributes redirectAttributes, Doctor doctor) {
 
         model.addAttribute("doctors", doctorService.findAll());
 
-        if (detailsBinding.hasErrors() || addressBinding.hasErrors()) {
+        if (detailsBinding.hasErrors() || addressBinding.hasErrors() || !Utils.hasPeselCorrectDigits(pesel)) {
 
+            model.addAttribute("peselError", "Wprowadzony numer PESEL jest niepoprawny");
             return "patient";
 
         } else {

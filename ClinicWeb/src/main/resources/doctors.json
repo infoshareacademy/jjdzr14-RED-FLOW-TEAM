@@ -118,4 +118,176 @@
     "pesel" : "86070358531",
     "gender" : "Mężczyzna"
   }
+=======
+  "personDetails" : {
+    "phoneNumber" : "444-444-333",
+    "surname" : "Wojtkowski",
+    "name" : "Wojciech",
+    "pesel" : "7564932323",
+    "birthDate" : [ 1975, 12, 12 ]
+  },
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "85-255",
+    "city" : "Trzebina",
+    "street" : "Zawodzie",
+    "flatNumber" : 15,
+    "houseNumber" : 1
+  },
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "444-444-333",
+    "surname" : "Trawka",
+    "name" : "Wlodek",
+    "pesel" : "7564932323",
+    "birthDate" : [ 1975, 12, 12 ]
+  },
+  "address" : {
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "city" : "Lodz",
+    "street" : "Warszawska",
+    "flatNumber" : "76",
+    "houseNumber" : "8"
+  },
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "444-444-333",
+    "surname" : "Kantek",
+    "name" : "Kamil",
+    "pesel" : "7564932323",
+    "birthDate" : [ 1975, 12, 12 ]
+  },
+  "address" : {
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "city" : "Lodz",
+    "street" : "Warszawska",
+    "flatNumber" : "76",
+    "houseNumber" : "8"
+  },
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "444-444-333",
+    "surname" : "Zajac",
+    "name" : "Aneta",
+    "pesel" : "7564932323",
+    "birthDate" : [ 1975, 12, 12 ]
+  },
+  "address" : {
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "city" : "Lodz",
+    "street" : "Warszawska",
+    "flatNumber" : "76",
+    "houseNumber" : "8"
+  },
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "444-444-333",
+    "surname" : "Trojanowski",
+    "name" : "Wojciech",
+    "pesel" : "7564932323",
+    "birthDate" : [ 1975, 12, 12 ]
+  },
+  "address" : {
+    "country" : "Deutschland",
+    "zipCode" : "44555",
+    "city" : "Lubeka",
+    "street" : "Gartenstr",
+    "flatNumber" : 90,
+    "houseNumber" : "empty"
+  },
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "444-444-333",
+    "surname" : "Surman",
+    "name" : "Aleksandra",
+    "pesel" : "7564932323",
+    "birthDate" : [ 1975, 12, 12 ]
+  },
+  "address" : {
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "city" : "Lodz",
+    "street" : "Warszawska",
+    "flatNumber" : "76",
+    "houseNumber" : "8"
+  },
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "444-444-333",
+    "surname" : "Koziol",
+    "name" : "Damian",
+    "pesel" : "7564932323",
+    "birthDate" : [ 1975, 12, 12 ]
+  },
+  "address" : {
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "city" : "Lodz",
+    "street" : "Warszawska",
+    "flatNumber" : "76",
+    "houseNumber" : "8"
+  },
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "123-456-789",
+    "surname" : "Panda",
+    "name" : "Malwina",
+    "pesel" : "7564932323",
+    "birthDate" : [ 1975, 12, 12 ]
+  },
+  "address" : {
+    "country" : "Poland",
+    "zipCode" : "30-521",
+    "city" : "Lodz",
+    "street" : "Warszawska",
+    "flatNumber" : "76",
+    "houseNumber" : "8"
+  },
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "999-221-321",
+    "gender" : "Mężczyzna",
+    "surname" : "Kazimmiejczak",
+    "name" : "Kamila",
+    "pesel" : "86070358531",
+    "birthDate" : "1986-07-03"
+  },
+  "address" : {
+    "country" : "Polska",
+    "zipCode" : "10-022",
+    "city" : "Wyczechowo",
+    "street" : "Spacerowa",
+    "flatNumber" : "12",
+    "houseNumber" : "5"
+  },
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false
 } ]
