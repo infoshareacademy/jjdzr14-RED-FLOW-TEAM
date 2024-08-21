@@ -1,0 +1,55 @@
+[ {
+  "visitDate" : "24-08-2024 23:45",
+  "patient" : {
+    "personDetails" : {
+      "name" : "Seweryn",
+      "surname" : "Gajda",
+      "phoneNumber" : "89-616-94-14",
+      "birthDate" : [ 1984, 10, 23 ],
+      "pesel" : "84102376436",
+      "gender" : "Mężczyzna"
+    },
+    "address" : {
+      "city" : "Dzierżoniów",
+      "country" : "Kenia",
+      "zipCode" : "12-677",
+      "street" : "al. Dróżdż 717",
+      "houseNumber" : "914",
+      "flatNumber" : "157"
+    }
+  },
+  "doctor" : {
+    "name" : "Maja",
+    "surname" : "Górski",
+    "specialization" : "Dermatolog"
+  },
+  "numberOfVisits" : "18c9b6b2-088b-4620-99a6-dfff10699b64",
+  "cancelVisit" : true
+}, {
+  "visitDate" : "22-08-2024 01:47",
+  "patient" : {
+    "personDetails" : {
+      "name" : "Ofelia",
+      "surname" : "Kogut",
+      "phoneNumber" : "16-127-63-38",
+      "birthDate" : [ 2016, 6, 18 ],
+      "pesel" : "16261887719",
+      "gender" : "Kobieta"
+    },
+    "address" : {
+      "city" : "Świdwin",
+      "country" : "Republika Środkowoafrykańska",
+      "zipCode" : "95-698",
+      "street" : "al. Michałek 39764",
+      "houseNumber" : "4570",
+      "flatNumber" : "3"
+    }
+  },
+  "doctor" : {
+    "name" : "Dariusz",
+    "surname" : "Komorowski",
+    "specialization" : "Dermatolog"
+  },
+  "numberOfVisits" : "c5d8e9aa-307f-4103-92d0-da1be45182ff",
+  "cancelVisit" : true
+} ]

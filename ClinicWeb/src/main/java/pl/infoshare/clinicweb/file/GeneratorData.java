@@ -13,11 +13,10 @@ import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.Gender;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
-import java.time.LocalDate;
 import java.util.*;
 
 public class GeneratorData {
-    static PeselGeneratorParams.Gender gender = PeselGeneratorParams.Gender.FEMALE;
+
 
     private static final int count = 15;
 
@@ -29,30 +28,32 @@ public class GeneratorData {
 
     static Random rand = new Random();
     static Faker faker = new Faker(new Locale("pl"));
+    static PeselGeneratorParams.Gender gender = PeselGeneratorParams.Gender.FEMALE;
 
-
-    private static PersonDetails generatePersonDetails() {
-        String firstName = faker.name().firstName();
-        String surname = faker.name().lastName();
-        String phoneNumber = faker.phoneNumber().phoneNumber();
+    public static PersonDetails generatePersonDetails() {
+        PersonDetails personDetails = new PersonDetails();
+        Gender gender = faker.options().option(Gender.FEMALE, Gender.MALE);
         String generatedPesel = PeselGenerator.generatePeselStatic();
         Pesel pesel = new Pesel(generatedPesel);
-        LocalDate birthDate = pesel.getBirthDate();
-        gender = PeselGeneratorParams.Gender.FEMALE;
-        Gender genderName = Gender.WOMAN;
-        return new PersonDetails(firstName, surname, phoneNumber, generatedPesel, birthDate, genderName);
+        personDetails.setPesel(generatedPesel);
+        personDetails.setName(faker.name().firstName());
+        personDetails.setSurname(faker.name().lastName());
+        personDetails.setPhoneNumber(faker.phoneNumber().phoneNumber());
+        personDetails.setBirthDate(pesel.getBirthDate());
+        personDetails.setGender(gender);
+        return personDetails;
     }
 
     private static Address generateAddress() {
-        String city = faker.address().city();
-        String country = faker.address().country();
-        String zip = faker.address().zipCode();
-        String street = faker.address().streetAddress();
-        String houseNumber = faker.address().buildingNumber();
-        String flatNumber = faker.address().streetAddressNumber();
-        return new Address(city, flatNumber, houseNumber, street, zip, country);
+        Address address = new Address();
+        address.setCity(faker.address().city());
+        address.setCountry(faker.address().country());
+        address.setZipCode(faker.address().zipCode());
+        address.setStreet(faker.address().streetAddress());
+        address.setHouseNumber(faker.address().buildingNumber());
+        address.setFlatNumber(faker.address().streetAddressNumber());
+        return address;
     }
-
 
     private static void writeRandomObjects(Object object) {
         ObjectMapper mapper = new ObjectMapper();
