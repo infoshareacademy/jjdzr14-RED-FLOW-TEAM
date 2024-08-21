@@ -70,4 +70,21 @@
     "flatNumber" : "1",
     "houseNumber" : "1"
   }
+}, {
+  "personDetails" : {
+    "name" : "Aneta",
+    "surname" : "Mirek",
+    "phoneNumber" : "533-333-223",
+    "birthDate" : "1954-05-25",
+    "pesel" : "54052525835",
+    "gender" : "Kobieta"
+  },
+  "address" : {
+    "city" : "Gorlice",
+    "country" : "Polska",
+    "zipCode" : "30-232",
+    "street" : "Kwiatowa",
+    "houseNumber" : "11",
+    "flatNumber" : "34"
+  }
 } ]

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.PeselUtils;
 
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class DoctorController {
                                        RedirectAttributes redirectAttributes, Model model) {
 
 
-        if (detailsBinding.hasErrors() || addressBinding.hasErrors() || !doctorService.hasPeselCorrectDigits(pesel)) {
+        if (detailsBinding.hasErrors() || addressBinding.hasErrors() || !PeselUtils.hasPeselCorrectDigits(pesel)) {
 
             model.addAttribute("peselError", "Wprowadzony numer PESEL jest niepoprawny.");
             return "doctor";
