@@ -127,6 +127,9 @@
                     <input class="form-control" type="text" th:field="*{pesel}">
                     <p th:if="${#fields.hasErrors('pesel')}" class="text-danger"
                        th:errors="*{pesel}">Pesel error</p>
+                    <div th:align="center" th:if="${peselError}" class="text-danger" role="alert">
+                        <p th:text="${peselError}">Pesel validation error</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
