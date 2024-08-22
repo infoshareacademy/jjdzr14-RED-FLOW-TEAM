@@ -116,7 +116,7 @@ public class FileService implements FileRepository {
     public void deleteData(String filePath) {
         File file = new File(filePath);
         if (file.exists()) {
-            file.delete();
+            boolean delete = file.delete();
         }
 
     }

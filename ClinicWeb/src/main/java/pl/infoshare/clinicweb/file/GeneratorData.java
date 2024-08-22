@@ -25,18 +25,15 @@ public class GeneratorData {
 
     static Specialization[] specializations = Specialization.values();
     static List<Specialization> list = Arrays.stream(specializations).toList();
-
     static Random rand = new Random();
-    static Faker faker = new Faker(new Locale("pl"));
-
-
-    static PersonDetails personDetails = new PersonDetails();
 
     public static PersonDetails generatePersonDetails() {
+        Faker faker = new Faker(new Locale("pl"));
+        PersonDetails personDetails = new PersonDetails();
         String generatedPesel = PeselGenerator.generatePeselStatic();
         Pesel pesel = new Pesel(generatedPesel);
         personDetails.setPesel(generatedPesel);
-        personDetails.setName(generateFirstNameForPesel(generatedPesel));
+        personDetails.setName(generateFirstNameForPesel(generatedPesel, faker));
         personDetails.setSurname(faker.name().lastName());
         personDetails.setPhoneNumber(faker.phoneNumber().phoneNumber());
         personDetails.setBirthDate(pesel.getBirthDate());
@@ -45,9 +42,10 @@ public class GeneratorData {
     }
 
     private static Address generateAddress() {
+        Faker faker = new Faker(new Locale("pl"));
         Address address = new Address();
         address.setCity(faker.address().city());
-        address.setCountry("Polska");
+        address.setCountry(faker.address().country());
         address.setZipCode(faker.address().zipCode());
         address.setStreet(faker.address().streetAddress());
         address.setHouseNumber(faker.address().buildingNumber());
@@ -60,61 +58,54 @@ public class GeneratorData {
         return genderDigit % 2 == 0;
     }
 
-    private static String generateFirstNameForPesel(String pesel) {
+    private static String generateFirstNameForPesel(String pesel, Faker faker) {
         if (isFemalePesel(pesel)) {
-            personDetails.setName(faker.name().femaleFirstName());
-        } else personDetails.setName(faker.name().malefirstName());
-        return personDetails.getName();
+            return faker.name().femaleFirstName();
+        } else {
+            return faker.name().malefirstName();
+        }
     }
 
-    private static void writeRandomObjects(Object object) {
+    private static void writeRandomObjects(Class<?> clazz) {
         ObjectMapper mapper = new ObjectMapper();
         FileService fileService = new FileService(mapper);
         for (int i = 0; i < GeneratorData.count; i++) {
-            if (object instanceof Patient) {
-                Object o = generateRandomPatient(object);
-                fileService.writeToFile(o, PATIENT_PATH);
-            } else if (object instanceof Doctor) {
-                Object doctor = generateRandomDoctor(object);
+            if (clazz == Patient.class) {
+                Patient patient = generateRandomPatient();
+                fileService.writeToFile(patient, PATIENT_PATH);
+            } else if (clazz == Doctor.class) {
+                Doctor doctor = generateRandomDoctor();
                 fileService.writeToFile(doctor, DOCTOR_PATH);
             }
-
         }
-
     }
 
-    private static Patient generateRandomPatient(Object object) {
+    private static Patient generateRandomPatient() {
         Patient patient = new Patient();
-        if (object instanceof Patient) {
-            patient.setPersonDetails(generatePersonDetails());
-            patient.setAddress(generateAddress());
-        } else throw new NoSuchElementException();
+        patient.setPersonDetails(generatePersonDetails());
+        patient.setAddress(generateAddress());
         return patient;
     }
 
-
-    private static Doctor generateRandomDoctor(Object o) {
+    private static Doctor generateRandomDoctor() {
         Doctor doctor = new Doctor();
-        if (o instanceof Doctor) {
-            Specialization specialization = list.get(rand.nextInt(list.size()));
-            doctor.setPersonDetails(generatePersonDetails());
-            doctor.setAddress(generateAddress());
-            doctor.setSpecialization(specialization.getDescription());
-        } else throw new NoSuchElementException();
+        Specialization specialization = list.get(rand.nextInt(list.size()));
+        doctor.setPersonDetails(generatePersonDetails());
+        doctor.setAddress(generateAddress());
+        doctor.setSpecialization(specialization.getDescription());
         return doctor;
-
     }
 
     public static void generateAndSaveData() {
-        writeRandomObjects(new Patient());
-        writeRandomObjects(new Doctor());
+        writeRandomObjects(Patient.class);
+        writeRandomObjects(Doctor.class);
     }
 
     public static void generateAndSaveData(Model model) {
         Patient patient = new Patient();
         Doctor doctor = new Doctor();
-        writeRandomObjects(patient);
-        writeRandomObjects(doctor);
+        writeRandomObjects(Patient.class);
+        writeRandomObjects(Doctor.class);
         model.addAttribute("patient", patient);
         model.addAttribute("doctor", doctor);
     }
