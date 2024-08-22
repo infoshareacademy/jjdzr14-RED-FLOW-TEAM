@@ -3,8 +3,8 @@ package pl.infoshare.clinicweb.user;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum Gender {
-    MAN("Mężczyzna"),
-    WOMAN("Kobieta");
+    MALE("Mężczyzna"),
+    FEMALE("Kobieta");
 
     Gender(String description) {
         this.description = description;

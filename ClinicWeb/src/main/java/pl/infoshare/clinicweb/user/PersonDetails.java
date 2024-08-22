@@ -41,6 +41,7 @@ public class PersonDetails {
         this.surname = surname;
     }
 
+
     public Gender getGender() {
         return gender;
     }

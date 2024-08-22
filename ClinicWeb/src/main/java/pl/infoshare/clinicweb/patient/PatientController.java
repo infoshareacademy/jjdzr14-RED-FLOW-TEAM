@@ -93,7 +93,8 @@ public class PatientController {
     }
 
     @GetMapping("/update-patient")
-    public String fullDetailPatient(@RequestParam(value = "pesel", required = false) @ModelAttribute String pesel, Model model, Address address) {
+    public String fullDetailPatient(@RequestParam(value = "pesel", required = false) @ModelAttribute String pesel,
+                                    Model model, Address address) {
         model.addAttribute("updatePatient", patientService.findByPesel(pesel));
         return "update-patient";
     }

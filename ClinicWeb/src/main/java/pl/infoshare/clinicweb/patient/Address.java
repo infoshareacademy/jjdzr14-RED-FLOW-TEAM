@@ -26,6 +26,18 @@ public class Address {
         return city;
     }
 
+    public Address() {
+    }
+
+    public Address(String city, String flatNumber, String houseNumber, String street, String zipCode, String country) {
+        this.city = city;
+        this.flatNumber = flatNumber;
+        this.houseNumber = houseNumber;
+        this.street = street;
+        this.zipCode = zipCode;
+        this.country = country;
+    }
+
     public void setCity(String city) {
         this.city = city;
     }
