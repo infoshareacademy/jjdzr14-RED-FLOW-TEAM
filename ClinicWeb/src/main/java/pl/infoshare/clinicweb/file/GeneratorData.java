@@ -1,10 +1,10 @@
 package pl.infoshare.clinicweb.file;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.javafaker.Faker;
 import io.github.viepovsky.polishutils.pesel.Pesel;
 import io.github.viepovsky.polishutils.pesel.PeselGenerator;
 import io.github.viepovsky.polishutils.pesel.PeselGeneratorParams;
+import net.datafaker.Faker;
 import org.springframework.ui.Model;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.Specialization;
@@ -28,31 +28,43 @@ public class GeneratorData {
 
     static Random rand = new Random();
     static Faker faker = new Faker(new Locale("pl"));
-    static PeselGeneratorParams.Gender gender = PeselGeneratorParams.Gender.FEMALE;
+
+
+    static PersonDetails personDetails = new PersonDetails();
 
     public static PersonDetails generatePersonDetails() {
-        PersonDetails personDetails = new PersonDetails();
-        Gender gender = faker.options().option(Gender.FEMALE, Gender.MALE);
         String generatedPesel = PeselGenerator.generatePeselStatic();
         Pesel pesel = new Pesel(generatedPesel);
         personDetails.setPesel(generatedPesel);
-        personDetails.setName(faker.name().firstName());
+        personDetails.setName(generateFirstNameForPesel(generatedPesel));
         personDetails.setSurname(faker.name().lastName());
         personDetails.setPhoneNumber(faker.phoneNumber().phoneNumber());
         personDetails.setBirthDate(pesel.getBirthDate());
-        personDetails.setGender(gender);
+        personDetails.setGender(Gender.valueOf(pesel.getGender()));
         return personDetails;
     }
 
     private static Address generateAddress() {
         Address address = new Address();
         address.setCity(faker.address().city());
-        address.setCountry(faker.address().country());
+        address.setCountry("Polska");
         address.setZipCode(faker.address().zipCode());
         address.setStreet(faker.address().streetAddress());
         address.setHouseNumber(faker.address().buildingNumber());
         address.setFlatNumber(faker.address().streetAddressNumber());
         return address;
+    }
+
+    private static boolean isFemalePesel(String pesel) {
+        int genderDigit = Character.getNumericValue(pesel.charAt(9));
+        return genderDigit % 2 == 0;
+    }
+
+    private static String generateFirstNameForPesel(String pesel) {
+        if (isFemalePesel(pesel)) {
+            personDetails.setName(faker.name().femaleFirstName());
+        } else personDetails.setName(faker.name().malefirstName());
+        return personDetails.getName();
     }
 
     private static void writeRandomObjects(Object object) {
