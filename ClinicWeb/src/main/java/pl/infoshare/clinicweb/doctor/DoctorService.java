@@ -111,7 +111,7 @@ public class DoctorService implements DoctorRepository {
                 .findAny().orElse(null);
 
     }
-
+  
     public void saveDoctor(Doctor doctor) {
 
         doctor.setDateOfBirth(doctor);
@@ -119,7 +119,6 @@ public class DoctorService implements DoctorRepository {
         fileService.writeToFile(doctor, DOCTOR_PATH);
 
     }
-
     public void setDoctorAttributes(Doctor doctor, PersonDetails personDetails, Address address, Specialization specialization) {
 
         doctor.setSpecialization(specialization.getDescription());
