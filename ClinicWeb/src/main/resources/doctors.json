@@ -1,0 +1,301 @@
+[ {
+  "personDetails" : {
+    "phoneNumber" : "82-559-51-28",
+    "gender" : "Kobieta",
+    "surname" : "Piotrowicz",
+    "name" : "Spirydion",
+    "pesel" : "65081573036",
+    "birthDate" : [ 1965, 8, 15 ]
+  },
+  "address" : {
+    "country" : "Mauretania",
+    "zipCode" : "34-804",
+    "city" : "Skała",
+    "street" : "ul. Urbański 2623",
+    "flatNumber" : "183",
+    "houseNumber" : "7269"
+  },
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "22-629-39-13",
+    "gender" : "Mężczyzna",
+    "surname" : "Orłowski",
+    "name" : "Andrzej",
+    "pesel" : "56121797042",
+    "birthDate" : [ 1956, 12, 17 ]
+  },
+  "address" : {
+    "country" : "Mikronezja",
+    "zipCode" : "32-531",
+    "city" : "Bystrzyca Kłodzka",
+    "street" : "al. Słowiński 870",
+    "flatNumber" : "583",
+    "houseNumber" : "77227"
+  },
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "82-438-57-20",
+    "gender" : "Mężczyzna",
+    "surname" : "Socha",
+    "name" : "Bertrand",
+    "pesel" : "72071898387",
+    "birthDate" : [ 1972, 7, 18 ]
+  },
+  "address" : {
+    "country" : "Zambia",
+    "zipCode" : "88-266",
+    "city" : "Frampol",
+    "street" : "ul. Szcześniak 12939",
+    "flatNumber" : "593",
+    "houseNumber" : "2487"
+  },
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "76-078-61-19",
+    "gender" : "Mężczyzna",
+    "surname" : "Wilczyński",
+    "name" : "Piotr",
+    "pesel" : "12301061864",
+    "birthDate" : [ 2012, 10, 10 ]
+  },
+  "address" : {
+    "country" : "Somalia",
+    "zipCode" : "74-210",
+    "city" : "Międzychód",
+    "street" : "ul. Bożek 7596",
+    "flatNumber" : "9",
+    "houseNumber" : "7135"
+  },
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "32-233-89-32",
+    "gender" : "Mężczyzna",
+    "surname" : "Niewiadomski",
+    "name" : "Wiktor",
+    "pesel" : "31031940995",
+    "birthDate" : [ 1931, 3, 19 ]
+  },
+  "address" : {
+    "country" : "Rumunia",
+    "zipCode" : "10-189",
+    "city" : "Świnoujście",
+    "street" : "ul. Fijałkowski 620",
+    "flatNumber" : "365",
+    "houseNumber" : "9474"
+  },
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "56-238-18-11",
+    "gender" : "Kobieta",
+    "surname" : "Czaja",
+    "name" : "Arseniusz",
+    "pesel" : "62022553292",
+    "birthDate" : [ 1962, 2, 25 ]
+  },
+  "address" : {
+    "country" : "Birma",
+    "zipCode" : "59-398",
+    "city" : "Grudziądz",
+    "street" : "ul. Woś 07202",
+    "flatNumber" : "231",
+    "houseNumber" : "08775"
+  },
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "94-656-28-32",
+    "gender" : "Mężczyzna",
+    "surname" : "Pawlikowski",
+    "name" : "Dariusz",
+    "pesel" : "99083175842",
+    "birthDate" : [ 1999, 8, 31 ]
+  },
+  "address" : {
+    "country" : "Botswana",
+    "zipCode" : "77-884",
+    "city" : "Drezdenko",
+    "street" : "al. Nawrot 906",
+    "flatNumber" : "198",
+    "houseNumber" : "431"
+  },
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "15-463-03-48",
+    "gender" : "Kobieta",
+    "surname" : "Stefaniak",
+    "name" : "Harald",
+    "pesel" : "97021044694",
+    "birthDate" : [ 1997, 2, 10 ]
+  },
+  "address" : {
+    "country" : "San Marino",
+    "zipCode" : "41-639",
+    "city" : "Lędziny",
+    "street" : "al. Kubicki 5914",
+    "flatNumber" : "160",
+    "houseNumber" : "407"
+  },
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "65-708-31-93",
+    "gender" : "Mężczyzna",
+    "surname" : "Walczak",
+    "name" : "Bibianna",
+    "pesel" : "70082559855",
+    "birthDate" : [ 1970, 8, 25 ]
+  },
+  "address" : {
+    "country" : "Etiopia",
+    "zipCode" : "58-354",
+    "city" : "Swarzędz",
+    "street" : "ul. Godlewski 8782",
+    "flatNumber" : "941",
+    "houseNumber" : "39538"
+  },
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "95-454-97-67",
+    "gender" : "Kobieta",
+    "surname" : "Prokop",
+    "name" : "Walentyn",
+    "pesel" : "35042029252",
+    "birthDate" : [ 1935, 4, 20 ]
+  },
+  "address" : {
+    "country" : "Tanzania",
+    "zipCode" : "85-558",
+    "city" : "Mysłowice",
+    "street" : "ul. Skiba 20566",
+    "flatNumber" : "886",
+    "houseNumber" : "63388"
+  },
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "32-531-36-64",
+    "gender" : "Kobieta",
+    "surname" : "Turek",
+    "name" : "Anna",
+    "pesel" : "57110608763",
+    "birthDate" : [ 1957, 11, 6 ]
+  },
+  "address" : {
+    "country" : "Rumunia",
+    "zipCode" : "76-378",
+    "city" : "Witkowo",
+    "street" : "al. Rutkowski 00566",
+    "flatNumber" : "482",
+    "houseNumber" : "896"
+  },
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "42-851-89-18",
+    "gender" : "Kobieta",
+    "surname" : "Czechowski",
+    "name" : "Tobiasz",
+    "pesel" : "43033073421",
+    "birthDate" : [ 1943, 3, 30 ]
+  },
+  "address" : {
+    "country" : "Egipt",
+    "zipCode" : "22-423",
+    "city" : "Konstantynów Łódzki",
+    "street" : "al. Kozioł 924",
+    "flatNumber" : "590",
+    "houseNumber" : "7618"
+  },
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "15-851-32-05",
+    "gender" : "Mężczyzna",
+    "surname" : "Drzewiecki",
+    "name" : "Karolina",
+    "pesel" : "02320305155",
+    "birthDate" : [ 2002, 12, 3 ]
+  },
+  "address" : {
+    "country" : "Sierra Leone",
+    "zipCode" : "58-740",
+    "city" : "Wysoka",
+    "street" : "al. Gwóźdź 40716",
+    "flatNumber" : "241",
+    "houseNumber" : "8073"
+  },
+  "specialization" : "Dermatolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "personDetails" : {
+    "phoneNumber" : "34-823-45-78",
+    "gender" : "Mężczyzna",
+    "surname" : "Głowacki",
+    "name" : "Konstanty",
+    "pesel" : "21261753072",
+    "birthDate" : [ 2021, 6, 17 ]
+  },
+  "address" : {
+    "country" : "Szwajcaria",
+    "zipCode" : "15-563",
+    "city" : "Zbąszynek",
+    "street" : "al. Niewiadomski 98904",
+    "flatNumber" : "244",
+    "houseNumber" : "91821"
+  },
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false
+}, {
+  "specialization" : "Dermatolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Zabłudów",
+    "country" : "Honduras",
+    "zipCode" : "45-855",
+    "street" : "al. Wróblewski 5488",
+    "houseNumber" : "160",
+    "flatNumber" : "746"
+  },
+  "personDetails" : {
+    "name" : "Tamara",
+    "surname" : "Stefaniak",
+    "phoneNumber" : "58-633-35-87",
+    "birthDate" : [ 2024, 5, 13 ],
+    "pesel" : "24251301640",
+    "gender" : "Mężczyzna"
+  }
+} ]
