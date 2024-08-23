@@ -1,6 +1,6 @@
 package pl.infoshare.clinicweb.user;
 
-public class Utils {
+public class PeselUtils {
 
     public static boolean hasPeselCorrectDigits(String pesel) {
 

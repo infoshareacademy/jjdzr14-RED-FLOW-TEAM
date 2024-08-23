@@ -38,18 +38,10 @@ public class FileController {
         return "index";
     }
 
-    @DeleteMapping("/clear-Data")
+    @PostMapping("/clear-data")
     public String clearData() {
         doctorService.deleteFileDoctor();
-        patientService.deleteFilePaitent();
-
-        return "redirect:/patients";
-    }
-
-    @GetMapping("/clear-Data")
-    public String clearData(Model model) {
-        doctorService.deleteFileDoctor();
-        patientService.deleteFilePaitent();
+        patientService.deleteFilePatient();
         return "index";
     }
 }

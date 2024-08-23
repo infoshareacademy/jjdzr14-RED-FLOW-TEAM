@@ -51,9 +51,10 @@
                        class="btn btn-primary btn-sm" role="button">Pokaż i edytuj dane</a>
                 </td>
                 <td>
-                    <form th:action="@{/delete-patient}" th:method="post" class="d-inline">
-                        <input type="hidden" name="pesel" th:value="${patient.pesel}">
-                        <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+                    <form th:action="@{/delete-patient}" method="post"
+                          onsubmit="return confirm('czy chcesz usunąć danego pacjenta??');">
+                        <input type="hidden" value="DELETE" name="pesel" th:value="${patient.pesel}">
+                        <button type="submit" class="btn btn-danger btn-sm">Usuń </button>
                     </form>
                 </td>
             </tr>
