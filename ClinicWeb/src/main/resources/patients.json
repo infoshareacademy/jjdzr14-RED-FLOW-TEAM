@@ -1,240 +1,138 @@
 [ {
   "personDetails" : {
-    "phoneNumber" : "44-165-17-91",
-    "gender" : "Mężczyzna",
-    "surname" : "Kawa",
-    "name" : "Oliwier",
-    "pesel" : "83091278448",
-    "birthDate" : [ 1983, 9, 12 ]
-  },
-  "address" : {
-    "country" : "Niemcy",
-    "zipCode" : "76-349",
-    "city" : "Dąbrowa Tarnowska",
-    "street" : "ul. Banasik 96434",
-    "flatNumber" : "107",
-    "houseNumber" : "15209"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "23-351-71-95",
-    "gender" : "Kobieta",
-    "surname" : "Dudziński",
-    "name" : "Władysław",
-    "pesel" : "42040700638",
-    "birthDate" : [ 1942, 4, 7 ]
-  },
-  "address" : {
-    "country" : "Sucre",
-    "zipCode" : "43-568",
-    "city" : "Kościan",
-    "street" : "ul. Kopeć 87684",
-    "flatNumber" : "670",
-    "houseNumber" : "39329"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "81-678-25-01",
-    "gender" : "Mężczyzna",
-    "surname" : "Piątek",
     "name" : "Natanael",
+    "surname" : "Piątek",
+    "phoneNumber" : "81-678-25-01",
+    "birthDate" : [ 1964, 7, 19 ],
     "pesel" : "64071933003",
-    "birthDate" : [ 1964, 7, 19 ]
+    "gender" : "Mężczyzna"
   },
   "address" : {
+    "city" : "Tuchola",
     "country" : "Singapur",
     "zipCode" : "33-559",
-    "city" : "Tuchola",
     "street" : "al. Włodarczyk 145",
-    "flatNumber" : "920",
-    "houseNumber" : "545"
+    "houseNumber" : "545",
+    "flatNumber" : "920"
   }
 }, {
   "personDetails" : {
-    "phoneNumber" : "63-717-80-20",
-    "gender" : "Kobieta",
-    "surname" : "Kamiński",
-    "name" : "Błażej",
-    "pesel" : "66081986204",
-    "birthDate" : [ 1966, 8, 19 ]
-  },
-  "address" : {
-    "country" : "San Marino",
-    "zipCode" : "49-676",
-    "city" : "Nowogród Bobrzański",
-    "street" : "ul. Michałowski 2264",
-    "flatNumber" : "399",
-    "houseNumber" : "4552"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "81-238-36-50",
-    "gender" : "Mężczyzna",
-    "surname" : "Sroka",
     "name" : "Reginald",
+    "surname" : "Sroka",
+    "phoneNumber" : "81-238-36-50",
+    "birthDate" : [ 1952, 7, 4 ],
     "pesel" : "52070416607",
-    "birthDate" : [ 1952, 7, 4 ]
+    "gender" : "Mężczyzna"
   },
   "address" : {
+    "city" : "Golina",
     "country" : "Meksyk",
     "zipCode" : "24-524",
-    "city" : "Golina",
     "street" : "al. Jagodziński 34024",
-    "flatNumber" : "566",
-    "houseNumber" : "92623"
+    "houseNumber" : "92623",
+    "flatNumber" : "566"
   }
 }, {
   "personDetails" : {
-    "phoneNumber" : "87-276-76-95",
-    "gender" : "Mężczyzna",
-    "surname" : "Podgórski",
-    "name" : "Maja",
-    "pesel" : "17290179376",
-    "birthDate" : [ 2017, 9, 1 ]
-  },
-  "address" : {
-    "country" : "Dania",
-    "zipCode" : "47-659",
-    "city" : "Brok",
-    "street" : "al. Baran 57816",
-    "flatNumber" : "298",
-    "houseNumber" : "38922"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "91-328-97-86",
-    "gender" : "Kobieta",
-    "surname" : "Włodarski",
-    "name" : "Sergiusz",
-    "pesel" : "55122952096",
-    "birthDate" : [ 1955, 12, 29 ]
-  },
-  "address" : {
-    "country" : "Gwatemala",
-    "zipCode" : "77-044",
-    "city" : "Miechów",
-    "street" : "ul. Konieczna 5708",
-    "flatNumber" : "32",
-    "houseNumber" : "1192"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "83-698-70-68",
-    "gender" : "Kobieta",
-    "surname" : "Krupa",
     "name" : "Lea",
+    "surname" : "Krupa",
+    "phoneNumber" : "83-698-70-68",
+    "birthDate" : [ 2011, 2, 23 ],
     "pesel" : "11222340746",
-    "birthDate" : [ 2011, 2, 23 ]
+    "gender" : "Kobieta"
   },
   "address" : {
+    "city" : "Tuchów",
     "country" : "Niger",
     "zipCode" : "68-416",
-    "city" : "Tuchów",
     "street" : "ul. Nowicki 61456",
-    "flatNumber" : "910",
-    "houseNumber" : "42752"
+    "houseNumber" : "42752",
+    "flatNumber" : "910"
   }
 }, {
   "personDetails" : {
-    "phoneNumber" : "58-584-52-07",
-    "gender" : "Kobieta",
-    "surname" : "Chmiel",
-    "name" : "Róża",
-    "pesel" : "87030629261",
-    "birthDate" : [ 1987, 3, 6 ]
-  },
-  "address" : {
-    "country" : "Maroko",
-    "zipCode" : "42-006",
-    "city" : "Szubin",
-    "street" : "ul. Koza 6164",
-    "flatNumber" : "141",
-    "houseNumber" : "30029"
-  }
-}, {
-  "personDetails" : {
-    "phoneNumber" : "52-994-72-84",
-    "gender" : "Mężczyzna",
-    "surname" : "Lasota",
     "name" : "Fabian",
+    "surname" : "Lasota",
+    "phoneNumber" : "52-994-72-84",
+    "birthDate" : [ 1963, 3, 5 ],
     "pesel" : "63030579232",
-    "birthDate" : [ 1963, 3, 5 ]
+    "gender" : "Mężczyzna"
   },
   "address" : {
+    "city" : "Ujście",
     "country" : "Malawi",
     "zipCode" : "16-235",
-    "city" : "Ujście",
     "street" : "al. Frączek 5926",
-    "flatNumber" : "807",
-    "houseNumber" : "2934"
+    "houseNumber" : "2934",
+    "flatNumber" : "807"
   }
 }, {
   "personDetails" : {
-    "phoneNumber" : "42-131-43-68",
-    "gender" : "Mężczyzna",
-    "surname" : "Jaśkiewicz",
     "name" : "Łukasz",
+    "surname" : "Jaśkiewicz",
+    "phoneNumber" : "42-131-43-68",
+    "birthDate" : [ 2008, 10, 14 ],
     "pesel" : "08301470645",
-    "birthDate" : [ 2008, 10, 14 ]
+    "gender" : "Mężczyzna"
   },
   "address" : {
+    "city" : "Kietrz",
     "country" : "Malezja",
     "zipCode" : "31-328",
-    "city" : "Kietrz",
     "street" : "al. Lipka 753",
-    "flatNumber" : "31",
-    "houseNumber" : "365"
+    "houseNumber" : "365",
+    "flatNumber" : "31"
   }
 }, {
   "personDetails" : {
-    "phoneNumber" : "58-190-31-38",
-    "gender" : "Kobieta",
-    "surname" : "Kogut",
     "name" : "Stefan",
+    "surname" : "Kogut",
+    "phoneNumber" : "58-190-31-38",
+    "birthDate" : [ 1991, 3, 23 ],
     "pesel" : "91032308145",
-    "birthDate" : [ 1991, 3, 23 ]
+    "gender" : "Kobieta"
   },
   "address" : {
+    "city" : "Pionki",
     "country" : "Katar",
     "zipCode" : "82-280",
-    "city" : "Pionki",
     "street" : "al. Przybył 807",
-    "flatNumber" : "739",
-    "houseNumber" : "096"
+    "houseNumber" : "096",
+    "flatNumber" : "739"
   }
 }, {
   "personDetails" : {
-    "phoneNumber" : "95-300-55-83",
-    "gender" : "Mężczyzna",
-    "surname" : "Zaręba",
     "name" : "Melania",
+    "surname" : "Zaręba",
+    "phoneNumber" : "95-300-55-83",
+    "birthDate" : [ 1946, 10, 19 ],
     "pesel" : "46101921055",
-    "birthDate" : [ 1946, 10, 19 ]
+    "gender" : "Mężczyzna"
   },
   "address" : {
+    "city" : "Murowana Goślina",
     "country" : "Bośnia i Hercegowina",
     "zipCode" : "67-515",
-    "city" : "Murowana Goślina",
     "street" : "al. Borowski 1302",
-    "flatNumber" : "489",
-    "houseNumber" : "96539"
+    "houseNumber" : "96539",
+    "flatNumber" : "489"
   }
 }, {
   "personDetails" : {
-    "phoneNumber" : "82-580-65-08",
-    "gender" : "Mężczyzna",
-    "surname" : "Kaczmarczyk",
     "name" : "Helena",
+    "surname" : "Kaczmarczyk",
+    "phoneNumber" : "82-580-65-08",
+    "birthDate" : [ 1988, 2, 1 ],
     "pesel" : "88020113706",
-    "birthDate" : [ 1988, 2, 1 ]
+    "gender" : "Mężczyzna"
   },
   "address" : {
+    "city" : "Sobótka",
     "country" : "Etiopia",
     "zipCode" : "97-269",
-    "city" : "Sobótka",
     "street" : "ul. Trojanowski 151",
-    "flatNumber" : "160",
-    "houseNumber" : "673"
+    "houseNumber" : "673",
+    "flatNumber" : "160"
   }
 }, {
   "personDetails" : {
@@ -252,5 +150,107 @@
     "street" : "ul. Urbański 6881",
     "houseNumber" : "65828",
     "flatNumber" : "392"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Oliwier",
+    "surname" : "Kawa",
+    "phoneNumber" : "44-165-17-91",
+    "birthDate" : [ 1983, 9, 12 ],
+    "pesel" : "83091278448",
+    "gender" : "Mężczyzna"
+  },
+  "address" : {
+    "city" : "Dąbrowa Tarnowska",
+    "country" : "Polska",
+    "zipCode" : "76-349",
+    "street" : "ul. Banasik 96434",
+    "houseNumber" : "15209",
+    "flatNumber" : "107"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Władysław",
+    "surname" : "Dudziński",
+    "phoneNumber" : "23-351-71-95",
+    "birthDate" : [ 1942, 4, 7 ],
+    "pesel" : "42040700638",
+    "gender" : "Kobieta"
+  },
+  "address" : {
+    "city" : "Kościan",
+    "country" : "Sucre",
+    "zipCode" : "43-568",
+    "street" : "ul. Kopeć 87684",
+    "houseNumber" : "39329",
+    "flatNumber" : "670"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Róża",
+    "surname" : "Chmiel",
+    "phoneNumber" : "58-584-52-07",
+    "birthDate" : [ 1987, 3, 6 ],
+    "pesel" : "87030629261",
+    "gender" : "Kobieta"
+  },
+  "address" : {
+    "city" : "Szubin",
+    "country" : "Maroko",
+    "zipCode" : "42-006",
+    "street" : "ul. Koza 6164",
+    "houseNumber" : "30029",
+    "flatNumber" : "141"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Błażej",
+    "surname" : "Kamiński",
+    "phoneNumber" : "63-717-80-20",
+    "birthDate" : [ 1966, 8, 19 ],
+    "pesel" : "66081986204",
+    "gender" : "Kobieta"
+  },
+  "address" : {
+    "city" : "Nowogród Bobrzański",
+    "country" : "San Marino",
+    "zipCode" : "49-676",
+    "street" : "ul. Michałowski 2264",
+    "houseNumber" : "4552",
+    "flatNumber" : "399"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Maja",
+    "surname" : "Podgórski",
+    "phoneNumber" : "87-276-76-95",
+    "birthDate" : [ 2017, 9, 1 ],
+    "pesel" : "17290179376",
+    "gender" : "Mężczyzna"
+  },
+  "address" : {
+    "city" : "Brok",
+    "country" : "Dania",
+    "zipCode" : "47-659",
+    "street" : "al. Baran 57816",
+    "houseNumber" : "38922",
+    "flatNumber" : "298"
+  }
+}, {
+  "personDetails" : {
+    "name" : "Sergiusz",
+    "surname" : "Włodarski",
+    "phoneNumber" : "91-328-97-86",
+    "birthDate" : [ 1955, 12, 29 ],
+    "pesel" : "55122952096",
+    "gender" : "Kobieta"
+  },
+  "address" : {
+    "city" : "Miechów",
+    "country" : "Gwatemala",
+    "zipCode" : "77-044",
+    "street" : "ul. Konieczna 5708",
+    "houseNumber" : "1192",
+    "flatNumber" : "32"
   }
 } ]

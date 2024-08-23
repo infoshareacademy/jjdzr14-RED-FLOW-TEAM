@@ -61,7 +61,7 @@ public class PatientController {
 
         model.addAttribute("listPatient", patientService.findAll());
 
-        return "patientsList";
+        return "patients";
     }
 
 
@@ -83,12 +83,12 @@ public class PatientController {
         return "search";
     }
 
-    @PostMapping("/edit")
-    public String editPatient(@ModelAttribute("patient") Patient patient, Model model, Address address) {
+    @PostMapping("/update-patient")
+    public String editPatient(@ModelAttribute("patient") Patient patient, Model model, Address address, RedirectAttributes redirectAttributes) {
         patientService.saveOrUpdatePatient(patient, address);
         model.addAttribute("patient", patient);
         model.addAttribute("address", address);
-        model.addAttribute("success", "Patient data updated successfully");
+        redirectAttributes.addFlashAttribute("success", "Zaktualizowano dane pacjenta.");
         return "redirect:patients";
     }
 
