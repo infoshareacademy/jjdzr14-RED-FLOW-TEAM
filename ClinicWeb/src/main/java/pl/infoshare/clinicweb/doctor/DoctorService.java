@@ -127,6 +127,10 @@ public class DoctorService implements DoctorRepository {
 
     }
 
+    public void deleteFileDoctor() {
+        fileService.deleteData(DOCTOR_PATH);
+    }
+
     public void saveOrUpdateDoctor(Doctor doctor, Address address) {
 
         Doctor doctorByPesel = findByPesel(doctor.getPersonDetails().getPesel());
