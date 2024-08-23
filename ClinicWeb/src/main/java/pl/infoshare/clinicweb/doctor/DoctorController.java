@@ -108,5 +108,26 @@ public class DoctorController {
         return "redirect:doctors";
     }
 
+    @GetMapping("/delete-doctor")
+    public String showDeleteDoctorForm(@RequestParam("pesel") String pesel, Model model) {
+
+        Doctor byPesel = doctorService.findByPesel(pesel);
+        model.addAttribute("doctor", byPesel);
+
+        return "delete-doctor";
+    }
+
+    @PostMapping("/delete-doctor")
+    public String deleteDoctor(@RequestParam("pesel") String pesel, RedirectAttributes redirectAttributes) {
+
+        Doctor byPesel = doctorService.findByPesel(pesel);
+
+        if (byPesel != null) {
+            doctorService.remove(byPesel);
+            redirectAttributes.addFlashAttribute("success", "Usunięto dane lekarza.");
+        }
+        return "redirect:/doctors";
+    }
+
 
 }

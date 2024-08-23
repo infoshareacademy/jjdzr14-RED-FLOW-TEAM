@@ -53,7 +53,7 @@
                 <td>
                     <form th:action="@{/delete-doctor}" th:method="post" class="d-inline">
                         <input type="hidden" name="pesel" th:value="${doctor.personDetails.pesel}">
-                        <a class="btn btn-danger btn-sm" role="button">Usuń</a>
+                        <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
                     </form>
                 </td>
             </tr>
@@ -62,13 +62,8 @@
         <div th:align="center" th:if="${success != null}" class="mt-4 alert alert-success" role="alert">
             <p th:text="${success}">Sukces</p>
         </div>
-        <div th:align="center">
-            <a th:href="@{/doctor}"
-               class="btn btn-primary btn-sm active" role="button" style="width: 770px"
-               aria-pressed="true">Dodaj lekarza</a>
-        </div>
+        <a class="btn btn-primary" th:href="@{/doctor}">Dodaj lekarza</a>
     </div>
-
 
 
 </div>
