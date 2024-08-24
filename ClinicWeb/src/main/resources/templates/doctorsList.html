@@ -51,7 +51,8 @@
                        class="btn btn-primary btn-sm" role="button">Pokaż i edytuj dane</a>
                 </td>
                 <td>
-                    <form th:action="@{/delete-doctor}" th:method="post" class="d-inline">
+                    <form th:action="@{/delete-doctor}" th:method="post" class="d-inline"
+                          onsubmit="return confirm('czy chcesz usunąć danego lekarza??');">
                         <input type="hidden" name="pesel" th:value="${doctor.personDetails.pesel}">
                         <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
                     </form>

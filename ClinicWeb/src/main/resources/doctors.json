@@ -1,583 +1,543 @@
 [ {
-  "personDetails" : {
-    "phoneNumber" : "41 047 08 22",
-    "gender" : "Kobieta",
-    "surname" : "Chudzik",
-    "name" : "Minda",
-    "pesel" : "47072837781",
-    "birthDate" : [ 1947, 7, 28 ]
-  },
-  "address" : {
-    "country" : "Rosja",
-    "zipCode" : "18-119",
-    "city" : "Wolbórz",
-    "street" : "ul. Kucharczyk 8096",
-    "flatNumber" : "395",
-    "houseNumber" : "291"
-  },
   "specialization" : "Dermatolog",
   "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "23 312 44 06",
-    "gender" : "Kobieta",
-    "surname" : "Kubacki",
-    "name" : "Charlena",
-    "pesel" : "66030325803",
-    "birthDate" : [ 1966, 3, 3 ]
-  },
+  "availability" : false,
   "address" : {
+    "city" : "Piwniczna-Zdrój",
     "country" : "Belize",
     "zipCode" : "17-013",
-    "city" : "Piwniczna-Zdrój",
     "street" : "al. Kępa 071",
-    "flatNumber" : "766",
-    "houseNumber" : "01311"
+    "houseNumber" : "01311",
+    "flatNumber" : "766"
   },
-  "specialization" : "Dermatolog",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "47 785 36 66",
-    "gender" : "Mężczyzna",
-    "surname" : "Nowicki",
-    "name" : "Guillermo",
-    "pesel" : "72110824052",
-    "birthDate" : [ 1972, 11, 8 ]
-  },
+    "name" : "Charlena",
+    "surname" : "Kubacki",
+    "phoneNumber" : "23 312 44 06",
+    "birthDate" : [ 1966, 3, 3 ],
+    "pesel" : "66030325803",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Podkowa Leśna",
     "country" : "Korea Północna",
     "zipCode" : "51-345",
-    "city" : "Podkowa Leśna",
     "street" : "ul. Rzepka 0490",
-    "flatNumber" : "905",
-    "houseNumber" : "75203"
+    "houseNumber" : "75203",
+    "flatNumber" : "905"
   },
-  "specialization" : "Neurolog",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "62 177 67 40",
-    "gender" : "Kobieta",
-    "surname" : "Bartczak",
-    "name" : "Lesley",
-    "pesel" : "98081627382",
-    "birthDate" : [ 1998, 8, 16 ]
-  },
+    "name" : "Guillermo",
+    "surname" : "Nowicki",
+    "phoneNumber" : "47 785 36 66",
+    "birthDate" : [ 1972, 11, 8 ],
+    "pesel" : "72110824052",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Dermatolog",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Jedlicze",
     "country" : "Katar",
     "zipCode" : "95-218",
-    "city" : "Jedlicze",
     "street" : "ul. Jasiński 7309",
-    "flatNumber" : "713",
-    "houseNumber" : "521"
+    "houseNumber" : "521",
+    "flatNumber" : "713"
   },
-  "specialization" : "Dermatolog",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "47 987 31 17",
-    "gender" : "Mężczyzna",
-    "surname" : "Grzelak",
-    "name" : "Johnson",
-    "pesel" : "52121506097",
-    "birthDate" : [ 1952, 12, 15 ]
-  },
-  "address" : {
-    "country" : "Togo",
-    "zipCode" : "68-531",
-    "city" : "Żelechów",
-    "street" : "al. Witkowski 787",
-    "flatNumber" : "958",
-    "houseNumber" : "11678"
-  },
-  "specialization" : "Internista",
-  "online" : false,
-  "availability" : false
+    "name" : "Lesley",
+    "surname" : "Bartczak",
+    "phoneNumber" : "62 177 67 40",
+    "birthDate" : [ 1998, 8, 16 ],
+    "pesel" : "98081627382",
+    "gender" : "Kobieta"
+  }
 }, {
-  "personDetails" : {
-    "phoneNumber" : "33 141 89 15",
-    "gender" : "Kobieta",
-    "surname" : "Sowiński",
-    "name" : "Tula",
-    "pesel" : "49061250966",
-    "birthDate" : [ 1949, 6, 12 ]
-  },
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Suchowola",
     "country" : "Kambodża",
     "zipCode" : "80-030",
-    "city" : "Suchowola",
     "street" : "ul. Górski 759",
-    "flatNumber" : "10",
-    "houseNumber" : "71852"
+    "houseNumber" : "71852",
+    "flatNumber" : "10"
   },
-  "specialization" : "Onkolog",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "47 452 50 99",
-    "gender" : "Kobieta",
-    "surname" : "Mroczek",
-    "name" : "Diedre",
-    "pesel" : "70112722361",
-    "birthDate" : [ 1970, 11, 27 ]
-  },
+    "name" : "Tula",
+    "surname" : "Sowiński",
+    "phoneNumber" : "33 141 89 15",
+    "birthDate" : [ 1949, 6, 12 ],
+    "pesel" : "49061250966",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Sokółka",
     "country" : "Burundi",
     "zipCode" : "24-914",
-    "city" : "Sokółka",
     "street" : "al. Krzemiński 487",
-    "flatNumber" : "815",
-    "houseNumber" : "34785"
+    "houseNumber" : "34785",
+    "flatNumber" : "815"
   },
-  "specialization" : "Neurolog",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "47 005 00 48",
-    "gender" : "Kobieta",
-    "surname" : "Filipiak",
-    "name" : "Tawanda",
-    "pesel" : "78112528024",
-    "birthDate" : [ 1978, 11, 25 ]
-  },
+    "name" : "Diedre",
+    "surname" : "Mroczek",
+    "phoneNumber" : "47 452 50 99",
+    "birthDate" : [ 1970, 11, 27 ],
+    "pesel" : "70112722361",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Strzelce Krajeńskie",
     "country" : "Antigua i Barbuda",
     "zipCode" : "95-784",
-    "city" : "Strzelce Krajeńskie",
     "street" : "al. Szulc 06607",
-    "flatNumber" : "678",
-    "houseNumber" : "2476"
+    "houseNumber" : "2476",
+    "flatNumber" : "678"
   },
-  "specialization" : "Chirurg",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "12 705 87 12",
-    "gender" : "Mężczyzna",
-    "surname" : "Motyka",
-    "name" : "Todd",
-    "pesel" : "44061045754",
-    "birthDate" : [ 1944, 6, 10 ]
-  },
+    "name" : "Tawanda",
+    "surname" : "Filipiak",
+    "phoneNumber" : "47 005 00 48",
+    "birthDate" : [ 1978, 11, 25 ],
+    "pesel" : "78112528024",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Grodzisk Wielkopolski",
     "country" : "Antigua i Barbuda",
     "zipCode" : "33-320",
-    "city" : "Grodzisk Wielkopolski",
     "street" : "al. Buczkowski 7791",
-    "flatNumber" : "60",
-    "houseNumber" : "48614"
+    "houseNumber" : "48614",
+    "flatNumber" : "60"
   },
+  "personDetails" : {
+    "name" : "Todd",
+    "surname" : "Motyka",
+    "phoneNumber" : "12 705 87 12",
+    "birthDate" : [ 1944, 6, 10 ],
+    "pesel" : "44061045754",
+    "gender" : "Mężczyzna"
+  }
+}, {
   "specialization" : "Onkolog",
   "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "18 19 704",
-    "gender" : "Kobieta",
-    "surname" : "Dąbkowski",
-    "name" : "Mardell",
-    "pesel" : "05241650643",
-    "birthDate" : [ 2005, 4, 16 ]
-  },
+  "availability" : false,
   "address" : {
+    "city" : "Wysokie Mazowieckie",
     "country" : "Mauritius",
     "zipCode" : "30-329",
-    "city" : "Wysokie Mazowieckie",
     "street" : "al. Lisiecki 28036",
-    "flatNumber" : "24",
-    "houseNumber" : "01224"
+    "houseNumber" : "01224",
+    "flatNumber" : "24"
   },
-  "specialization" : "Onkolog",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "94 422 40 27",
-    "gender" : "Mężczyzna",
-    "surname" : "Baran",
-    "name" : "Warren",
-    "pesel" : "82051729851",
-    "birthDate" : [ 1982, 5, 17 ]
-  },
+    "name" : "Mardell",
+    "surname" : "Dąbkowski",
+    "phoneNumber" : "18 19 704",
+    "birthDate" : [ 2005, 4, 16 ],
+    "pesel" : "05241650643",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Rzgów",
     "country" : "Sudan Południowy",
     "zipCode" : "34-603",
-    "city" : "Rzgów",
     "street" : "ul. Rybarczyk 6094",
-    "flatNumber" : "379",
-    "houseNumber" : "2728"
+    "houseNumber" : "2728",
+    "flatNumber" : "379"
   },
+  "personDetails" : {
+    "name" : "Warren",
+    "surname" : "Baran",
+    "phoneNumber" : "94 422 40 27",
+    "birthDate" : [ 1982, 5, 17 ],
+    "pesel" : "82051729851",
+    "gender" : "Mężczyzna"
+  }
+}, {
   "specialization" : "Chirurg",
   "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "47 208 11 12",
-    "gender" : "Kobieta",
-    "surname" : "Wilk",
-    "name" : "Madeleine",
-    "pesel" : "05270135009",
-    "birthDate" : [ 2005, 7, 1 ]
-  },
+  "availability" : false,
   "address" : {
+    "city" : "Ruda Śląska",
     "country" : "Azerbejdżan",
     "zipCode" : "13-036",
-    "city" : "Ruda Śląska",
     "street" : "al. Ostrowski 10479",
-    "flatNumber" : "704",
-    "houseNumber" : "30491"
+    "houseNumber" : "30491",
+    "flatNumber" : "704"
   },
-  "specialization" : "Chirurg",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "47 188 63 07",
-    "gender" : "Kobieta",
-    "surname" : "Szydłowski",
-    "name" : "Marlo",
-    "pesel" : "35070390380",
-    "birthDate" : [ 1935, 7, 3 ]
-  },
+    "name" : "Madeleine",
+    "surname" : "Wilk",
+    "phoneNumber" : "47 208 11 12",
+    "birthDate" : [ 2005, 7, 1 ],
+    "pesel" : "05270135009",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Krasnobród",
     "country" : "Białoruś",
     "zipCode" : "82-567",
-    "city" : "Krasnobród",
     "street" : "al. Bukowski 167",
-    "flatNumber" : "479",
-    "houseNumber" : "265"
+    "houseNumber" : "265",
+    "flatNumber" : "479"
   },
-  "specialization" : "Neurolog",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "47 198 62 40",
-    "gender" : "Kobieta",
-    "surname" : "Bilski",
-    "name" : "Tashia",
-    "pesel" : "47011292947",
-    "birthDate" : [ 1947, 1, 12 ]
-  },
+    "name" : "Marlo",
+    "surname" : "Szydłowski",
+    "phoneNumber" : "47 188 63 07",
+    "birthDate" : [ 1935, 7, 3 ],
+    "pesel" : "35070390380",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Andrychów",
     "country" : "Trynidad i Tobago",
     "zipCode" : "52-074",
-    "city" : "Andrychów",
     "street" : "al. Raczyński 8035",
-    "flatNumber" : "524",
-    "houseNumber" : "11274"
+    "houseNumber" : "11274",
+    "flatNumber" : "524"
   },
-  "specialization" : "Internista",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "58 160 50 06",
-    "gender" : "Mężczyzna",
-    "surname" : "Kruszewski",
-    "name" : "Allan",
-    "pesel" : "39040826934",
-    "birthDate" : [ 1939, 4, 8 ]
-  },
+    "name" : "Tashia",
+    "surname" : "Bilski",
+    "phoneNumber" : "47 198 62 40",
+    "birthDate" : [ 1947, 1, 12 ],
+    "pesel" : "47011292947",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Bychawa",
     "country" : "Grecja",
     "zipCode" : "99-569",
-    "city" : "Bychawa",
     "street" : "ul. Górski 861",
-    "flatNumber" : "46",
-    "houseNumber" : "438"
+    "houseNumber" : "438",
+    "flatNumber" : "46"
   },
-  "specialization" : "Neurolog",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "47 561 90 67",
-    "gender" : "Mężczyzna",
-    "surname" : "Wnuk",
-    "name" : "Marco",
-    "pesel" : "92112614112",
-    "birthDate" : [ 1992, 11, 26 ]
-  },
+    "name" : "Allan",
+    "surname" : "Kruszewski",
+    "phoneNumber" : "58 160 50 06",
+    "birthDate" : [ 1939, 4, 8 ],
+    "pesel" : "39040826934",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Bobolice",
     "country" : "Litwa",
     "zipCode" : "25-087",
-    "city" : "Bobolice",
     "street" : "al. Michalczyk 86656",
-    "flatNumber" : "84",
-    "houseNumber" : "76266"
+    "houseNumber" : "76266",
+    "flatNumber" : "84"
   },
-  "specialization" : "Chirurg",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "67 19 469",
-    "gender" : "Mężczyzna",
-    "surname" : "Falkowski",
-    "name" : "Andy",
-    "pesel" : "29022310296",
-    "birthDate" : [ 1929, 2, 23 ]
-  },
+    "name" : "Marco",
+    "surname" : "Wnuk",
+    "phoneNumber" : "47 561 90 67",
+    "birthDate" : [ 1992, 11, 26 ],
+    "pesel" : "92112614112",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Sochaczew",
     "country" : "Gwatemala",
     "zipCode" : "47-693",
-    "city" : "Sochaczew",
     "street" : "ul. Klimek 08599",
-    "flatNumber" : "704",
-    "houseNumber" : "6128"
+    "houseNumber" : "6128",
+    "flatNumber" : "704"
   },
-  "specialization" : "Internista",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "82 360 31 72",
-    "gender" : "Mężczyzna",
-    "surname" : "Podgórski",
-    "name" : "Jack",
-    "pesel" : "79042633972",
-    "birthDate" : [ 1979, 4, 26 ]
-  },
+    "name" : "Andy",
+    "surname" : "Falkowski",
+    "phoneNumber" : "67 19 469",
+    "birthDate" : [ 1929, 2, 23 ],
+    "pesel" : "29022310296",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Baborów",
     "country" : "Francja",
     "zipCode" : "90-309",
-    "city" : "Baborów",
     "street" : "al. Budziński 0101",
-    "flatNumber" : "706",
-    "houseNumber" : "7721"
+    "houseNumber" : "7721",
+    "flatNumber" : "706"
   },
-  "specialization" : "Neurolog",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "61 841 75 74",
-    "gender" : "Kobieta",
-    "surname" : "Szczerba",
-    "name" : "Ingrid",
-    "pesel" : "58020677942",
-    "birthDate" : [ 1958, 2, 6 ]
-  },
-  "address" : {
-    "country" : "Belgia",
-    "zipCode" : "08-135",
-    "city" : "Daleszyce",
-    "street" : "al. Ślusarczyk 8519",
-    "flatNumber" : "833",
-    "houseNumber" : "6713"
-  },
+    "name" : "Jack",
+    "surname" : "Podgórski",
+    "phoneNumber" : "82 360 31 72",
+    "birthDate" : [ 1979, 4, 26 ],
+    "pesel" : "79042633972",
+    "gender" : "Mężczyzna"
+  }
+}, {
   "specialization" : "Onkolog",
   "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "47 051 11 06",
-    "gender" : "Kobieta",
-    "surname" : "Wójcik",
-    "name" : "Chrissy",
-    "pesel" : "46020640943",
-    "birthDate" : [ 1946, 2, 6 ]
-  },
+  "availability" : false,
   "address" : {
+    "city" : "Daleszyce",
+    "country" : "Belgia",
+    "zipCode" : "08-135",
+    "street" : "al. Ślusarczyk 8519",
+    "houseNumber" : "6713",
+    "flatNumber" : "833"
+  },
+  "personDetails" : {
+    "name" : "Ingrid",
+    "surname" : "Szczerba",
+    "phoneNumber" : "61 841 75 74",
+    "birthDate" : [ 1958, 2, 6 ],
+    "pesel" : "58020677942",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Łomianki",
     "country" : "Bahamy",
     "zipCode" : "51-142",
-    "city" : "Łomianki",
     "street" : "al. Włodarczyk 020",
-    "flatNumber" : "98",
-    "houseNumber" : "993"
+    "houseNumber" : "993",
+    "flatNumber" : "98"
   },
+  "personDetails" : {
+    "name" : "Chrissy",
+    "surname" : "Wójcik",
+    "phoneNumber" : "47 051 11 06",
+    "birthDate" : [ 1946, 2, 6 ],
+    "pesel" : "46020640943",
+    "gender" : "Kobieta"
+  }
+}, {
   "specialization" : "Chirurg",
   "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "47 501 09 28",
-    "gender" : "Mężczyzna",
-    "surname" : "Kubica",
-    "name" : "Hipolito",
-    "pesel" : "39022242633",
-    "birthDate" : [ 1939, 2, 22 ]
-  },
+  "availability" : false,
   "address" : {
+    "city" : "Pszczyna",
     "country" : "Estonia",
     "zipCode" : "47-566",
-    "city" : "Pszczyna",
     "street" : "al. Słowiński 18958",
-    "flatNumber" : "15",
-    "houseNumber" : "281"
+    "houseNumber" : "281",
+    "flatNumber" : "15"
   },
-  "specialization" : "Chirurg",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "47 805 71 36",
-    "gender" : "Mężczyzna",
-    "surname" : "Majka",
-    "name" : "Leland",
-    "pesel" : "11302645750",
-    "birthDate" : [ 2011, 10, 26 ]
-  },
+    "name" : "Hipolito",
+    "surname" : "Kubica",
+    "phoneNumber" : "47 501 09 28",
+    "birthDate" : [ 1939, 2, 22 ],
+    "pesel" : "39022242633",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Dermatolog",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Czarnków",
     "country" : "Sierra Leone",
     "zipCode" : "32-977",
-    "city" : "Czarnków",
     "street" : "ul. Bartnik 9690",
-    "flatNumber" : "940",
-    "houseNumber" : "056"
+    "houseNumber" : "056",
+    "flatNumber" : "940"
   },
-  "specialization" : "Dermatolog",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "29 445 62 42",
-    "gender" : "Mężczyzna",
-    "surname" : "Guzik",
-    "name" : "Les",
-    "pesel" : "67121205419",
-    "birthDate" : [ 1967, 12, 12 ]
-  },
+    "name" : "Leland",
+    "surname" : "Majka",
+    "phoneNumber" : "47 805 71 36",
+    "birthDate" : [ 2011, 10, 26 ],
+    "pesel" : "11302645750",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Garwolin",
     "country" : "Wielka Brytania",
     "zipCode" : "21-106",
-    "city" : "Garwolin",
     "street" : "al. Niedźwiecki 3986",
-    "flatNumber" : "626",
-    "houseNumber" : "207"
+    "houseNumber" : "207",
+    "flatNumber" : "626"
   },
+  "personDetails" : {
+    "name" : "Les",
+    "surname" : "Guzik",
+    "phoneNumber" : "29 445 62 42",
+    "birthDate" : [ 1967, 12, 12 ],
+    "pesel" : "67121205419",
+    "gender" : "Mężczyzna"
+  }
+}, {
   "specialization" : "Internista",
   "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "58 800 72 23",
-    "gender" : "Kobieta",
-    "surname" : "Szymański",
-    "name" : "Elane",
-    "pesel" : "39030609103",
-    "birthDate" : [ 1939, 3, 6 ]
-  },
+  "availability" : false,
   "address" : {
+    "city" : "Gołdap",
     "country" : "Pakistan",
     "zipCode" : "83-839",
-    "city" : "Gołdap",
     "street" : "al. Dec 4489",
-    "flatNumber" : "583",
-    "houseNumber" : "46599"
+    "houseNumber" : "46599",
+    "flatNumber" : "583"
   },
-  "specialization" : "Internista",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "16 353 30 53",
-    "gender" : "Kobieta",
-    "surname" : "Niewiadomski",
-    "name" : "Jacqulyn",
-    "pesel" : "53122448441",
-    "birthDate" : [ 1953, 12, 24 ]
-  },
+    "name" : "Elane",
+    "surname" : "Szymański",
+    "phoneNumber" : "58 800 72 23",
+    "birthDate" : [ 1939, 3, 6 ],
+    "pesel" : "39030609103",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
   "address" : {
+    "city" : "Wyśmierzyce",
     "country" : "Suazi",
     "zipCode" : "99-143",
-    "city" : "Wyśmierzyce",
     "street" : "ul. Lasota 809",
-    "flatNumber" : "342",
-    "houseNumber" : "0963"
+    "houseNumber" : "0963",
+    "flatNumber" : "342"
   },
-  "specialization" : "Chirurg",
-  "online" : false,
-  "availability" : false
-}, {
   "personDetails" : {
-    "phoneNumber" : "16 087 94 63",
-    "gender" : "Mężczyzna",
-    "surname" : "Kulesza",
-    "name" : "Fermin",
-    "pesel" : "79101463199",
-    "birthDate" : [ 1979, 10, 14 ]
-  },
-  "address" : {
-    "country" : "Norwegia",
-    "zipCode" : "54-867",
-    "city" : "Kobylin",
-    "street" : "al. Pawlak 0299",
-    "flatNumber" : "919",
-    "houseNumber" : "7790"
-  },
+    "name" : "Jacqulyn",
+    "surname" : "Niewiadomski",
+    "phoneNumber" : "16 353 30 53",
+    "birthDate" : [ 1953, 12, 24 ],
+    "pesel" : "53122448441",
+    "gender" : "Kobieta"
+  }
+}, {
   "specialization" : "Dermatolog",
   "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "24 120 27 20",
-    "gender" : "Kobieta",
-    "surname" : "Lach",
-    "name" : "Raisa",
-    "pesel" : "54012774884",
-    "birthDate" : [ 1954, 1, 27 ]
-  },
+  "availability" : false,
   "address" : {
-    "country" : "Czad",
-    "zipCode" : "76-019",
-    "city" : "Głogówek",
-    "street" : "ul. Kowalik 7897",
-    "flatNumber" : "452",
-    "houseNumber" : "4661"
+    "city" : "Kobylin",
+    "country" : "Norwegia",
+    "zipCode" : "54-867",
+    "street" : "al. Pawlak 0299",
+    "houseNumber" : "7790",
+    "flatNumber" : "919"
   },
+  "personDetails" : {
+    "name" : "Fermin",
+    "surname" : "Kulesza",
+    "phoneNumber" : "16 087 94 63",
+    "birthDate" : [ 1979, 10, 14 ],
+    "pesel" : "79101463199",
+    "gender" : "Mężczyzna"
+  }
+}, {
   "specialization" : "Chirurg",
   "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "85 125 54 00",
-    "gender" : "Kobieta",
-    "surname" : "Kawa",
-    "name" : "Marketta",
-    "pesel" : "25032397580",
-    "birthDate" : [ 1925, 3, 23 ]
-  },
+  "availability" : false,
   "address" : {
-    "country" : "Haiti",
-    "zipCode" : "03-275",
-    "city" : "Jelcz-Laskowice",
-    "street" : "al. Żuk 309",
-    "flatNumber" : "140",
-    "houseNumber" : "0667"
+    "city" : "Głogówek",
+    "country" : "Czad",
+    "zipCode" : "76-019",
+    "street" : "ul. Kowalik 7897",
+    "houseNumber" : "4661",
+    "flatNumber" : "452"
   },
+  "personDetails" : {
+    "name" : "Raisa",
+    "surname" : "Lach",
+    "phoneNumber" : "24 120 27 20",
+    "birthDate" : [ 1954, 1, 27 ],
+    "pesel" : "54012774884",
+    "gender" : "Kobieta"
+  }
+}, {
   "specialization" : "Internista",
   "online" : false,
-  "availability" : false
-}, {
-  "personDetails" : {
-    "phoneNumber" : "47 614 03 71",
-    "gender" : "Kobieta",
-    "surname" : "Skoczylas",
-    "name" : "Bunny",
-    "pesel" : "09271472143",
-    "birthDate" : [ 2009, 7, 14 ]
-  },
+  "availability" : false,
   "address" : {
-    "country" : "Demokratyczna Republika Konga",
-    "zipCode" : "85-410",
-    "city" : "Chełm",
-    "street" : "ul. Chmielewski 2395",
-    "flatNumber" : "42",
-    "houseNumber" : "3433"
+    "city" : "Jelcz-Laskowice",
+    "country" : "Haiti",
+    "zipCode" : "03-275",
+    "street" : "al. Żuk 309",
+    "houseNumber" : "0667",
+    "flatNumber" : "140"
   },
+  "personDetails" : {
+    "name" : "Marketta",
+    "surname" : "Kawa",
+    "phoneNumber" : "85 125 54 00",
+    "birthDate" : [ 1925, 3, 23 ],
+    "pesel" : "25032397580",
+    "gender" : "Kobieta"
+  }
+}, {
   "specialization" : "Neurolog",
   "online" : false,
-  "availability" : false
+  "availability" : false,
+  "address" : {
+    "city" : "Chełm",
+    "country" : "Demokratyczna Republika Konga",
+    "zipCode" : "85-410",
+    "street" : "ul. Chmielewski 2395",
+    "houseNumber" : "3433",
+    "flatNumber" : "42"
+  },
+  "personDetails" : {
+    "name" : "Bunny",
+    "surname" : "Skoczylas",
+    "phoneNumber" : "47 614 03 71",
+    "birthDate" : [ 2009, 7, 14 ],
+    "pesel" : "09271472143",
+    "gender" : "Kobieta"
+  }
 }, {
   "specialization" : "Internista",
   "online" : false,
@@ -597,5 +557,305 @@
     "birthDate" : [ 2003, 4, 1 ],
     "pesel" : "03240137882",
     "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Nowogard",
+    "country" : "Laos",
+    "zipCode" : "13-980",
+    "street" : "ul. Dróżdż 0217",
+    "houseNumber" : "99541",
+    "flatNumber" : "287"
+  },
+  "personDetails" : {
+    "name" : "Sheilah",
+    "surname" : "Łukasiewicz",
+    "phoneNumber" : "68 153 45 80",
+    "birthDate" : [ 1956, 10, 5 ],
+    "pesel" : "56100566320",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Dermatolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Niemcza",
+    "country" : "Honduras",
+    "zipCode" : "67-698",
+    "street" : "ul. Stanek 762",
+    "houseNumber" : "61264",
+    "flatNumber" : "486"
+  },
+  "personDetails" : {
+    "name" : "Nannie",
+    "surname" : "Tomczak",
+    "phoneNumber" : "43 049 75 50",
+    "birthDate" : [ 1977, 2, 3 ],
+    "pesel" : "77020331203",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Leszno",
+    "country" : "Austria",
+    "zipCode" : "54-500",
+    "street" : "ul. Suski 62714",
+    "houseNumber" : "747",
+    "flatNumber" : "323"
+  },
+  "personDetails" : {
+    "name" : "Lasandra",
+    "surname" : "Kuchta",
+    "phoneNumber" : "47 872 24 09",
+    "birthDate" : [ 1947, 10, 1 ],
+    "pesel" : "47100152965",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Pszczyna",
+    "country" : "Polska",
+    "zipCode" : "97-827",
+    "street" : "al. Wesołowski 815",
+    "houseNumber" : "32281",
+    "flatNumber" : "47"
+  },
+  "personDetails" : {
+    "name" : "Lianne",
+    "surname" : "Orłowski",
+    "phoneNumber" : "32 244 50 49",
+    "birthDate" : [ 1968, 6, 16 ],
+    "pesel" : "68061644669",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Tarczyn",
+    "country" : "Brazylia",
+    "zipCode" : "63-116",
+    "street" : "al. Jóźwiak 9334",
+    "houseNumber" : "25237",
+    "flatNumber" : "836"
+  },
+  "personDetails" : {
+    "name" : "Dudley",
+    "surname" : "Filipowicz",
+    "phoneNumber" : "47 146 74 53",
+    "birthDate" : [ 1968, 6, 15 ],
+    "pesel" : "68061544877",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Świeradów-Zdrój",
+    "country" : "Ghana",
+    "zipCode" : "17-117",
+    "street" : "al. Dróżdż 810",
+    "houseNumber" : "740",
+    "flatNumber" : "566"
+  },
+  "personDetails" : {
+    "name" : "Cyril",
+    "surname" : "Gajda",
+    "phoneNumber" : "94 190 69 23",
+    "birthDate" : [ 1985, 10, 22 ],
+    "pesel" : "85102201317",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Dermatolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Brzozów",
+    "country" : "Sierra Leone",
+    "zipCode" : "66-657",
+    "street" : "ul. Witczak 752",
+    "houseNumber" : "247",
+    "flatNumber" : "349"
+  },
+  "personDetails" : {
+    "name" : "Fe",
+    "surname" : "Klimek",
+    "phoneNumber" : "47 776 15 48",
+    "birthDate" : [ 1971, 4, 12 ],
+    "pesel" : "71041275607",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Neurolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Skawina",
+    "country" : "Uganda",
+    "zipCode" : "82-078",
+    "street" : "al. Wasilewski 06662",
+    "houseNumber" : "2166",
+    "flatNumber" : "428"
+  },
+  "personDetails" : {
+    "name" : "Harlan",
+    "surname" : "Karpiński",
+    "phoneNumber" : "74 180 51 55",
+    "birthDate" : [ 2015, 5, 24 ],
+    "pesel" : "15252496615",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Choroszcz",
+    "country" : "Japonia",
+    "zipCode" : "39-091",
+    "street" : "al. Kwiatkowski 47489",
+    "houseNumber" : "378",
+    "flatNumber" : "247"
+  },
+  "personDetails" : {
+    "name" : "Wendy",
+    "surname" : "Bartosik",
+    "phoneNumber" : "47 773 38 68",
+    "birthDate" : [ 1943, 4, 16 ],
+    "pesel" : "43041683344",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Drohiczyn",
+    "country" : "Niemcy",
+    "zipCode" : "68-024",
+    "street" : "ul. Ratajczak 338",
+    "houseNumber" : "331",
+    "flatNumber" : "250"
+  },
+  "personDetails" : {
+    "name" : "Amalia",
+    "surname" : "Piwowarczyk",
+    "phoneNumber" : "47 296 48 77",
+    "birthDate" : [ 1974, 10, 21 ],
+    "pesel" : "74102111607",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Dermatolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Bielsk Podlaski",
+    "country" : "Łotwa",
+    "zipCode" : "36-704",
+    "street" : "al. Kowal 368",
+    "houseNumber" : "0537",
+    "flatNumber" : "961"
+  },
+  "personDetails" : {
+    "name" : "Tyrone",
+    "surname" : "Lewandowski",
+    "phoneNumber" : "32 360 86 55",
+    "birthDate" : [ 1924, 12, 18 ],
+    "pesel" : "24121825595",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Onkolog",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Wąsosz",
+    "country" : "Tajlandia",
+    "zipCode" : "59-589",
+    "street" : "ul. Marciniak 89694",
+    "houseNumber" : "68152",
+    "flatNumber" : "528"
+  },
+  "personDetails" : {
+    "name" : "Don",
+    "surname" : "Olejnik",
+    "phoneNumber" : "47 479 84 93",
+    "birthDate" : [ 1932, 10, 22 ],
+    "pesel" : "32102267476",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Puszczykowo",
+    "country" : "Armenia",
+    "zipCode" : "60-365",
+    "street" : "ul. Czyż 953",
+    "houseNumber" : "32979",
+    "flatNumber" : "221"
+  },
+  "personDetails" : {
+    "name" : "Lane",
+    "surname" : "Bednarek",
+    "phoneNumber" : "47 550 59 67",
+    "birthDate" : [ 1955, 6, 21 ],
+    "pesel" : "55062191061",
+    "gender" : "Kobieta"
+  }
+}, {
+  "specialization" : "Chirurg",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Miasteczko Śląskie",
+    "country" : "Mikronezja",
+    "zipCode" : "10-550",
+    "street" : "al. Krzemiński 33207",
+    "houseNumber" : "22711",
+    "flatNumber" : "271"
+  },
+  "personDetails" : {
+    "name" : "Jorge",
+    "surname" : "Mróz",
+    "phoneNumber" : "76 159 92 88",
+    "birthDate" : [ 1989, 11, 9 ],
+    "pesel" : "89110908055",
+    "gender" : "Mężczyzna"
+  }
+}, {
+  "specialization" : "Internista",
+  "online" : false,
+  "availability" : false,
+  "address" : {
+    "city" : "Koźmin Wielkopolski",
+    "country" : "Gruzja",
+    "zipCode" : "31-030",
+    "street" : "ul. Markiewicz 8030",
+    "houseNumber" : "85021",
+    "flatNumber" : "997"
+  },
+  "personDetails" : {
+    "name" : "Kurtis",
+    "surname" : "Więckowski",
+    "phoneNumber" : "26 501 66 25",
+    "birthDate" : [ 1944, 6, 30 ],
+    "pesel" : "44063022616",
+    "gender" : "Mężczyzna"
   }
 } ]
