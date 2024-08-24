@@ -21,7 +21,7 @@
         <div th:if="${error != null}" class="mt-4 alert alert-danger" role="alert">
             <p th:text="${error}">Błąd</p>
         </div>
-        <form th:action="@{/edit}" th:method="post" th:object="${updatePatient}">
+        <form th:action="@{/update-patient}" th:method="post" th:object="${updatePatient}">
             <div class="row">
                 <div class="col">
                     <div class="form-group">

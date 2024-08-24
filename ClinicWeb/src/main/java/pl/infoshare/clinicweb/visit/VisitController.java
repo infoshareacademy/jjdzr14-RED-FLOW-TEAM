@@ -38,16 +38,16 @@ public class VisitController {
         return "result";
     }
 
-    @GetMapping("/addVisit")
+    @GetMapping("/visit")
     public String saveVisit(@ModelAttribute("patient") Patient patient, @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") Doctor doctor, Model model) {
 
         model.addAttribute("doctors", doctorService.getAll());
         model.addAttribute("patients", patientService.getAll());
 
-        return "addVisit";
+        return "visit";
     }
 
-    @PostMapping("/addVisit")
+    @PostMapping("/visit")
     public String visitFormSubmission(@Valid Visit visit, BindingResult visitBindingResult,
                                       @RequestParam(value = "patientPesel", required = false) String patientPesel,
                                       @Valid Patient patient,
@@ -60,7 +60,7 @@ public class VisitController {
 
         if (visitBindingResult.hasErrors()) {
 
-            return "addVisit";
+            return "visit";
 
         } else {
 
@@ -72,7 +72,7 @@ public class VisitController {
             visitService.setVisitAttributes(patient, doctor, visit);
             visitService.saveVisit(visit);
 
-            return "redirect:/addVisit";
+            return "redirect:/visit";
         }
 
     }
