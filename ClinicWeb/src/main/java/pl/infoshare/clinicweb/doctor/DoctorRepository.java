@@ -1,6 +1,8 @@
 package pl.infoshare.clinicweb.doctor;
 
-public interface DoctorRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DoctorRepository extends JpaRepository<Doctor,Integer> {
 
     void addDoctor(Doctor user);
 

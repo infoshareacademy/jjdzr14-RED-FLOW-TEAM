@@ -1,7 +1,6 @@
 package pl.infoshare.clinicweb.patient;
 
 import pl.infoshare.clinicweb.doctor.DoctorDto;
-import pl.infoshare.clinicweb.user.PersonDetails;
 
 public class PatientDto {
 

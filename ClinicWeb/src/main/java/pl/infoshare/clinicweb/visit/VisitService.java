@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
-import pl.infoshare.clinicweb.file.FileService;
 import pl.infoshare.clinicweb.patient.Patient;
 
 import java.io.FileWriter;

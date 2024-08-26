@@ -1,38 +1,19 @@
 package pl.infoshare.clinicweb.doctor;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
-import pl.infoshare.clinicweb.file.FileService;
-import pl.infoshare.clinicweb.patient.Address;
-import pl.infoshare.clinicweb.user.PersonDetails;
-import pl.infoshare.clinicweb.user.User;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 public class DoctorService implements DoctorRepository {
 
-    private static final String DOCTOR_PATH = "ClinicWeb/src/main/resources/doctors.json";
-    private final FileService fileService;
-    private final ObjectMapper mapper = new ObjectMapper();
-
-    @Autowired
-    public DoctorService(FileService fileService) {
-        this.fileService = fileService;
-    }
-
-
-    public void addDoctor(User user) {
-
-    }
 
     @Override
     public void addDoctor(Doctor user) {
@@ -59,128 +40,153 @@ public class DoctorService implements DoctorRepository {
 
     }
 
-    public List<Doctor> getAll() {
-
-        List<Doctor> doctorList = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {
-        });
-        return doctorList != null ? doctorList : new ArrayList<>();
-    }
-
-    public List<DoctorDto> findAll() {
-
-        return getAll()
-                .stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
+    @Override
+    public void flush() {
 
     }
 
-    public List<Doctor> findBySpecialization(Specialization specialization) {
-
-        return getAll()
-                .stream()
-                .filter(doctor -> doctor.getSpecialization().equals(specialization.getDescription()))
-                .collect(Collectors.toList());
-
-    }
-
-    private DoctorDto convertToDto(Doctor doctor) {
-
-        DoctorDto doctorDto = new DoctorDto();
-
-        doctorDto.setName(doctor.getPersonDetails().getName());
-        doctorDto.setSurname(doctor.getPersonDetails().getSurname());
-        doctorDto.setSpecialization(doctor.getSpecialization());
-
-        return doctorDto;
-    }
-
-    public Doctor findByPesel(String pesel) {
-        return getAll()
-                .stream()
-                .filter(doctor -> doctor.getPersonDetails().getPesel().equals(pesel))
-                .findAny().orElse(null);
-
-    }
-
-    public DoctorDto doctorDtoByPesel(String pesel) {
-        return getAll()
-                .stream()
-                .filter(doctor -> doctor.getPersonDetails().getPesel().equals(pesel))
-                .map(this::convertToDto)
-                .findAny().orElse(null);
-
-    }
-  
-    public void saveDoctor(Doctor doctor) {
-
-        doctor.setDateOfBirth(doctor);
-
-        fileService.writeToFile(doctor, DOCTOR_PATH);
-
-    }
-    public void setDoctorAttributes(Doctor doctor, PersonDetails personDetails, Address address, Specialization specialization) {
-
-        doctor.setSpecialization(specialization.getDescription());
-        doctor.setAddress(address);
-        doctor.setPersonDetails(personDetails);
-
-    }
-
-    public void deleteFileDoctor() {
-        fileService.deleteData(DOCTOR_PATH);
-    }
-
-    public void saveOrUpdateDoctor(Doctor doctor, Address address) {
-
-        Doctor doctorByPesel = findByPesel(doctor.getPersonDetails().getPesel());
-        if (doctorByPesel != null) {
-            doctorByPesel.getPersonDetails().setName(doctor.getPersonDetails().getName());
-            doctorByPesel.getPersonDetails().setSurname(doctor.getPersonDetails().getSurname());
-            doctorByPesel.getPersonDetails().setGender(doctor.getPersonDetails().getGender());
-            doctorByPesel.getAddress().setCountry(doctor.getAddress().getCountry());
-            doctorByPesel.getAddress().setStreet(doctor.getAddress().getStreet());
-            doctorByPesel.getAddress().setCity(doctor.getAddress().getCity());
-            doctorByPesel.getAddress().setHouseNumber(doctor.getAddress().getHouseNumber());
-            doctorByPesel.getAddress().setFlatNumber(doctor.getAddress().getFlatNumber());
-
-            saveDoctor(doctorByPesel);
-
-            removeFromFile(doctorByPesel.getPersonDetails().getPesel(), DOCTOR_PATH);
-
-        } else {
-            saveDoctor(new Doctor());
-        }
-    }
-
-    public void removeFromFile(String pesel, String filePath) throws RuntimeException {
-
-        List<Doctor> doctors = fileService.readFromFile(DOCTOR_PATH, new TypeReference<List<Doctor>>() {
-        });
-
-        mapper.registerModule(new JavaTimeModule());
-
-        Iterator<Doctor> iterator = doctors.iterator();
-        while (iterator.hasNext()) {
-            Doctor doctor = iterator.next();
-            if (doctor.getPersonDetails().getPesel().equals(pesel)) {
-                iterator.remove();
-                break;
-            }
-        }
-
-        try (FileWriter fileWriter = new FileWriter(filePath, false)) {
-            String jsonPretty = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(doctors);
-            fileWriter.write(jsonPretty);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    public Object remove(Doctor pesel) {
-        removeFromFile(pesel.getPersonDetails().getPesel(), DOCTOR_PATH);
+    @Override
+    public <S extends Doctor> S saveAndFlush(S entity) {
         return null;
     }
 
+    @Override
+    public <S extends Doctor> List<S> saveAllAndFlush(Iterable<S> entities) {
+        return List.of();
+    }
+
+    @Override
+    public void deleteAllInBatch(Iterable<Doctor> entities) {
+
+    }
+
+    @Override
+    public void deleteAllByIdInBatch(Iterable<Integer> integers) {
+
+    }
+
+    @Override
+    public void deleteAllInBatch() {
+
+    }
+
+    @Override
+    public Doctor getOne(Integer integer) {
+        return null;
+    }
+
+    @Override
+    public Doctor getById(Integer integer) {
+        return null;
+    }
+
+    @Override
+    public Doctor getReferenceById(Integer integer) {
+        return null;
+    }
+
+    @Override
+    public <S extends Doctor> Optional<S> findOne(Example<S> example) {
+        return Optional.empty();
+    }
+
+    @Override
+    public <S extends Doctor> List<S> findAll(Example<S> example) {
+        return List.of();
+    }
+
+    @Override
+    public <S extends Doctor> List<S> findAll(Example<S> example, Sort sort) {
+        return List.of();
+    }
+
+    @Override
+    public <S extends Doctor> Page<S> findAll(Example<S> example, Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public <S extends Doctor> long count(Example<S> example) {
+        return 0;
+    }
+
+    @Override
+    public <S extends Doctor> boolean exists(Example<S> example) {
+        return false;
+    }
+
+    @Override
+    public <S extends Doctor, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+        return null;
+    }
+
+    @Override
+    public <S extends Doctor> S save(S entity) {
+        return null;
+    }
+
+    @Override
+    public <S extends Doctor> List<S> saveAll(Iterable<S> entities) {
+        return List.of();
+    }
+
+    @Override
+    public Optional<Doctor> findById(Integer integer) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(Integer integer) {
+        return false;
+    }
+
+    @Override
+    public List<Doctor> findAll() {
+        return List.of();
+    }
+
+    @Override
+    public List<Doctor> findAllById(Iterable<Integer> integers) {
+        return List.of();
+    }
+
+    @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public void deleteById(Integer integer) {
+
+    }
+
+    @Override
+    public void delete(Doctor entity) {
+
+    }
+
+    @Override
+    public void deleteAllById(Iterable<? extends Integer> integers) {
+
+    }
+
+    @Override
+    public void deleteAll(Iterable<? extends Doctor> entities) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
+    }
+
+    @Override
+    public List<Doctor> findAll(Sort sort) {
+        return List.of();
+    }
+
+    @Override
+    public Page<Doctor> findAll(Pageable pageable) {
+        return null;
+    }
 }
