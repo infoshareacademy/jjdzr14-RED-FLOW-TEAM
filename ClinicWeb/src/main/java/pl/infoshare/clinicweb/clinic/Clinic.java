@@ -12,13 +12,12 @@ import javax.lang.model.type.IntersectionType;
 import java.util.Set;
 
 @Data
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity
 public class Clinic {
 
     @Id
     @GeneratedValue
     private long id;
-
     private String clinicName;
     private Set<Patient> patients;
     private Set<Doctor> doctors;

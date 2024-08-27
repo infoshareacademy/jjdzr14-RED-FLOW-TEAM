@@ -1,21 +1,26 @@
 package pl.infoshare.clinicweb.doctor;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.Data;
+import pl.infoshare.clinicweb.patient.Address;
+import pl.infoshare.clinicweb.patient.Patient;
+import pl.infoshare.clinicweb.user.PersonDetails;
+
+import java.util.List;
 
 @Data
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Doctor {
-
-    private String specialization;
-    private boolean online;
-    private boolean availability;
     @Id
     @GeneratedValue
     private long id;
+    @Enumerated(EnumType.STRING)
+    private Specialization specialization;
+    private boolean online;
+    private boolean availability;
+    private List<Patient> patient;
+    private PersonDetails details;
+    private Address address;
 
 }
 

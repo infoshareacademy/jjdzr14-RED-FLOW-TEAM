@@ -1,20 +1,15 @@
 package pl.infoshare.clinicweb.doctor;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
-@Data
-@RequiredArgsConstructor
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Getter
+@Setter
 public class DoctorDto {
 
     private String name;
     private String surname;
     private String specialization;
-    @Id
-    @GeneratedValue
     private long id;
 
 
