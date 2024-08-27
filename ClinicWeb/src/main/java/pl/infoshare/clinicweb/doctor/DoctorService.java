@@ -12,27 +12,32 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Service
-public class DoctorService implements DoctorRepository {
+public class DoctorService {
+    private final DoctorRepository repository;
 
+    public DoctorService(DoctorRepository doctorRepository) {
+        this.repository = doctorRepository;
+    }
 
 
     public void addDoctor(Doctor user) {
-
+        addDoctor(user);
     }
 
 
-    public void findAllDoctors() {
-
+    public List<Doctor> findAllDoctors() {
+        return repository.findAll();
     }
 
 
-    public void deleteDoctor(Doctor doctor) {
-
+    public void deleteDoctor(Long idDoctor) {
+        repository.deleteById(idDoctor);
     }
+
 
 
     public void updateDoctor(Doctor doctor) {
-
+        repository.save(doctor);
     }
 
     public void findDoctorByKey(String name, String surname) {
@@ -74,9 +79,7 @@ public class DoctorService implements DoctorRepository {
     }
 
 
-    public Doctor getById(Integer integer) {
-        return null;
-    }
+
 
 
     public Doctor getReferenceById(Integer integer) {
