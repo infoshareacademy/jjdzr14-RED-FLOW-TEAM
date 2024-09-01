@@ -1,5 +1,8 @@
 package pl.infoshare.clinicweb.doctor;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public interface DoctorRepository {
 
     void addDoctor(Doctor user);
