@@ -1,18 +1,45 @@
 package pl.infoshare.clinicweb.patient;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Service
-public class PatientService {
+@AllArgsConstructor
+public class PatientService  {
 
+    private final PatientRepository patientRepository;
     private final PatientMapper patientMapper;
 
-    public PatientService(PatientMapper patientMapper) {
 
-        this.patientMapper = patientMapper;
+    public void addPatient(Patient patient) {
 
+        patientRepository.save(patient);
+    }
+
+    public Patient findPatientById(Long id) {
+
+       return patientRepository.getReferenceById(id);
+
+    }
+
+    public List<Patient> findAllPatients() {
+
+        return patientRepository.findAll();
+    }
+
+
+    public void updatePatient(Patient patient) {
+
+        patientRepository.save(patient);
+
+    }
+
+    public void deletePatient(Patient patient) {
+
+        patientRepository.findById(patient.getId()).ifPresent(patientRepository::delete);
     }
 
     public PatientDto convertToDto(Patient patient) {
@@ -25,6 +52,8 @@ public class PatientService {
 
         return patientMapper.toEntity(dto);
     }
+
+
 
 
 }

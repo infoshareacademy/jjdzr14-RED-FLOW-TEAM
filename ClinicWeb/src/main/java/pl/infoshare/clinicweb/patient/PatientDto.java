@@ -2,7 +2,6 @@ package pl.infoshare.clinicweb.patient;
 
 import lombok.Data;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
-import pl.infoshare.clinicweb.user.PersonDetails;
 
 @Data
 public class PatientDto {

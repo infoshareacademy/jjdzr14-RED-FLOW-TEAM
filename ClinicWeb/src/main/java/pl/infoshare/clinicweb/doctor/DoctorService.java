@@ -1,18 +1,43 @@
 package pl.infoshare.clinicweb.doctor;
 
-
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
-@Service
-public class DoctorService  {
+import java.util.List;
 
+@Service
+@AllArgsConstructor
+public class DoctorService {
+    private final DoctorRepository repository;
     private final DoctorMapper doctorMapper;
 
-    public DoctorService(DoctorMapper doctorMapper) {
 
-        this.doctorMapper = doctorMapper;
+    public void addDoctor(Doctor user) {
+        addDoctor(user);
+    }
 
+
+    public List<Doctor> findAllDoctors() {
+        return repository.findAll();
+    }
+
+
+    public void deleteDoctor(Long idDoctor) {
+
+        repository.deleteById(idDoctor);
+    }
+
+    public void updateDoctor(Doctor doctor) {
+
+        repository.save(doctor);
+    }
+
+    public void findDoctorByKey(String name, String surname) {
+
+    }
+
+    public void deleteById(Integer integer) {
     }
 
     public DoctorDto convertToDto(Doctor doctor) {

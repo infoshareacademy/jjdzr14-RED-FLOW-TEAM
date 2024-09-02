@@ -1,8 +1,6 @@
 package pl.infoshare.clinicweb.doctor;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.patient.Patient;
@@ -13,15 +11,15 @@ import java.util.List;
 @Data
 @Entity
 public class Doctor {
-
     @Id
     @GeneratedValue
     private long id;
-    private String specialization;
-    private List<Patient> patient;
+    @Enumerated(EnumType.STRING)
+    private Specialization specialization;
     private boolean online;
     private boolean availability;
-    private PersonDetails personDetails;
+    private List<Patient> patient;
+    private PersonDetails details;
     private Address address;
 
 }

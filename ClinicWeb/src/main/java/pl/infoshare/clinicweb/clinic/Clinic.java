@@ -1,57 +1,26 @@
 package pl.infoshare.clinicweb.clinic;
 
+import jakarta.persistence.*;
+import lombok.Data;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import org.hibernate.Internal;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.patient.Patient;
 
+import javax.lang.model.type.IntersectionType;
 import java.util.Set;
 
+@Data
+@Entity
 public class Clinic {
 
+    @Id
+    @GeneratedValue
+    private long id;
     private String clinicName;
     private Set<Patient> patients;
     private Set<Doctor> doctors;
     private Address address;
 
-
-    public Clinic() {
-
-    }
-
-    public String getClinicName() {
-        return clinicName;
-    }
-
-    public void setClinicName(String clinicName) {
-        this.clinicName = clinicName;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public Set<Patient> getPatients() {
-        return patients;
-    }
-
-    public void setPatients(Set<Patient> patients) {
-        this.patients = patients;
-    }
-
-    public Set<Doctor> getDoctors() {
-        return doctors;
-    }
-
-    public void setDoctors(Set<Doctor> doctors) {
-        this.doctors = doctors;
-    }
-
-    public Clinic(Address address, String clinicName) {
-        this.address = address;
-        this.clinicName = clinicName;
-    }
 }
