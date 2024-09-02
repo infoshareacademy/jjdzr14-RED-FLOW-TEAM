@@ -8,7 +8,7 @@ import lombok.Data;
 public class Medicines {
 
     private String medicineName;
-    private int numberOfMedicine;
+    private int count;
     private String diagnosis;
 
 
