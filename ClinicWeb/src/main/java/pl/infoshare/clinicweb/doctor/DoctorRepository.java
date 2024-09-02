@@ -1,14 +1,11 @@
 package pl.infoshare.clinicweb.doctor;
 
-public interface DoctorRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-    void addDoctor(Doctor user);
+public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
-    void findAllDoctors();
-
-    void deleteDoctor(Doctor doctor);
-
-    void updateDoctor(Doctor doctor);
 
     void findDoctorByKey(String name, String surname);
+
+
 }
