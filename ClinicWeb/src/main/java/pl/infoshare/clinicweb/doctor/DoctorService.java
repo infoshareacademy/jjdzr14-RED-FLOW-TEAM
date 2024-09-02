@@ -12,9 +12,9 @@ public class DoctorService {
     private final DoctorRepository repository;
     private final DoctorMapper doctorMapper;
 
-
     public void addDoctor(Doctor user) {
-        addDoctor(user);
+
+        repository.save(user);
     }
 
 
@@ -37,8 +37,9 @@ public class DoctorService {
 
     }
 
-    public void deleteById(Integer integer) {
+    public void deleteById(Long id) {
     }
+
 
     public DoctorDto convertToDto(Doctor doctor) {
 
@@ -50,5 +51,13 @@ public class DoctorService {
 
         return doctorMapper.toEntity(dto);
     }
+
+    public Doctor findDoctorById(Long id) {
+
+        return repository.getReferenceById(id);
+
+    }
+
+
 
 }

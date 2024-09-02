@@ -15,9 +15,9 @@ public class DoctorMapper {
         DoctorDto doctorDto = new DoctorDto();
 
         doctorDto.setId(doctor.getId());
-        doctorDto.setName(doctor.getPersonDetails().getName());
-        doctorDto.setSurname(doctor.getPersonDetails().getSurname());
-        doctorDto.setSpecialization(doctor.getSpecialization());
+        doctorDto.setName(doctor.getDetails().getName());
+        doctorDto.setSurname(doctor.getDetails().getSurname());
+        doctorDto.setSpecialization(doctor.getSpecialization().getDescription());
 
         return doctorDto;
 
@@ -25,7 +25,7 @@ public class DoctorMapper {
 
     public Doctor toEntity(DoctorDto doctorDto) {
 
-        return doctorRepository.getReferenceById(doctorDto.getId());;
+        return doctorRepository.getReferenceById(doctorDto.getId());
 
     }
 }
