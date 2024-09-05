@@ -13,7 +13,7 @@ import pl.infoshare.clinicweb.user.PersonDetails;
 public class Patient {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Embedded
     private PersonDetails personDetails;
