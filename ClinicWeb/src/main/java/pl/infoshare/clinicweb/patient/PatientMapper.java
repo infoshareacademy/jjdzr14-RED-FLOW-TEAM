@@ -1,16 +1,10 @@
 package pl.infoshare.clinicweb.patient;
 
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import pl.infoshare.clinicweb.doctor.DoctorService;
+
 
 @Component
-@AllArgsConstructor
 public class PatientMapper {
-
-    private final PatientRepository patientRepository;
-    private final DoctorService doctorService;
-
 
 
     public PatientDto toDto (Patient patient) {
@@ -22,8 +16,6 @@ public class PatientMapper {
         patientDto.setSurname(patient.getPersonDetails().getSurname());
         patientDto.setPesel(patient.getPersonDetails().getPesel());
         patientDto.setPhoneNumber(patient.getPersonDetails().getPhoneNumber());
-        patientDto.setDoctor(doctorService.convertToDto(patient.getDoctor()));
-
 
         return patientDto;
 
@@ -31,7 +23,10 @@ public class PatientMapper {
 
     public Patient toEntity(PatientDto patientDto) {
 
-        return patientRepository.getReferenceById(patientDto.getId());;
+        Patient patient = new Patient();
+        patient.setId(patientDto.getId());
+
+        return patient;
 
     }
 }

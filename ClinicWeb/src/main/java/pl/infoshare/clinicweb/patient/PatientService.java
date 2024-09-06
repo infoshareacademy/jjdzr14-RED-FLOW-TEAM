@@ -19,7 +19,7 @@ public class PatientService  {
         patientRepository.save(patient);
     }
 
-    public Patient findPatientById(Long id) {
+    public Patient findById(Long id) {
 
        return patientRepository.getReferenceById(id);
 
@@ -50,7 +50,10 @@ public class PatientService  {
 
     public Patient convertToEntity(PatientDto dto) {
 
-        return patientMapper.toEntity(dto);
+        Patient patient = patientMapper.toEntity(dto);
+
+        return patientRepository.findById(patient.getId()).get();
+
     }
 
 

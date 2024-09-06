@@ -17,7 +17,9 @@ public class VisitService {
         visitRepository.save(visit);
     }
 
-    public void updateVisit(Visit visit) {
+    public void updateVisit(VisitDto visitDto) {
+
+        Visit visit = visitMapper.toEntity(visitDto);
 
         visitRepository.save(visit);
     }
@@ -28,7 +30,9 @@ public class VisitService {
 
     }
 
-    public void cancelVisit(Visit visit) {
+    public void cancelVisit(VisitDto visitDto) {
+
+        Visit visit = visitMapper.toEntity(visitDto);
 
         visit.setCancelVisit(true);
 
@@ -48,7 +52,9 @@ public class VisitService {
 
     public Visit convertToEntity (VisitDto visitDto) {
 
-        return visitMapper.toEntity(visitDto);
+        Visit visit = visitMapper.toEntity(visitDto);
+
+        return visitRepository.findById(visit.getId()).get();
     }
 
 

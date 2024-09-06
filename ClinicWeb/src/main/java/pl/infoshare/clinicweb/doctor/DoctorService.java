@@ -9,35 +9,34 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class DoctorService {
-    private final DoctorRepository repository;
+    private final DoctorRepository doctorRepository;
     private final DoctorMapper doctorMapper;
 
     public void addDoctor(Doctor user) {
 
-        repository.save(user);
+        doctorRepository.save(user);
     }
 
 
     public List<Doctor> findAllDoctors() {
-        return repository.findAll();
+        return doctorRepository.findAll();
     }
 
 
     public void deleteDoctor(Long idDoctor) {
 
-        repository.deleteById(idDoctor);
+        doctorRepository.deleteById(idDoctor);
     }
 
-    public void updateDoctor(Doctor doctor) {
+    public void updateDoctor(DoctorDto doctorDto) {
 
-        repository.save(doctor);
+        Doctor doctor = doctorMapper.toEntity(doctorDto);
+
+        doctorRepository.save(doctor);
     }
 
     public void findDoctorByKey(String name, String surname) {
 
-    }
-
-    public void deleteById(Long id) {
     }
 
 
@@ -49,14 +48,11 @@ public class DoctorService {
 
     public Doctor convertToEntity(DoctorDto dto) {
 
-        return doctorMapper.toEntity(dto);
+        Doctor doctor = doctorMapper.toEntity(dto);
+
+        return doctorRepository.findById(doctor.getId()).get();
     }
 
-    public Doctor findDoctorById(Long id) {
-
-        return repository.getReferenceById(id);
-
-    }
 
 
 

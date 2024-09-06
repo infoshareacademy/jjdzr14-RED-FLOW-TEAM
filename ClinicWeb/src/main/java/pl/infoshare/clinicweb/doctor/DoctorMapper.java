@@ -1,14 +1,9 @@
 package pl.infoshare.clinicweb.doctor;
 
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@AllArgsConstructor
 public class DoctorMapper {
-
-    private final DoctorRepository doctorRepository;
-
 
     public DoctorDto toDto(Doctor doctor) {
 
@@ -25,7 +20,10 @@ public class DoctorMapper {
 
     public Doctor toEntity(DoctorDto doctorDto) {
 
-        return doctorRepository.getReferenceById(doctorDto.getId());
+        Doctor doctor = new Doctor();
+        doctor.setId(doctorDto.getId());
+
+        return doctor;
 
     }
 }
