@@ -1,9 +1,13 @@
 package pl.infoshare.clinicweb.patient;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -19,42 +23,48 @@ public class PatientService  {
         patientRepository.save(patient);
     }
 
-    public Patient findById(Long id) {
+    public Optional <PatientDto> findById(Long id) {
 
-       return patientRepository.getReferenceById(id);
-
+       return patientRepository.findById(id)
+               .stream()
+               .map(patientMapper::toDto)
+               .findFirst()
+               .orElseThrow(() -> new EntityNotFoundException(String.format("Patient not found with id %s", id)));
     }
 
-    public List<Patient> findAllPatients() {
+    public List <Optional<PatientDto>> findAllPatients() {
 
-        return patientRepository.findAll();
+        return patientRepository.findAll()
+                .stream()
+                .map(patientMapper::toDto)
+                .collect(Collectors.toList());
     }
 
 
-    public void updatePatient(Patient patient) {
+    public void updatePatient(PatientDto patientDto, Address address) {
+
+        Patient patient = patientMapper.toEntity(patientDto);
+        patient.setAddress(address);
 
         patientRepository.save(patient);
 
     }
 
-    public void deletePatient(Patient patient) {
+    public void deletePatient(Long id) {
 
-        patientRepository.findById(patient.getId()).ifPresent(patientRepository::delete);
+        patientRepository.findById(id).ifPresent(patientRepository::delete);
     }
 
-    public PatientDto convertToDto(Patient patient) {
+    public void setPatientAttributes(Patient patient, PersonDetails personDetails,
+                                    Address address) {
 
-        return patientMapper.toDto(patient);
+        patient.setPersonDetails(personDetails);
+        patient.setAddress(address);
 
-    }
-
-    public Patient convertToEntity(PatientDto dto) {
-
-        Patient patient = patientMapper.toEntity(dto);
-
-        return patientRepository.findById(patient.getId()).get();
 
     }
+
+
 
 
 

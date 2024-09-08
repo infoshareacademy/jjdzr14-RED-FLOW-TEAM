@@ -1,7 +1,6 @@
 package pl.infoshare.clinicweb.patient;
 
 import lombok.Data;
-import pl.infoshare.clinicweb.doctor.DoctorDto;
 
 @Data
 public class PatientDto {
@@ -11,7 +10,6 @@ public class PatientDto {
     private String surname;
     private String phoneNumber;
     private String pesel;
-    private DoctorDto doctor;
 
 
 }

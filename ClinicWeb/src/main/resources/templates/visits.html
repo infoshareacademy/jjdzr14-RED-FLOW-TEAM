@@ -45,7 +45,7 @@
                 <td th:text="${visits.doctor.surname}">Nazwisko</td>
                 <td th:text="${visits.doctor.specialization}">Specjalizacja</td>
                 <td th:text="${visits.visitDate.toLocalDate()}"> ">Data wizyty</td>
-                <td th:text="${visits.visitDate.toLocalTime() }"> ">Godzina wizyty</td>
+                <td th:text="${visits.visitDate.toLocalTime()}"> ">Godzina wizyty</td>
                 <td>
                     <span th:if="${!visits.cancelVisit}"></span>
                     <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${!visits.cancelVisit}">

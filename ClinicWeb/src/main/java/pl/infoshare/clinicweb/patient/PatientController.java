@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.Utils;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Controller
@@ -28,28 +29,32 @@ public class PatientController {
 
         model.addAttribute("personDetails", new PersonDetails());
         model.addAttribute("address", new Address());
-        model.addAttribute("doctors", doctorService.findAll());
+        model.addAttribute("doctors", doctorService.findAllDoctors());
 
         return "patient";
     }
 
     @PostMapping("/patient")
-    public String patientFormSubmission(@Valid PersonDetails patientDetails, BindingResult detailsBinding,
+    public String patientFormSubmission(@ModelAttribute Patient patient,
+                                        @Valid PersonDetails patientDetails, BindingResult detailsBinding,
                                         @Valid Address patientAddress, BindingResult addressBinding,
                                         @RequestParam("pesel") String pesel,
-                                        Model model, RedirectAttributes redirectAttributes, Doctor doctor) {
+                                        Model model, RedirectAttributes redirectAttributes) {
 
-        model.addAttribute("doctors", doctorService.findAll());
+        model.addAttribute("doctors", doctorService.findAllDoctors());
 
         if (detailsBinding.hasErrors() || addressBinding.hasErrors() || !Utils.hasPeselCorrectDigits(pesel)) {
 
             model.addAttribute("peselError", "Wprowadzony numer PESEL jest niepoprawny");
+
             return "patient";
 
         } else {
 
             redirectAttributes.addFlashAttribute("success", "Utworzono nowego pacjenta w bazie.");
-            patientService.savePatient(new Patient(patientDetails, patientAddress));
+
+            patientService.setPatientAttributes(patient, patientDetails, patientAddress);
+            patientService.addPatient(patient);
 
             return "redirect:/patient";
         }
@@ -59,7 +64,7 @@ public class PatientController {
     @GetMapping("/patients")
     public String viewPatients(Model model) {
 
-        model.addAttribute("listPatient", patientService.findAll());
+        model.addAttribute("listPatient", patientService.findAllPatients());
 
         return "patients";
     }
@@ -72,8 +77,9 @@ public class PatientController {
     }
 
     @PostMapping("/search")
-    public String searchPatient(@RequestParam("pesel") String pesel, Model model, Address address) {
-        Patient patient = patientService.findByPesel(pesel);
+    public String searchPatient(@RequestParam("id") Long id, Model model, Address address) {
+
+        Optional<PatientDto> patient = patientService.findById(id);
         if (patient != null) {
             model.addAttribute("patient", patient);
             model.addAttribute("address", address);
@@ -84,8 +90,10 @@ public class PatientController {
     }
 
     @PostMapping("/update-patient")
-    public String editPatient(@ModelAttribute("patient") Patient patient, Model model, Address address, RedirectAttributes redirectAttributes) {
-        patientService.saveOrUpdatePatient(patient, address);
+    public String editPatient(@ModelAttribute("patient") PatientDto patient,
+                              Model model, Address address, RedirectAttributes redirectAttributes) {
+
+        patientService.updatePatient(patient, address);
         model.addAttribute("patient", patient);
         model.addAttribute("address", address);
         redirectAttributes.addFlashAttribute("success", "Zaktualizowano dane pacjenta.");
@@ -93,44 +101,50 @@ public class PatientController {
     }
 
     @GetMapping("/update-patient")
-    public String fullDetailPatient(@RequestParam(value = "pesel", required = false) @ModelAttribute String pesel,
-                                    Model model, Address address) {
-        model.addAttribute("updatePatient", patientService.findByPesel(pesel));
+    public String fullDetailPatient(@RequestParam(value = "id", required = false)
+                                    @ModelAttribute Long id,
+                                    Model model) {
+        model.addAttribute("updatePatient", patientService.findById(id));
         return "update-patient";
     }
 
     @PostMapping("/search-patient")
-    public String searchPatientByPesel(@RequestParam("pesel") @ModelAttribute String pesel, Model model, Address address) {
-        Patient byPesel = patientService.findByPesel(pesel);
-        if (patientService.findByPesel(pesel) != null) {
-            model.addAttribute("searchForPesel", byPesel);
+    public String searchPatientById(@RequestParam("id") @ModelAttribute Long id,
+                                    Model model) {
+
+
+        if (patientService.findById(id) != null) {
+            model.addAttribute("searchForId", id);
         } else {
-            model.addAttribute("error", "Nie znaleziono pacjenta o podanym numerze pesel: " + pesel);
+            model.addAttribute("error", "Nie znaleziono pacjenta o podanym numerze id: " + id);
         }
         return "search-patient";
     }
 
     @GetMapping("/search-patient")
-    public String searchPatientByPesel(@RequestParam("pesel") Model model, String pesel) {
-        Patient byPesel = patientService.findByPesel(pesel);
+    public String searchPatientById(Model model) {
+
         model.addAttribute("patient", new Patient());
 
         return "search-patient";
     }
 
     @PostMapping("/delete-patient")
-    public String deletePatient(@RequestParam("pesel") String pesel, Model model) {
-        Patient byPesel = patientService.findByPesel(pesel);
-        if (byPesel != null) {
-            patientService.remove(byPesel);
+    public String deletePatient(@RequestParam("id") Long id) {
+
+        Optional<PatientDto> patientById = patientService.findById(id);
+        if (patientById.isPresent()) {
+            patientService.deletePatient(id);
         }
         return "redirect:/patients";
     }
 
     @GetMapping("/delete-patient")
-    public String showDeletePatientForm(@RequestParam("pesel") String pesel, Model model) {
-        Patient byPesel = patientService.findByPesel(pesel);
-        model.addAttribute("patient", byPesel);
+    public String showDeletePatientForm(@RequestParam("id") Long id, Model model) {
+
+        Optional <PatientDto> patientById = patientService.findById(id);
+        model.addAttribute("patient", patientById);
+
         return "delete-patient";
     }
 

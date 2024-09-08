@@ -1,14 +1,19 @@
 package pl.infoshare.clinicweb.doctor;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import pl.infoshare.clinicweb.patient.Address;
+import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class DoctorService {
+
     private final DoctorRepository doctorRepository;
     private final DoctorMapper doctorMapper;
 
@@ -17,9 +22,22 @@ public class DoctorService {
         doctorRepository.save(user);
     }
 
+    public Optional<DoctorDto> findById(long id) {
 
-    public List<Doctor> findAllDoctors() {
-        return doctorRepository.findAll();
+        return doctorRepository.findById(id)
+                .stream()
+                .map(doctorMapper::toDto)
+                .findFirst()
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Doctor not found with %s", id)));
+    }
+
+
+    public List<Optional<DoctorDto>> findAllDoctors() {
+
+        return doctorRepository.findAll()
+                .stream()
+                .map(doctorMapper::toDto)
+                .collect(Collectors.toList());
     }
 
 
@@ -28,9 +46,10 @@ public class DoctorService {
         doctorRepository.deleteById(idDoctor);
     }
 
-    public void updateDoctor(DoctorDto doctorDto) {
+    public void updateDoctor(DoctorDto doctorDto, Address address) {
 
         Doctor doctor = doctorMapper.toEntity(doctorDto);
+        doctor.setAddress(address);
 
         doctorRepository.save(doctor);
     }
@@ -40,20 +59,24 @@ public class DoctorService {
     }
 
 
-    public DoctorDto convertToDto(Doctor doctor) {
+    List<Optional<DoctorDto>> findDoctorBySpecialization(Specialization specialization) {
 
-        return doctorMapper.toDto(doctor);
-
+        return doctorRepository.findAll()
+                .stream()
+                .filter(doctor -> doctor.getSpecialization().equals(specialization))
+                .map(doctorMapper::toDto)
+                .collect(Collectors.toList());
     }
 
-    public Doctor convertToEntity(DoctorDto dto) {
+    public void setDoctorAttributes(Doctor doctor, PersonDetails personDetails,
+                                    Address address, Specialization specialization) {
 
-        Doctor doctor = doctorMapper.toEntity(dto);
+        doctor.setDetails(personDetails);
+        doctor.setAddress(address);
+        doctor.setSpecialization(specialization);
 
-        return doctorRepository.findById(doctor.getId()).get();
+
     }
-
-
 
 
 }

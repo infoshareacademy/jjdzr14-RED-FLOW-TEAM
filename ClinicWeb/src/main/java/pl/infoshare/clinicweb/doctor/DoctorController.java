@@ -1,6 +1,7 @@
 package pl.infoshare.clinicweb.doctor;
 
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,24 +12,22 @@ import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
+@AllArgsConstructor
 public class DoctorController {
 
     private final DoctorService doctorService;
-
-    public DoctorController(DoctorService doctorService) {
-
-        this.doctorService = doctorService;
-    }
 
 
     @RequestMapping("/doctors")
     public String viewDoctors(Model model, @RequestParam(required = false, value = "specialization") Specialization specialization) {
 
-        List<Doctor> doctors;
+        List<Optional<DoctorDto>> doctors;
 
-        doctors = specialization == null ? doctorService.getAll() : doctorService.findBySpecialization(specialization);
+        doctors = specialization == null ?
+                doctorService.findAllDoctors() : doctorService.findDoctorBySpecialization(specialization);
 
         model.addAttribute("listDoctor", doctors);
 
@@ -63,7 +62,7 @@ public class DoctorController {
             redirectAttributes.addFlashAttribute("success", "Utworzono nowego lekarza w bazie.");
 
             doctorService.setDoctorAttributes(doctor, doctorDetails, doctorAddress, specialization);
-            doctorService.saveDoctor(doctor);
+            doctorService.addDoctor(doctor);
 
             return "redirect:/doctor";
         }
@@ -77,30 +76,32 @@ public class DoctorController {
     }
 
     @PostMapping("/search-doctor")
-    public String searchDoctorByPesel(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
+    public String searchDoctorByPesel(@RequestParam(value = "id", required = false) Long id, Model model) {
 
-        Doctor byPesel = doctorService.findByPesel(pesel);
+        Optional <DoctorDto> doctorById = doctorService.findById(id);
 
-        if (doctorService.findByPesel(pesel) != null) {
-            model.addAttribute("searchForPesel", byPesel);
+        if (doctorService.findById(id) != null) {
+
+            model.addAttribute("searchForId", doctorById);
         } else {
-            model.addAttribute("error", "Nie znaleziono lekarza o podanym numerze pesel: " + pesel);
+            model.addAttribute("error", "Nie znaleziono lekarza o podanym numerze ID: " + id);
         }
         return "search-doctor";
     }
 
     @GetMapping("/update-doctor")
-    public String fullDetailDoctor(@RequestParam(value = "pesel", required = false) String pesel, Model model) {
+    public String fullDetailDoctor(@RequestParam(value = "id", required = false) Long id, Model model) {
 
-        model.addAttribute("updateDoctor", doctorService.findByPesel(pesel));
+        model.addAttribute("updateDoctor", doctorService.findById(id));
 
         return "update-doctor";
     }
 
     @PostMapping("/update-doctor")
-    public String editDoctor(@ModelAttribute("doctor") Doctor doctor, Model model, Address address, RedirectAttributes redirectAttributes) {
+    public String editDoctor(@ModelAttribute("doctor") DoctorDto doctor, Model model,
+                             Address address, RedirectAttributes redirectAttributes) {
 
-        doctorService.saveOrUpdateDoctor(doctor, address);
+        doctorService.updateDoctor(doctor, address);
         model.addAttribute("doctor", doctor);
         model.addAttribute("address", address);
         redirectAttributes.addFlashAttribute("success", "Zaktualizowano dane lekarza.");
@@ -109,21 +110,22 @@ public class DoctorController {
     }
 
     @GetMapping("/delete-doctor")
-    public String showDeleteDoctorForm(@RequestParam("pesel") String pesel, Model model) {
+    public String showDeleteDoctorForm(@RequestParam("id") Long id, Model model) {
 
-        Doctor byPesel = doctorService.findByPesel(pesel);
-        model.addAttribute("doctor", byPesel);
+        Optional<DoctorDto> doctorById = doctorService.findById(id);
+        model.addAttribute("doctor", doctorById);
 
         return "delete-doctor";
     }
 
     @PostMapping("/delete-doctor")
-    public String deleteDoctor(@RequestParam("pesel") String pesel, RedirectAttributes redirectAttributes) {
+    public String deleteDoctor(@RequestParam("id") Long id, RedirectAttributes redirectAttributes) {
 
-        Doctor byPesel = doctorService.findByPesel(pesel);
+        Optional<DoctorDto> doctorById = doctorService.findById(id);
 
-        if (byPesel != null) {
-            doctorService.remove(byPesel);
+        if (doctorById.isPresent()) {
+
+            doctorService.deleteDoctor(doctorById.get().getId());
             redirectAttributes.addFlashAttribute("success", "Usunięto dane lekarza.");
         }
         return "redirect:/doctors";

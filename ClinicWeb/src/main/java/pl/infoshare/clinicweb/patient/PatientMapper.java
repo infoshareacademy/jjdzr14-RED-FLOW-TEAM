@@ -2,12 +2,14 @@ package pl.infoshare.clinicweb.patient;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 
 @Component
 public class PatientMapper {
 
 
-    public PatientDto toDto (Patient patient) {
+    public Optional<PatientDto> toDto (Patient patient) {
 
         PatientDto patientDto = new PatientDto();
 
@@ -17,7 +19,7 @@ public class PatientMapper {
         patientDto.setPesel(patient.getPersonDetails().getPesel());
         patientDto.setPhoneNumber(patient.getPersonDetails().getPhoneNumber());
 
-        return patientDto;
+        return Optional.of(patientDto);
 
     }
 
@@ -25,6 +27,10 @@ public class PatientMapper {
 
         Patient patient = new Patient();
         patient.setId(patientDto.getId());
+        patient.getPersonDetails().setName(patientDto.getName());
+        patient.getPersonDetails().setSurname(patientDto.getSurname());
+        patient.getPersonDetails().setPesel(patientDto.getPesel());
+        patient.getPersonDetails().setPhoneNumber(patientDto.getPhoneNumber());
 
         return patient;
 
