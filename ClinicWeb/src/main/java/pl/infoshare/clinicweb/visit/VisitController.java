@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.Doctor;
-import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientService;
 
-import java.util.UUID;
+import java.util.Optional;
 
 
 @Controller
@@ -24,6 +23,7 @@ public class VisitController {
     private final VisitService visitService;
     private final DoctorService doctorService;
     private final PatientService patientService;
+
 
     public VisitController(VisitService visitService, DoctorService doctorService, PatientService patientService) {
 
@@ -39,23 +39,23 @@ public class VisitController {
     }
 
     @GetMapping("/visit")
-    public String saveVisit(@ModelAttribute("patient") Patient patient, @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") Doctor doctor, Model model) {
+    public String saveVisit(@ModelAttribute("patient") Patient patient,
+                            @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") Doctor doctor, Model model) {
 
-        model.addAttribute("doctors", doctorService.getAll());
-        model.addAttribute("patients", patientService.getAll());
+        model.addAttribute("doctors", doctorService.findAllDoctors());
+        model.addAttribute("patients", patientService.findAllPatients());
 
         return "visit";
     }
 
     @PostMapping("/visit")
     public String visitFormSubmission(@Valid Visit visit, BindingResult visitBindingResult,
-                                      @RequestParam(value = "patientPesel", required = false) String patientPesel,
-                                      @Valid Patient patient,
-                                      @RequestParam(value = "doctorPesel", required = false) String doctorPesel,
-                                      @Valid DoctorDto doctor, Model model, RedirectAttributes redirectAttributes) {
+                                      @RequestParam(value = "patientId", required = false) Long patientId,
+                                      @RequestParam(value = "doctorId", required = false) Long doctorId,
+                                      Model model, RedirectAttributes redirectAttributes) {
 
-        model.addAttribute("doctors", doctorService.getAll());
-        model.addAttribute("patients", patientService.getAll());
+        model.addAttribute("doctors", doctorService.findAllDoctors());
+        model.addAttribute("patients", patientService.findAllPatients());
 
 
         if (visitBindingResult.hasErrors()) {
@@ -67,10 +67,8 @@ public class VisitController {
             redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. " +
                     "Dziękujemy za rejestrację!");
 
-            doctor = doctorService.doctorDtoByPesel(doctorPesel);
-            patient = patientService.findByPesel(patientPesel);
-            visitService.setVisitAttributes(patient, doctor, visit);
-            visitService.saveVisit(visit);
+
+            visitService.saveVisit(visit, doctorId, patientId);
 
             return "redirect:/visit";
         }
@@ -79,17 +77,17 @@ public class VisitController {
 
     @GetMapping("/visits")
     public String allVisits(Model model) {
-        model.addAttribute("allVisits", visitService.getAll());
+        model.addAttribute("allVisits", visitService.getAllVisits());
         return "visits";
     }
 
     @PostMapping("/cancel")
-    public String cancelVisit(@RequestParam("uuid") UUID uuid, Model model) {
-        Visit visit = visitService.getVisitFoeUUID(uuid);
+    public String cancelVisit(@RequestParam("id") Long id, Model model) {
+
+        Optional<VisitDto> visit = visitService.findVisitById(id);
         model.addAttribute("allVisits", visit);
-        visitService.cancelVisit(visit);
-        visitService.saveVisit(visit);
-        visitService.remove(uuid, visit);
+
+        visitService.cancelVisit(visit.get());
 
         return "redirect:/visits";
     }
@@ -97,7 +95,7 @@ public class VisitController {
 
     @GetMapping("/cancel")
     public String showCancelVisitForm(@ModelAttribute Patient patient, Model model) {
-        model.addAttribute("allVisits", visitService.getAll());
+        model.addAttribute("allVisits", visitService.getAllVisits());
         return "redirect:/visits";
     }
 }

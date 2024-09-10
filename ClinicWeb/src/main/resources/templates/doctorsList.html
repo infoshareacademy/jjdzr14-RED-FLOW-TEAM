@@ -43,8 +43,8 @@
             </thead>
             <tbody>
             <tr th:each="doctor : ${listDoctor}">
-                <td th:text="${doctor.personDetails.name}"></td>
-                <td th:text="${doctor.personDetails.surname}"></td>
+                <td th:text="${doctor.name}"></td>
+                <td th:text="${doctor.surname}"></td>
                 <td th:text="${doctor.specialization}"></td>
                 <td style="table-layout: fixed">
                     <a th:href="@{/update-doctor(pesel=${doctor.personDetails.pesel})}"

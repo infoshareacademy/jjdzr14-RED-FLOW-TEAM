@@ -1,18 +1,15 @@
 package pl.infoshare.clinicweb.patient;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-
-@Getter
-@Setter
+@Data
 public class PatientDto {
 
+    private long id;
     private String name;
     private String surname;
     private String phoneNumber;
     private String pesel;
-
 
 
 }
