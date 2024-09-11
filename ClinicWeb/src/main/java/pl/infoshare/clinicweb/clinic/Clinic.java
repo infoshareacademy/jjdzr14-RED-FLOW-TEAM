@@ -19,7 +19,9 @@ public class Clinic {
     @GeneratedValue
     private long id;
     private String clinicName;
+    @OneToMany
     private Set<Patient> patients;
+    @OneToMany
     private Set<Doctor> doctors;
     private Address address;
 

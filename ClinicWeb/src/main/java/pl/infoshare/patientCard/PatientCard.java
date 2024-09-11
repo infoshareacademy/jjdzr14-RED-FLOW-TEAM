@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Transactional
+
 public class PatientCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
