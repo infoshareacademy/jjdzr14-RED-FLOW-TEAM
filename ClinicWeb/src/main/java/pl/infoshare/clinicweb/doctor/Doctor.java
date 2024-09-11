@@ -1,27 +1,34 @@
 package pl.infoshare.clinicweb.doctor;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.util.List;
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Enumerated(EnumType.STRING)
     private Specialization specialization;
     private boolean online;
     private boolean availability;
-    private List<Patient> patient;
+
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Patient> patients;
+
+    @Embedded
     private PersonDetails details;
+
+    @Embedded
     private Address address;
-
 }
-
-

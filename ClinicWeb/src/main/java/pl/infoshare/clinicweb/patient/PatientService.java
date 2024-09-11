@@ -2,6 +2,7 @@ package pl.infoshare.clinicweb.patient;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
@@ -11,7 +12,7 @@ import java.util.stream.Collectors;
 
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PatientService  {
 
     private final PatientRepository patientRepository;
