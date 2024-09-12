@@ -3,11 +3,15 @@ package pl.infoshare.patientCard;
 import lombok.Data;
 
 import java.time.LocalDate;
+
 @Data
 public class PatientCardDTO {
     private Long id;
-    private Long patientId;
-    private Long doctorId;
+    private String doctorFirstName;
+    private String doctorLastName;
+    private String patientFirstName;
+    private String patientLastName;
+    private String patientPesel;
     private String symptoms;
     private LocalDate dateOfVisit;
     private String noteDoctor;
