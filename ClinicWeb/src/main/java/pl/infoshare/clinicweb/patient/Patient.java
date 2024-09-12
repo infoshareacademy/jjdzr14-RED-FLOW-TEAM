@@ -15,15 +15,17 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Embedded
     private PersonDetails personDetails;
+
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
+
     @ManyToOne
     private Clinic clinic;
-    @ManyToOne
-    private Doctor doctor;
+
     @Embedded
     private Address address;
-
-
-
 }

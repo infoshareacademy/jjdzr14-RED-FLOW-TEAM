@@ -30,8 +30,7 @@ public class Visit {
     private Patient patient;
     @ManyToOne
     private Doctor doctor;
-    @Embedded
-    private List<Medicines> medicines;
+//    private List<Medicines> medicines;
     private UUID numberOfVisits = UUID.randomUUID();
     private boolean cancelVisit;
 
