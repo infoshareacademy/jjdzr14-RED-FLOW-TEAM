@@ -1,4 +1,4 @@
-package pl.infoshare.patientCard;
+package pl.infoshare.clinicweb.patientCard;
 
 import jakarta.persistence.*;
 import lombok.Data;
