@@ -25,7 +25,7 @@ public class PatientCardService {
 
     public Optional<PatientCardDTO> findById(Long id) {
         return patientCardRepository
-                .findAll()
+                .findById(id)
                 .stream()
                 .map(patientCardMapper::toDto)
                 .findFirst()
