@@ -32,18 +32,13 @@ public class PatientCardService {
                 .orElseThrow(()
                         -> new EntityNotFoundException(String.format("Patient card not found %s", id)));
     }
-
-    public void patientCardUpdate(PatientCardDTO patientCardDTO) {
+    public void patientCardSave(PatientCardDTO patientCardDTO) {
         PatientCard patientCard = patientCardMapper.toEntity(patientCardDTO);
         patientCardRepository.save(patientCard);
     }
 
     public void patientCardDelete(Long id) {
         patientCardRepository.findById(id).ifPresent(patientCardRepository::delete);
-    }
-
-    public void addPatientCard(PatientCardDTO patientCardDTO) {
-        PatientCard patientCard = patientCardMapper.toEntity(patientCardDTO);
     }
 }
 
