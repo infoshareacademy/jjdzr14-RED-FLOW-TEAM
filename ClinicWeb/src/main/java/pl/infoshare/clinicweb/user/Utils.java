@@ -1,5 +1,9 @@
 package pl.infoshare.clinicweb.user;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 public class Utils {
 
     public static boolean hasPeselCorrectDigits(String pesel) {
@@ -17,5 +21,15 @@ public class Utils {
         int calculatedDigits = 10 - modulo;
 
         return modulo == 0 || calculatedDigits == checkDigit;
+    }
+
+    public static <T> List<T> convertOptionalToList (List<Optional<T>> optionalList) {
+
+        return optionalList.stream()
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+
+
     }
 }

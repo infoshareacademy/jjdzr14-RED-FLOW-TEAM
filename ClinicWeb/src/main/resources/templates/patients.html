@@ -50,13 +50,13 @@
                 <td th:text="${patient.phoneNumber}">Numer telefonu</td>
                 <td th:text="${patient.pesel}">PESEL</td>
                 <td>
-                    <a th:href="@{/update-patient(pesel=${patient.pesel})}"
+                    <a th:href="@{/update-patient(id=${patient.id})}"
                        class="btn btn-primary btn-sm" role="button">Pokaż i edytuj dane</a>
                 </td>
                 <td>
                     <form th:action="@{/delete-patient}" method="post"
                           onsubmit="return confirm('czy chcesz usunąć danego pacjenta??');">
-                        <input type="hidden" value="DELETE" name="pesel" th:value="${patient.pesel}">
+                        <input type="hidden" value="DELETE" name="id" th:value="${patient.id}">
                         <button type="submit" class="btn btn-danger btn-sm">Usuń </button>
                     </form>
                 </td>

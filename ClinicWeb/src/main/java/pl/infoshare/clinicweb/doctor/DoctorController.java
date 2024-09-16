@@ -24,10 +24,9 @@ public class DoctorController {
     @RequestMapping("/doctors")
     public String viewDoctors(Model model, @RequestParam(required = false, value = "specialization") Specialization specialization) {
 
-        List<Optional<DoctorDto>> doctors;
+        List<DoctorDto> doctors;
 
-        doctors = specialization == null ?
-                doctorService.findAllDoctors() : doctorService.findDoctorBySpecialization(specialization);
+        doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
 
         model.addAttribute("listDoctor", doctors);
 
@@ -90,9 +89,9 @@ public class DoctorController {
     }
 
     @GetMapping("/update-doctor")
-    public String fullDetailDoctor(@RequestParam(value = "id", required = false) Long id, Model model) {
+    public String fullDetailDoctor(@RequestParam(value = "id") Long id, Model model) {
 
-        model.addAttribute("updateDoctor", doctorService.findById(id));
+        model.addAttribute("doctor", doctorService.findById(id).get());
 
         return "update-doctor";
     }

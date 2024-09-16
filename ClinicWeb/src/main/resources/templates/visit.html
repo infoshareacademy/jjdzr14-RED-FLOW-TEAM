@@ -37,8 +37,8 @@
                                 oninput="setCustomValidity('')">
                             <option value="" selected>----WYBIERZ PACJENTA----</option>
                             <option th:each="patient : ${patients}"
-                                    th:value="${patient.personDetails.pesel}"
-                                    th:text="${patient.personDetails.name + ' ' + patient.personDetails.surname + '  Pesel: ' + patient.personDetails.pesel} "></option>
+                                    th:value="${patient.pesel}"
+                                    th:text="${patient.name + ' ' + patient.surname + '  Pesel: ' + patient.pesel} "></option>
 
                         </select>
                     </div>
@@ -57,8 +57,8 @@
                                 oninput="setCustomValidity('')">
                             <option value="" selected>----WYBIERZ LEKARZA----</option>
                             <option th:each="doctor : ${doctors}"
-                                    th:value="${doctor.personDetails.pesel}"
-                                    th:text="${doctor.personDetails.name + ' ' + doctor.personDetails.surname + ' ' + doctor.specialization} "></option>
+                                    th:value="${doctor.pesel}"
+                                    th:text="${doctor.name + ' ' + doctor.surname + ' ' + doctor.specialization} "></option>
 
                         </select>
                     </div>

@@ -5,15 +5,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.Utils;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -64,7 +62,9 @@ public class PatientController {
     @GetMapping("/patients")
     public String viewPatients(Model model) {
 
-        model.addAttribute("listPatient", patientService.findAllPatients());
+        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+
+        model.addAttribute("listPatient", patients);
 
         return "patients";
     }
@@ -77,7 +77,7 @@ public class PatientController {
     }
 
     @PostMapping("/search")
-    public String searchPatient(@RequestParam("id") Long id, Model model, Address address) {
+    public String searchPatient(@PathVariable("id") Long id, Model model, Address address) {
 
         Optional<PatientDto> patient = patientService.findById(id);
         if (patient != null) {
@@ -104,7 +104,10 @@ public class PatientController {
     public String fullDetailPatient(@RequestParam(value = "id", required = false)
                                     @ModelAttribute Long id,
                                     Model model) {
-        model.addAttribute("updatePatient", patientService.findById(id));
+
+        model.addAttribute("patient", patientService.findById(id).get());
+
+
         return "update-patient";
     }
 
