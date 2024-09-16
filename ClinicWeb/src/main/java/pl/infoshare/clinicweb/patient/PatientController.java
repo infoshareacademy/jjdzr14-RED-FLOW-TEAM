@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.Utils;
@@ -25,9 +26,11 @@ public class PatientController {
     @GetMapping("/patient")
     public String patientForm(Model model) {
 
+        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+
         model.addAttribute("personDetails", new PersonDetails());
         model.addAttribute("address", new Address());
-        model.addAttribute("doctors", doctorService.findAllDoctors());
+        model.addAttribute("doctors", doctors);
 
         return "patient";
     }
@@ -39,7 +42,9 @@ public class PatientController {
                                         @RequestParam("pesel") String pesel,
                                         Model model, RedirectAttributes redirectAttributes) {
 
-        model.addAttribute("doctors", doctorService.findAllDoctors());
+        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+
+        model.addAttribute("doctors", doctors);
 
         if (detailsBinding.hasErrors() || addressBinding.hasErrors() || !Utils.hasPeselCorrectDigits(pesel)) {
 
