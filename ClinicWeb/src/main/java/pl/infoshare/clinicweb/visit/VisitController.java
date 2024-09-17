@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.Doctor;
+import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
+import pl.infoshare.clinicweb.patient.PatientDto;
 import pl.infoshare.clinicweb.patient.PatientService;
+import pl.infoshare.clinicweb.user.Utils;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -42,8 +46,11 @@ public class VisitController {
     public String saveVisit(@ModelAttribute("patient") Patient patient,
                             @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") Doctor doctor, Model model) {
 
-        model.addAttribute("doctors", doctorService.findAllDoctors());
-        model.addAttribute("patients", patientService.findAllPatients());
+        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+
+        model.addAttribute("doctors", doctors);
+        model.addAttribute("patients", patients);
 
         return "visit";
     }
@@ -54,8 +61,11 @@ public class VisitController {
                                       @RequestParam(value = "doctorId", required = false) Long doctorId,
                                       Model model, RedirectAttributes redirectAttributes) {
 
-        model.addAttribute("doctors", doctorService.findAllDoctors());
-        model.addAttribute("patients", patientService.findAllPatients());
+        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+
+        model.addAttribute("doctors", doctors);
+        model.addAttribute("patients", patients);
 
 
         if (visitBindingResult.hasErrors()) {

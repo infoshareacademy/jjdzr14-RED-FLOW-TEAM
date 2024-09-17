@@ -18,6 +18,12 @@ public class PatientMapper {
         patientDto.setSurname(patient.getPersonDetails().getSurname());
         patientDto.setPesel(patient.getPersonDetails().getPesel());
         patientDto.setPhoneNumber(patient.getPersonDetails().getPhoneNumber());
+        patientDto.setCountry(patient.getAddress().getCountry());
+        patientDto.setCity(patient.getAddress().getCity());
+        patientDto.setZipCode(patient.getAddress().getZipCode());
+        patientDto.setFlatNumber(patient.getAddress().getFlatNumber());
+        patientDto.setHouseNumber(patient.getAddress().getHouseNumber());
+        patientDto.setStreet(patient.getAddress().getStreet());
 
         return Optional.of(patientDto);
 
@@ -31,6 +37,12 @@ public class PatientMapper {
         patient.getPersonDetails().setSurname(patientDto.getSurname());
         patient.getPersonDetails().setPesel(patientDto.getPesel());
         patient.getPersonDetails().setPhoneNumber(patientDto.getPhoneNumber());
+        patient.getAddress().setCountry(patientDto.getCountry());
+        patient.getAddress().setCity(patientDto.getCity());
+        patient.getAddress().setZipCode(patientDto.getZipCode());
+        patient.getAddress().setFlatNumber(patientDto.getFlatNumber());
+        patient.getAddress().setHouseNumber(patientDto.getHouseNumber());
+        patient.getAddress().setStreet(patientDto.getStreet());
 
         return patient;
 

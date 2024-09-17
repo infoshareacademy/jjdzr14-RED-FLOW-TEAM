@@ -10,6 +10,12 @@ public class PatientDto {
     private String surname;
     private String phoneNumber;
     private String pesel;
+    private String country;
+    private String street;
+    private String city;
+    private String zipCode;
+    private String houseNumber;
+    private String flatNumber;
 
 
 }

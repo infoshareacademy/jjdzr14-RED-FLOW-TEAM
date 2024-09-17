@@ -21,49 +21,49 @@
         <div th:if="${error != null}" class="mt-4 alert alert-danger" role="alert">
             <p th:text="${error}">Błąd</p>
         </div>
-        <form th:action="@{/update-patient}" th:method="post" th:object="${updatePatient}">
+        <form th:action="@{/update-patient}" th:method="post" th:object="${patient}">
             <div class="row">
                 <div class="col">
                     <div class="form-group">
                         <label for="pesel" class="form-label">PESEL:</label>
-                        <input type="hidden" class="form-control" id="pesel" th:field="*{personDetails.pesel}">
-                        <input type="text" class="form-control" id="peselDisabled" th:field="*{personDetails.pesel}"
+                        <input type="hidden" class="form-control" id="pesel" th:field="${patient.pesel}">
+                        <input type="text" class="form-control" id="peselDisabled" th:field="${patient.pesel}"
                                disabled>
                     </div>
                     <div class="form-group">
                         <label for="name" class="form-label">Imię:</label>
-                        <input type="text" class="form-control" id="name" th:field="*{personDetails.name}">
+                        <input type="text" class="form-control" id="name" th:field="${patient.name}">
                     </div>
                     <div class="form-group">
                         <label for="surname" class="form-label">Nazwisko:</label>
                         <input type="text" class="form-control" id="surname"
-                               th:field="*{personDetails.surname}">
+                               th:field="${patient.surname}">
                     </div>
                     <div class="form-group">
                         <label for="country" class="form-label">Państwo:</label>
-                        <input type="text" class="form-control" id="country" th:field="*{address.country}">
+                        <input type="text" class="form-control" id="country" th:field="${patient.country}">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="city" class="form-label">Miasto:</label>
                         <input type="text" class="form-control" id="city"
-                               th:field="*{address.city}">
+                               th:field="${patient.city}">
                     </div>
                     <div class="form-group">
                         <label for="street" class="form-label">Ulica:</label>
                         <input type="text" class="form-control" id="street"
-                               th:field="*{address.street}">
+                               th:field="${patient.street}">
                     </div>
                     <div class="form-group">
                         <label for="houseNumber" class="form-label">Numer domu:</label>
                         <input type="text" class="form-control" id="houseNumber"
-                               th:field="*{address.houseNumber}">
+                               th:field="${patient.houseNumber}">
                     </div>
                     <div class="form-group">
                         <label for="flatNumber" class="form-label">Numer mieszkania:</label>
                         <input type="text" class="form-control" id="flatNumber"
-                               th:field="*{address.flatNumber}">
+                               th:field="${patient.flatNumber}">
                     </div>
                 </div>
             </div>
