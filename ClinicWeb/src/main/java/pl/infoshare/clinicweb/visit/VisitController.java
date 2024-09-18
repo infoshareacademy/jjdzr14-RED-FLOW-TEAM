@@ -43,47 +43,44 @@ public class VisitController {
     }
 
     @GetMapping("/visit")
-    public String saveVisit(@ModelAttribute("patient") Patient patient,
-                            @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") Doctor doctor, Model model) {
-
+    public String showVisitForm(Model model) {
         List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
         List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
 
+
         model.addAttribute("doctors", doctors);
         model.addAttribute("patients", patients);
+        model.addAttribute("visit", new Visit());
 
         return "visit";
     }
 
     @PostMapping("/visit")
-    public String visitFormSubmission(@Valid Visit visit, BindingResult visitBindingResult,
-                                      @RequestParam(value = "patientId", required = false) Long patientId,
-                                      @RequestParam(value = "doctorId", required = false) Long doctorId,
-                                      Model model, RedirectAttributes redirectAttributes) {
-
-        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
-        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
-
-        model.addAttribute("doctors", doctors);
-        model.addAttribute("patients", patients);
-
+    public String handleVisitSubmission(@Valid @ModelAttribute("visit") Visit visit, BindingResult visitBindingResult,
+                                        @RequestParam(value = "patientId", required = false) Long patientId,
+                                        @RequestParam(value = "doctorId", required = false) Long doctorId,
+                                        Model model, RedirectAttributes redirectAttributes) {
 
         if (visitBindingResult.hasErrors()) {
+            List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+            List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+
+
+            model.addAttribute("doctors", doctors);
+            model.addAttribute("patients", patients);
+           model.addAttribute("visit", new Visit());
 
             return "visit";
-
-        } else {
-
-            redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. " +
-                    "Dziękujemy za rejestrację!");
-
-
-            visitService.saveVisit(visit, doctorId, patientId);
-
-            return "redirect:/visit";
         }
 
+
+        visitService.saveVisit(visit, doctorId, patientId);
+
+        redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. Dziękujemy za rejestrację!");
+
+        return "redirect:/visit";
     }
+
 
     @GetMapping("/visits")
     public String allVisits(Model model) {

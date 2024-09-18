@@ -13,6 +13,7 @@ import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @AllArgsConstructor
@@ -75,11 +76,11 @@ public class DoctorController {
     }
 
     @PostMapping("/search-doctor")
-    public String searchDoctorByPesel(@RequestParam(value = "id", required = false) Long id, Model model) {
+    public String searchDoctorByPesel(@RequestParam(value = "id", required = false) long id, Model model) {
 
         Optional <DoctorDto> doctorById = doctorService.findById(id);
 
-        if (doctorService.findById(id) != null) {
+        if (doctorService.findById(id).isPresent()) {
 
             model.addAttribute("searchForId", doctorById);
         } else {
@@ -89,7 +90,7 @@ public class DoctorController {
     }
 
     @GetMapping("/update-doctor")
-    public String fullDetailDoctor(@RequestParam(value = "id") Long id, Model model) {
+    public String fullDetailDoctor(@RequestParam(value = "id") long id, Model model) {
 
         model.addAttribute("doctor", doctorService.findById(id).get());
 
@@ -109,7 +110,7 @@ public class DoctorController {
     }
 
     @GetMapping("/delete-doctor")
-    public String showDeleteDoctorForm(@RequestParam("id") Long id, Model model) {
+    public String showDeleteDoctorForm(@RequestParam("id") long id, Model model) {
 
         Optional<DoctorDto> doctorById = doctorService.findById(id);
         model.addAttribute("doctor", doctorById);
@@ -118,7 +119,7 @@ public class DoctorController {
     }
 
     @PostMapping("/delete-doctor")
-    public String deleteDoctor(@RequestParam("id") Long id, RedirectAttributes redirectAttributes) {
+    public String deleteDoctor(@RequestParam("id") long id, RedirectAttributes redirectAttributes) {
 
         Optional<DoctorDto> doctorById = doctorService.findById(id);
 

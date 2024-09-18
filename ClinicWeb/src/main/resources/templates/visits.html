@@ -41,8 +41,8 @@
                 <td th:text="${visits.patient.personDetails.name}">Imię</td>
                 <td th:text="${visits.patient.personDetails.surname}">Nazwisko</td>
                 <td th:text="${visits.patient.personDetails.pesel}">Pesel</td>
-                <td th:text="${visits.doctor.name}">Imię</td>
-                <td th:text="${visits.doctor.surname}">Nazwisko</td>
+                <td th:text="${visits.doctor.getDetails().name}">Imię</td>
+                <td th:text="${visits.doctor.getDetails().surname}">Nazwisko</td>
                 <td th:text="${visits.doctor.specialization}">Specjalizacja</td>
                 <td th:text="${visits.visitDate.toLocalDate()}"> ">Data wizyty</td>
                 <td th:text="${visits.visitDate.toLocalTime()}"> ">Godzina wizyty</td>

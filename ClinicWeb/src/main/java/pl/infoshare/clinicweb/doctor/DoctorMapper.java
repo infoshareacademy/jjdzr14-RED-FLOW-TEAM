@@ -1,6 +1,8 @@
 package pl.infoshare.clinicweb.doctor;
 
 import org.springframework.stereotype.Component;
+import pl.infoshare.clinicweb.patient.Address;
+import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.util.Optional;
 
@@ -32,10 +34,12 @@ public class DoctorMapper {
         Doctor doctor = new Doctor();
 
         doctor.setId(doctorDto.getId());
+        doctor.setDetails(new PersonDetails());
         doctor.getDetails().setPesel(doctorDto.getPesel());
         doctor.getDetails().setName(doctorDto.getName());
         doctor.getDetails().setSurname(doctorDto.getSurname());
         doctor.setSpecialization(doctorDto.getSpecialization());
+        doctor.setAddress(new Address());
         doctor.getAddress().setCountry(doctorDto.getCountry());
         doctor.getAddress().setCity(doctorDto.getCity());
         doctor.getAddress().setZipCode(doctorDto.getZipCode());

@@ -2,6 +2,7 @@ package pl.infoshare.clinicweb.doctor;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.user.PersonDetails;
@@ -24,7 +25,8 @@ public class DoctorService {
 
     public Optional<DoctorDto> findById(long id) {
 
-        return doctorRepository.findById(id)
+        return doctorRepository
+                .findById(id)
                 .stream()
                 .map(doctorMapper::toDto)
                 .findFirst()

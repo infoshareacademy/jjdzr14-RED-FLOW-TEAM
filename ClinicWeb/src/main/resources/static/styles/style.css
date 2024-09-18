@@ -1,5 +1,5 @@
 html, body {
-    height: 99%;
+    height: 100%;
     margin: 0;
 }
 
@@ -12,6 +12,17 @@ body {
     min-height: 100vh;
 
 }
+
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
 
 .container-fluid {
     flex: 1;
@@ -33,30 +44,34 @@ body {
 
 .navbar-nav .nav-link {
     color: white;
+
     :hover none;
 
 }
-
 footer {
-    background: rgba(0, 0, 0, 0.8);
+    background-color: #f8f9fa;
+    padding: 10px 0;
     text-align: center;
-    padding: 10px 5px;
+    position: relative;
     width: 100%;
-    position: absolute;
-    bottom: 0;
 }
-.btn-secondary{
-    margin-top: 10px;
-    width: 50%;
-}.btn-primary{
+
+.btn-secondary {
     margin-top: 10px;
     width: 50%;
 }
+
+.btn-primary {
+    margin-top: 10px;
+    width: 50%;
+}
+
 .navbar-custom {
     background-color: #000000;
     width: 100%;
 
 }
+
 .navbar-nav .nav-link:hover {
     color: red;
 }

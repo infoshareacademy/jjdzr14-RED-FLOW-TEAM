@@ -29,17 +29,27 @@ public class VisitService {
     private final PatientMapper patientMapper;
 
     public void saveVisit(Visit visit, Long doctorId, Long patientId) {
+            if (doctorId == null || patientId == null) {
+                throw new IllegalArgumentException("Doctor ID and Patient ID cannot be null");
+            }
 
-        DoctorDto doctorDto = doctorService.findById(doctorId).get();
-        PatientDto patientDto = patientService.findById(patientId).get();
 
-        Doctor doctor = doctorMapper.toEntity(doctorDto);
-        Patient patient = patientMapper.toEntity(patientDto);
-        visit.setDoctor(doctor);
-        visit.setPatient(patient);
+          DoctorDto doctor = doctorService.findById(doctorId)
+                    .orElseThrow(() -> new EntityNotFoundException("Doctor not found with id: " + doctorId));
+            Doctor entityDoctor = doctorMapper.toEntity(doctor);
 
-        visitRepository.save(visit);
-    }
+
+            PatientDto patient = patientService.findById(patientId)
+                    .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + patientId));
+
+
+            Patient entityPatient = patientMapper.toEntity(patient);
+            visit.setDoctor(entityDoctor);
+            visit.setPatient(entityPatient);
+
+
+            visitRepository.save(visit);
+        }
 
     public void updateVisit(VisitDto visitDto) {
 

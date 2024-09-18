@@ -22,47 +22,38 @@
 
             <form th:action="@{/visit}" th:method="post" th:object="${visit}">
 
-                <div th:object="${patient}">
 
-                    <div class="mb-3">
-                        <label class="form-label">Wybierz pacjenta:</label>
-
-                        <select id="patientPesel"
-                                name="patientPesel"
-                                class="btn btn-primary btn-block"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                required
-                                oninvalid="setCustomValidity('Wybierz pacjenta')"
-                                oninput="setCustomValidity('')">
-                            <option value="" selected>----WYBIERZ PACJENTA----</option>
-                            <option th:each="patient : ${patients}"
-                                    th:value="${patient.pesel}"
-                                    th:text="${patient.name + ' ' + patient.surname + '  Pesel: ' + patient.pesel} "></option>
-
-                        </select>
-                    </div>
-
-
-                    <div class="mb-3">
-                        <label class="form-label">Do jakiego lekarza chcesz sie zapisać?</label>
-
-                        <select id="doctorPesel"
-                                name="doctorPesel"
-                                class="btn btn-primary btn-block"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                required
-                                oninvalid="setCustomValidity('Wybierz lekarza')"
-                                oninput="setCustomValidity('')">
-                            <option value="" selected>----WYBIERZ LEKARZA----</option>
-                            <option th:each="doctor : ${doctors}"
-                                    th:value="${doctor.pesel}"
-                                    th:text="${doctor.name + ' ' + doctor.surname + ' ' + doctor.specialization} "></option>
-
-                        </select>
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label">Wybierz pacjenta:</label>
+                    <select id="patientId"
+                            name="patientId"
+                            class="btn btn-primary btn-block"
+                            required
+                            oninvalid="setCustomValidity('Wybierz pacjenta')"
+                            oninput="setCustomValidity('')">
+                        <option value="" selected>----WYBIERZ PACJENTA----</option>
+                        <option th:each="patient : ${patients}"
+                                th:value="${patient.id}"
+                        th:text="${patient.name + ' ' + patient.surname + '  Pesel: ' + patient.pesel}"></option>
+                    </select>
                 </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Do jakiego lekarza chcesz się zapisać?</label>
+                    <select id="doctorId"
+                            name="doctorId"
+                            class="btn btn-primary btn-block"
+                            required
+                            oninvalid="setCustomValidity('Wybierz lekarza')"
+                            oninput="setCustomValidity('')">
+                        <option value="" selected>----WYBIERZ LEKARZA----</option>
+                        <option th:each="doctor : ${doctors}"
+                                th:value="${doctor.id}"
+                        th:text="${doctor.name + ' ' + doctor.surname + ' ' + doctor.specialization}"></option>
+                    </select>
+                </div>
+
 
                 <label>Data wizyty</label>
                 <div class="form-group">
@@ -73,8 +64,8 @@
                        th:errors="*{visitDate}">Date error</p>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Zarejestruj się</button>
 
+                <button type="submit" class="btn btn-primary">Zarejestruj się</button>
             </form>
             <div th:align="center" th:if="${success}" class="mt-4 alert alert-success" role="alert">
                 <p th:text="${success}">Sukces</p>
