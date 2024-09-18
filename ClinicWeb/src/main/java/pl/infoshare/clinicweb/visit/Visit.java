@@ -20,7 +20,7 @@ import java.util.UUID;
 public class Visit {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull(message = "Pole data nie moze byc puste. ")
     @FutureOrPresent(message = "Wybierz datę z przyszłości. ")

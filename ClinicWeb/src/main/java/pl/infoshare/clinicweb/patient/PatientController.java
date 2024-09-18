@@ -11,6 +11,7 @@ import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.Utils;
+import pl.infoshare.clinicweb.visit.VisitService;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +23,7 @@ public class PatientController {
     private final PatientService patientService;
 
     private final DoctorService doctorService;
-
+private final VisitService visitService;
     @GetMapping("/patient")
     public String patientForm(Model model) {
 

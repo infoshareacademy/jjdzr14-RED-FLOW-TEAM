@@ -12,13 +12,6 @@ public class ClinicWebApplication {
 
     public static void main(String[] args) {
 
-        ApplicationContext context = SpringApplication.run(ClinicWebApplication.class, args);
-
-
-        DoctorService doctorService = context.getBean(DoctorService.class);
-
-
-        System.out.println(doctorService.findById(1));
-
+        SpringApplication.run(ClinicWebApplication.class, args);
     }
 }
