@@ -2,7 +2,7 @@ package pl.infoshare.clinicweb.patientCard;
 
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 public class PatientCardDTO {
@@ -13,7 +13,7 @@ public class PatientCardDTO {
     private String patientFirstName;
     private String patientLastName;
     private String symptoms;
-    private LocalDate dateOfVisit;
+    private LocalDateTime dateOfVisit;
     private String noteDoctor;
     private String noteMedicalHistory;
     private String diagnosis;

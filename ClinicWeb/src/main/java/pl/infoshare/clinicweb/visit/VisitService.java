@@ -67,9 +67,7 @@ public class VisitService {
     public void cancelVisit(VisitDto visitDto) {
 
         Visit visit = visitMapper.toEntity(visitDto);
-
         visit.setCancelVisit(true);
-
         visitRepository.save(visit);
     }
 

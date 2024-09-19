@@ -23,7 +23,7 @@ public class PatientController {
     private final PatientService patientService;
 
     private final DoctorService doctorService;
-private final VisitService visitService;
+
     @GetMapping("/patient")
     public String patientForm(Model model) {
 
@@ -151,7 +151,7 @@ private final VisitService visitService;
     @GetMapping("/delete-patient")
     public String showDeletePatientForm(@RequestParam("id") Long id, Model model) {
 
-        Optional <PatientDto> patientById = patientService.findById(id);
+        Optional<PatientDto> patientById = patientService.findById(id);
         model.addAttribute("patient", patientById);
 
         return "delete-patient";

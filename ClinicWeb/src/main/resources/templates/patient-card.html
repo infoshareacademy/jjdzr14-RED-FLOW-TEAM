@@ -103,19 +103,21 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="patientName" class="form-label">Imię</label>
-                        <input type="text" class="form-control" id="patientName" placeholder="Wprowadź imię">
+                        <input type="text" class="form-control" id="patientName"
+                               th:field="${patientCard.patient.personDetails.name}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="patientSurname" class="form-label">Nazwisko</label>
-                        <input type="text" class="form-control" id="patientSurname" placeholder="Wprowadź nazwisko">
+                        <input type="text" class="form-control" id="patientSurname"
+                               th:field="${patientCard.patient.personDetails.surname}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="pesel" class="form-label">Pesel</label>
-                        <input type="text" class="form-control" id="pesel" placeholder="Wprowadź PESEL">
+                        <input type="text" class="form-control" id="pesel" th:field="${patientCard.patient.personDetails.pesel}">
                     </div>
                 </div>
 
@@ -124,38 +126,42 @@
             <div class="row mb-6">
                 <div class="col-md-6">
                     <div class="form-group">
-                <label for="visitDate" class="form-label">Data wizyty</label>
-                <input type="date" class="form-control" id="visitDate">
-            </div>
+                        <label for="visitDate" class="form-label">Data wizyty</label>
+                        <input type="date" class="form-control" id="visitDate" th:value="${#temporals.format(currentDateTime, 'yyyy-MM-dd')}">
+                    </div>
+
                 </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                        <label for="patientName" class="form-label">Godzna wizyty</label>
-                        <input type="text" class="form-control" id="patientName2" placeholder="Wprowadź godzinę">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="visitTime" class="form-label">Godzna wizyty</label>
+                        <input type="time" class="form-control" id="visitTime" th:value="${#temporals.format(currentDateTime.toLocalTime(), 'HH:mm:ss')}">
                     </div>
                 </div>
-            <div class="form-group mb-3">
-                <label for="visitReason" class="form-label">Objawy</label>
-                <textarea class="form-control" id="visitReason" rows="2" placeholder="Wprowadź powód wizyty"></textarea>
-            </div>
-            <div class="form-group mb-3">
-                <label for="doctorNotes" class="form-label">Notatki lekarza</label>
-                <textarea class="form-control" id="doctorNotes" rows="4" placeholder="Wprowadź notatki lekarza"></textarea>
-            </div>
-            <div class="form-group mb-3">
-                <label for="diagnosis" class="form-label">Diagnoza</label>
-                <textarea class="form-control" id="diagnosis" rows="2" placeholder="Wprowadź diagnozę"></textarea>
-            </div>
-            <div class="form-group mb-4">
-                <label for="treatment" class="form-label">Zalecane leczenie</label>
-                <textarea class="form-control" id="treatment" rows="2" placeholder="Wprowadź zalecane leczenie"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Zapisz</button>
+                <div class="form-group mb-3">
+                    <label for="visitReason" class="form-label">Objawy</label>
+                    <textarea class="form-control" id="visitReason" rows="2"
+                              placeholder="Wprowadź powód wizyty"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="doctorNotes" class="form-label">Notatki lekarza</label>
+                    <textarea class="form-control" id="doctorNotes" rows="4"
+                              placeholder="Wprowadź notatki lekarza"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="diagnosis" class="form-label">Diagnoza</label>
+                    <textarea class="form-control" id="diagnosis" rows="2" placeholder="Wprowadź diagnozę"></textarea>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="treatment" class="form-label">Zalecane leczenie</label>
+                    <textarea class="form-control" id="treatment" rows="2"
+                              placeholder="Wprowadź zalecane leczenie"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Zapisz</button>
             </div>
         </form>
     </div>
 </div>
-<footer >
+<footer>
     <div th:replace="~{fragments/footer :: footer}"></div>
 </footer>
 

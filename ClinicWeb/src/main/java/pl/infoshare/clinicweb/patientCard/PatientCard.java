@@ -7,6 +7,7 @@ import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -20,7 +21,7 @@ public class PatientCard {
     private Doctor doctor;
     private PersonDetails personDetails;
     private String symptoms;
-    private LocalDate dateOfVisit;
+    private LocalDateTime dateOfVisit;
     private String noteDoctor;
     private String noteMedicalHistory;
     private String diagnosis;
