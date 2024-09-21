@@ -2,6 +2,7 @@ package pl.infoshare.clinicweb.doctor;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,16 +22,26 @@ public class DoctorController {
     private final DoctorService doctorService;
 
 
-    @RequestMapping("/doctors")
-    public String viewDoctors(Model model, @RequestParam(required = false, value = "specialization") Specialization specialization) {
+    @GetMapping("/doctors")
+    public String getAllPages(Model model) {
 
-        List<DoctorDto> doctors;
+        return getOnePage(model, 1);
+    }
 
-        doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+    @GetMapping("/doctors/page/{pageNumber}")
+    public String getOnePage(Model model, @PathVariable("pageNumber") int currentPage) {
+
+        Page<DoctorDto> page = doctorService.findPage(currentPage);
+        int totalPages = page.getTotalPages();
+        long totalElements = page.getTotalElements();
+        List<DoctorDto> doctors = page.getContent();
 
         model.addAttribute("listDoctor", doctors);
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
 
-        return "doctorsList";
+        return "doctors";
     }
 
     @GetMapping("/doctor")
@@ -77,7 +88,7 @@ public class DoctorController {
     @PostMapping("/search-doctor")
     public String searchDoctorByPesel(@RequestParam(value = "id", required = false) Long id, Model model) {
 
-        Optional <DoctorDto> doctorById = doctorService.findById(id);
+        Optional<DoctorDto> doctorById = doctorService.findById(id);
 
         if (doctorService.findById(id) != null) {
 

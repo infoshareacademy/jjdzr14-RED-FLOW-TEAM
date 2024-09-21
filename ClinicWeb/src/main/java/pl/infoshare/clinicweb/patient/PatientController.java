@@ -2,6 +2,8 @@ package pl.infoshare.clinicweb.patient;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +24,8 @@ public class PatientController {
     private final PatientService patientService;
 
     private final DoctorService doctorService;
+    private final PatientRepository patientRepository;
+    private final PatientMapper patientMapper;
 
     @GetMapping("/patient")
     public String patientForm(Model model) {
@@ -65,11 +69,24 @@ public class PatientController {
     }
 
     @GetMapping("/patients")
-    public String viewPatients(Model model) {
+    public String getAllPages(Model model) {
 
-        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+        return getOnePage(model, 1);
+    }
+
+    @GetMapping(path="/patients/page/{pageNumber}")
+
+    public String getOnePage(Model model, @PathVariable("pageNumber") int currentPage) {
+
+        Page<PatientDto> page = patientService.findPage(currentPage);
+        int totalPages = page.getTotalPages();
+        long totalElements = page.getTotalElements();
+        List<PatientDto> patients = page.getContent();
 
         model.addAttribute("listPatient", patients);
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
 
         return "patients";
     }

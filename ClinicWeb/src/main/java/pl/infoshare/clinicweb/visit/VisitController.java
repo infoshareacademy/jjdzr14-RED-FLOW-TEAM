@@ -1,13 +1,11 @@
 package pl.infoshare.clinicweb.visit;
 
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
@@ -86,10 +84,27 @@ public class VisitController {
     }
 
     @GetMapping("/visits")
-    public String allVisits(Model model) {
-        model.addAttribute("allVisits", visitService.getAllVisits());
-        return "visits";
+    public String getAllPages(Model model) {
+
+        return getOnePage(model, 1);
     }
+
+    @GetMapping("/visits/page/{pageNumber}")
+    public String getOnePage(Model model, @PathVariable("pageNumber") int currentPage) {
+
+        Page<VisitDto> page = visitService.findPage(currentPage);
+        int totalPages = page.getTotalPages();
+        long totalElements = page.getTotalElements();
+        List<VisitDto> visits = page.getContent();
+
+        model.addAttribute("allVisits", visits);
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
+
+        return "patients";
+    }
+
 
     @PostMapping("/cancel")
     public String cancelVisit(@RequestParam("id") Long id, Model model) {

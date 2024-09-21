@@ -2,6 +2,9 @@ package pl.infoshare.clinicweb.visit;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.doctor.Doctor;
@@ -52,6 +55,22 @@ public class VisitService {
 
         return visitRepository.findAll(Sort.by(Sort.Direction.DESC, "visitDate"));
 
+    }
+
+    public Page<VisitDto> findPage(int pageNumber) {
+
+        final int pageSize = 10;
+
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.by("id"));
+        Page<Visit> entities = visitRepository.findAll(pageable);
+
+        Page<VisitDto> visits = entities.map(visit -> {
+            VisitDto visitDto = visitMapper.toVisitDto(visit).get();
+
+            return visitDto;
+        });
+
+        return visits;
     }
 
     public void cancelVisit(VisitDto visitDto) {
