@@ -32,3 +32,10 @@ VALUES('Adam','Nowak','606536999',95102826883, 'Zakopane', 'Litwa', 'Kijowa', 5,
 ('Madeleine','Wilk','785364221',05270135009, 'Poznań', 'Polska', 'Marka', 48, 366, '32-300', 'FEMALE','CHIRURGY', TRUE, TRUE),
 ('Marlo','Szydłowski','7673234212',35070390380, 'Kraków', 'Białoruś', 'Nurkowa', 81, 339, '30-599', 'FEMALE','ONCOLOGY', TRUE, TRUE);
 
+
+
+
+
+
+
+

@@ -5,7 +5,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
@@ -83,26 +86,30 @@ public class VisitController {
 
     }
 
-    @GetMapping("/visits")
-    public String getAllPages(Model model) {
+    @GetMapping(value = "/visits")
+    public String listVisits(Model model, @RequestParam("page") Optional<Integer> page) {
 
-        return getOnePage(model, 1);
-    }
+        final int currentPage = page.orElse(1);
 
-    @GetMapping("/visits/page/{pageNumber}")
-    public String getOnePage(Model model, @PathVariable("pageNumber") int currentPage) {
+        Page<VisitDto> visitDtoPage = visitService.findPage(currentPage);
 
-        Page<VisitDto> page = visitService.findPage(currentPage);
-        int totalPages = page.getTotalPages();
-        long totalElements = page.getTotalElements();
-        List<VisitDto> visits = page.getContent();
+        model.addAttribute("visitDtoPage", visitDtoPage);
 
-        model.addAttribute("allVisits", visits);
+        long totalElements = visitDtoPage.getTotalElements();
+        int totalPages = visitDtoPage.getTotalPages();
+        List<VisitDto> visits = visitDtoPage.getContent();
+
+        if (totalPages == 0) {
+            totalPages = 1;
+        }
+
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("totalElements", totalElements);
+        model.addAttribute("visits", visits);
 
-        return "patients";
+
+        return "visits";
     }
 
 

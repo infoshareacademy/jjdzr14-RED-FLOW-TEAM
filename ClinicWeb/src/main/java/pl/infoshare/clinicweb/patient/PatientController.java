@@ -3,7 +3,6 @@ package pl.infoshare.clinicweb.patient;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -68,25 +67,26 @@ public class PatientController {
 
     }
 
-    @GetMapping("/patients")
-    public String getAllPages(Model model) {
 
-        return getOnePage(model, 1);
-    }
+    @GetMapping(value = "/patients")
+    public String listDoctors(Model model, @RequestParam(value = "page") @ModelAttribute Optional<Integer> page) {
 
-    @GetMapping(path="/patients/page/{pageNumber}")
+        int currentPage = page.orElse(1);
 
-    public String getOnePage(Model model, @PathVariable("pageNumber") int currentPage) {
+        Page<PatientDto> patientPage = patientService.findPage(currentPage);
 
-        Page<PatientDto> page = patientService.findPage(currentPage);
-        int totalPages = page.getTotalPages();
-        long totalElements = page.getTotalElements();
-        List<PatientDto> patients = page.getContent();
+        long totalElements = patientPage.getTotalElements();
+        int totalPages = patientPage.getTotalPages();
+        List<PatientDto> patients = patientPage.getContent();
 
-        model.addAttribute("listPatient", patients);
+        if (totalPages == 0) {
+            totalPages = 1;
+        }
+
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("totalElements", totalElements);
+        model.addAttribute("listPatient", patients);
 
         return "patients";
     }
@@ -167,7 +167,7 @@ public class PatientController {
     @GetMapping("/delete-patient")
     public String showDeletePatientForm(@RequestParam("id") Long id, Model model) {
 
-        Optional <PatientDto> patientById = patientService.findById(id);
+        Optional<PatientDto> patientById = patientService.findById(id);
         model.addAttribute("patient", patientById);
 
         return "delete-patient";

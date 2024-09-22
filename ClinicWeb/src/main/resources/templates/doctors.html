@@ -62,33 +62,35 @@
         </table>
         <div>
             <nav>
-                Liczba rekordów: [[${totalElements}]]
-                Strona [[${currentPage}]] z [[${totalPages}]]
+                <div>Strona: [[${currentPage}]] z [[${totalPages}]]</div>
+                <div>Liczba wszystkich rekordów: [[${totalElements}]]</div>
+
                 <ul class="pagination">
                     <li class="page-item">
-                        <a class="page-link" th:if="${currentPage > 1}" th:href="@{/patients/page/1}">Pierwsza</a>
+                        <a class="page-link" th:if="${currentPage > 1}" th:href="@{/doctors(page=${currentPage})}">Pierwsza</a>
                         <span th:unless="${currentPage > 1}">Pierwsza</span>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/patients/page/' +${currentPage - 1}}">Poprzednia</a>
+                        <a class="page-link" th:if="${currentPage > 1}" th:href="@{/doctors(page=${currentPage - 1})}">Poprzednia</a>
                         <span th:unless="${currentPage > 1}">Poprzednia</span>
                     </li>
                     <li class="page-item">
-                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                    <a th:href="@{'/patients/page/' +${i}}">[[${i}]]</a>
+                <span th:each="currentPage: ${#numbers.sequence(1, totalPages)}">
+                    <a th:href="@{/doctors(page=${currentPage})}">[[${currentPage}]]</a>
                 </span>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/patients/page/' +${currentPage + 1}}">Następna</a>
+                        <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{/doctors(page=${currentPage + 1})}">Następna</a>
                         <span th:unless="${currentPage < totalPages}">Następna</span>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/patients/page/' +${totalPages}}">Ostatnia</a>
+                        <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{/doctors(page=${totalPages})}">Ostatnia</a>
                         <span th:unless="${currentPage < totalPages}">Ostatnia</span>
                     </li>
                 </ul>
             </nav>
         </div>
+
         <div th:align="center" th:if="${success != null}" class="mt-4 alert alert-success" role="alert">
             <p th:text="${success}">Sukces</p>
         </div>
