@@ -25,12 +25,13 @@ public class DoctorController {
     private final DoctorService doctorService;
 
     @GetMapping(value = "/doctors")
-    public String listDoctors(Model model, @RequestParam(value = "page") @ModelAttribute Optional<Integer> page) {
+    public String listDoctors(@RequestParam(required = false) Specialization specialization, Model model, @RequestParam(value = "page")
+                              @ModelAttribute Optional<Integer> page) {
 
         System.out.println(page);
         int currentPage = page.orElse(1);
 
-        Page<DoctorDto> doctorPage = doctorService.findPage(currentPage);
+        Page<DoctorDto> doctorPage = specialization == null? doctorService.findAllPage(currentPage) :doctorService.findDoctorBySpecialization(currentPage, specialization);
 
         long totalElements = doctorPage.getTotalElements();
         int totalPages = doctorPage.getTotalPages();

@@ -2,15 +2,11 @@ package pl.infoshare.clinicweb.doctor;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.patient.Address;
-import pl.infoshare.clinicweb.patient.Patient;
-import pl.infoshare.clinicweb.patient.PatientDto;
 import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
 import java.util.Optional;
@@ -46,7 +42,7 @@ public class DoctorService {
                 .collect(Collectors.toList());
     }
 
-    public Page<DoctorDto> findPage(int pageNumber) {
+    public Page<DoctorDto> findAllPage(int pageNumber) {
 
         final int pageSize = 10;
 
@@ -61,6 +57,7 @@ public class DoctorService {
 
         return doctors;
     }
+
 
     public void deleteDoctor(Long idDoctor) {
 
@@ -80,13 +77,20 @@ public class DoctorService {
     }
 
 
-    List<Optional<DoctorDto>> findDoctorBySpecialization(Specialization specialization) {
+    Page<DoctorDto> findDoctorBySpecialization(int pageNumber, Specialization specialization) {
 
-        return doctorRepository.findAll()
+        final int pageSize = 10;
+
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.by("id"));
+
+        List<Optional<DoctorDto>> doctorDtos = doctorRepository.findAll()
                 .stream()
                 .filter(doctor -> doctor.getSpecialization().equals(specialization))
                 .map(doctorMapper::toDto)
                 .collect(Collectors.toList());
+
+
+        return new PageImpl<>(Utils.convertOptionalToList(doctorDtos));
     }
 
     public void setDoctorAttributes(Doctor doctor, PersonDetails personDetails,
