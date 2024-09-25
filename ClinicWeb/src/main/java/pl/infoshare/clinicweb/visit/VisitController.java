@@ -20,6 +20,8 @@ import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 @Controller
@@ -98,6 +100,13 @@ public class VisitController {
         long totalElements = visitDtoPage.getTotalElements();
         int totalPages = visitDtoPage.getTotalPages();
         List<VisitDto> visits = visitDtoPage.getContent();
+
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
 
         if (totalPages == 0) {
             totalPages = 1;

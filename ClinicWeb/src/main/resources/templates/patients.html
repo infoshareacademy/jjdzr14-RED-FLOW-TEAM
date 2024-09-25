@@ -71,9 +71,9 @@
         </table>
         <div>
             <nav>
-                <div>Strona: [[${currentPage}]] z [[${totalPages}]]</div>
-                <div>Liczba wszystkich rekordów: [[${totalElements}]]</div>
-                <ul class="pagination">
+                <div th:align="center">Strona: [[${currentPage}]] z [[${totalPages}]]</div>
+                <div th:align="center">Liczba wszystkich rekordów: [[${totalElements}]]</div>
+                <ul class="pagination justify-content-center flex-wrap">
                     <li class="page-item">
                         <a class="page-link" th:if="${currentPage > 1}" th:href="@{/patients(page=${1})}">Pierwsza</a>
                         <span class="page-link" th:unless="${currentPage > 1}">Pierwsza</span>
@@ -83,9 +83,10 @@
                         <span class="page-link" th:unless="${currentPage > 1}">Poprzednia</span>
                     </li>
                     <li class="page-item">
-                <span th:each="currentPage: ${#numbers.sequence(1, totalPages)}">
-                    <a th:href="@{/patients(page=${currentPage})}">[[${currentPage}]]</a>
-                </span>
+                    <span  th:each="i : ${pageNumbers}">
+                    <a  th:href="@{/doctors(page=${i})}" th:text="${i}" ></a>
+                        <span th:if="${i < pageNumbers.size()}"> | </span>
+                    </span>
                     </li>
                     <li class="page-item">
                         <a class="page-link" th:if="${currentPage < totalPages}"

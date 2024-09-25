@@ -15,6 +15,8 @@ import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @RequiredArgsConstructor
 @Controller
@@ -78,6 +80,13 @@ public class PatientController {
         long totalElements = patientPage.getTotalElements();
         int totalPages = patientPage.getTotalPages();
         List<PatientDto> patients = patientPage.getContent();
+
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
 
         if (totalPages == 0) {
             totalPages = 1;

@@ -45,17 +45,19 @@ public class DoctorService {
     public Page<DoctorDto> findAllPage(int pageNumber) {
 
         final int pageSize = 10;
+        Page<DoctorDto> doctors;
 
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.by("id"));
         Page<Doctor> entities = doctorRepository.findAll(pageable);
 
-        Page<DoctorDto> doctors = entities.map(doctor -> {
-            DoctorDto doctorDto = doctorMapper.toDto(doctor).get();
 
-            return doctorDto;
-        });
+            doctors = entities.map(doctor -> {
+                DoctorDto doctorDto = doctorMapper.toDto(doctor).get();
 
-        return doctors;
+                return doctorDto;
+            });
+            return doctors;
+
     }
 
 
@@ -81,13 +83,15 @@ public class DoctorService {
 
         final int pageSize = 10;
 
-        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.by("id"));
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("id"));
 
         List<Optional<DoctorDto>> doctorDtos = doctorRepository.findAll()
                 .stream()
                 .filter(doctor -> doctor.getSpecialization().equals(specialization))
                 .map(doctorMapper::toDto)
                 .collect(Collectors.toList());
+
+
 
 
         return new PageImpl<>(Utils.convertOptionalToList(doctorDtos));

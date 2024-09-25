@@ -15,8 +15,11 @@ import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 @AllArgsConstructor
@@ -28,19 +31,35 @@ public class DoctorController {
     public String listDoctors(@RequestParam(required = false) Specialization specialization, Model model, @RequestParam(value = "page")
                               @ModelAttribute Optional<Integer> page) {
 
-        System.out.println(page);
         int currentPage = page.orElse(1);
 
-        Page<DoctorDto> doctorPage = specialization == null? doctorService.findAllPage(currentPage) :doctorService.findDoctorBySpecialization(currentPage, specialization);
+        Page<DoctorDto> doctorPage;
+
+        if (specialization == null) {
+                doctorPage = doctorService.findAllPage(currentPage);
+
+        } else {
+                doctorPage = doctorService.findDoctorBySpecialization(currentPage, specialization);
+
+        }
 
         long totalElements = doctorPage.getTotalElements();
         int totalPages = doctorPage.getTotalPages();
         List<DoctorDto> doctors = doctorPage.getContent();
 
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+
+
         if (totalPages == 0) {
             totalPages = 1;
         }
 
+        model.addAttribute("doctorsPage", doctorPage);
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("totalElements", totalElements);

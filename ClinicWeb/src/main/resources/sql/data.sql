@@ -29,8 +29,7 @@ VALUES('Adam','Nowak','606536999',95102826883, 'Zakopane', 'Litwa', 'Kijowa', 5,
 ('Todd','Motyka','3434 322 32',44061045754, 'Białystok', 'Łotwa', 'Urzędnicza', 9, 22, '32-999', 'MALE','NEUROLOGY', TRUE, TRUE),
 ('Mardell','Dąbkowski','18 19 704',05241650643, 'Warszawa', 'Polska', 'Biprostal', 5, 32, '30-300', 'FEMALE','INTERNIST', TRUE, TRUE),
 ('Warren','Baran','675045334',82051729851, 'Białystok', 'Trynidad i Tobago', 'Kleista', 33, 329, '32-300', 'MALE','DERMATOLOGY', TRUE, TRUE),
-('Madeleine','Wilk','785364221',05270135009, 'Poznań', 'Polska', 'Marka', 48, 366, '32-300', 'FEMALE','CHIRURGY', TRUE, TRUE),
-('Marlo','Szydłowski','7673234212',35070390380, 'Kraków', 'Białoruś', 'Nurkowa', 81, 339, '30-599', 'FEMALE','ONCOLOGY', TRUE, TRUE);
+('Madeleine','Wilk','785364221',05270135009, 'Poznań', 'Polska', 'Marka', 48, 366, '32-300', 'FEMALE','CHIRURGY', TRUE, TRUE);
 
 
 
