@@ -15,7 +15,6 @@ import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -29,17 +28,17 @@ public class DoctorController {
 
     @GetMapping(value = "/doctors")
     public String listDoctors(@RequestParam(required = false) Specialization specialization, Model model, @RequestParam(value = "page")
-                              @ModelAttribute Optional<Integer> page) {
+    @ModelAttribute Optional<Integer> page) {
 
         int currentPage = page.orElse(1);
 
         Page<DoctorDto> doctorPage;
 
         if (specialization == null) {
-                doctorPage = doctorService.findAllPage(currentPage);
+            doctorPage = doctorService.findAllPage(currentPage);
 
         } else {
-                doctorPage = doctorService.findDoctorBySpecialization(currentPage, specialization);
+            doctorPage = doctorService.findDoctorBySpecialization(currentPage, specialization);
 
         }
 
@@ -59,6 +58,7 @@ public class DoctorController {
             totalPages = 1;
         }
 
+        model.addAttribute("specialization", specialization);
         model.addAttribute("doctorsPage", doctorPage);
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPages", totalPages);
