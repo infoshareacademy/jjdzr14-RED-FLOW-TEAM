@@ -27,8 +27,11 @@ public class DoctorController {
     private final DoctorService doctorService;
 
     @GetMapping(value = "/doctors")
-    public String listDoctors(@RequestParam(required = false) Specialization specialization, Model model, @RequestParam(value = "page")
-    @ModelAttribute Optional<Integer> page) {
+    public String listDoctors(@RequestParam(required = false) Specialization specialization, Model model,
+                              @RequestParam(value = "page")
+                              @ModelAttribute Optional<Integer> page,
+                              @RequestParam(value = "size")
+                              @ModelAttribute Optional<Integer> size) {
 
         int currentPage = page.orElse(1);
 

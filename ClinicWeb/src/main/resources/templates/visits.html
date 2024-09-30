@@ -69,26 +69,26 @@
                 <li class="page-item">
                     <a class="page-link" th:if="${currentPage > 1}"
                        th:href="@{/visits(page=${1})}">Pierwsza</a>
-                    <span th:unless="${currentPage > 1}">Pierwsza</span>
+                    <span class="page-link" th:unless="${currentPage > 1}">Pierwsza</span>
                 </li>
                 <li class="page-item">
                     <a class="page-link" th:if="${currentPage > 1}" th:href="@{/visits(page=${currentPage - 1})}">Poprzednia</a>
-                    <span th:unless="${currentPage > 1}">Poprzednia</span>
+                    <span class="page-link" th:unless="${currentPage > 1}">Poprzednia</span>
                 </li>
                 <li class="page-item">
-                    <span  th:each="i : ${pageNumbers}">
-                    <a  th:href="@{/doctors(page=${i})}" th:text="${i}" ></a>
+                    <span class="page-item" style="display: inline-block" th:each="i : ${pageNumbers}">
+                    <a th:href="@{/doctors(page=${i})}" th:text="${i}"></a>
                         <span th:if="${i < pageNumbers.size()}"> | </span>
                     </span>
                 </li>
                 <li class="page-item">
                     <a class="page-link" th:if="${currentPage < totalPages}"
                        th:href="@{/visits(page=${currentPage + 1})}">Następna</a>
-                    <span th:unless="${currentPage < totalPages}">Następna</span>
+                    <span class="page-link" th:unless="${currentPage < totalPages}">Następna</span>
                 </li>
                 <li class="page-item">
                     <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{/visits(page=${totalPages})}">Ostatnia</a>
-                    <span th:unless="${currentPage < totalPages}">Ostatnia</span>
+                    <span class="page-link" th:unless="${currentPage < totalPages}">Ostatnia</span>
                 </li>
             </ul>
         </nav>

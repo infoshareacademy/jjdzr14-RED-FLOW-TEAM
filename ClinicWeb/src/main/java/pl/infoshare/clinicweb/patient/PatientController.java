@@ -25,8 +25,7 @@ public class PatientController {
     private final PatientService patientService;
 
     private final DoctorService doctorService;
-    private final PatientRepository patientRepository;
-    private final PatientMapper patientMapper;
+
 
     @GetMapping("/patient")
     public String patientForm(Model model) {
