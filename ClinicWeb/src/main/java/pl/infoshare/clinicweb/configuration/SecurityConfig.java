@@ -17,6 +17,7 @@ public class SecurityConfig {
 
     @Bean
     PasswordEncoder passwordEncoder() {
+
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
@@ -44,11 +45,14 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
                 .requestMatchers("/").permitAll()
-                .requestMatchers("/admin").hasRole("ADMIN")
-                .requestMatchers("/doctor").hasAnyRole( "DOCTOR", "ADMIN")
-                .requestMatchers("/patient").hasRole( "PATIENT")
+                .requestMatchers("/visit").permitAll()
+                .requestMatchers("/doctors/**").hasAnyRole("ADMIN","DOCTOR")
+                .requestMatchers("/patients/**").hasAnyRole("ADMIN","DOCTOR")
+                .requestMatchers("/visits/**").hasAnyRole("ADMIN","DOCTOR")
+                .requestMatchers("/doctor").hasAnyRole("ADMIN","DOCTOR")
+                .requestMatchers("/patient").hasAnyRole("ADMIN","DOCTOR")
                 .and()
-                .formLogin(f -> f.failureUrl("/login").defaultSuccessUrl("/security"))
+                .formLogin(f -> f.failureUrl("/login").defaultSuccessUrl("/", true))
                 .logout(l -> l.logoutUrl("/logout").logoutSuccessUrl("/"));
 
         return httpSecurity.build();
