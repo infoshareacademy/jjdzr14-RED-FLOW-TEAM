@@ -1,7 +1,6 @@
 package pl.infoshare.clinicweb.patient;
 
 import jakarta.persistence.EntityNotFoundException;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Page;
