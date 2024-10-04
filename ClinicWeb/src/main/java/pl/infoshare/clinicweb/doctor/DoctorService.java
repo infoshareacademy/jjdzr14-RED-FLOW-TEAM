@@ -2,9 +2,11 @@ package pl.infoshare.clinicweb.doctor;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +42,24 @@ public class DoctorService {
                 .collect(Collectors.toList());
     }
 
+    public Page<DoctorDto> findAllPage(int pageNumber) {
+
+        final int pageSize = 10;
+        Page<DoctorDto> doctors;
+
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.by("id"));
+        Page<Doctor> entities = doctorRepository.findAll(pageable);
+
+
+            doctors = entities.map(doctor -> {
+                DoctorDto doctorDto = doctorMapper.toDto(doctor).get();
+
+                return doctorDto;
+            });
+            return doctors;
+
+    }
+
 
     public void deleteDoctor(Long idDoctor) {
 
@@ -59,13 +79,22 @@ public class DoctorService {
     }
 
 
-    List<Optional<DoctorDto>> findDoctorBySpecialization(Specialization specialization) {
+    Page<DoctorDto> findDoctorBySpecialization(int pageNumber, Specialization specialization) {
 
-        return doctorRepository.findAll()
+        final int pageSize = 10;
+
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("id"));
+
+        List<Optional<DoctorDto>> doctorDtos = doctorRepository.findAll()
                 .stream()
                 .filter(doctor -> doctor.getSpecialization().equals(specialization))
                 .map(doctorMapper::toDto)
                 .collect(Collectors.toList());
+
+
+
+
+        return new PageImpl<>(Utils.convertOptionalToList(doctorDtos));
     }
 
     public void setDoctorAttributes(Doctor doctor, PersonDetails personDetails,

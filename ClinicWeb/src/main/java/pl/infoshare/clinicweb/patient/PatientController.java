@@ -2,6 +2,7 @@ package pl.infoshare.clinicweb.patient;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,8 @@ import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @RequiredArgsConstructor
 @Controller
@@ -22,6 +25,7 @@ public class PatientController {
     private final PatientService patientService;
 
     private final DoctorService doctorService;
+
 
     @GetMapping("/patient")
     public String patientForm(Model model) {
@@ -64,11 +68,32 @@ public class PatientController {
 
     }
 
-    @GetMapping("/patients")
-    public String viewPatients(Model model) {
 
-        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+    @GetMapping(value = "/patients")
+    public String listDoctors(Model model, @RequestParam(value = "page") @ModelAttribute Optional<Integer> page) {
 
+        int currentPage = page.orElse(1);
+
+        Page<PatientDto> patientPage = patientService.findPage(currentPage);
+
+        long totalElements = patientPage.getTotalElements();
+        int totalPages = patientPage.getTotalPages();
+        List<PatientDto> patients = patientPage.getContent();
+
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+
+        if (totalPages == 0) {
+            totalPages = 1;
+        }
+
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
         model.addAttribute("listPatient", patients);
 
         return "patients";
@@ -150,7 +175,7 @@ public class PatientController {
     @GetMapping("/delete-patient")
     public String showDeletePatientForm(@RequestParam("id") Long id, Model model) {
 
-        Optional <PatientDto> patientById = patientService.findById(id);
+        Optional<PatientDto> patientById = patientService.findById(id);
         model.addAttribute("patient", patientById);
 
         return "delete-patient";

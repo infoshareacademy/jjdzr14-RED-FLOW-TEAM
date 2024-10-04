@@ -6,11 +6,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.infoshare.clinicweb.doctor.Doctor;
-import pl.infoshare.clinicweb.patient.Medicines;
 import pl.infoshare.clinicweb.patient.Patient;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -20,7 +18,8 @@ import java.util.UUID;
 public class Visit {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     @NotNull(message = "Pole data nie moze byc puste. ")
     @FutureOrPresent(message = "Wybierz datę z przyszłości. ")
@@ -30,20 +29,19 @@ public class Visit {
     private Patient patient;
     @ManyToOne
     private Doctor doctor;
-//    private List<Medicines> medicines;
+    //    private List<Medicines> medicines;
     private UUID numberOfVisits = UUID.randomUUID();
     private boolean cancelVisit;
 
     public void setVisitDate(LocalDateTime visitDate) {
 
-        this.visitDate =   LocalDateTime.of(visitDate.getYear(),
+        this.visitDate = LocalDateTime.of(visitDate.getYear(),
                 visitDate.getMonth(),
                 visitDate.getDayOfMonth(),
                 visitDate.getHour(),
                 visitDate.getMinute(), 0);
 
     }
-
 
 
 }

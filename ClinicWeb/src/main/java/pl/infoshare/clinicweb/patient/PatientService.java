@@ -3,8 +3,14 @@ package pl.infoshare.clinicweb.patient;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +45,22 @@ public class PatientService  {
                 .stream()
                 .map(patientMapper::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public Page<PatientDto> findPage(int pageNumber) {
+
+        final int pageSize = 10;
+
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.by("id"));
+        Page<Patient> entities = patientRepository.findAll(pageable);
+
+        Page<PatientDto> patients = entities.map(patient -> {
+            PatientDto patientDto = patientMapper.toDto(patient).get();
+
+            return patientDto;
+        });
+
+        return patients;
     }
 
 

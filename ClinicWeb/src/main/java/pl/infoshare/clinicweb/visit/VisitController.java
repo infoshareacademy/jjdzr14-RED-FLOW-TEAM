@@ -1,6 +1,7 @@
 package pl.infoshare.clinicweb.visit;
 
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,8 @@ import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 @Controller
@@ -85,11 +88,39 @@ public class VisitController {
 
     }
 
-    @GetMapping("/visits")
-    public String allVisits(Model model) {
-        model.addAttribute("allVisits", visitService.getAllVisits());
+    @GetMapping(value = "/visits")
+    public String listVisits(Model model, @RequestParam("page") Optional<Integer> page) {
+
+        final int currentPage = page.orElse(1);
+
+        Page<VisitDto> visitDtoPage = visitService.findPage(currentPage);
+
+        model.addAttribute("visitDtoPage", visitDtoPage);
+
+        long totalElements = visitDtoPage.getTotalElements();
+        int totalPages = visitDtoPage.getTotalPages();
+        List<VisitDto> visits = visitDtoPage.getContent();
+
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+
+        if (totalPages == 0) {
+            totalPages = 1;
+        }
+
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
+        model.addAttribute("visits", visits);
+
+
         return "visits";
     }
+
 
     @PostMapping("/cancel")
     public String cancelVisit(@RequestParam("id") Long id, Model model) {
