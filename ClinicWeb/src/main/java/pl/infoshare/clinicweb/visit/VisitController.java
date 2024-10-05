@@ -36,12 +36,6 @@ public class VisitController {
         this.patientService = patientService;
     }
 
-    @GetMapping("/result")
-    public String displayResult(Model model) {
-
-        return "result";
-    }
-
     @GetMapping("/visit")
     public String saveVisit(@ModelAttribute("patient") Patient patient,
                             @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") Doctor doctor, Model model) {
