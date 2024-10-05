@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">>
 <head>
     <meta charset="UTF-8">
     <title>Lista lekarzy</title>
@@ -38,8 +39,13 @@
                 <th>Imię</th>
                 <th>Nazwisko</th>
                 <th>Specjalizacja</th>
-                <th>Wszystkie dane</th>
-                <th>Usuwanie</th>
+                <div sec:authorize="hasRole('ADMIN')">
+                    <th>Wszystkie dane</th>
+                </div>
+                <div sec:authorize="hasRole('ADMIN')">
+                    <th>Usuwanie</th>
+                </div>
+
             </tr>
             </thead>
             <tbody>
@@ -48,15 +54,19 @@
                 <td th:text="${doctor.surname}"></td>
                 <td th:text="${doctor.specialization.getDescription()}"></td>
                 <td style="table-layout: fixed">
-                    <a th:href="@{/update-doctor(id=${doctor.id})}"
-                       class="btn btn-primary btn-sm" role="button">Pokaż i edytuj dane</a>
+                    <div sec:authorize="hasRole('ADMIN')">
+                        <a th:href="@{/update-doctor(id=${doctor.id})}"
+                           class="btn btn-primary btn-sm" role="button">Pokaż i edytuj dane</a>
+                    </div>
                 </td>
                 <td>
-                    <form th:action="@{/delete-doctor}" th:method="post" class="d-inline"
-                          onsubmit="return confirm('czy chcesz usunąć danego lekarza??');">
-                        <input type="hidden" name="id" th:value="${doctor.id}">
-                        <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
-                    </form>
+                    <div sec:authorize="hasRole('ADMIN')">
+                        <form th:action="@{/delete-doctor}" th:method="post" class="d-inline"
+                              onsubmit="return confirm('czy chcesz usunąć danego lekarza??');">
+                            <input type="hidden" name="id" th:value="${doctor.id}">
+                            <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             </tbody>
