@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">>
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <title>Lista lekarzy</title>
@@ -35,7 +35,7 @@
     <div class="card mt-3">
         <table class="table table-striped">
             <thead>
-            <tr>
+            <tr style="text-align: center">
                 <th>Imię</th>
                 <th>Nazwisko</th>
                 <th>Specjalizacja</th>
@@ -49,7 +49,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="doctor : ${listDoctor}">
+            <tr th:each="doctor : ${listDoctor}" style="text-align: center">
                 <td th:text="${doctor.name}"></td>
                 <td th:text="${doctor.surname}"></td>
                 <td th:text="${doctor.specialization.getDescription()}"></td>
@@ -75,7 +75,6 @@
         <div class="row">
             <div>
                 <nav>
-
                     <div th:align="center">Strona: [[${currentPage}]] z [[${totalPages}]]</div>
                     <div th:align="center">Liczba wszystkich rekordów: [[${totalElements}]]</div>
                     <div></div>
@@ -92,7 +91,7 @@
                         </li>
                         <li class="page-item">
                             <span class="page-link" th:each="i : ${pageNumbers}" style="display: inline-block">
-                            <a th:href="@{/doctors(page=${i})}" th:text="${i}"></a>
+                            <a th:href="@{/doctors(page=${i}, specialization=${specialization})}" th:text="${i}"></a>
                             <span th:if="${i < pageNumbers.size()}"> </span>
                         </span>
                         </li>

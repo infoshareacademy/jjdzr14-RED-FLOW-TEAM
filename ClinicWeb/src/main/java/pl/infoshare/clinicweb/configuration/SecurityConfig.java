@@ -59,8 +59,11 @@ public class SecurityConfig {
                 .requestMatchers("/doctor").hasRole("ADMIN")
                 .requestMatchers("/patient").hasAnyRole("ADMIN","DOCTOR")
                 .requestMatchers("/cancel").hasAnyRole("ADMIN","DOCTOR")
+                .requestMatchers("login").permitAll()
+                .requestMatchers("logout").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .formLogin(f -> f.failureUrl("/login").defaultSuccessUrl("/", true))
+                .formLogin(f -> f.defaultSuccessUrl("/", true))
                 .logout(l -> l.logoutUrl("/logout").logoutSuccessUrl("/"));
 
         return httpSecurity.build();

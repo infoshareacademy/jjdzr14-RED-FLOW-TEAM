@@ -142,20 +142,31 @@ public class PatientController {
     }
 
     @PostMapping("/search-patient")
-    public String searchPatientById(@RequestParam("id") @ModelAttribute Long id,
-                                    Model model) {
+    public String searchPatientByPesel(@RequestParam(value = "pesel", required = false) @ModelAttribute String pesel,
+                                       Model model, RedirectAttributes redirectAttributes) {
 
 
-        if (patientService.findById(id) != null) {
-            model.addAttribute("searchForId", id);
+        PatientDto patientByPesel = patientService.findByPesel(pesel).get();
+
+        if (!Utils.hasPeselCorrectDigits(pesel)) {
+
+            model.addAttribute("peselError", "Nieprawidłowy format numeru pesel!.");
+            return "patients";
+        } else if (patientByPesel != null) {
+
+            model.addAttribute("patientByPesel", patientByPesel);
+
         } else {
-            model.addAttribute("error", "Nie znaleziono pacjenta o podanym numerze id: " + id);
+
+            redirectAttributes.addFlashAttribute("error", "Nie znaleziono pacjenta o podanym numerze pesel.");
+            return "redirect:/patients";
         }
+
         return "search-patient";
     }
 
     @GetMapping("/search-patient")
-    public String searchPatientById(Model model) {
+    public String searchPatientByPesel(Model model) {
 
         model.addAttribute("patient", new Patient());
 

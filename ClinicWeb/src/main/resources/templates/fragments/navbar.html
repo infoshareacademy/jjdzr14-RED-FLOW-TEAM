@@ -49,12 +49,13 @@
 
                 <div>
                     <li class="nav-item">
-                <span sec:authorize="isAnonymous()">
-                <a class="nav-link enable" th:href="@{/login}" tabindex="-1" aria-disabled="true">Zaloguj się</a></span>
+                        <span sec:authorize="isAnonymous()">
+                            <a class="nav-link enable" th:href="@{/login}" tabindex="-1" aria-disabled="true">Zaloguj się</a>
+                        </span>
 
                         <span sec:authorize="isAuthenticated()">
-                    <a class="nav-link enable" th:href="@{/logout}" tabindex="-1" aria-disabled="true">Wyloguj się</a>
-                </span>
+                            <a class="nav-link enable" th:href="@{/logout}" tabindex="-1" aria-disabled="true">Wyloguj się</a>
+                        </span>
                     </li>
                 </div>
 

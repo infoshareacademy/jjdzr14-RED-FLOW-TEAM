@@ -2,14 +2,12 @@ package pl.infoshare.clinicweb.patient;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.user.PersonDetails;
-import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class PatientService  {
+public class PatientService {
 
     private final PatientRepository patientRepository;
     private final PatientMapper patientMapper;
@@ -29,16 +27,26 @@ public class PatientService  {
         patientRepository.save(patient);
     }
 
-    public Optional <PatientDto> findById(Long id) {
+    public Optional<PatientDto> findById(Long id) {
 
-       return patientRepository.findById(id)
-               .stream()
-               .map(patientMapper::toDto)
-               .findFirst()
-               .orElseThrow(() -> new EntityNotFoundException(String.format("Patient not found with id %s", id)));
+        return patientRepository.findById(id)
+                .stream()
+                .map(patientMapper::toDto)
+                .findFirst()
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Patient not found with id %s", id)));
     }
 
-    public List <Optional<PatientDto>> findAllPatients() {
+    public Optional<PatientDto> findByPesel(String pesel) {
+
+        return patientRepository.findAll()
+                .stream()
+                .filter(patient -> patient.getPersonDetails().getPesel().equals(pesel))
+                .map(patientMapper::toDto)
+                .findFirst()
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Patient not found with pesel %s", pesel)));
+    }
+
+    public List<Optional<PatientDto>> findAllPatients() {
 
         return patientRepository.findAll()
                 .stream()
@@ -78,17 +86,13 @@ public class PatientService  {
     }
 
     public void setPatientAttributes(Patient patient, PersonDetails personDetails,
-                                    Address address) {
+                                     Address address) {
 
         patient.setPersonDetails(personDetails);
         patient.setAddress(address);
 
 
     }
-
-
-
-
 
 
 }

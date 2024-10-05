@@ -77,7 +77,7 @@
                 </li>
                 <li class="page-item">
                     <span class="page-item" style="display: inline-block" th:each="i : ${pageNumbers}">
-                    <a th:href="@{/doctors(page=${i})}" th:text="${i}"></a>
+                    <a th:href="@{/visits(page=${i})}" th:text="${i}"></a>
                         <span th:if="${i < pageNumbers.size()}"> | </span>
                     </span>
                 </li>
