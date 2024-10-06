@@ -11,9 +11,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static pl.infoshare.clinicweb.user.Role.ADMIN;
+import static pl.infoshare.clinicweb.user.Role.DOCTOR;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -26,45 +30,49 @@ public class SecurityConfig {
 
         UserDetails admin = User.withUsername("admin")
                 .password(passwordEncoder.encode("admin"))
-                .roles("ADMIN")
+                .roles(ADMIN.getRoleDescription())
                 .build();
 
         UserDetails doctor = User.withUsername("doctor")
                 .password(passwordEncoder.encode("doctor"))
-                .roles("DOCTOR")
+                .roles(DOCTOR.getRoleDescription())
                 .build();
 
-        UserDetails patient = User.withUsername("patient")
-                .password(passwordEncoder.encode("patient"))
-                .roles("PATIENT")
-                .build();
-        return new InMemoryUserDetailsManager(admin, doctor, patient);
+        return new InMemoryUserDetailsManager(admin, doctor);
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests()
-                .requestMatchers("/").permitAll()
-                .requestMatchers("/update-patient**").hasRole("ADMIN")
-                .requestMatchers("/update-doctor**").hasRole("ADMIN")
-                .requestMatchers("/delete-doctor**").hasRole("ADMIN")
-                .requestMatchers("/delete-patient**").hasRole("ADMIN")
-                .requestMatchers("/search-doctor**").hasAnyRole("ADMIN","DOCTOR")
-                .requestMatchers("/search-patient**").hasAnyRole("ADMIN","DOCTOR")
-                .requestMatchers("/search**").hasAnyRole("ADMIN", "DOCTOR")
-                .requestMatchers("/visit").hasAnyRole("ADMIN", "DOCTOR")
-                .requestMatchers("/doctors/**").hasAnyRole("ADMIN","DOCTOR")
-                .requestMatchers("/patients/**").hasAnyRole("ADMIN","DOCTOR")
-                .requestMatchers("/visits/**").hasAnyRole("ADMIN","DOCTOR")
-                .requestMatchers("/doctor").hasRole("ADMIN")
-                .requestMatchers("/patient").hasAnyRole("ADMIN","DOCTOR")
-                .requestMatchers("/cancel").hasAnyRole("ADMIN","DOCTOR")
-                .requestMatchers("login").permitAll()
-                .requestMatchers("logout").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin(f -> f.defaultSuccessUrl("/", true))
-                .logout(l -> l.logoutUrl("/logout").logoutSuccessUrl("/"));
+        httpSecurity.authorizeHttpRequests((auth) -> auth
+                        .requestMatchers("/update-patient**",
+                                "/update-doctor**",
+                                "/delete-doctor**",
+                                "/delete-patient**",
+                                "/doctor")
+                        .hasRole(ADMIN.name())
+//                        .anyRequest().authenticated()
+                        .requestMatchers("/search-doctor**",
+                                "/search-patient**",
+                                "/search**",
+                                "/visit",
+                                "/cancel",
+                                "/doctors/**",
+                                "/patients/**",
+                                "/visits/**",
+                                "/patient")
+                        .hasAnyRole(ADMIN.name(), DOCTOR.name())
+                        .anyRequest().authenticated())
+                .formLogin((form) -> form
+                        .defaultSuccessUrl("/", true)
+                        .loginPage("/login")
+                        .permitAll()
+                )
+                .logout((logout) -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .permitAll()
+                )
+                .csrf((csrf) -> csrf.disable());
 
         return httpSecurity.build();
     }

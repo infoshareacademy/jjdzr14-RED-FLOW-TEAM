@@ -19,6 +19,14 @@ public class LoginController {
         return "login";
     }
 
+    @GetMapping("/logout")
+    public String logout() {
+
+
+        return "index";
+
+    }
+
     private User getPrincipal() {
         User user = null;
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
