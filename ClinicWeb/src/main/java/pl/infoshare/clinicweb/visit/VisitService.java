@@ -34,7 +34,7 @@ public class VisitService {
     public void saveVisit(Visit visit, Long doctorId, Long patientId) {
 
         DoctorDto doctorDto = doctorService.findById(doctorId).get();
-        PatientDto patientDto = patientService.findById(patientId).get();
+        PatientDto patientDto = patientService.findById(patientId);
 
         Doctor doctor = doctorMapper.toEntity(doctorDto);
         Patient patient = patientMapper.toEntity(patientDto);

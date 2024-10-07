@@ -9,7 +9,7 @@ import java.util.Optional;
 public class PatientMapper {
 
 
-    public Optional<PatientDto> toDto (Patient patient) {
+    public PatientDto toDto (Patient patient) {
 
         PatientDto patientDto = new PatientDto();
 
@@ -25,7 +25,7 @@ public class PatientMapper {
         patientDto.setHouseNumber(patient.getAddress().getHouseNumber());
         patientDto.setStreet(patient.getAddress().getStreet());
 
-        return Optional.of(patientDto);
+        return patientDto;
 
     }
 

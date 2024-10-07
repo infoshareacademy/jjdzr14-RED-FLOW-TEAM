@@ -27,26 +27,21 @@ public class PatientService {
         patientRepository.save(patient);
     }
 
-    public Optional<PatientDto> findById(Long id) {
+    public PatientDto findById(Long id) {
 
         return patientRepository.findById(id)
-                .stream()
                 .map(patientMapper::toDto)
-                .findFirst()
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Patient not found with id %s", id)));
     }
 
-    public Optional<PatientDto> findByPesel(String pesel) {
+    public PatientDto findByPesel(String pesel) {
 
-        return patientRepository.findAll()
-                .stream()
-                .filter(patient -> patient.getPersonDetails().getPesel().equals(pesel))
+        return patientRepository.findByPesel(pesel)
                 .map(patientMapper::toDto)
-                .findFirst()
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Patient not found with pesel %s", pesel)));
     }
 
-    public List<Optional<PatientDto>> findAllPatients() {
+    public List<PatientDto> findAllPatients() {
 
         return patientRepository.findAll()
                 .stream()
@@ -62,7 +57,7 @@ public class PatientService {
         Page<Patient> entities = patientRepository.findAll(pageable);
 
         Page<PatientDto> patients = entities.map(patient -> {
-            PatientDto patientDto = patientMapper.toDto(patient).get();
+            PatientDto patientDto = patientMapper.toDto(patient);
 
             return patientDto;
         });

@@ -19,7 +19,6 @@ public class Visit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
     @NotNull(message = "Pole data nie moze byc puste. ")
     @FutureOrPresent(message = "Wybierz datę z przyszłości. ")

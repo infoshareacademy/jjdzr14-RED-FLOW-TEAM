@@ -32,6 +32,9 @@
     <div th:if="${peselError != null}" class="mt-2 alert alert-danger" role="alert">
         <p th:text="${peselError}">Błąd</p>
     </div>
+    <div th:if="${patientError != null}" class="mt-2 alert alert-danger" role="alert">
+        <p th:text="${patientError}">Błąd</p>
+    </div>
     <div th:align="center" th:if="${success != null}" class="mt-4 alert alert-success" role="alert">
         <p th:text="${success}">Sukces</p>
     </div>

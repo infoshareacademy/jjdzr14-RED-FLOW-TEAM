@@ -109,7 +109,7 @@ public class PatientController {
     @PostMapping("/search")
     public String searchPatient(@PathVariable("id") Long id, Model model, Address address) {
 
-        Optional<PatientDto> patient = patientService.findById(id);
+        PatientDto patient = patientService.findById(id);
         if (patient != null) {
             model.addAttribute("patient", patient);
             model.addAttribute("address", address);
@@ -135,7 +135,7 @@ public class PatientController {
                                     @ModelAttribute Long id,
                                     Model model) {
 
-        model.addAttribute("patient", patientService.findById(id).get());
+        model.addAttribute("patient", patientService.findById(id));
 
 
         return "update-patient";
@@ -143,23 +143,25 @@ public class PatientController {
 
     @PostMapping("/search-patient")
     public String searchPatientByPesel(@RequestParam(value = "pesel", required = false) @ModelAttribute String pesel,
-                                       Model model, RedirectAttributes redirectAttributes) {
+                                       Model model) {
 
 
-        PatientDto patientByPesel = patientService.findByPesel(pesel).get();
+        PatientDto patientByPesel = patientService.findByPesel(pesel);
 
         if (!Utils.hasPeselCorrectDigits(pesel)) {
 
             model.addAttribute("peselError", "Nieprawidłowy format numeru pesel!.");
             return "patients";
-        } else if (patientByPesel != null) {
+
+        } else if (!patientByPesel.equals(null)) {
 
             model.addAttribute("patientByPesel", patientByPesel);
 
         } else {
 
-            redirectAttributes.addFlashAttribute("error", "Nie znaleziono pacjenta o podanym numerze pesel.");
-            return "redirect:/patients";
+            model.addAttribute("patientError", "Nie znaleziono pacjenta o podanym numerze pesel.");
+            return "patients";
+
         }
 
         return "search-patient";
@@ -176,8 +178,8 @@ public class PatientController {
     @PostMapping("/delete-patient")
     public String deletePatient(@RequestParam("id") Long id) {
 
-        Optional<PatientDto> patientById = patientService.findById(id);
-        if (patientById.isPresent()) {
+        PatientDto patientById = patientService.findById(id);
+        if (patientById != null) {
             patientService.deletePatient(id);
         }
         return "redirect:/patients";
@@ -186,7 +188,7 @@ public class PatientController {
     @GetMapping("/delete-patient")
     public String showDeletePatientForm(@RequestParam("id") Long id, Model model) {
 
-        Optional<PatientDto> patientById = patientService.findById(id);
+        PatientDto patientById = patientService.findById(id);
         model.addAttribute("patient", patientById);
 
         return "delete-patient";

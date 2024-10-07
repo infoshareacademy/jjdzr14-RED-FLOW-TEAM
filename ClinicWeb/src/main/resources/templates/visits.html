@@ -37,24 +37,24 @@
 
             </tr>
             <tr>
-            <tr th:each="visits:${allVisits}">
-                <td th:text="${visits.patient.personDetails.name}">Imię</td>
-                <td th:text="${visits.patient.personDetails.surname}">Nazwisko</td>
-                <td th:text="${visits.patient.personDetails.pesel}">Pesel</td>
-                <td th:text="${visits.doctor.name}">Imię</td>
-                <td th:text="${visits.doctor.surname}">Nazwisko</td>
-                <td th:text="${visits.doctor.specialization}">Specjalizacja</td>
-                <td th:text="${visits.visitDate.toLocalDate()}"> ">Data wizyty</td>
-                <td th:text="${visits.visitDate.toLocalTime()}"> ">Godzina wizyty</td>
+            <tr th:each="visit:${visitDtoPage}">
+                <td th:text="${visit.patientPesel}">Pesel</td>
+                <td th:text="${visit.patientSurname}">Nazwisko</td>
+                <td th:text="${visit.patientName}">Imię</td>
+                <td th:text="${visit.doctorName}">Imię</td>
+                <td th:text="${visit.doctorSurname}">Nazwisko</td>
+                <td th:text="${visit.doctorSpecialization}">Specjalizacja</td>
+                <td th:text="${visit.visitDate}"> ">Data wizyty</td>
+                <td th:text="${visit.isVisitCancelled()}"> ">Godzina wizyty</td>
                 <td>
-                    <span th:if="${!visits.cancelVisit}"></span>
-                    <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${!visits.cancelVisit}">
-                        <input type="hidden" name="uuid" th:value="${visits.numberOfVisits}">
+                    <span th:if="${!visit.isVisitCancelled()}"></span>
+                    <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${!visit.isVisitCancelled()}">
+                        <input type="hidden" name="id" th:value="${visit.id}">
                         <button type="submit" class="btn btn-secondary btn-sm">Anuluj wizytę</button>
                     </form>
-                    <span th:if="${visits.cancelVisit}" class="text-muted"></span>
-                    <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${visits.cancelVisit}">
-                        <input type="hidden" name="uuid" th:value="${visits.numberOfVisits}">
+                    <span th:if="${visit.isVisitCancelled()}" class="text-muted"></span>
+                    <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${visit.isVisitCancelled()}">
+                        <input type="hidden" name="id" th:value="${visit.id}">
                         <button type="submit" class="btn btn-secondary btn-sm" disabled
                                 style="opacity: 0.5; pointer-events: none;">Wizyta Anulowana
                         </button>
@@ -76,9 +76,9 @@
                     <span class="page-link" th:unless="${currentPage > 1}">Poprzednia</span>
                 </li>
                 <li class="page-item">
-                    <span class="page-item" style="display: inline-block" th:each="i : ${pageNumbers}">
+                    <span class="page-link" style="display: inline-block" th:each="i : ${pageNumbers}">
                     <a th:href="@{/visits(page=${i})}" th:text="${i}"></a>
-                        <span th:if="${i < pageNumbers.size()}"> | </span>
+                        <span th:if="${i < pageNumbers.size()}"></span>
                     </span>
                 </li>
                 <li class="page-item">

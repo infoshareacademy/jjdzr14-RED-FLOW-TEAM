@@ -43,7 +43,7 @@ public class VisitController {
     public String saveVisit(@ModelAttribute("patient") Patient patient,
                             @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") Doctor doctor, Model model) {
 
-        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+        List<PatientDto> patients = patientService.findAllPatients();
         List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
 
         model.addAttribute("doctors", doctors);
@@ -58,7 +58,7 @@ public class VisitController {
                                       @RequestParam(value = "doctorId", required = false) Long doctorId,
                                       Model model, RedirectAttributes redirectAttributes) {
 
-        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+        List<PatientDto> patients = patientService.findAllPatients();
         List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
 
         model.addAttribute("doctors", doctors);

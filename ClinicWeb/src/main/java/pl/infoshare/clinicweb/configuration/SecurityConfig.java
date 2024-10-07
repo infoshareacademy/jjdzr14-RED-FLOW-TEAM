@@ -30,12 +30,12 @@ public class SecurityConfig {
 
         UserDetails admin = User.withUsername("admin")
                 .password(passwordEncoder.encode("admin"))
-                .roles(ADMIN.getRoleDescription())
+                .roles(ADMIN.name())
                 .build();
 
         UserDetails doctor = User.withUsername("doctor")
                 .password(passwordEncoder.encode("doctor"))
-                .roles(DOCTOR.getRoleDescription())
+                .roles(DOCTOR.name())
                 .build();
 
         return new InMemoryUserDetailsManager(admin, doctor);
@@ -50,7 +50,6 @@ public class SecurityConfig {
                                 "/delete-patient**",
                                 "/doctor")
                         .hasRole(ADMIN.name())
-//                        .anyRequest().authenticated()
                         .requestMatchers("/search-doctor**",
                                 "/search-patient**",
                                 "/search**",
