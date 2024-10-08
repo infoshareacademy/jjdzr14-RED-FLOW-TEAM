@@ -2,6 +2,8 @@ package pl.infoshare.clinicweb.patient;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import pl.infoshare.clinicweb.clinic.Clinic;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.user.PersonDetails;

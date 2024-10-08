@@ -39,17 +39,11 @@ public class VisitController {
         this.patientService = patientService;
     }
 
-    @GetMapping("/result")
-    public String displayResult(Model model) {
-
-        return "result";
-    }
-
     @GetMapping("/visit")
     public String saveVisit(@ModelAttribute("patient") Patient patient,
                             @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") Doctor doctor, Model model) {
 
-        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+        List<PatientDto> patients = patientService.findAllPatients();
         List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
 
         model.addAttribute("doctors", doctors);
@@ -64,7 +58,7 @@ public class VisitController {
                                       @RequestParam(value = "doctorId", required = false) Long doctorId,
                                       Model model, RedirectAttributes redirectAttributes) {
 
-        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+        List<PatientDto> patients = patientService.findAllPatients();
         List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
 
         model.addAttribute("doctors", doctors);
@@ -89,13 +83,11 @@ public class VisitController {
     }
 
     @GetMapping(value = "/visits")
-    public String listVisits(Model model, @RequestParam("page") Optional<Integer> page) {
+    public String listVisits(Model model, @RequestParam("page") @ModelAttribute Optional<Integer> page) {
 
-        final int currentPage = page.orElse(1);
+        int currentPage = page.orElse(1);
 
         Page<VisitDto> visitDtoPage = visitService.findPage(currentPage);
-
-        model.addAttribute("visitDtoPage", visitDtoPage);
 
         long totalElements = visitDtoPage.getTotalElements();
         int totalPages = visitDtoPage.getTotalPages();
@@ -136,7 +128,7 @@ public class VisitController {
 
     @GetMapping("/cancel")
     public String showCancelVisitForm(@ModelAttribute Patient patient, Model model) {
-        model.addAttribute("allVisits", visitService.getAllVisits());
+        model.addAttribute("allVisits", Utils.convertOptionalToList(visitService.findAllVisits()));
         return "redirect:/visits";
     }
 }
