@@ -1,5 +1,6 @@
 package pl.infoshare.clinicweb.patient;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -70,7 +71,7 @@ public class PatientController {
 
 
     @GetMapping(value = "/patients")
-    public String listDoctors(Model model, @RequestParam(value = "page") @ModelAttribute Optional<Integer> page) {
+    public String listPatients(Model model, @RequestParam(value = "page") @ModelAttribute Optional<Integer> page) {
 
         int currentPage = page.orElse(1);
 
@@ -141,6 +142,7 @@ public class PatientController {
         return "update-patient";
     }
 
+
     @PostMapping("/search-patient")
     public String searchPatientByPesel(@RequestParam(value = "pesel", required = false) @ModelAttribute String pesel,
                                        Model model) {
@@ -148,21 +150,22 @@ public class PatientController {
 
         PatientDto patientByPesel = patientService.findByPesel(pesel);
 
-        if (!Utils.hasPeselCorrectDigits(pesel)) {
 
-            model.addAttribute("peselError", "Nieprawidłowy format numeru pesel!.");
+            if (!Utils.hasPeselCorrectDigits(pesel) || pesel==null) {
+
+                model.addAttribute("peselError", "Nieprawidłowy format numeru pesel!.");
+                return "patients";
+
+            } else if (!patientByPesel.equals(null)) {
+
+                model.addAttribute("patientByPesel", patientByPesel);
+
+            } else  {
+
+            model.addAttribute("patientError");
             return "patients";
-
-        } else if (!patientByPesel.equals(null)) {
-
-            model.addAttribute("patientByPesel", patientByPesel);
-
-        } else {
-
-            model.addAttribute("patientError", "Nie znaleziono pacjenta o podanym numerze pesel.");
-            return "patients";
-
         }
+
 
         return "search-patient";
     }

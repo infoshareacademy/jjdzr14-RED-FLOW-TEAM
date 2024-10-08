@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 

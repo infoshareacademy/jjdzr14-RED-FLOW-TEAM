@@ -37,7 +37,7 @@
 
             </tr>
             <tr>
-            <tr th:each="visit:${visitDtoPage}">
+            <tr th:each="visit:${visits}">
                 <td th:text="${visit.patientPesel}">Pesel</td>
                 <td th:text="${visit.patientSurname}">Nazwisko</td>
                 <td th:text="${visit.patientName}">Imię</td>

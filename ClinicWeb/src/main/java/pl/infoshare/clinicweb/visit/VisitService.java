@@ -18,6 +18,7 @@ import pl.infoshare.clinicweb.patient.PatientService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -51,17 +52,20 @@ public class VisitService {
         visitRepository.save(visit);
     }
 
-    public List<Visit> getAllVisits() {
 
-        return visitRepository.findAll(Sort.by(Sort.Direction.DESC, "visitDate"));
+    public List<Optional<VisitDto>> findAllVisits() {
 
+        return visitRepository.findAll()
+                .stream()
+                .map(visitMapper::toVisitDto)
+                .collect(Collectors.toList());
     }
 
     public Page<VisitDto> findPage(int pageNumber) {
 
         final int pageSize = 10;
 
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("id"));
+        Pageable pageable = PageRequest.of(pageNumber-1, pageSize, Sort.by("id"));
         Page<Visit> entities = visitRepository.findAll(pageable);
 
         Page<VisitDto> visits = entities.map(visit -> {
