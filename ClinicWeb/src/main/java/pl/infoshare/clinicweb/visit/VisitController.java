@@ -44,15 +44,7 @@ public class VisitController {
 
     @GetMapping("/visit")
     public String showVisitForm(Model model) {
-        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
-        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
-
-
-        model.addAttribute("doctors", doctors);
-        model.addAttribute("patients", patients);
-        model.addAttribute("visit", new Visit());
-
-        return "visit";
+        return getString(model);
     }
 
     @PostMapping("/visit")
@@ -62,15 +54,7 @@ public class VisitController {
                                         Model model, RedirectAttributes redirectAttributes) {
 
         if (visitBindingResult.hasErrors()) {
-            List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
-            List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
-
-
-            model.addAttribute("doctors", doctors);
-            model.addAttribute("patients", patients);
-           model.addAttribute("visit", new Visit());
-
-            return "visit";
+            return getString(model);
         }
 
 
@@ -79,6 +63,18 @@ public class VisitController {
         redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. Dziękujemy za rejestrację!");
 
         return "redirect:/visit";
+    }
+
+    private String getString(Model model) {
+        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+
+
+        model.addAttribute("doctors", doctors);
+        model.addAttribute("patients", patients);
+        model.addAttribute("visit", new Visit());
+
+        return "visit";
     }
 
 

@@ -22,5 +22,6 @@ public class ClinicWebApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(ClinicWebApplication.class, args);
+
     }
 }

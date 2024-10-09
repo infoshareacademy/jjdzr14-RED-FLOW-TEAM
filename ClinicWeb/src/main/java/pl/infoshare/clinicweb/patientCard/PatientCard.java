@@ -1,31 +1,32 @@
 package pl.infoshare.clinicweb.patientCard;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Patient;
-import pl.infoshare.clinicweb.user.PersonDetails;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
+@Setter
 @Entity
+@Table(name = "patients_cards")
 public class PatientCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Patient patient;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Doctor doctor;
-    private PersonDetails personDetails;
     private String symptoms;
     private LocalDateTime dateOfVisit;
     private String noteDoctor;
     private String noteMedicalHistory;
     private String diagnosis;
     private String treatment;
-
-
 }
