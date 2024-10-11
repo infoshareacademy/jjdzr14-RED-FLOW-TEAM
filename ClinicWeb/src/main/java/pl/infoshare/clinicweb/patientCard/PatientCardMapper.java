@@ -5,9 +5,6 @@ import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Component
 public class PatientCardMapper {
@@ -24,7 +21,7 @@ public class PatientCardMapper {
 
         patientCardDTO.setDateOfVisit(patientCard.getDateOfVisit());
         patientCardDTO.setNoteDoctor(patientCard.getNoteDoctor());
-        patientCardDTO.setNoteMedicalHistory(patientCard.getNoteMedicalHistory());
+
         patientCardDTO.setDiagnosis(patientCard.getDiagnosis());
         patientCardDTO.setTreatment(patientCard.getTreatment());
         return (patientCardDTO);
@@ -38,6 +35,7 @@ public class PatientCardMapper {
         patientDetails.setSurname(patientCardDTO.getPatientLastName());
         patient.setPersonDetails(patientDetails);
         patientCard.setPatient(patient);
+        patient.setId(patientCard.getId());
 
         Doctor doctor = new Doctor();
         PersonDetails doctorDetails = new PersonDetails();
@@ -49,7 +47,6 @@ public class PatientCardMapper {
         patientCard.setSymptoms(patientCardDTO.getSymptoms());
         patientCard.setDateOfVisit(patientCardDTO.getDateOfVisit());
         patientCard.setNoteDoctor(patientCardDTO.getNoteDoctor());
-        patientCard.setNoteMedicalHistory(patientCardDTO.getNoteMedicalHistory());
         patientCard.setDiagnosis(patientCardDTO.getDiagnosis());
         patientCard.setTreatment(patientCardDTO.getTreatment());
 

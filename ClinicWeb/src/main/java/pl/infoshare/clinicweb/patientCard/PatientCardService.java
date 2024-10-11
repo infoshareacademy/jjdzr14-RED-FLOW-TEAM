@@ -31,7 +31,7 @@ public class PatientCardService {
 
     public PatientCardDTO findById(Long id) {
         return patientCardRepository
-                .findById(id)
+                .findByPatientId(id)
                 .map(patientCardMapper::toDto)
                 .orElseThrow(()
                         -> new EntityNotFoundException(String.format("Patient card not found with given ID: %s", id)));

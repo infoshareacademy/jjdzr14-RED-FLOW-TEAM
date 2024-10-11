@@ -121,49 +121,52 @@
                                th:field="${patientCard.patientPesel}">
                     </div>
                 </div>
-
             </div>
+
+            <!-- Sekcja aktualnej wizyty -->
             <h4 class="mt-4">Aktualna wizyta</h4>
-            <div class="row mb-6">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="visitDate" class="form-label">Data wizyty</label>
-                        <input type="date" class="form-control" id="visitDate" th:value="${visitData.visitDate.toLocalDate()}">
+                        <label for="visitDate">Data wizyty</label>
+                        <span id="visitDate" th:text="${#temporals.format(patientCard.dateOfVisit, 'yyyy-MM-dd')}"></span>
                     </div>
-
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                                                <label for="visitTime" class="form-label">Godzina wizyty</label>
-                                                <input type="time" class="form-control" id="visitTime"
-                                                       th:value="${visitData.visitDate.toLocalTime()}">
+                        <label for="visitTime">Godzina wizyty</label>
+                        <span id="visitTime" th:text="${#temporals.format(patientCard.dateOfVisit, 'HH:mm')}"></span>
                     </div>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="visitReason" class="form-label">Objawy</label>
-                    <textarea class="form-control" id="visitReason" th:field="*{symptoms}" rows="2"
-                              placeholder="Wprowadź powód wizyty"></textarea>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="doctorNotes" class="form-label">Notatki lekarza</label>
-                    <textarea class="form-control" id="doctorNotes" th:field="*{noteDoctor}" rows="4"
-                              placeholder="Wprowadź notatki lekarza"></textarea>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="diagnosis" class="form-label">Diagnoza</label>
-                    <textarea class="form-control" id="diagnosis" th:field="*{diagnosis}" rows="2"
-                              placeholder="Wprowadź diagnozę"></textarea>
-                </div>
-                <div class="form-group mb-4">
-                    <label for="treatment" class="form-label">Zalecane leczenie</label>
-                    <textarea class="form-control" id="treatment" th:field="*{treatment}" rows="2"
-                              placeholder="Wprowadź zalecane leczenie"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Zapisz</button>
             </div>
+
+
+            <div class="form-group mb-3">
+                <label for="visitReason" class="form-label">Objawy</label>
+                <textarea class="form-control" id="visitReason" th:field="*{symptoms}" rows="2"
+                          placeholder="Wprowadź powód wizyty"></textarea>
+            </div>
+            <div class="form-group mb-3">
+                <label for="doctorNotes" class="form-label">Notatki lekarza</label>
+                <textarea class="form-control" id="doctorNotes" th:field="*{noteDoctor}" rows="4"
+                          placeholder="Wprowadź notatki lekarza"></textarea>
+            </div>
+            <div class="form-group mb-3">
+                <label for="diagnosis" class="form-label">Diagnoza</label>
+                <textarea class="form-control" id="diagnosis" th:field="*{diagnosis}" rows="2"
+                          placeholder="Wprowadź diagnozę"></textarea>
+            </div>
+            <div class="form-group mb-4">
+                <label for="treatment" class="form-label">Zalecane leczenie</label>
+                <textarea class="form-control" id="treatment" th:field="*{treatment}" rows="2"
+                          placeholder="Wprowadź zalecane leczenie"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Zapisz</button>
         </form>
     </div>
 </div>
+
 <footer>
     <div th:replace="~{fragments/footer :: footer}"></div>
 </footer>

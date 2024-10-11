@@ -26,7 +26,6 @@ public class PatientCard {
     private String symptoms;
     private LocalDateTime dateOfVisit;
     private String noteDoctor;
-    private String noteMedicalHistory;
     private String diagnosis;
     private String treatment;
 }

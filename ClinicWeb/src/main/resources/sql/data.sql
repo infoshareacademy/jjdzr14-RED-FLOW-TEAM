@@ -1,4 +1,4 @@
-INSERT INTO patient (NAME, SURNAME, PHONE_NUMBER, PESEL, CITY, COUNTRY, STREET, FLAT_NUMBER, HOUSE_NUMBER, ZIP_CODE,
+INSERT INTO patients (NAME, SURNAME, PHONE_NUMBER, PESEL, CITY, COUNTRY, STREET, FLAT_NUMBER, HOUSE_NUMBER, ZIP_CODE,
                      GENDER)
 VALUES ('Adam', 'Nowak', '606536999', 95102826883, 'Kraków', 'Niemcy', 'Murarska', 8, 39, '30-612', 'MALE'),
        ('Malwina', 'Paskal', '505-666-158', 92042326741, 'Olkusz', 'Polska', 'Górna', 12, 34, '32-300', 'FEMALE'),
@@ -18,7 +18,7 @@ VALUES ('Adam', 'Nowak', '606536999', 95102826883, 'Kraków', 'Niemcy', 'Murarsk
        ('Chong', 'Herman', '453-434-222', 66060480592, 'Nowy Wiśnicz', 'Włochy', 'Jerzmanowskiego', 67, 39, '30-876',
         'MALE');
 
-INSERT INTO doctor (NAME, SURNAME, PHONE_NUMBER, PESEL, CITY, COUNTRY, STREET, FLAT_NUMBER, HOUSE_NUMBER, ZIP_CODE,
+INSERT INTO doctors (NAME, SURNAME, PHONE_NUMBER, PESEL, CITY, COUNTRY, STREET, FLAT_NUMBER, HOUSE_NUMBER, ZIP_CODE,
                     GENDER, SPECIALIZATION, AVAILABILITY, ONLINE)
 VALUES ('Adam', 'Nowak', '606536999', 95102826883, 'Zakopane', 'Litwa', 'Kijowa', 5, 39, '32-300', 'MALE', 'NEUROLOGY',
         TRUE, TRUE),

@@ -9,8 +9,9 @@ import pl.infoshare.clinicweb.user.PersonDetails;
 
 @Data
 @Entity
-@Table(name = "patient")
+@Table(name = "patients")
 public class Patient {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +20,7 @@ public class Patient {
     @Embedded
     private PersonDetails personDetails;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
