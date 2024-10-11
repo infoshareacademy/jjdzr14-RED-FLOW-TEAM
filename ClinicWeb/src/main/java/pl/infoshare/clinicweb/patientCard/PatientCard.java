@@ -1,6 +1,5 @@
 package pl.infoshare.clinicweb.patientCard;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import pl.infoshare.clinicweb.doctor.Doctor;

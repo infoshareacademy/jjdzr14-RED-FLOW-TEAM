@@ -33,33 +33,40 @@ public class patientCardController {
         }
 
         Optional<PatientDto> patientDtoOpt = patientService.findById(id);
-        if (!patientDtoOpt.isPresent()) {
+
+        if (patientDtoOpt.isPresent()) {
+            PatientDto patientDto = patientDtoOpt.get();
+            PatientCardDTO patientCard = new PatientCardDTO();
+
+            patientCard.setPatientFirstName(patientDto.getName());
+            patientCard.setPatientLastName(patientDto.getSurname());
+            patientCard.setPatientPesel(patientDto.getPesel());
+
+            Optional<VisitDto> visitById = visitService.findVisitById(id);
+
+            patientCard.setDateOfVisit(visitById.get().getVisitDate());
+            System.out.println(patientCard.getDateOfVisit());
+
+            model.addAttribute("patient", patientDto);
+            model.addAttribute("patientCard", patientCard);
+            visitService.findVisitById(id).ifPresent(visitDto -> model.addAttribute("visitData", visitDto));
+
+            return "patient-card";
+        } else {
             model.addAttribute("error", "Patient not found");
             return "error-page";
         }
-
-        PatientDto patientDto = patientDtoOpt.get();
-        long patientIdFromDto = patientDto.getId();
-
-        Optional<VisitDto> visitOpt = visitService.findVisitById(patientIdFromDto);
-
-        if (!visitOpt.isPresent()) {
-            model.addAttribute("error", "Visit not found for patient");
-            return "error-page";
-        }
-
-        PatientCardDTO patientCard = createPatientCardDTO(patientDto);
-        model.addAttribute("patientCard", patientCard);
-
-        return "patient-card";
     }
 
-    private PatientCardDTO createPatientCardDTO(PatientDto patientDto) {
-        PatientCardDTO patientCard = new PatientCardDTO();
-        patientCard.setPatientFirstName(patientDto.getName());
-        patientCard.setPatientLastName(patientDto.getSurname());
-        patientCard.setPatientPesel(patientDto.getPesel());
-        return patientCard;
+    @GetMapping("/patient-appointment")
+    public String createPatientAppointment(@RequestParam(value = "id", required = false) Long id, Model model) {
+        if (id == null) {
+            model.addAttribute("error", "Invalid patient ID");
+            return "error-page";
+        }
+        PatientCardDTO patientAppointments = patientCardService.findById(id);
+        model.addAttribute("patientCard", patientAppointments);
+        return "patient-appointments";
     }
 
     @PostMapping("/patient-card")
@@ -79,4 +86,5 @@ public class patientCardController {
             return "patient-card";
         }
     }
+
 }

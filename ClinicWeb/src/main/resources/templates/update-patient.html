@@ -22,6 +22,7 @@
             <p th:text="${error}">Błąd</p>
         </div>
         <form th:action="@{/update-patient}" th:method="post" th:object="${patient}">
+            <input type="hidden" name="_method" value="put" />
             <div class="row">
                 <div class="col">
                     <div class="form-group">
@@ -75,14 +76,14 @@
                     <div class="col-auto">
                         <a th:href="@{/patients}" class="btn btn-primary" role="button" aria-pressed="true">Anuluj</a>
                     </div>
-                </div>
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-success">pokaż kart pacjenta </button>
-                    </div>
-                    <div class="col-auto">
-                        <a th:href="@{/patient-appointments}" class="btn btn-primary" role="button" aria-pressed="true"></a>
-                    </div>
-                </div>
+<!--                </div>-->
+<!--                    <div class="col-auto">-->
+<!--                        <button type="submit" class="btn btn-success">pokaż kart pacjenta </button>-->
+<!--                    </div>-->
+<!--                    <div class="col-auto">-->
+<!--                        <a th:href="@{/patient-appointments}" class="btn btn-primary" role="button" aria-pressed="true"></a>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </form>
 

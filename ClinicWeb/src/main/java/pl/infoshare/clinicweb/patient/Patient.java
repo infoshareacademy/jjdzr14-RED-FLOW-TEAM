@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import pl.infoshare.clinicweb.clinic.Clinic;
 import pl.infoshare.clinicweb.doctor.Doctor;
+import pl.infoshare.clinicweb.patientCard.PatientCard;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 
@@ -23,6 +24,8 @@ public class Patient {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private PatientCard patientCard;
 
     @ManyToOne
     private Clinic clinic;

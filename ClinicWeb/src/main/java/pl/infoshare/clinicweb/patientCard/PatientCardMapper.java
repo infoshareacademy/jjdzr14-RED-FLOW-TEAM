@@ -4,12 +4,13 @@ import org.springframework.stereotype.Component;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.visit.Visit;
 
 
 @Component
 public class PatientCardMapper {
 
-    public PatientCardDTO  toDto(PatientCard patientCard) {
+    public PatientCardDTO toDto(PatientCard patientCard) {
         PatientCardDTO patientCardDTO = new PatientCardDTO();
 
         patientCardDTO.setPatientPesel(patientCard.getPatient().getPersonDetails().getPesel());
@@ -26,31 +27,47 @@ public class PatientCardMapper {
         patientCardDTO.setTreatment(patientCard.getTreatment());
         return (patientCardDTO);
     }
+
     public PatientCard toEntity(PatientCardDTO patientCardDTO) {
+
         PatientCard patientCard = new PatientCard();
-
-        Patient patient = new Patient();
-        PersonDetails patientDetails = new PersonDetails();
-        patientDetails.setName(patientCardDTO.getPatientFirstName());
-        patientDetails.setSurname(patientCardDTO.getPatientLastName());
-        patient.setPersonDetails(patientDetails);
-        patientCard.setPatient(patient);
-        patient.setId(patientCard.getId());
-
-        Doctor doctor = new Doctor();
-        PersonDetails doctorDetails = new PersonDetails();
-        doctorDetails.setName(patientCardDTO.getDoctorFirstName());
-        doctorDetails.setSurname(patientCardDTO.getDoctorLastName());
-        doctor.setDetails(doctorDetails);
-        patientCard.setDoctor(doctor);
-
-        patientCard.setSymptoms(patientCardDTO.getSymptoms());
+        patientCard.setId(patientCardDTO.getId());
         patientCard.setDateOfVisit(patientCardDTO.getDateOfVisit());
-        patientCard.setNoteDoctor(patientCardDTO.getNoteDoctor());
-        patientCard.setDiagnosis(patientCardDTO.getDiagnosis());
-        patientCard.setTreatment(patientCardDTO.getTreatment());
+
+
+        if (patientCardDTO.getPatientFirstName() != null && patientCardDTO.getPatientLastName() != null) {
+            Patient patient = new Patient();
+            PersonDetails patientDetails = new PersonDetails();
+            patientDetails.setName(patientCardDTO.getPatientFirstName());
+            patientDetails.setSurname(patientCardDTO.getPatientLastName());
+            patient.setPersonDetails(patientDetails);
+            if (patientCardDTO.getId() != null) {
+                patient.setId(patientCardDTO.getId());
+                patientCard.setPatient(patient);
+            }
+
+
+            if (patientCardDTO.getDoctorFirstName() != null && patientCardDTO.getDoctorLastName() != null) {
+                Doctor doctor = new Doctor();
+                PersonDetails doctorDetails = new PersonDetails();
+                doctorDetails.setName(patientCardDTO.getDoctorFirstName());
+                doctorDetails.setSurname(patientCardDTO.getDoctorLastName());
+                doctor.setDetails(doctorDetails);
+                if (patientCardDTO.getId() != null) {
+                    doctor.setId(patientCardDTO.getId());
+                }
+                patientCard.setDoctor(doctor);
+            }
+
+
+            patientCard.setSymptoms(patientCardDTO.getSymptoms());
+            patientCard.setNoteDoctor(patientCardDTO.getNoteDoctor());
+            patientCard.setDiagnosis(patientCardDTO.getDiagnosis());
+            patientCard.setTreatment(patientCardDTO.getTreatment());
+
+            return patientCard;
+        }
 
         return patientCard;
     }
-
 }

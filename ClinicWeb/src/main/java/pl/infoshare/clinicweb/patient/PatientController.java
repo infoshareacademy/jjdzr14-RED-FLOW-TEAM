@@ -99,9 +99,9 @@ public class PatientController {
     public String editPatient(@ModelAttribute("patient") PatientDto patient,
                               Model model, Address address, RedirectAttributes redirectAttributes) {
 
-        patientService.updatePatient(patient, address);
         model.addAttribute("patient", patient);
         model.addAttribute("address", address);
+        patientService.updatePatient(patient, address);
         redirectAttributes.addFlashAttribute("success", "Zaktualizowano dane pacjenta.");
         return "redirect:patients";
     }

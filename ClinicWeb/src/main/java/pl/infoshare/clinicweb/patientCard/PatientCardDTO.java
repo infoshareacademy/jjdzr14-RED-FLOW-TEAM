@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class PatientCardDTO {
-
+    private Long id;
     private String patientPesel;
     private String doctorFirstName;
     private String doctorLastName;
