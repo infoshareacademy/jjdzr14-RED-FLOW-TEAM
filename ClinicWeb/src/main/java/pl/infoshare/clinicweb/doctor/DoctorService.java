@@ -30,7 +30,7 @@ public class DoctorService {
                 .stream()
                 .map(doctorMapper::toDto)
                 .findFirst()
-                .orElseThrow(() -> new EntityNotFoundException(String.format("Doctor not found with %s", id)));
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Nie znaleziono lekarza z numerem id %s", id)));
     }
 
 

@@ -1,6 +1,5 @@
 package pl.infoshare.clinicweb.patient;
 
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -151,18 +150,16 @@ public class PatientController {
         PatientDto patientByPesel = patientService.findByPesel(pesel);
 
 
-            if (!Utils.hasPeselCorrectDigits(pesel) || pesel==null) {
+        if (!Utils.hasPeselCorrectDigits(pesel) || pesel == null) {
 
-                model.addAttribute("peselError", "Nieprawidłowy format numeru pesel!.");
-                return "patients";
+            model.addAttribute("peselError", "Nieprawidłowy format numeru pesel!.");
+            return "patients";
 
-            } else if (!patientByPesel.equals(null)) {
+        } else if (!patientByPesel.equals(null)) {
 
-                model.addAttribute("patientByPesel", patientByPesel);
+            model.addAttribute("patientByPesel", patientByPesel);
 
-            } else  {
 
-            model.addAttribute("patientError");
             return "patients";
         }
 

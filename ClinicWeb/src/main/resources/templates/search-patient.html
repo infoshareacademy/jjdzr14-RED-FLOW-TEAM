@@ -24,8 +24,9 @@
             <button type="submit" class="btn btn-outline-primary ms-2" id="button-addon2">Wyszukaj</button>
         </div>
     </form>
-    <div th:if="${error != null}" class="alert alert-danger mt-4" role="alert">
+    <div th:align="center" th:if="${error}" class="mt-4 alert alert-danger" role="alert">
         <p th:text="${error}">Błąd</p>
+    </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a th:href="@{/patient}" class="btn btn-success" role="button" aria-pressed="true">Dodaj pacjenta do
                 bazy</a>
