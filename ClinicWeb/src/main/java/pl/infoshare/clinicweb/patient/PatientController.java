@@ -150,7 +150,7 @@ public class PatientController {
         PatientDto patientByPesel = patientService.findByPesel(pesel);
 
 
-        if (!Utils.hasPeselCorrectDigits(pesel) || pesel == null) {
+        if (!Utils.hasPeselCorrectDigits(pesel) || pesel==null) {
 
             model.addAttribute("peselError", "Nieprawidłowy format numeru pesel!.");
             return "patients";
@@ -159,8 +159,6 @@ public class PatientController {
 
             model.addAttribute("patientByPesel", patientByPesel);
 
-
-            return "patients";
         }
 
 

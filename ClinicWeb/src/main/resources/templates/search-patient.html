@@ -24,9 +24,10 @@
             <button type="submit" class="btn btn-outline-primary ms-2" id="button-addon2">Wyszukaj</button>
         </div>
     </form>
-    <div th:align="center" th:if="${error}" class="mt-4 alert alert-danger" role="alert">
-        <p th:text="${error}">Błąd</p>
-    </div>
+    <div th:if="${error!=null}">
+        <div th:align="center" class="mt-4 alert alert-danger" role="alert">
+            <p th:text="${error}">Błąd</p>
+        </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a th:href="@{/patient}" class="btn btn-success" role="button" aria-pressed="true">Dodaj pacjenta do
                 bazy</a>
@@ -64,13 +65,17 @@
                 </td>
 
             </tr>
+
             </tbody>
-            <div th:if="${patientByPesel==null}" class="card mt-4">
-                <p th:text="${error}">Błąd</p>
-            </div>
-            <a th:href="@{/patients}" class="btn btn-primary mt-3" role="button" aria-pressed="true">Powrót do listy
-                pacjentów</a>
+            <!--            <div th:if="${patientByPesel==null}" class="card mt-4">-->
+            <!--                <p th:text="${error}">Błąd</p>-->
+            <!--            </div>-->
+
+
         </table>
+        <a th:href="@{/patients}" class="btn btn-primary mt-3" role="button" aria-pressed="true">Powrót do listy
+            pacjentów</a>
+
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
