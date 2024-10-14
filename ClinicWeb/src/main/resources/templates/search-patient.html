@@ -16,7 +16,7 @@
 </nav>
 <div class="container">
     <h3 class="card-title text-center">Wyszukiwanie pacjenta po pesel</h3>
-    <form th:action="@{/search-patient}" th:method="post">
+    <form th:action="@{/search-patient(pesel=${pesel})}" th:method="post">
         <div class="input-group mb-3">
             <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL"
                    aria-label="Search"
@@ -33,7 +33,7 @@
                 pacjentów</a>
         </div>
     </div>
-    <div th:if="${searchForPesel != null}" class="card mt-4">
+    <div th:if="${patientByPesel != null}" class="card mt-4">
         <table class="table table-striped table-hover">
             <thead>
             <tr>
@@ -47,24 +47,26 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="patient : ${searchForPesel}">
-                <td th:text="${patient.personDetails.name}">Name</td>
-                <td th:text="${patient.personDetails.surname}">Surname</td>
-                <td th:text="${patient.personDetails.phoneNumber}">Phone number</td>
-                <td th:text="${patient.personDetails.pesel}">Pesel</td>
-                <td th:text="${searchForPesel.doctor}">Prime doctor</td>
+            <tr th:each="patient : ${patientByPesel}">
+                <td th:text="${patient.name}">Name</td>
+                <td th:text="${patient.surname}">Surname</td>
+                <td th:text="${patient.phoneNumber}">Phone number</td>
+                <td th:text="${patient.pesel}">Pesel</td>
 
                 <td class="d-flex align-items-center">
-                    <a th:href="@{/update-patient(pesel=${patient.personDetails.pesel})}"
+                    <a th:href="@{/update-patient(id=${patient.id})}"
                        class="btn btn-primary btn-sm active me-2" role="button" aria-pressed="true">Edytuj dane</a>
                     <form th:action="@{/delete-patient}" th:method="post" class="d-inline">
-                        <input type="hidden" name="pesel" th:value="${searchForPesel.personDetails.pesel}">
+                        <input type="hidden" name="id" th:value="${patient}">
                         <button type="submit" class="btn btn-danger btn-sm active">Usuń</button>
                     </form>
                 </td>
 
             </tr>
             </tbody>
+            <div th:if="${patientByPesel==null}" class="card mt-4">
+                <p th:text="${error}">Błąd</p>
+            </div>
             <a th:href="@{/patients}" class="btn btn-primary mt-3" role="button" aria-pressed="true">Powrót do listy
                 pacjentów</a>
         </table>

@@ -1,5 +1,6 @@
 package pl.infoshare.clinicweb.patient;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -70,7 +71,7 @@ public class PatientController {
 
 
     @GetMapping(value = "/patients")
-    public String listDoctors(Model model, @RequestParam(value = "page") @ModelAttribute Optional<Integer> page) {
+    public String listPatients(Model model, @RequestParam(value = "page") @ModelAttribute Optional<Integer> page) {
 
         int currentPage = page.orElse(1);
 
@@ -109,7 +110,7 @@ public class PatientController {
     @PostMapping("/search")
     public String searchPatient(@PathVariable("id") Long id, Model model, Address address) {
 
-        Optional<PatientDto> patient = patientService.findById(id);
+        PatientDto patient = patientService.findById(id);
         if (patient != null) {
             model.addAttribute("patient", patient);
             model.addAttribute("address", address);
@@ -135,27 +136,42 @@ public class PatientController {
                                     @ModelAttribute Long id,
                                     Model model) {
 
-        model.addAttribute("patient", patientService.findById(id).get());
+        model.addAttribute("patient", patientService.findById(id));
 
 
         return "update-patient";
     }
 
+
     @PostMapping("/search-patient")
-    public String searchPatientById(@RequestParam("id") @ModelAttribute Long id,
-                                    Model model) {
+    public String searchPatientByPesel(@RequestParam(value = "pesel", required = false) @ModelAttribute String pesel,
+                                       Model model) {
 
 
-        if (patientService.findById(id) != null) {
-            model.addAttribute("searchForId", id);
-        } else {
-            model.addAttribute("error", "Nie znaleziono pacjenta o podanym numerze id: " + id);
+        PatientDto patientByPesel = patientService.findByPesel(pesel);
+
+
+            if (!Utils.hasPeselCorrectDigits(pesel) || pesel==null) {
+
+                model.addAttribute("peselError", "Nieprawidłowy format numeru pesel!.");
+                return "patients";
+
+            } else if (!patientByPesel.equals(null)) {
+
+                model.addAttribute("patientByPesel", patientByPesel);
+
+            } else  {
+
+            model.addAttribute("patientError");
+            return "patients";
         }
+
+
         return "search-patient";
     }
 
     @GetMapping("/search-patient")
-    public String searchPatientById(Model model) {
+    public String searchPatientByPesel(Model model) {
 
         model.addAttribute("patient", new Patient());
 
@@ -165,8 +181,8 @@ public class PatientController {
     @PostMapping("/delete-patient")
     public String deletePatient(@RequestParam("id") Long id) {
 
-        Optional<PatientDto> patientById = patientService.findById(id);
-        if (patientById.isPresent()) {
+        PatientDto patientById = patientService.findById(id);
+        if (patientById != null) {
             patientService.deletePatient(id);
         }
         return "redirect:/patients";
@@ -175,7 +191,7 @@ public class PatientController {
     @GetMapping("/delete-patient")
     public String showDeletePatientForm(@RequestParam("id") Long id, Model model) {
 
-        Optional<PatientDto> patientById = patientService.findById(id);
+        PatientDto patientById = patientService.findById(id);
         model.addAttribute("patient", patientById);
 
         return "delete-patient";

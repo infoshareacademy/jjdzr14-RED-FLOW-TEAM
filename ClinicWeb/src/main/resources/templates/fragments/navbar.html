@@ -1,4 +1,5 @@
-<nav th:fragment="navbar" class="navbar navbar-expand-lg">
+<nav th:fragment="navbar" class="navbar navbar-expand-lg"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <div class="logo">
         <a th:href="@{/}"><img width="442" height="57" src="/new%20logo%20black.png" alt="logo2"></a>
     </div>
@@ -7,33 +8,62 @@
             <li class="nav-item">
                 <a class="nav-link" aria-current="page" th:href="@{/}">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/visit}">Umów się na wizytę</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarViewDoctorSpecialization" role="button"
-                   data-bs-toggle="dropdown" aria-expanded="false">
-                    Wyświetl Listę
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarViewDoctorSpecialization">
-                    <li><a class="dropdown-item" th:href="@{/patients}">Lista naszych pacjentów</a></li>
-                    <li><a class="dropdown-item" th:href="@{/doctors}">Lista naszych lekarzy</a></li>
-                    <li><a class="dropdown-item" th:href="@{/visits}">Lista wszystkich wizyt</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link enable" th:href="@{patient}" tabindex="-1" aria-disabled="true">Utwórz konto nowego
-                    pacjenta</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link enable" th:href="@{doctor}" tabindex="-1" aria-disabled="true">Utwórz konto nowego
-                    lekarza</a>
-            </li>
-            <li class="nav-ite ">
-                <div class="nav-link enable">
-                <div class="current-time text-white text-end" id="currentTime"></div>
+
+            <div sec:authorize="hasAnyRole('ADMIN', 'DOCTOR')">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/visit}">Umów się na wizytę</a>
+                </li>
+            </div>
+
+            <div sec:authorize="hasAnyRole('ADMIN', 'DOCTOR')">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarViewDoctorSpecialization" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Wyświetl Listę
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarViewDoctorSpecialization">
+                        <li><a class="dropdown-item" th:href="@{/patients}">Lista naszych pacjentów</a></li>
+                        <li><a class="dropdown-item" th:href="@{/doctors}">Lista naszych lekarzy</a></li>
+                        <li><a class="dropdown-item" th:href="@{/visits}">Lista wszystkich wizyt</a></li>
+                    </ul>
+
+                </li>
+            </div>
+
+            <div sec:authorize="hasAnyRole('ADMIN', 'DOCTOR')">
+                <li class="nav-item">
+                    <a class="nav-link enable" th:href="@{patient}" tabindex="-1" aria-disabled="true">Utwórz konto
+                        nowego
+                        pacjenta</a>
+                </li>
+            </div>
+
+                <div sec:authorize="hasRole('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link enable" th:href="@{doctor}" tabindex="-1" aria-disabled="true">Utwórz konto
+                            nowego
+                            lekarza</a>
+                    </li>
                 </div>
-            </li>
+
+                <div>
+                    <li class="nav-item">
+                        <span sec:authorize="isAnonymous()">
+                            <a class="nav-link enable" th:href="@{/login}" tabindex="-1" aria-disabled="true">Zaloguj się</a>
+                        </span>
+
+                        <span sec:authorize="isAuthenticated()">
+                            <a class="nav-link enable" th:href="@{/logout}" tabindex="-1" aria-disabled="true">Wyloguj się</a>
+                        </span>
+                    </li>
+                </div>
+
+                <li class="nav-ite ">
+                    <div class="nav-link enable">
+                        <div class="current-time text-white text-end" id="currentTime"></div>
+                    </div>
+                </li>
         </ul>
     </div>
 </nav>
