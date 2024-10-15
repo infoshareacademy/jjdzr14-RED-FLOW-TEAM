@@ -1,6 +1,5 @@
 package pl.infoshare.clinicweb.patientCard;
 
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,82 +8,86 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.infoshare.clinicweb.patient.PatientDto;
+import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.PatientService;
 import pl.infoshare.clinicweb.visit.VisitDto;
 import pl.infoshare.clinicweb.visit.VisitService;
 
-import java.util.Optional;
+import javax.validation.Valid;
 
 @Controller
 @AllArgsConstructor
 public class patientCardController {
 
-    private final PatientService patientService;
+
     private final PatientCardService patientCardService;
     private final VisitService visitService;
-
+    private final PatientCardMapper patientCardMapper;
 
     @GetMapping("/patient-card")
-    public String createPatientCard(@RequestParam(value = "id", required = false) Long id, Model model) {
+    public String createPatientCard(@RequestParam(value = "id", required = false)
+             Long id, Model model) {
         if (id == null) {
-            model.addAttribute("error", "Invalid patient ID");
+            model.addAttribute("error", "ID not found");
             return "error-page";
         }
 
-        Optional<PatientDto> patientDtoOpt = patientService.findById(id);
+        VisitDto visit = visitService.findVisitById(id).get();
+        PatientCardDTO patientCardDTO = new PatientCardDTO();
+        patientCardDTO.setPatientFirstName(visit.getPatientName());
+        patientCardDTO.setPatientLastName(visit.getPatientSurname());
+        patientCardDTO.setDoctorFirstName(visit.getDoctorName());
+        patientCardDTO.setDoctorLastName(visit.getDoctorSurname());
+        patientCardDTO.setPatientId(visit.getPatientId());
+        patientCardDTO.setPatientPesel(visit.getPatientPesel());
+        patientCardDTO.setDoctorId(visit.getDoctorId());
+        patientCardDTO.setDateOfVisit(visit.getVisitDate());
 
-        if (patientDtoOpt.isPresent()) {
-            PatientDto patientDto = patientDtoOpt.get();
-            PatientCardDTO patientCard = new PatientCardDTO();
+        model.addAttribute("visit", visit);
+        model.addAttribute("patientCard", patientCardDTO);
 
-            patientCard.setPatientFirstName(patientDto.getName());
-            patientCard.setPatientLastName(patientDto.getSurname());
-            patientCard.setPatientPesel(patientDto.getPesel());
-
-            Optional<VisitDto> visitById = visitService.findVisitById(id);
-
-            patientCard.setDateOfVisit(visitById.get().getVisitDate());
-            System.out.println(patientCard.getDateOfVisit());
-
-            model.addAttribute("patient", patientDto);
-            model.addAttribute("patientCard", patientCard);
-            visitService.findVisitById(id).ifPresent(visitDto -> model.addAttribute("visitData", visitDto));
-
-            return "patient-card";
-        } else {
-            model.addAttribute("error", "Patient not found");
-            return "error-page";
-        }
+        return "patient-card";
     }
 
     @GetMapping("/patient-appointment")
-    public String createPatientAppointment(@RequestParam(value = "id", required = false) Long id, Model model) {
+    public String createPatientAppointment(@RequestParam(value = "id", required = false) Long id,
+                                           Model model) {
         if (id == null) {
             model.addAttribute("error", "Invalid patient ID");
             return "error-page";
         }
         PatientCardDTO patientAppointments = patientCardService.findById(id);
+
         model.addAttribute("patientCard", patientAppointments);
         return "patient-appointments";
     }
 
     @PostMapping("/patient-card")
-    public String savePatientCard(@ModelAttribute("patientCard") @Valid PatientCardDTO patientCard, BindingResult bindingResult, Model model) {
+    public String savePatientCard(
+            @Valid @ModelAttribute("patientCard") PatientCardDTO patientCardDTO,
+            BindingResult bindingResult,
+            Model model) {
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("error", "Validation errors occurred");
-            return "patient-card";
+            model.addAttribute("error", "Wystąpiły błędy walidacyjne.");
+            return "error-page";
         }
 
-        try {
-            patientCardService.patientCardSave(patientCard);
-            model.addAttribute("successMessage", "Patient card saved successfully!");
-            return "index";
-        } catch (Exception e) {
-            model.addAttribute("error", "Failed to save patient card");
-            return "patient-card";
+        PatientCard patientCard = patientCardMapper.toEntity(patientCardDTO);
+
+        if (patientCardDTO.getPatientId() == null || patientCardDTO.getDoctorId() == null) {
+            model.addAttribute("error", "Identyfikator pacjenta lub lekarza nie może być pusty.");
+            return "error-page";
         }
+
+        patientCardService.patientCardSave(patientCard, patientCardDTO.getPatientId(), patientCardDTO.getDoctorId());
+
+        model.addAttribute("successMessage", "Karta pacjenta została pomyślnie zapisana!");
+
+        return "redirect:/index";
     }
 
+
+
 }
+

@@ -101,6 +101,7 @@ public class PatientController {
 
         model.addAttribute("patient", patient);
         model.addAttribute("address", address);
+
         patientService.updatePatient(patient, address);
         redirectAttributes.addFlashAttribute("success", "Zaktualizowano dane pacjenta.");
         return "redirect:patients";

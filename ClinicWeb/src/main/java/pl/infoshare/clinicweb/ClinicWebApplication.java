@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import pl.infoshare.clinicweb.doctor.DoctorService;
+import pl.infoshare.clinicweb.patient.PatientService;
 import pl.infoshare.clinicweb.patientCard.PatientCard;
 import pl.infoshare.clinicweb.patientCard.PatientCardService;
 import pl.infoshare.clinicweb.visit.VisitDto;

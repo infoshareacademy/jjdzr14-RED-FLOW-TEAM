@@ -14,7 +14,6 @@ public class DoctorMapper {
         DoctorDto doctorDto = new DoctorDto();
 
         doctorDto.setId(doctor.getId());
-        doctorDto.setPesel(doctor.getDetails().getPesel());
         doctorDto.setName(doctor.getDetails().getName());
         doctorDto.setSurname(doctor.getDetails().getSurname());
         doctorDto.setSpecialization(doctor.getSpecialization());
@@ -35,7 +34,6 @@ public class DoctorMapper {
 
         doctor.setId(doctorDto.getId());
         doctor.setDetails(new PersonDetails());
-        doctor.getDetails().setPesel(doctorDto.getPesel());
         doctor.getDetails().setName(doctorDto.getName());
         doctor.getDetails().setSurname(doctorDto.getSurname());
         doctor.setSpecialization(doctorDto.getSpecialization());

@@ -27,9 +27,7 @@ public class DoctorService {
 
         return doctorRepository
                 .findById(id)
-                .stream()
                 .map(doctorMapper::toDto)
-                .findFirst()
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Doctor not found with %s", id)));
     }
 

@@ -51,7 +51,7 @@ VALUES ('Adam', 'Nowak', '606536999', 95102826883, 'Zakopane', 'Litwa', 'Kijowa'
        ('Marlo', 'Szydłowski', '7673234212', 35070390380, 'Kraków', 'Białoruś', 'Nurkowa', 81, 339, '30-599', 'FEMALE',
         'ONCOLOGY', TRUE, TRUE);
 
-INSERT INTO visit(cancel_visit, doctor_id, patient_id, visit_date)
+INSERT INTO visit(cancel_visit, doctor_Id, patient_Id, visit_date)
 values (false, 1, 1, '2024-09-09 15:30:00'),
 (false, 1, 1, '2024-09-09 16:30:00'),
 (false, 1, 2, '2024-09-10 17:30:00'),

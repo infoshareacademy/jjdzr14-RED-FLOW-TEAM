@@ -12,4 +12,6 @@ public interface PatientCardRepository extends JpaRepository<PatientCard, Long> 
     @Query("SELECT p FROM PatientCard p WHERE p.patient.id=:patientId")
     Optional<PatientCard> findByPatientId(Long patientId);
 
+
+
 }

@@ -41,9 +41,8 @@ public class VisitService {
 
             PatientDto patient = patientService.findById(patientId)
                     .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + patientId));
-
-
             Patient entityPatient = patientMapper.toEntity(patient);
+
             visit.setDoctor(entityDoctor);
             visit.setPatient(entityPatient);
 
@@ -84,11 +83,19 @@ public class VisitService {
     }
 
     public Optional<VisitDto> findVisitById(Long id) {
+        Visit visit = visitRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Visit not found"));
 
-        return visitRepository.findById(id)
-                .stream()
-                .map(visitMapper::toVisitDto)
-                .findFirst()
-                .orElseThrow(() -> new EntityNotFoundException(String.format("No visit found with id %s", id)));
+        VisitDto visitDto = new VisitDto();
+        visitDto.setId(visit.getId());
+        visitDto.setPatientName(visit.getPatient().getPersonDetails().getName());
+        visitDto.setPatientSurname(visit.getPatient().getPersonDetails().getSurname());
+        visitDto.setDoctorName(visit.getDoctor().getDetails().getName());
+        visitDto.setDoctorSurname(visit.getDoctor().getDetails().getSurname());
+        visitDto.setPatientId(visit.getPatient().getId());  // Ustaw patientId
+        visitDto.setDoctorId(visit.getDoctor().getId());    // Ustaw doctorId
+        visitDto.setVisitDate(visit.getVisitDate());
+
+        return Optional.of(visitDto);
     }
 }

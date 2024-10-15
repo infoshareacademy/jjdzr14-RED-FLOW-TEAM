@@ -69,7 +69,6 @@ public class VisitController {
         List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
         List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
 
-
         model.addAttribute("doctors", doctors);
         model.addAttribute("patients", patients);
         model.addAttribute("visit", new Visit());

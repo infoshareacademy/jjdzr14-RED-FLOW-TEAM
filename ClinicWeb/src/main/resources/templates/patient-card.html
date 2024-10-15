@@ -99,6 +99,10 @@
     <div class="card p-4">
         <h2 class="mb-4">Karta Pacjenta</h2>
         <form th:action="@{/patient-card}" th:object="${patientCard}" method="post">
+            <input type="hidden" th:field="*{patientId}" th:value="${visit.patientId}" />
+            <input type="hidden" th:field="*{doctorId}" th:value="${visit.doctorId}" />
+
+
             <div class="row mb-3">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -123,13 +127,14 @@
                 </div>
             </div>
 
-            <!-- Sekcja aktualnej wizyty -->
+
             <h4 class="mt-4">Aktualna wizyta</h4>
             <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="visitDate">Data wizyty</label>
-                        <span id="visitDate" th:text="${#temporals.format(patientCard.dateOfVisit, 'yyyy-MM-dd')}"></span>
+                        <span id="visitDate"
+                              th:text="${#temporals.format(patientCard.dateOfVisit, 'yyyy-MM-dd')}"></span>
                     </div>
                 </div>
                 <div class="col-md-6">

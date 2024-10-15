@@ -10,7 +10,7 @@ import java.util.Optional;
 public class PatientMapper {
 
 
-    public Optional<PatientDto> toDto (Patient patient) {
+    public Optional<PatientDto> toDto(Patient patient) {
 
         PatientDto patientDto = new PatientDto();
 

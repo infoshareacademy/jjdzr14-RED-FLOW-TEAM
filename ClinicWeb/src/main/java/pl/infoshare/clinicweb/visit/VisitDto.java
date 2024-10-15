@@ -1,14 +1,19 @@
 package pl.infoshare.clinicweb.visit;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import pl.infoshare.clinicweb.doctor.Specialization;
 
 import java.time.LocalDateTime;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class VisitDto {
 
-    private long id;
+    private Long id;
     private LocalDateTime visitDate;
     private String patientName;
     private String patientSurname;
@@ -17,5 +22,8 @@ public class VisitDto {
     private String doctorName;
     private String doctorSurname;
     private Specialization doctorSpecialization;
-    private boolean isVisitCancelled;
+    private boolean visitCancelled;
+    private Long patientId;
+    private long doctorId;
+
 }
