@@ -97,7 +97,7 @@
                             oninput="setCustomValidity('')">>
                         <option value="" selected>----Wybierz lekarza----</option>
                         <option th:each="doctor : ${doctors}"
-                                th:value="${doctor.getName()}"
+                                th:value="${doctor.id}"
                                 th:text="${doctor.getName() + ' ' + doctor.getSurname()}"></option>
                     </select>
                 </div>
