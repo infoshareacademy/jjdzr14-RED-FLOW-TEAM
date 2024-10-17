@@ -18,6 +18,10 @@ import static pl.infoshare.clinicweb.user.Role.DOCTOR;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    String[] staticResources = {
+            "/styles/**",
+            "/images/**"};
+
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -44,6 +48,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests((auth) -> auth
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers(staticResources).permitAll()
                         .requestMatchers("/update-patient**",
                                 "/update-doctor**",
                                 "/delete-doctor**",

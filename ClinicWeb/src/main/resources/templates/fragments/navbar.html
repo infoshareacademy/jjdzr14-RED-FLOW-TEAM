@@ -1,7 +1,7 @@
 <nav th:fragment="navbar" class="navbar navbar-expand-lg"
      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <div class="logo">
-        <a th:href="@{/}"><img width="442" height="57" src="/new%20logo%20black.png" alt="logo2"></a>
+        <a th:href="@{/}"><img width="442" height="57" src="/images/new%20logo%20black.png" alt="logo2"></a>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -66,4 +66,28 @@
                 </li>
         </ul>
     </div>
+    <script>
+        function updateCurrentDateTime() {
+            const currentTimeElement = document.getElementById('currentTime');
+            const now = new Date();
+
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+
+
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+
+            currentTimeElement.textContent = `Aktualna data i godzina: ${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateCurrentDateTime, 1000);
+
+
+        updateCurrentDateTime();
+    </script>
 </nav>
+

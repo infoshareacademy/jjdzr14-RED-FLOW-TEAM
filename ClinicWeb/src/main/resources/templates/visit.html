@@ -27,8 +27,8 @@
                     <div class="mb-3">
                         <label class="form-label">Wybierz pacjenta:</label>
 
-                        <select id="patientPesel"
-                                name="patientPesel"
+                        <select id="patientId"
+                                name="patientId"
                                 class="btn btn-primary btn-block"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
@@ -47,8 +47,8 @@
                     <div class="mb-3">
                         <label class="form-label">Do jakiego lekarza chcesz sie zapisać?</label>
 
-                        <select id="doctorPesel"
-                                name="doctorPesel"
+                        <select id="doctorId"
+                                name="doctorId"
                                 class="btn btn-primary btn-block"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
@@ -57,7 +57,7 @@
                                 oninput="setCustomValidity('')">
                             <option value="" selected>----WYBIERZ LEKARZA----</option>
                             <option th:each="doctor : ${doctors}"
-                                    th:value="${doctor.pesel}"
+                                    th:value="${doctor.id}"
                                     th:text="${doctor.name + ' ' + doctor.surname + ' ' + doctor.specialization} "></option>
 
                         </select>

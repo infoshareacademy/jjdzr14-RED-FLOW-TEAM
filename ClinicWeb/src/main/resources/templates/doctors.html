@@ -16,6 +16,7 @@
         <div th:replace="~{fragments/navbar :: navbar}"></div>
     </div>
 </nav>
+
 <div class="container">
     <h3 class="card-title text-center">Lista lekarzy</h3>
     <form th:action="@{/doctors(page=${currentPage},specialization=${specialization})}">
