@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import pl.infoshare.clinicweb.user.PeselFormatException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,15 +22,23 @@ public class ExceptionHandlerApp {
 
         });
         return errorsMap;
-
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
     public Map<String, String> handleException(EntityNotFoundException exception) {
 
         Map<String, String> errorsMap = new HashMap<>();
-        errorsMap.put("error", exception.getMessage());
-        return errorsMap;
+        errorsMap.put("error", "Nie znaleziono podanego obiektu w bazie.");
 
+        return errorsMap;
+    }
+
+    @ExceptionHandler(PeselFormatException.class)
+    public Map<String, String> handleException(PeselFormatException exception) {
+
+        Map<String, String> errorsMap = new HashMap<>();
+        errorsMap.put("error", "Niepoprawny format numeru pesel.");
+
+        return errorsMap;
     }
 }

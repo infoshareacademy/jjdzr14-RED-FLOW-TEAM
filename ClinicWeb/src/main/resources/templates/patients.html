@@ -19,7 +19,7 @@
 
 <div class="container content">
     <h3 class="card-title text-center">Wyszukiwanie pacjenta po numerze PESEL</h3>
-    <form th:action="@{/search-patient}" th:method="post">
+    <form th:action="@{/search-patient(pesel=${pesel})}">
         <div class="input-group mb-3">
             <input type="text" class="form-control form-control-sm" name="pesel" placeholder="Wpisz numer PESEL"
                    aria-label="Search"
@@ -29,9 +29,6 @@
     </form>
     <div th:if="${error != null}" class="mt-2 alert alert-danger" role="alert">
         <p th:text="${error}">Błąd</p>
-    </div>
-    <div th:if="${peselError != null}" class="mt-2 alert alert-danger" role="alert">
-        <p th:text="${peselError}">Błąd</p>
     </div>
     <div th:align="center" th:if="${success != null}" class="mt-4 alert alert-success" role="alert">
         <p th:text="${success}">Sukces</p>

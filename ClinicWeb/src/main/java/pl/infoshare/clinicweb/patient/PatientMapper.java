@@ -2,14 +2,12 @@ package pl.infoshare.clinicweb.patient;
 
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 
 @Component
 public class PatientMapper {
 
 
-    public PatientDto toDto (Patient patient) {
+    public PatientDto toDto(Patient patient) {
 
         PatientDto patientDto = new PatientDto();
 

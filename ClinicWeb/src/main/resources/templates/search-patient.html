@@ -16,7 +16,7 @@
 </nav>
 <div class="container">
     <h3 class="card-title text-center">Wyszukiwanie pacjenta po pesel</h3>
-    <form th:action="@{/search-patient(pesel=${pesel})}" th:method="post">
+    <form th:action="@{/search-patient(pesel=${pesel})}">
         <div class="input-group mb-3">
             <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL"
                    aria-label="Search"
@@ -67,10 +67,6 @@
             </tr>
 
             </tbody>
-            <!--            <div th:if="${patientByPesel==null}" class="card mt-4">-->
-            <!--                <p th:text="${error}">Błąd</p>-->
-            <!--            </div>-->
-
 
         </table>
         <a th:href="@{/patients}" class="btn btn-primary mt-3" role="button" aria-pressed="true">Powrót do listy

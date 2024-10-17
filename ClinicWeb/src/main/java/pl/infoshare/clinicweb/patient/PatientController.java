@@ -7,10 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.infoshare.clinicweb.advice.ExceptionHandlerApp;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.PeselFormatException;
 import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
@@ -25,6 +28,8 @@ public class PatientController {
     private final PatientService patientService;
 
     private final DoctorService doctorService;
+    private final ExceptionHandlerApp exceptionHandlerApp;
+    private final View error;
 
 
     @GetMapping("/patient")
@@ -70,7 +75,9 @@ public class PatientController {
 
 
     @GetMapping(value = "/patients")
-    public String listPatients(Model model, @RequestParam(value = "page") @ModelAttribute Optional<Integer> page) {
+    public String listPatients(Model model, @RequestParam(value = "pesel", required = false) String pesel,
+                               @RequestParam(value = "page") @ModelAttribute Optional<Integer> page) {
+
 
         int currentPage = page.orElse(1);
 
@@ -91,6 +98,7 @@ public class PatientController {
             totalPages = 1;
         }
 
+        model.addAttribute("pesel", pesel);
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("totalElements", totalElements);
@@ -141,34 +149,19 @@ public class PatientController {
         return "update-patient";
     }
 
-
-    @PostMapping("/search-patient")
-    public String searchPatientByPesel(@RequestParam(value = "pesel", required = false) @ModelAttribute String pesel,
-                                       Model model) {
-
-
-        PatientDto patientByPesel = patientService.findByPesel(pesel);
-
-
-        if (!Utils.hasPeselCorrectDigits(pesel) || pesel==null) {
-
-            model.addAttribute("peselError", "Nieprawidłowy format numeru pesel!.");
-            return "patients";
-
-        } else if (!patientByPesel.equals(null)) {
-
-            model.addAttribute("patientByPesel", patientByPesel);
-
-        }
-
-
-        return "search-patient";
-    }
-
     @GetMapping("/search-patient")
-    public String searchPatientByPesel(Model model) {
+    public String searchPatientByPesel(Model model, @RequestParam(value = "pesel", required = false) String pesel) {
 
-        model.addAttribute("patient", new Patient());
+
+        if (!Utils.hasPeselCorrectDigits(pesel)) {
+
+            throw new PeselFormatException(pesel);
+
+        } else {
+
+            PatientDto patientByPesel = patientService.findByPesel(pesel);
+            model.addAttribute("patientByPesel", patientByPesel);
+        }
 
         return "search-patient";
     }

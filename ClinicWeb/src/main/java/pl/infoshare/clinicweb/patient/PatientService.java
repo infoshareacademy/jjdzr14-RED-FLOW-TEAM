@@ -30,14 +30,14 @@ public class PatientService {
 
         return patientRepository.findById(id)
                 .map(patientMapper::toDto)
-                .orElseThrow(() -> new EntityNotFoundException(String.format("Nie znaleziono pacjenta z numerem id %s", id)));
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Patient not found with id %s", id)));
     }
 
     public PatientDto findByPesel(String pesel) {
 
-        return patientRepository.findByPesel(pesel)
+        return patientRepository.findByPesel(pesel.trim())
                 .map(patientMapper::toDto)
-                .orElseThrow(() -> new EntityNotFoundException(String.format("Nie znaleziono pacjenta z numerem pesel %s", pesel)));
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Patient not found with pesel %s", pesel)));
     }
 
     public List<PatientDto> findAllPatients() {
