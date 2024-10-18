@@ -99,8 +99,8 @@
     <div class="card p-4">
         <h2 class="mb-4">Karta Pacjenta</h2>
         <form th:action="@{/patient-card}" th:object="${patientCard}" method="post">
-            <input type="hidden" th:field="*{patientId}" th:value="${visit.patientId}" />
-            <input type="hidden" th:field="*{doctorId}" th:value="${visit.doctorId}" />
+            <input type="hidden" th:field="*{patientId}" th:value="${patientCard.patientId}" />
+            <input type="hidden" th:field="*{doctorId}" th:value="${patientCard.doctorId}" />
 
 
             <div class="row mb-3">
@@ -133,18 +133,11 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="visitDate">Data wizyty</label>
-                        <span id="visitDate"
-                              th:text="${#temporals.format(patientCard.dateOfVisit, 'yyyy-MM-dd')}"></span>
+                        <input type="datetime-local" class="form-control" id="visitDate" th:value="${patientCard.dateOfVisit}">
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="visitTime">Godzina wizyty</label>
-                        <span id="visitTime" th:text="${#temporals.format(patientCard.dateOfVisit, 'HH:mm')}"></span>
-                    </div>
+
                 </div>
             </div>
-
 
             <div class="form-group mb-3">
                 <label for="visitReason" class="form-label">Objawy</label>
@@ -166,9 +159,9 @@
                 <textarea class="form-control" id="treatment" th:field="*{treatment}" rows="2"
                           placeholder="Wprowadź zalecane leczenie"></textarea>
             </div>
-
             <button type="submit" class="btn btn-primary">Zapisz</button>
         </form>
+
     </div>
 </div>
 

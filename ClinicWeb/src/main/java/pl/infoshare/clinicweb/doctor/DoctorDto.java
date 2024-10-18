@@ -14,10 +14,5 @@ public class DoctorDto {
     private String surname;
     @NotBlank(message ="Pole nie może być puste")
     private Specialization specialization;
-    private String country;
-    private String street;
-    private String city;
-    private String zipCode;
-    private String houseNumber;
-    private String flatNumber;
+
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
-import pl.infoshare.clinicweb.visit.Visit;
+
 
 
 @Component
@@ -25,9 +25,7 @@ public class PatientCardMapper {
 
         if (patientCard.getDoctor() != null && patientCard.getDoctor().getDetails() != null) {
             patientCardDTO.setDoctorFirstName(patientCard.getDoctor().getDetails().getName());
-            patientCardDTO.setDoctorLastName(patientCard.getDoctor().getDetails().getSurname());
-
-
+            patientCardDTO.setDoctorLastName(patientCard.getDoctor().getDetails().getName());
             patientCardDTO.setDoctorId(patientCard.getDoctor().getId());
         }
 
@@ -47,10 +45,12 @@ public class PatientCardMapper {
 
 
         patientCard.setDateOfVisit(patientCardDTO.getDateOfVisit());
+        patientCard.setId(patientCardDTO.getId());
 
 
         Patient patient = new Patient();
         PersonDetails patientDetails = new PersonDetails();
+        patient.setId(patientCardDTO.getPatientId());
         patientDetails.setName(patientCardDTO.getPatientFirstName());
         patientDetails.setSurname(patientCardDTO.getPatientLastName());
         patientDetails.setPesel(patientCardDTO.getPatientPesel());
@@ -58,25 +58,20 @@ public class PatientCardMapper {
 
         patient.setPersonDetails(patientDetails);
         patientCard.setPatient(patient);
+
         Doctor doctor = new Doctor();
         PersonDetails doctorDetails = new PersonDetails();
         doctorDetails.setName(patientCardDTO.getDoctorFirstName());
         doctorDetails.setSurname(patientCardDTO.getDoctorLastName());
         doctor.setDetails(doctorDetails);
-
-
-        if (patientCardDTO.getDoctorId() != null) {
-            doctor.setId(patientCardDTO.getDoctorId());
-        }
-
+        doctor.setId(patientCardDTO.getDoctorId());
 
         patientCard.setDoctor(doctor);
-
-
         patientCard.setSymptoms(patientCardDTO.getSymptoms());
         patientCard.setNoteDoctor(patientCardDTO.getNoteDoctor());
         patientCard.setDiagnosis(patientCardDTO.getDiagnosis());
         patientCard.setTreatment(patientCardDTO.getTreatment());
+        patientCard.setDateOfVisit(patientCardDTO.getDateOfVisit());
 
         return patientCard;
     }

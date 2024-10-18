@@ -20,7 +20,7 @@ public class PatientCard {
     @ManyToOne
     private Doctor doctor;
     private String symptoms;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime dateOfVisit;
     private String noteDoctor;
     private String diagnosis;

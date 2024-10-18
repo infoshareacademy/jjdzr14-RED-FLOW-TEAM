@@ -16,11 +16,9 @@ public class VisitMapper {
 
 
 
-    public Optional<VisitDto> toVisitDto(Visit visit) {
+    public VisitDto toVisitDto(Visit visit) {
 
-        if (visit == null) {
-            return Optional.empty();
-        }
+
 
         VisitDto visitDto = new VisitDto();
 
@@ -34,16 +32,18 @@ public class VisitMapper {
             visitDto.setPatientSurname(visit.getPatient().getPersonDetails().getSurname());
             visitDto.setPatientPhoneNumber(visit.getPatient().getPersonDetails().getPhoneNumber());
             visitDto.setPatientPesel(visit.getPatient().getPersonDetails().getPesel());
+            visitDto.setPatientId(visit.getPatient().getId());
         }
-
 
         if (visit.getDoctor() != null && visit.getDoctor().getDetails() != null) {
             visitDto.setDoctorName(visit.getDoctor().getDetails().getName());
             visitDto.setDoctorSurname(visit.getDoctor().getDetails().getSurname());
-            visitDto.setDoctorSpecialization(visit.getDoctor().getSpecialization()); // Ustawienie specjalizacji
+            visitDto.setDoctorSpecialization(visit.getDoctor().getSpecialization());
+            visitDto.setDoctorId(visit.getDoctor().getId());
         }
 
-        return Optional.of(visitDto);
+        return visitDto;
+
     }
 
 
@@ -53,11 +53,6 @@ public class VisitMapper {
             throw new IllegalArgumentException("VisitDto cannot be null");
         }
 
-        Visit visit = new Visit();
-
-        visit.setId(visitDto.getId());
-        visit.setVisitDate(visitDto.getVisitDate());
-        visit.setCancelVisit(visitDto.isVisitCancelled());
 
 
         Patient patient = new Patient();
@@ -67,7 +62,7 @@ public class VisitMapper {
         personDetails.setPhoneNumber(visitDto.getPatientPhoneNumber());
         personDetails.setPesel(visitDto.getPatientPesel());
         patient.setPersonDetails(personDetails);
-        visit.setPatient(patient);
+        patient.setId(visitDto.getPatientId());
 
 
         Doctor doctor = new Doctor();
@@ -76,7 +71,16 @@ public class VisitMapper {
         doctorDetails.setSurname(visitDto.getDoctorSurname());
         doctor.setDetails(doctorDetails);
         doctor.setSpecialization(visitDto.getDoctorSpecialization());
+        doctor.setId(visitDto.getDoctorId());
+
+        Visit visit = new Visit();
+        visit.setId(visitDto.getId());
+        visit.setVisitDate(visitDto.getVisitDate());
+        visit.setCancelVisit(visitDto.isVisitCancelled());
+
+        visit.setPatient(patient);
         visit.setDoctor(doctor);
+
 
         return visit;
     }

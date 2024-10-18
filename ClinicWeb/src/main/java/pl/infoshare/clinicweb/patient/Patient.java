@@ -7,6 +7,11 @@ import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patientCard.PatientCard;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 
 @Data
 @Entity
@@ -24,8 +29,8 @@ public class Patient {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private PatientCard patientCard;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<PatientCard> patientCards = new HashSet<>();
 
     @ManyToOne
     private Clinic clinic;

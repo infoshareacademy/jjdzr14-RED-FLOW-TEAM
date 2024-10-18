@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
@@ -18,7 +17,6 @@ import pl.infoshare.clinicweb.patient.PatientService;
 import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Controller
@@ -58,6 +56,11 @@ public class VisitController {
         }
 
 
+        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+
+        model.addAttribute("doctors", doctors);
+        model.addAttribute("patients", patients);
         visitService.saveVisit(visit, doctorId, patientId);
 
         redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. Dziękujemy za rejestrację!");
@@ -86,10 +89,10 @@ public class VisitController {
     @PostMapping("/cancel")
     public String cancelVisit(@RequestParam("id") Long id, Model model) {
 
-        Optional<VisitDto> visit = visitService.findVisitById(id);
+        VisitDto visit = visitService.findVisitById(id);
         model.addAttribute("allVisits", visit);
 
-        visitService.cancelVisit(visit.get());
+        visitService.cancelVisit(visit);
 
         return "redirect:/visits";
     }

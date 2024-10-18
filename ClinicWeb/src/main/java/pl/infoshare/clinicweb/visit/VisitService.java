@@ -1,6 +1,7 @@
 package pl.infoshare.clinicweb.visit;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -29,26 +30,26 @@ public class VisitService {
     private final PatientMapper patientMapper;
 
     public void saveVisit(Visit visit, Long doctorId, Long patientId) {
-            if (doctorId == null || patientId == null) {
-                throw new IllegalArgumentException("Doctor ID and Patient ID cannot be null");
-            }
-
-
-          DoctorDto doctor = doctorService.findById(doctorId)
-                    .orElseThrow(() -> new EntityNotFoundException("Doctor not found with id: " + doctorId));
-            Doctor entityDoctor = doctorMapper.toEntity(doctor);
-
-
-            PatientDto patient = patientService.findById(patientId)
-                    .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + patientId));
-            Patient entityPatient = patientMapper.toEntity(patient);
-
-            visit.setDoctor(entityDoctor);
-            visit.setPatient(entityPatient);
-
-
-            visitRepository.save(visit);
+        if (doctorId == null || patientId == null) {
+            throw new IllegalArgumentException("Doctor ID and Patient ID cannot be null");
         }
+
+
+        DoctorDto doctor = doctorService.findById(doctorId)
+                .orElseThrow(() -> new EntityNotFoundException("Doctor not found with id: " + doctorId));
+        Doctor entityDoctor = doctorMapper.toEntity(doctor);
+
+
+        PatientDto patient = patientService.findById(patientId)
+                .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + patientId));
+        Patient entityPatient = patientMapper.toEntity(patient);
+
+        visit.setDoctor(entityDoctor);
+        visit.setPatient(entityPatient);
+
+
+        visitRepository.save(visit);
+    }
 
     public void updateVisit(VisitDto visitDto) {
 
@@ -82,20 +83,12 @@ public class VisitService {
 
     }
 
-    public Optional<VisitDto> findVisitById(Long id) {
-        Visit visit = visitRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Visit not found"));
+    public VisitDto findVisitById(Long id) {
+        return visitRepository
+                .findById(id)
+                .map(visitMapper::toVisitDto)
+                .orElseThrow(() ->
+                        new EntityNotFoundException(String.format("Visit not found with given ID: %d", id)));
 
-        VisitDto visitDto = new VisitDto();
-        visitDto.setId(visit.getId());
-        visitDto.setPatientName(visit.getPatient().getPersonDetails().getName());
-        visitDto.setPatientSurname(visit.getPatient().getPersonDetails().getSurname());
-        visitDto.setDoctorName(visit.getDoctor().getDetails().getName());
-        visitDto.setDoctorSurname(visit.getDoctor().getDetails().getSurname());
-        visitDto.setPatientId(visit.getPatient().getId());  // Ustaw patientId
-        visitDto.setDoctorId(visit.getDoctor().getId());    // Ustaw doctorId
-        visitDto.setVisitDate(visit.getVisitDate());
-
-        return Optional.of(visitDto);
     }
 }

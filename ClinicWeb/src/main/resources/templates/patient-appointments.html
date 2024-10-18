@@ -29,11 +29,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="patient-appointments : ${patientAppointments }">
-                <td th:text="${patientAppointments .patientLastName}"></td>
-                <td th:text="${patientAppointments .patientLastName}"></td>
-                <td th:text="${patientAppointments .patientPesel}"></td>
-                <td th:text="${patientAppointments .dateOfVisit}"></td>
+            <tr th:each="patientCardList:${patientAppointments}">
+                <td th:text="${patientCardList.patient.personDetails.name}"></td>
+                <td th:text="${patientCardList.patient.personDetails.surname}"></td>
+                <td th:text="${patientCardList.patient.personDetails.pesel}"></td>
+                <td th:text="${patientCardList.dateOfVisit}"></td>
                 <td style="table-layout: fixed">
                     <a th:href="@{/detal-patient-appointments(id=${patientAppointments.getDateOfVisit()})}"
                        class="btn btn-primary btn-sm" role="button">Pokaż szczegóły</a>
