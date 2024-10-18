@@ -14,7 +14,7 @@ public class PatientCardDTO {
     private String doctorFirstName;
     private String doctorLastName;
     private String symptoms;
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime dateOfVisit;
     private String noteDoctor;
     private String diagnosis;
