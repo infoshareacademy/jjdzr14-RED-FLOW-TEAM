@@ -56,17 +56,7 @@ public class PatientCardController {
             BindingResult bindingResult,
             Model model) {
 
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("error", "Wystąpiły błędy walidacyjne.");
-            return "error-page";
-        }
         PatientCard patientCard = patientCardMapper.toEntity(patientCardDTO);
-
-        if (patientCardDTO.getPatientId() == null || patientCardDTO.getDoctorId() == null) {
-            model.addAttribute("error", "Identyfikator pacjenta lub lekarza nie może być pusty.");
-            return "error-page";
-        }
-
 
         patientCardService.patientCardSave(patientCard);
 

@@ -1,6 +1,7 @@
 package pl.infoshare.clinicweb.patientCard;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +14,7 @@ public class PatientCardDTO {
     private String doctorFirstName;
     private String doctorLastName;
     private String symptoms;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateOfVisit;
     private String noteDoctor;
     private String diagnosis;

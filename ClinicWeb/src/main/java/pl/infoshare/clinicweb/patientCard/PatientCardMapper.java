@@ -44,7 +44,7 @@ public class PatientCardMapper {
         PatientCard patientCard = new PatientCard();
 
 
-        patientCard.setDateOfVisit(patientCardDTO.getDateOfVisit());
+
         patientCard.setId(patientCardDTO.getId());
 
 
