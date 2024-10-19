@@ -25,7 +25,9 @@
                 <th>Nazwisko</th>
                 <th>Pesel</th>
                 <th>Data</th>
-                <th>Pokaż szczegóły</th>
+                <th>id</th>
+                <th>pokaż szczegóły</th>
+
             </tr>
             </thead>
             <tbody>
@@ -34,10 +36,11 @@
                 <td th:text="${patientCardList.patient.personDetails.surname}"></td>
                 <td th:text="${patientCardList.patient.personDetails.pesel}"></td>
                 <td th:text="${patientCardList.dateOfVisit}"></td>
+                <td th:text="${patientCardList.id}"></td>
                 <td style="table-layout: fixed">
-                    <!--                    <a th:href="@{/detal-patient-appointments(id=${patientCard.id})}"-->
-                    <!--                       class="btn btn-primary btn-sm" role="button">Pokaż szczegóły</a>-->
-                    <!--                </td>-->
+                                        <a th:href="@{/detal-patient-appointments(id=${patientCardList.id})}"
+                                           class="btn btn-primary btn-sm" role="button">Pokaż szczegóły</a>
+                                    </td>
             </tr>
             </tbody>
         </table>

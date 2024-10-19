@@ -12,9 +12,7 @@ import pl.infoshare.clinicweb.visit.VisitDto;
 import pl.infoshare.clinicweb.visit.VisitService;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @AllArgsConstructor
@@ -40,12 +38,27 @@ public class PatientCardController {
 
 
 
-    @GetMapping("/patient-appointments")
-    public String getPatientAppointments(@RequestParam(value = "id", required = false) Long id, Model model) {
+    @GetMapping("/detal-patient-appointments")
+    public String getDetailPatientAppointments(@RequestParam(value = "id", required = false) Long id, Model model) {
 
 
         List<PatientCard> patientAppointments = patientCardService.findAllPatientCardByPatientId(id);
 
+
+        PatientCard matchingPatientCard = patientAppointments.stream()
+                .findFirst()
+                .orElse(null);
+
+        model.addAttribute("matchingPatientCard", matchingPatientCard);
+        model.addAttribute("patientAppointments", patientAppointments);
+
+        return "detal-patient-appointments";
+    }
+
+    @GetMapping("/patient-appointments")
+    public String getPatientAppointments(@RequestParam(value = "id", required = false) Long id, Model model) {
+
+        List<PatientCard> patientAppointments = patientCardService.findAllPatientCardByPatientId(id);
         model.addAttribute("patientAppointments", patientAppointments);
         return "patient-appointments";
     }
