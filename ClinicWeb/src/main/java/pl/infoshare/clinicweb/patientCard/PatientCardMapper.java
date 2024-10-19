@@ -25,7 +25,7 @@ public class PatientCardMapper {
 
         if (patientCard.getDoctor() != null && patientCard.getDoctor().getDetails() != null) {
             patientCardDTO.setDoctorFirstName(patientCard.getDoctor().getDetails().getName());
-            patientCardDTO.setDoctorLastName(patientCard.getDoctor().getDetails().getName());
+            patientCardDTO.setDoctorLastName(patientCard.getDoctor().getDetails().getSurname());
             patientCardDTO.setDoctorId(patientCard.getDoctor().getId());
         }
 

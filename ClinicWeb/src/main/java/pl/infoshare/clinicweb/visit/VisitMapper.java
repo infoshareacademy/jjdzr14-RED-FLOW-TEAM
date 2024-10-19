@@ -69,9 +69,10 @@ public class VisitMapper {
         PersonDetails doctorDetails = new PersonDetails();
         doctorDetails.setName(visitDto.getDoctorName());
         doctorDetails.setSurname(visitDto.getDoctorSurname());
-        doctor.setDetails(doctorDetails);
         doctor.setSpecialization(visitDto.getDoctorSpecialization());
         doctor.setId(visitDto.getDoctorId());
+        doctor.setDetails(doctorDetails);
+
 
         Visit visit = new Visit();
         visit.setId(visitDto.getId());
