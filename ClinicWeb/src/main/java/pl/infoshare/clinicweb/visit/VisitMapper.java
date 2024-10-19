@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Patient;
-
-import java.util.Optional;
+import pl.infoshare.clinicweb.user.PersonDetails;
 
 
 @Component
@@ -14,43 +13,74 @@ import java.util.Optional;
 public class VisitMapper {
 
 
-    public Optional <VisitDto> toVisitDto(Visit visit) {
+    public VisitDto toVisitDto(Visit visit) {
 
 
-        Optional <VisitDto> visitD = Optional.of(new VisitDto());
-        VisitDto visitDto = visitD.get();
 
-        visit.setId(visit.getId());
+        VisitDto visitDto = new VisitDto();
+
+        visitDto.setId(visit.getId());
         visitDto.setVisitDate(visit.getVisitDate());
         visitDto.setVisitCancelled(visit.isCancelVisit());
-        visitDto.setPatientName(visit.getPatient().getPersonDetails().getName());
-        visitDto.setPatientSurname(visit.getPatient().getPersonDetails().getSurname());
-        visitDto.setPatientPhoneNumber(visit.getPatient().getPersonDetails().getPhoneNumber());
-        visitDto.setPatientPesel(visit.getPatient().getPersonDetails().getPesel());
-        visitDto.setDoctorName(visit.getDoctor().getDetails().getName());
-        visitDto.setDoctorSurname(visit.getDoctor().getDetails().getSurname());
-        visitDto.setDoctorSpecialization(visitDto.getDoctorSpecialization());
+        visitDto.setVisitPastDate(visit.isVisitPastDate());
 
-        return Optional.of(visitDto);
+
+        if (visit.getPatient() != null && visit.getPatient().getPersonDetails() != null) {
+            visitDto.setPatientName(visit.getPatient().getPersonDetails().getName());
+            visitDto.setPatientSurname(visit.getPatient().getPersonDetails().getSurname());
+            visitDto.setPatientPhoneNumber(visit.getPatient().getPersonDetails().getPhoneNumber());
+            visitDto.setPatientPesel(visit.getPatient().getPersonDetails().getPesel());
+            visitDto.setPatientId(visit.getPatient().getId());
+        }
+
+        if (visit.getDoctor() != null && visit.getDoctor().getDetails() != null) {
+            visitDto.setDoctorName(visit.getDoctor().getDetails().getName());
+            visitDto.setDoctorSurname(visit.getDoctor().getDetails().getSurname());
+            visitDto.setDoctorSpecialization(visit.getDoctor().getSpecialization());
+            visitDto.setDoctorId(visit.getDoctor().getId());
+        }
+
+        return visitDto;
 
     }
 
-    public Visit toEntity (VisitDto visitDto) {
+
+    public Visit toEntity(VisitDto visitDto) {
+
+        if (visitDto == null) {
+            throw new IllegalArgumentException("VisitDto cannot be null");
+        }
+
+
+
+        Patient patient = new Patient();
+        PersonDetails personDetails = new PersonDetails();
+        personDetails.setName(visitDto.getPatientName());
+        personDetails.setSurname(visitDto.getPatientSurname());
+        personDetails.setPhoneNumber(visitDto.getPatientPhoneNumber());
+        personDetails.setPesel(visitDto.getPatientPesel());
+        patient.setPersonDetails(personDetails);
+        patient.setId(visitDto.getPatientId());
+
+
+        Doctor doctor = new Doctor();
+        PersonDetails doctorDetails = new PersonDetails();
+        doctorDetails.setName(visitDto.getDoctorName());
+        doctorDetails.setSurname(visitDto.getDoctorSurname());
+        doctor.setSpecialization(visitDto.getDoctorSpecialization());
+        doctor.setId(visitDto.getDoctorId());
+        doctor.setDetails(doctorDetails);
+
 
         Visit visit = new Visit();
-
         visit.setId(visitDto.getId());
         visit.setVisitDate(visitDto.getVisitDate());
         visit.setCancelVisit(visitDto.isVisitCancelled());
-        visit.getPatient().getPersonDetails().setName(visitDto.getPatientName());
-        visit.getPatient().getPersonDetails().setSurname(visitDto.getPatientSurname());
-        visit.getPatient().getPersonDetails().setPhoneNumber(visitDto.getPatientPhoneNumber());
-        visit.getPatient().getPersonDetails().setPesel(visitDto.getPatientPesel());
-        visit.getDoctor().getDetails().setName(visitDto.getDoctorName());
-        visit.getDoctor().getDetails().setSurname(visitDto.getDoctorSurname());
-        visit.getDoctor().setSpecialization(visitDto.getDoctorSpecialization());
+
+        visit.setPatient(patient);
+        visit.setDoctor(doctor);
+
 
         return visit;
-
     }
 }

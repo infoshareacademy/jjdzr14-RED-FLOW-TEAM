@@ -6,10 +6,8 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.patient.Address;
 import pl.infoshare.clinicweb.user.PersonDetails;
-import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,17 +22,15 @@ public class DoctorService {
         doctorRepository.save(user);
     }
 
-    public Optional<DoctorDto> findById(long id) {
+    public DoctorDto findById(long id) {
 
         return doctorRepository.findById(id)
-                .stream()
                 .map(doctorMapper::toDto)
-                .findFirst()
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Nie znaleziono lekarza z numerem id %s", id)));
     }
 
 
-    public List<Optional<DoctorDto>> findAllDoctors() {
+    public List<DoctorDto> findAllDoctors() {
 
         return doctorRepository.findAll()
                 .stream()
@@ -52,7 +48,7 @@ public class DoctorService {
 
 
             doctors = entities.map(doctor -> {
-                DoctorDto doctorDto = doctorMapper.toDto(doctor).get();
+                DoctorDto doctorDto = doctorMapper.toDto(doctor);
 
                 return doctorDto;
             });
@@ -85,7 +81,7 @@ public class DoctorService {
 
         Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("id"));
 
-        List<Optional<DoctorDto>> doctorDtos = doctorRepository.findAll()
+        List<DoctorDto> doctorDtos = doctorRepository.findAll()
                 .stream()
                 .filter(doctor -> doctor.getSpecialization().equals(specialization))
                 .map(doctorMapper::toDto)
@@ -94,7 +90,7 @@ public class DoctorService {
 
 
 
-        return new PageImpl<>(Utils.convertOptionalToList(doctorDtos));
+        return new PageImpl<>(doctorDtos);
     }
 
     public void setDoctorAttributes(Doctor doctor, PersonDetails personDetails,

@@ -17,7 +17,6 @@ import pl.infoshare.clinicweb.patient.PatientMapper;
 import pl.infoshare.clinicweb.patient.PatientService;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -34,7 +33,7 @@ public class VisitService {
 
     public void saveVisit(Visit visit, Long doctorId, Long patientId) {
 
-        DoctorDto doctorDto = doctorService.findById(doctorId).get();
+        DoctorDto doctorDto = doctorService.findById(doctorId);
         PatientDto patientDto = patientService.findById(patientId);
 
         Doctor doctor = doctorMapper.toEntity(doctorDto);
@@ -53,7 +52,7 @@ public class VisitService {
     }
 
 
-    public List<Optional<VisitDto>> findAllVisits() {
+    public List<VisitDto> findAllVisits() {
 
         return visitRepository.findAll()
                 .stream()
@@ -69,7 +68,7 @@ public class VisitService {
         Page<Visit> entities = visitRepository.findAll(pageable);
 
         Page<VisitDto> visits = entities.map(visit -> {
-            VisitDto visitDto = visitMapper.toVisitDto(visit).get();
+            VisitDto visitDto = visitMapper.toVisitDto(visit);
 
             return visitDto;
         });
@@ -77,13 +76,18 @@ public class VisitService {
         return visits;
     }
 
-    public void cancelVisit(VisitDto visitDto) {
+    public void cancelVisit(VisitDto visitDto)  {
 
-        Visit visit = visitMapper.toEntity(visitDto);
+            if (visitDto.isVisitPastDate() || !visitDto.isVisitCancelled()) {
 
-        visit.setCancelVisit(true);
+                Visit visit = visitMapper.toEntity(visitDto);
 
-        visitRepository.save(visit);
+                visit.setCancelVisit(true);
+
+                visitRepository.save(visit);
+            }
+
+
     }
 
     public void deleteVisit(Visit visit) {
@@ -98,12 +102,10 @@ public class VisitService {
 
     }
 
-    public Optional<VisitDto> findVisitById(Long id) {
+    public VisitDto findVisitById(Long id) {
 
         return visitRepository.findById(id)
-                .stream()
                 .map(visitMapper::toVisitDto)
-                .findFirst()
                 .orElseThrow(() -> new EntityNotFoundException(String.format("No visit found with id %s", id)));
     }
 }

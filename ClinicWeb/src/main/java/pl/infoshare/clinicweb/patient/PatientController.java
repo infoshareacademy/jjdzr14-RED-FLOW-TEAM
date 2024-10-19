@@ -35,7 +35,7 @@ public class PatientController {
     @GetMapping("/patient")
     public String patientForm(Model model) {
 
-        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+        List<DoctorDto> doctors = doctorService.findAllDoctors();
 
         model.addAttribute("personDetails", new PersonDetails());
         model.addAttribute("address", new Address());
@@ -51,7 +51,7 @@ public class PatientController {
                                         @RequestParam("pesel") String pesel,
                                         Model model, RedirectAttributes redirectAttributes) {
 
-        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+        List<DoctorDto> doctors = doctorService.findAllDoctors();
 
         model.addAttribute("doctors", doctors);
 
