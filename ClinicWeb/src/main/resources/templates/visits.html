@@ -49,7 +49,7 @@
                 <td th:text="${visit.patientPesel}">Pesel</td>
                 <td th:text="${visit.doctorName}">Imię</td>
                 <td th:text="${visit.doctorSurname}">Nazwisko</td>
-                <td th:text="${visit.doctorSpecialization}">Specjalizacja</td>
+                <td th:text="${visit.doctorSpecialization.getDescription()}">Specjalizacja</td>
                 <td th:text="${visit.visitDate.toLocalDate()}"> ">Data wizyty</td>
                 <td th:text="${visit.visitDate.toLocalTime()}"> ">Godzina wizyty</td>
                 <td>
