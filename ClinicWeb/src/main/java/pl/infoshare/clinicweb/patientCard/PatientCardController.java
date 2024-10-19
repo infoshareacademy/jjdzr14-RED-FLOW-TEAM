@@ -45,15 +45,18 @@ public class PatientCardController {
         List<PatientCard> patientAppointments = patientCardService.findAllPatientCardByPatientId(id);
 
 
-        PatientCard matchingPatientCard = patientAppointments.stream()
-                .findFirst()
-                .orElse(null);
+        PatientCardDTO matchingPatientCard = patientCardService.findById(id);
+
 
         model.addAttribute("matchingPatientCard", matchingPatientCard);
+
+
         model.addAttribute("patientAppointments", patientAppointments);
+
 
         return "detal-patient-appointments";
     }
+
 
     @GetMapping("/patient-appointments")
     public String getPatientAppointments(@RequestParam(value = "id", required = false) Long id, Model model) {

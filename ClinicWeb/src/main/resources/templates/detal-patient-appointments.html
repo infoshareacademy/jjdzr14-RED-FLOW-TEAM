@@ -16,15 +16,16 @@
                 <table class="table">
                     <tbody>
                     <tr>
-                        <td><label for="idPatientCard" class="form-label">ID card</label></td>
-                        <td><input type="text" class="form-control"
-                                   th:field="*{matchingPatientCard.id}"
-                                   id="idPatientCard" name="idCard" required></td>
-                        <td>
+<!--                        <td><label for="idPatientCard" class="form-label">ID card</label></td>-->
+<!--&lt;!&ndash;                        <td><input type="text" class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                                   th:field="*{matchingPatientCard.id}"&ndash;&gt;-->
+<!--&lt;!&ndash;                                   id="idPatientCard" name="idCard" required></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <td>&ndash;&gt;-->
 
-                        </td><td><label for="patientFirstName" class="form-label">Imię pacjenta</label></td>
+<!--                        </td>-->
+                        <td><label for="patientFirstName" class="form-label">Imię pacjenta</label></td>
                         <td><input type="text" class="form-control"
-                                   th:field="*{matchingPatientCard.patient.personDetails.name}"
+                                   th:field="*{matchingPatientCard.patientFirstName}"
                                    id="patientFirstName" name="patientFirstName" required></td>
                         <td>
 
@@ -32,18 +33,18 @@
                     </tr>
                     <tr>
                         <td><label for="patientLastName" class="form-label">Nazwisko pacjenta</label></td>
-                        <td><input type="text" class="form-control" th:field="*{matchingPatientCard.patient.personDetails.surname}" id="patientLastName" name="patientLastName" required></td>
+                        <td><input type="text" class="form-control" th:field="*{matchingPatientCard.patientLastName}" id="patientLastName" name="patientLastName" required></td>
                     </tr>
                     <tr>
                         <td><label for="doctorFirstName" class="form-label">Imię lekarza</label></td>
                         <td><input type="text" class="form-control"
-                                   th:field="*{matchingPatientCard.doctor.details.name}"
+                                   th:field="*{matchingPatientCard.doctorFirstName}"
                                    id="doctorFirstName" name="doctorFirstName" required></td>
                     </tr>
                     <tr>
                         <td><label for="doctorLastName" class="form-label">Nazwisko lekarza</label></td>
                         <td><input type="text" class="form-control"
-                                   th:field="*{matchingPatientCard.doctor.details.surname}"
+                                   th:field="*{matchingPatientCard.doctorLastName}"
                                    id="doctorLastName" name="doctorLastName" required></td>
                     </tr>
                     <tr>
