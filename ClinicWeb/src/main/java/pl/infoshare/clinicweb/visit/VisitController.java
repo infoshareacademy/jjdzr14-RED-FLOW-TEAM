@@ -63,6 +63,7 @@ public class VisitController {
 
 
         if (visitBindingResult.hasErrors()) {
+
             return getString(model);
         }
 
@@ -80,12 +81,14 @@ public class VisitController {
     }
 
     private String getString(Model model) {
+
         List<PatientDto> patients = patientService.findAllPatients();
         List<DoctorDto> doctors = doctorService.findAllDoctors();
 
         model.addAttribute("doctors", doctors);
         model.addAttribute("patients", patients);
         model.addAttribute("visit", new Visit());
+
 
         return "visit";
     }

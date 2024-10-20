@@ -21,7 +21,7 @@ public class PersonDetails {
     @Pattern(regexp = "^[a-zA-Z]+$", message = "Pole musi składać się z samych liter")
     private String surname;
     @NotEmpty(message = "Pole nie może być puste")
-    @Pattern(regexp = "^\\d{9}$")
+    @Pattern(regexp = "^\\d{9}$", message = "Pole musi składać się z 9 cyfr.")
     private String phoneNumber;
     private LocalDate birthDate;
     @NotEmpty(message = "Pole nie może być puste")
