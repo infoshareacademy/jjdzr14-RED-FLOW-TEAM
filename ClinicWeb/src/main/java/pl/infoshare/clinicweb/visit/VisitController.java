@@ -56,23 +56,22 @@ public class VisitController {
     }
 
     @PostMapping("/visit")
-    public String visitFormSubmission(@Valid Visit visit, BindingResult visitBindingResult,
+    public String visitFormSubmission(@Valid @ModelAttribute("visit") Visit visit, BindingResult visitBindingResult,
                                       @RequestParam(value = "patientId", required = false) Long patientId,
                                       @RequestParam(value = "doctorId", required = false) Long doctorId,
                                       Model model, RedirectAttributes redirectAttributes) {
-
-
-        if (visitBindingResult.hasErrors()) {
-
-            return getString(model);
-        }
-
 
         List<PatientDto> patients = patientService.findAllPatients();
         List<DoctorDto> doctors = doctorService.findAllDoctors();
 
         model.addAttribute("doctors", doctors);
         model.addAttribute("patients", patients);
+
+        if (visitBindingResult.hasErrors()) {
+
+            return "visit";
+        }
+
         visitService.saveVisit(visit, doctorId, patientId);
 
         redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. Dziękujemy za rejestrację!");
@@ -88,7 +87,6 @@ public class VisitController {
         model.addAttribute("doctors", doctors);
         model.addAttribute("patients", patients);
         model.addAttribute("visit", new Visit());
-
 
         return "visit";
     }
