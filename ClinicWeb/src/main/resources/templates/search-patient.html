@@ -7,6 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link th:href="@{styles/newStyle.css}" rel="stylesheet"/>
+    <style>
+        body {
+            background-image: url('/images/pxfuel.jpg');
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-custom">
@@ -16,7 +22,7 @@
 </nav>
 <div class="container">
     <h3 class="card-title text-center">Wyszukiwanie pacjenta po pesel</h3>
-    <form th:action="@{/search-patient(pesel=${pesel})}" th:method="post">
+    <form th:action="@{/search-patient(pesel=${pesel})}">
         <div class="input-group mb-3">
             <input type="text" class="form-control" name="pesel" placeholder="Wpisz numer PESEL"
                    aria-label="Search"
@@ -24,8 +30,10 @@
             <button type="submit" class="btn btn-outline-primary ms-2" id="button-addon2">Wyszukaj</button>
         </div>
     </form>
-    <div th:if="${error != null}" class="alert alert-danger mt-4" role="alert">
-        <p th:text="${error}">Błąd</p>
+    <div th:if="${error!=null}">
+        <div th:align="center" class="mt-4 alert alert-danger" role="alert">
+            <p th:text="${error}">Błąd</p>
+        </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a th:href="@{/patient}" class="btn btn-success" role="button" aria-pressed="true">Dodaj pacjenta do
                 bazy</a>
@@ -63,13 +71,13 @@
                 </td>
 
             </tr>
+
             </tbody>
-            <div th:if="${patientByPesel==null}" class="card mt-4">
-                <p th:text="${error}">Błąd</p>
-            </div>
-            <a th:href="@{/patients}" class="btn btn-primary mt-3" role="button" aria-pressed="true">Powrót do listy
-                pacjentów</a>
+
         </table>
+        <a th:href="@{/patients}" class="btn btn-primary mt-3" role="button" aria-pressed="true">Powrót do listy
+            pacjentów</a>
+
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

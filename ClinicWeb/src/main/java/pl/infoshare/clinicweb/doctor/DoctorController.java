@@ -116,7 +116,7 @@ public class DoctorController {
     @PostMapping("/search-doctor")
     public String searchDoctorByPesel(@RequestParam(value = "id", required = false) Long id, Model model) {
 
-        Optional<DoctorDto> doctorById = doctorService.findById(id);
+        DoctorDto doctorById = doctorService.findById(id);
 
         if (doctorService.findById(id) != null) {
 
@@ -130,7 +130,7 @@ public class DoctorController {
     @GetMapping("/update-doctor")
     public String fullDetailDoctor(@RequestParam(value = "id") Long id, Model model) {
 
-        model.addAttribute("doctor", doctorService.findById(id).get());
+        model.addAttribute("doctor", doctorService.findById(id));
 
         return "update-doctor";
     }
@@ -150,7 +150,7 @@ public class DoctorController {
     @GetMapping("/delete-doctor")
     public String showDeleteDoctorForm(@RequestParam("id") Long id, Model model) {
 
-        Optional<DoctorDto> doctorById = doctorService.findById(id);
+        DoctorDto doctorById = doctorService.findById(id);
         model.addAttribute("doctor", doctorById);
 
         return "delete-doctor";
@@ -159,11 +159,11 @@ public class DoctorController {
     @PostMapping("/delete-doctor")
     public String deleteDoctor(@RequestParam("id") Long id, RedirectAttributes redirectAttributes) {
 
-        Optional<DoctorDto> doctorById = doctorService.findById(id);
+        DoctorDto doctorById = doctorService.findById(id);
 
-        if (doctorById.isPresent()) {
+        if (doctorById != null) {
 
-            doctorService.deleteDoctor(doctorById.get().getId());
+            doctorService.deleteDoctor(doctorById.getId());
             redirectAttributes.addFlashAttribute("success", "Usunięto dane lekarza.");
         }
         return "redirect:/doctors";

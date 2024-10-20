@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +13,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-image: url('/images/pxfuel.jpg');
+            background-size: cover;
+        }
+    </style>
 
 </head>
 <body>
@@ -34,35 +40,11 @@
 
         <a th:href="@{/visit}" class="btn btn-secondary btn-lg btn-block" role="button"
            aria-pressed="true">Umów się na wizytę</a>
-
     </div>
 </div>
 </body>
 <footer>
     <div th:replace="~{fragments/footer :: footer}"></div>
 </footer>
-<script>
-    function updateCurrentDateTime() {
-        const currentTimeElement = document.getElementById('currentTime');
-        const now = new Date();
 
-        const day = String(now.getDate()).padStart(2, '0');
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const year = now.getFullYear();
-
-        // Pobranie godziny
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-
-        // Wyświetlenie daty i godziny
-        currentTimeElement.textContent = `Aktualna data i godzina: ${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
-    }
-
-    // Aktualizuj co sekundę
-    setInterval(updateCurrentDateTime, 1000);
-
-    // Wywołaj funkcję po załadowaniu strony
-    updateCurrentDateTime();
-</script>
 </html>

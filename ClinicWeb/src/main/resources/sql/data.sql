@@ -1,6 +1,6 @@
 INSERT INTO patient (NAME, SURNAME, PHONE_NUMBER, PESEL, CITY, COUNTRY, STREET, FLAT_NUMBER, HOUSE_NUMBER, ZIP_CODE, GENDER)
 VALUES('Adam','Nowak','606536999',95102826883, 'Kraków', 'Niemcy', 'Murarska', 8, 39, '30-612', 'MALE'),
-('Malwina','Paskal','505-666-158',92042326741, 'Olkusz', 'Polska', 'Górna', 12, 34, '32-300', 'FEMALE'),
+('Malwina','Paskal','505666158',92042326741, 'Olkusz', 'Polska', 'Górna', 12, 34, '32-300', 'FEMALE'),
 ('Roman','Padzioch','606536999',94121031317, 'Gorlice', 'Niemcy', 'Wałowa', 8, 11, '30-454', 'MALE'),
 ('Marek','Knedel','606536999',60051571852, 'Poznań', 'Polska', 'Ceglana', 8, 3, '30-612', 'MALE'),
 ('Aneta','Zając','606536999',51090658006, 'Chrzanów', 'Polska', 'Armii Krajowej', 19, 65, '30-455', 'FEMALE'),
@@ -9,11 +9,11 @@ VALUES('Adam','Nowak','606536999',95102826883, 'Kraków', 'Niemcy', 'Murarska', 
 ('Jeanetta','Janiak','606536999',53051386124, 'Gorlice', 'Polska', 'Komunikacyjna', 5, 45, '30-836', 'FEMALE'),
 ('Trenton','Kacprzak','606536999',00261533817, 'Zakopane', 'Polska', 'Parkowa', 32, 65, '33-112', 'MALE'),
 ('Jose','Jurek','606536999',97061506655, 'Chrzanów', 'Polska', 'Wenedy', 8, 39, '30-612', 'MALE'),
-('Corinna','Trzeciak','754-342-322',07311479747, 'Łódz', 'Polska', 'Szymborskiej', 8, 39, '36-223', 'FEMALE'),
-('Hwa','Wysocki','233-122-776',79081310304, 'Gniew', 'Tajlandia', 'Krajowa', 83, 39, '30-612', 'FEMALE'),
-('Randy','Kopeć','546-344-333',40092387210, 'Brzesko', 'Erytrea', 'Warta', 91, 39, '31-352', 'MALE'),
-('Chasity','Dominiak','111-222-333',85011736827, 'Bochnia', 'Holandia', 'Metrowa', 5, 39, '33-333', 'MALE'),
-('Chong','Herman','453-434-222',66060480592, 'Nowy Wiśnicz', 'Włochy', 'Jerzmanowskiego', 67, 39, '30-876', 'MALE');
+('Corinna','Trzeciak','754342322',07311479747, 'Łódz', 'Polska', 'Szymborskiej', 8, 39, '36-223', 'FEMALE'),
+('Hwa','Wysocki','233122776',79081310304, 'Gniew', 'Tajlandia', 'Krajowa', 83, 39, '30-612', 'FEMALE'),
+('Randy','Kopeć','546344333',40092387210, 'Brzesko', 'Erytrea', 'Warta', 91, 39, '31-352', 'MALE'),
+('Chasity','Dominiak','111222333',85011736827, 'Bochnia', 'Holandia', 'Metrowa', 5, 39, '33-333', 'MALE'),
+('Chong','Herman','453434222',66060480592, 'Nowy Wiśnicz', 'Włochy', 'Jerzmanowskiego', 67, 39, '30-876', 'MALE');
 
 INSERT INTO doctor (NAME, SURNAME, PHONE_NUMBER, PESEL, CITY, COUNTRY, STREET, FLAT_NUMBER, HOUSE_NUMBER, ZIP_CODE, GENDER, SPECIALIZATION, AVAILABILITY, ONLINE)
 VALUES('Adam','Nowak','606536999',95102826883, 'Zakopane', 'Litwa', 'Kijowa', 5, 39, '32-300', 'MALE','NEUROLOGY', TRUE, TRUE),
@@ -32,23 +32,24 @@ VALUES('Adam','Nowak','606536999',95102826883, 'Zakopane', 'Litwa', 'Kijowa', 5,
 ('Madeleine','Wilk','785364221',05270135009, 'Poznań', 'Polska', 'Marka', 48, 366, '32-300', 'FEMALE','CHIRURGY', TRUE, TRUE);
 
 
-INSERT INTO visit(cancel_visit, doctor_id, patient_id, visit_date)
-values (false, 1, 1, '2024-09-09 15:30:00'),
-       (false, 1, 1, '2024-09-09 15:30:00'),
-       (false, 1, 2, '2024-09-10 15:30:00'),
-       (false, 1, 2, '2024-09-11 15:30:00'),
-       (false, 2, 2, '2024-09-12 15:30:00'),
-       (false, 2, 2, '2024-09-23 15:30:00'),
-       (false, 2, 3, '2024-09-23 15:30:00'),
-       (false, 3, 4, '2024-09-03 15:30:00'),
-       (false, 3, 5, '2024-09-04 15:30:00'),
-       (false, 3, 4, '2024-09-05 15:30:00'),
-       (false, 3, 3, '2024-09-06 15:30:00'),
-       (false, 4, 2, '2024-09-07 15:30:00'),
-       (false, 4, 1, '2024-09-08 15:30:00'),
-       (false, 4, 2, '2024-09-11 15:30:00'),
-       (false, 4, 3, '2024-09-22 15:30:00'),
-       (false, 5, 4, '2024-09-03 15:30:00');
+INSERT INTO visit(cancel_visit, doctor_Id, patient_Id, visit_date)
+values
+(false, 1, 1, '2023-09-23 15:30:00'),
+(false, 1, 1, '2025-09-09 16:30:00'),
+(false, 1, 2, '2025-09-10 17:30:00'),
+(false, 1, 2, '2025-09-11 18:30:00'),
+(false, 2, 2, '2025-09-12 19:30:00'),
+(false, 2, 2, '2025-12-23 20:30:00'),
+(false, 2, 3, '2025-09-23 21:30:00'),
+(false, 3, 4, '2025-09-03 22:30:00'),
+(false, 3, 5, '2025-09-04 23:30:00'),
+(false, 3, 4, '2025-09-05 00:30:00'),
+(false, 3, 3, '2025-09-06 01:30:00'),
+(false, 4, 2, '2025-09-07 02:30:00'),
+(false, 4, 1, '2025-09-08 03:30:00'),
+(false, 4, 2, '2025-09-11 04:30:00'),
+(false, 4, 3, '2025-09-22 05:30:00'),
+(false, 5, 4, '2025-09-03 06:30:00');
 
 
 

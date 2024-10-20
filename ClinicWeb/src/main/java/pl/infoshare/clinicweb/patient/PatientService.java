@@ -35,7 +35,7 @@ public class PatientService {
 
     public PatientDto findByPesel(String pesel) {
 
-        return patientRepository.findByPesel(pesel)
+        return patientRepository.findByPesel(pesel.trim())
                 .map(patientMapper::toDto)
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Patient not found with pesel %s", pesel)));
     }

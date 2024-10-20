@@ -32,13 +32,21 @@ public class Visit {
     private UUID numberOfVisits = UUID.randomUUID();
     private boolean cancelVisit;
 
+
     public void setVisitDate(LocalDateTime visitDate) {
 
-        this.visitDate = LocalDateTime.of(visitDate.getYear(),
+        this.visitDate =   LocalDateTime.of(visitDate.getYear(),
                 visitDate.getMonth(),
                 visitDate.getDayOfMonth(),
                 visitDate.getHour(),
                 visitDate.getMinute(), 0);
+
+    }
+    public boolean isVisitPastDate() {
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        return this.visitDate.isBefore(localDateTime);
 
     }
 

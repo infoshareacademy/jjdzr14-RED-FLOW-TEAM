@@ -7,6 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link th:href="@{styles/newStyle.css}" rel="stylesheet"/>
+    <style>
+        body {
+            background-image: url('/images/pxfuel.jpg');
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-custom">
@@ -38,27 +44,35 @@
             </tr>
             <tr>
             <tr th:each="visit:${visits}">
-                <td th:text="${visit.patientPesel}">Pesel</td>
-                <td th:text="${visit.patientSurname}">Nazwisko</td>
                 <td th:text="${visit.patientName}">Imię</td>
+                <td th:text="${visit.patientSurname}">Nazwisko</td>
+                <td th:text="${visit.patientPesel}">Pesel</td>
                 <td th:text="${visit.doctorName}">Imię</td>
                 <td th:text="${visit.doctorSurname}">Nazwisko</td>
-                <td th:text="${visit.doctorSpecialization}">Specjalizacja</td>
-                <td th:text="${visit.visitDate}"> ">Data wizyty</td>
-                <td th:text="${visit.isVisitCancelled()}"> ">Godzina wizyty</td>
+                <td th:text="${visit.doctorSpecialization.getDescription()}">Specjalizacja</td>
+                <td th:text="${visit.visitDate.toLocalDate()}"> ">Data wizyty</td>
+                <td th:text="${visit.visitDate.toLocalTime()}"> ">Godzina wizyty</td>
                 <td>
-                    <span th:if="${!visit.isVisitCancelled()}"></span>
-                    <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${!visit.isVisitCancelled()}">
+
+                    <form th:action="@{/cancel}" th:method="post" class="d-inline"
+                          th:if="${!visit.isVisitCancelled() AND !visit.isVisitPastDate()}">
                         <input type="hidden" name="id" th:value="${visit.id}">
                         <button type="submit" class="btn btn-secondary btn-sm">Anuluj wizytę</button>
                     </form>
-                    <span th:if="${visit.isVisitCancelled()}" class="text-muted"></span>
-                    <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${visit.isVisitCancelled()}">
+
+                    <span th:if="${visit.isVisitCancelled() OR visit.isVisitPastDate()}" class="text-muted"></span>
+                    <form th:action="@{/cancel}" th:method="post" class="d-inline"
+                          th:if="${visit.isVisitCancelled() OR visit.isVisitPastDate()}">
                         <input type="hidden" name="id" th:value="${visit.id}">
                         <button type="submit" class="btn btn-secondary btn-sm" disabled
-                                style="opacity: 0.5; pointer-events: none;">Wizyta Anulowana
-                        </button>
+                                style="opacity: 0.5; pointer-events: none;">Wizyta Anulowana</button>
                     </form>
+
+                <td>
+                    <span th:if="${!visit.isVisitCancelled() AND !visit.isVisitPastDate()}" class="text-muted">
+                    <a th:href="@{/patient-card(id=${visit.id})}"
+                       class="btn btn-primary btn-sm" disabled role="button" >Utwórz kartę wizyty</a>
+                    </span>
                 </td>
             </thead>
         </table>
