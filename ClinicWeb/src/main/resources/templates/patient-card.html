@@ -11,157 +11,65 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+    <link th:href="@{styles/newStyle.css}" rel="stylesheet"/>
 
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            background-image: url('/pxfuel.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .navbar-custom {
-            background-color: #000000;
-            width: 100%;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            background-color: transparent;
-        }
-
-        .container {
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 25px;
-            backdrop-filter: blur(8px);
-        }
-
-        .content {
-            flex: 1;
-        }
-
-        .nav-link {
-            color: white;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input, textarea {
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            padding: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        button {
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        footer {
-            background-color: black;
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-            position: relative;
-            width: 100%;
-        }
-
-        .card {
-            background-color: transparent;
-        }
-    </style>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
         <div th:replace="~{fragments/navbar :: navbar}"></div>
     </div>
 </nav>
 
-<div class="container content mt-5">
-    <div class="card p-4">
-        <h2 class="mb-4">Karta Pacjenta</h2>
+<<div class="container content mt-5">
+    <div class="card p-3">
+        <h2 class="mb-3">Karta Pacjenta</h2>
         <form th:action="@{/patient-card}" th:object="${patientCard}" method="post">
             <input type="hidden" th:field="*{patientId}" th:value="${patientCard.patientId}" />
             <input type="hidden" th:field="*{doctorId}" th:value="${patientCard.doctorId}" />
 
-
-            <div class="row mb-3">
+            <div class="row mb-2">
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="patientName" class="form-label">Imię</label>
-                        <input type="text" class="form-control" id="patientName"
-                               th:field="${patientCard.patientFirstName}">
-                    </div>
+                    <label for="patientName" class="form-label">Imię</label>
+                    <input type="text" class="form-control form-control-sm" id="patientName" th:field="${patientCard.patientFirstName}">
                 </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="patientSurname" class="form-label">Nazwisko</label>
-                        <input type="text" class="form-control" id="patientSurname"
-                               th:field="${patientCard.patientLastName}">
-                    </div>
+                <div class="col-md-4">
+                    <label for="patientSurname" class="form-label">Nazwisko</label>
+                    <input type="text" class="form-control form-control-sm" id="patientSurname" th:field="${patientCard.patientLastName}">
                 </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="patientPesel" class="form-label">Pesel</label>
-                        <input type="text" class="form-control" id="patientPesel"
-                               th:field="${patientCard.patientPesel}">
-                    </div>
+                <div class="col-md-4">
+                    <label for="patientPesel" class="form-label">Pesel</label>
+                    <input type="text" class="form-control form-control-sm" id="patientPesel" th:field="${patientCard.patientPesel}">
                 </div>
             </div>
 
-
-            <h4 class="mt-4">Aktualna wizyta</h4>
-            <div class="row mb-3">
+            <h4 class="mt-3">Aktualna wizyta</h4>
+            <div class="row mb-2">
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="visitDate">Data wizyty</label>
-                        <input type="datetime-local" class="form-control" id="visitDate" th:field="${patientCard.dateOfVisit}">
-                    </div>
-
+                    <label for="visitDate" class="form-label">Data wizyty</label>
+                    <input type="datetime-local" class="form-control form-control-sm" id="visitDate" th:field="${patientCard.dateOfVisit}">
                 </div>
             </div>
 
-            <div class="form-group mb-3">
+            <div class="form-group mb-2">
                 <label for="visitReason" class="form-label">Objawy</label>
-                <textarea class="form-control" id="visitReason" th:field="*{symptoms}" rows="2"
-                          placeholder="Wprowadź powód wizyty"></textarea>
+                <textarea class="form-control form-control-sm" id="visitReason" th:field="*{symptoms}" rows="2" placeholder="Wprowadź powód wizyty"></textarea>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-group mb-2">
                 <label for="doctorNotes" class="form-label">Notatki lekarza</label>
-                <textarea class="form-control" id="doctorNotes" th:field="*{noteDoctor}" rows="4"
-                          placeholder="Wprowadź notatki lekarza"></textarea>
+                <textarea class="form-control form-control-sm" id="doctorNotes" th:field="*{noteDoctor}" rows="3" placeholder="Wprowadź notatki lekarza"></textarea>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-group mb-2">
                 <label for="diagnosis" class="form-label">Diagnoza</label>
-                <textarea class="form-control" id="diagnosis" th:field="*{diagnosis}" rows="2"
-                          placeholder="Wprowadź diagnozę"></textarea>
+                <textarea class="form-control form-control-sm" id="diagnosis" th:field="*{diagnosis}" rows="2" placeholder="Wprowadź diagnozę"></textarea>
             </div>
             <div class="form-group mb-4">
                 <label for="treatment" class="form-label">Zalecane leczenie</label>
-                <textarea class="form-control" id="treatment" th:field="*{treatment}" rows="2"
-                          placeholder="Wprowadź zalecane leczenie"></textarea>
+                <textarea class="form-control form-control-sm" id="treatment" th:field="*{treatment}" rows="2" placeholder="Wprowadź zalecane leczenie"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Zapisz</button>
+            <button type="submit" class="btn btn-primary btn-sm">Zapisz</button>
         </form>
-
     </div>
 </div>
 

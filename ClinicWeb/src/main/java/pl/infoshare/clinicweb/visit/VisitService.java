@@ -1,7 +1,6 @@
 package pl.infoshare.clinicweb.visit;
 
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,6 @@ import pl.infoshare.clinicweb.patient.PatientMapper;
 import pl.infoshare.clinicweb.patient.PatientService;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
