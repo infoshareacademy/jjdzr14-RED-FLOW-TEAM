@@ -1,10 +1,8 @@
 package pl.infoshare.clinicweb.visit;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.infoshare.clinicweb.doctor.Specialization;
-
 import java.time.LocalDateTime;
 
 @Data
@@ -21,8 +19,8 @@ public class VisitDto {
     private String doctorName;
     private String doctorSurname;
     private Specialization doctorSpecialization;
-    private boolean isVisitCancelled;
+    private boolean visitCancelled;
     private Long patientId;
-    private Long doctorId;
-    private boolean isVisitPastDate;
+    private long doctorId;
+
 }

@@ -15,9 +15,8 @@ import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientDto;
 import pl.infoshare.clinicweb.patient.PatientMapper;
 import pl.infoshare.clinicweb.patient.PatientService;
-
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 @Service
@@ -32,14 +31,26 @@ public class VisitService {
     private final PatientMapper patientMapper;
 
     public void saveVisit(Visit visit, Long doctorId, Long patientId) {
+        if (doctorId == null || patientId == null) {
+            throw new IllegalArgumentException("Doctor ID and Patient ID cannot be null");
+        }
+
 
         DoctorDto doctorDto = doctorService.findById(doctorId);
         PatientDto patientDto = patientService.findById(patientId);
 
-        Doctor doctor = doctorMapper.toEntity(doctorDto);
-        Patient patient = patientMapper.toEntity(patientDto);
-        visit.setDoctor(doctor);
-        visit.setPatient(patient);
+        DoctorDto doctor = doctorService.findById(doctorId)
+                .orElseThrow(() -> new EntityNotFoundException("Doctor not found with id: " + doctorId));
+        Doctor entityDoctor = doctorMapper.toEntity(doctor);
+
+
+        PatientDto patient = patientService.findById(patientId)
+                .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + patientId));
+        Patient entityPatient = patientMapper.toEntity(patient);
+
+        visit.setDoctor(entityDoctor);
+        visit.setPatient(entityPatient);
+
 
         visitRepository.save(visit);
     }
@@ -61,6 +72,10 @@ public class VisitService {
     }
 
     public Page<VisitDto> findPage(int pageNumber) {
+
+        Visit visit = visitMapper.toEntity(visitDto);
+        visit.setCancelVisit(true);
+        visitRepository.save(visit);
 
         final int pageSize = 10;
 
@@ -86,8 +101,6 @@ public class VisitService {
 
                 visitRepository.save(visit);
             }
-
-
     }
 
     public void deleteVisit(Visit visit) {
@@ -104,8 +117,9 @@ public class VisitService {
 
     public VisitDto findVisitById(Long id) {
 
-        return visitRepository.findById(id)
+        return visitRepository
+                .findById(id)
                 .map(visitMapper::toVisitDto)
-                .orElseThrow(() -> new EntityNotFoundException(String.format("No visit found with id %s", id)));
-    }
+                .orElseThrow(() ->
+                        new EntityNotFoundException(String.format("Visit not found with given ID: %d", id)));
 }

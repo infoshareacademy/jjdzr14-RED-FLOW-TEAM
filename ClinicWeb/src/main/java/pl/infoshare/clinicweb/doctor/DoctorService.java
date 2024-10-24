@@ -18,19 +18,18 @@ public class DoctorService {
     private final DoctorMapper doctorMapper;
 
     public void addDoctor(Doctor user) {
-
-        doctorRepository.save(user);
+       doctorRepository.save(user);
     }
 
     public DoctorDto findById(long id) {
-
-        return doctorRepository.findById(id)
+      return doctorRepository
+                .findById(id)
                 .map(doctorMapper::toDto)
-                .orElseThrow(() -> new EntityNotFoundException(String.format("Nie znaleziono lekarza z numerem id %s", id)));
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Doctor not found with ID: %s", id)));
+
     }
 
-
-    public List<DoctorDto> findAllDoctors() {
+  public List<DoctorDto> findAllDoctors() {
 
         return doctorRepository.findAll()
                 .stream()

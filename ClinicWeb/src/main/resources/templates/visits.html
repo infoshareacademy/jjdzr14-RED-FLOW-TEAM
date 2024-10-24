@@ -43,6 +43,7 @@
 
             </tr>
             <tr>
+
             <tr th:each="visit:${visits}">
                 <td th:text="${visit.patientName}">Imię</td>
                 <td th:text="${visit.patientSurname}">Nazwisko</td>
@@ -73,6 +74,7 @@
                     <a th:href="@{/patient-card(id=${visit.id})}"
                        class="btn btn-primary btn-sm" disabled role="button" >Utwórz kartę wizyty</a>
                     </span>
+
                 </td>
             </thead>
         </table>

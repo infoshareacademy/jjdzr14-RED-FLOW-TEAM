@@ -40,7 +40,8 @@
                         <option value="" selected>----WYBIERZ PACJENTA----</option>
                         <option th:each="patient : ${patients}"
                                 th:value="${patient.id}"
-                                th:text="${patient.name + ' ' + patient.surname + '  Pesel: ' + patient.pesel}"></option>
+                        th:text="${patient.name + ' ' + patient.surname + '  Pesel: ' + patient.pesel}"></option>
+
                     </select>
                 </div>
 
@@ -56,7 +57,9 @@
                         <option value="" selected>----WYBIERZ LEKARZA----</option>
                         <option th:each="doctor : ${doctors}"
                                 th:value="${doctor.id}"
-                                th:text="${doctor.name + ' ' + doctor.surname + ' ' + doctor.specialization}"></option>
+
+                        th:text="${doctor.name + ' ' + doctor.surname + ' ' + doctor.specialization}"></option>
+
                     </select>
                 </div>
 

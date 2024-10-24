@@ -7,7 +7,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import pl.infoshare.clinicweb.patientCard.PatientCardRepository;
+import pl.infoshare.clinicweb.patientCard.PatientCardService;
 import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.visit.Visit;
+import pl.infoshare.clinicweb.visit.VisitRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +24,8 @@ public class PatientService {
 
     private final PatientRepository patientRepository;
     private final PatientMapper patientMapper;
+    private final VisitRepository visitRepository;
+    private final PatientCardRepository patientCardRepository;
 
 
     public void addPatient(Patient patient) {
@@ -41,11 +48,10 @@ public class PatientService {
     }
 
     public List<PatientDto> findAllPatients() {
-
-        return patientRepository.findAll()
+      return patientRepository.findAll()
                 .stream()
                 .map(patientMapper::toDto)
-                .collect(Collectors.toList());
+               .collect(Collectors.toList());
     }
 
     public Page<PatientDto> findPage(int pageNumber) {
@@ -74,8 +80,13 @@ public class PatientService {
 
     }
 
+    @Transactional
     public void deletePatient(Long id) {
-
+        List<Visit> visits = visitRepository.findAllByPatientId(id);
+        if (!visits.isEmpty()) {
+            visitRepository.deleteAll(visits);
+        }
+        patientCardRepository.findById(id).ifPresent(patientCardRepository::delete);
         patientRepository.findById(id).ifPresent(patientRepository::delete);
     }
 

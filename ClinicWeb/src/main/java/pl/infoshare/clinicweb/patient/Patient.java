@@ -4,13 +4,20 @@ import jakarta.persistence.*;
 import lombok.Data;
 import pl.infoshare.clinicweb.clinic.Clinic;
 import pl.infoshare.clinicweb.doctor.Doctor;
+import pl.infoshare.clinicweb.patientCard.PatientCard;
 import pl.infoshare.clinicweb.user.PersonDetails;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @Data
 @Entity
-@Table(name = "patient")
+@Table(name = "patients")
 public class Patient {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +26,11 @@ public class Patient {
     @Embedded
     private PersonDetails personDetails;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<PatientCard> patientCards = new HashSet<>();
 
     @ManyToOne
     private Clinic clinic;

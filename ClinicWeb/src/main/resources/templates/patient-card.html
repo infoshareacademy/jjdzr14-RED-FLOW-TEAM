@@ -5,88 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Internetowa Przychodnia</title>
 
-    <link th:href="@{styles/style.css}" rel="stylesheet"/>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+
+    <link th:href="@{styles/newStyle.css}" rel="stylesheet"/>
+
+
     <style>
         body {
             background-image: url('/images/pxfuel.jpg');
             background-size: cover;
         }
     </style>
+
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
         <div th:replace="~{fragments/navbar :: navbar}"></div>
     </div>
 </nav>
-<div class="container-fluid">
-    <div class="card">
-        <h2 class="mb-4">Karta Pacjenta</h2>
-        <form>
-            <div class="row mb-3">
+
+<<div class="container content mt-5">
+    <div class="card p-3">
+        <h2 class="mb-3">Karta Pacjenta</h2>
+        <form th:action="@{/patient-card}" th:object="${patientCard}" method="post">
+            <input type="hidden" th:field="*{patientId}" th:value="${patientCard.patientId}" />
+            <input type="hidden" th:field="*{doctorId}" th:value="${patientCard.doctorId}" />
+
+            <div class="row mb-2">
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="patientName">Imię</label>
-                        <input type="text" class="form-control" id="patientName" placeholder="Wprowadź imię">
-                    </div>
+                    <label for="patientName" class="form-label">Imię</label>
+                    <input type="text" class="form-control form-control-sm" id="patientName" th:field="${patientCard.patientFirstName}">
                 </div>
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="patientSurname">Nazwisko</label>
-                        <input type="text" class="form-control" id="patientSurname" placeholder="Wprowadź nazwisko">
-                    </div>
+                    <label for="patientSurname" class="form-label">Nazwisko</label>
+                    <input type="text" class="form-control form-control-sm" id="patientSurname" th:field="${patientCard.patientLastName}">
                 </div>
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="pesel">Pesel</label>
-                        <input type="text" class="form-control" id="pesel" placeholder="Wprowadź PESEL">
-                    </div>
+                    <label for="patientPesel" class="form-label">Pesel</label>
+                    <input type="text" class="form-control form-control-sm" id="patientPesel" th:field="${patientCard.patientPesel}">
                 </div>
             </div>
-            <h4 class="mt-4">Aktualna wizyta</h4>
-            <div class="form-group mb-3">
-                <label for="visitDate">Data wizyty</label>
-                <input type="date" class="form-control" id="visitDate">
+
+            <h4 class="mt-3">Aktualna wizyta</h4>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <label for="visitDate" class="form-label">Data wizyty</label>
+                    <input type="datetime-local" class="form-control form-control-sm" id="visitDate" th:field="${patientCard.dateOfVisit}">
+                </div>
             </div>
-            <div class="form-group mb-3">
-                <label for="visitReason">Objawy</label>
-                <textarea class="form-control" id="visitReason" rows="2" placeholder="Wprowadź powód wizyty"></textarea>
+
+            <div class="form-group mb-2">
+                <label for="visitReason" class="form-label">Objawy</label>
+                <textarea class="form-control form-control-sm" id="visitReason" th:field="*{symptoms}" rows="2" placeholder="Wprowadź powód wizyty"></textarea>
             </div>
-            <div class="form-group mb-3">
-                <label for="doctorNotes">Notatki lekarza</label>
-                <textarea class="form-control" id="doctorNotes" rows="4"
-                          placeholder="Wprowadź notatki lekarza"></textarea>
+            <div class="form-group mb-2">
+                <label for="doctorNotes" class="form-label">Notatki lekarza</label>
+                <textarea class="form-control form-control-sm" id="doctorNotes" th:field="*{noteDoctor}" rows="3" placeholder="Wprowadź notatki lekarza"></textarea>
             </div>
-            <div class="form-group mb-3">
-                <label for="diagnosis">Diagnoza</label>
-                <textarea class="form-control" id="diagnosis" rows="2" placeholder="Wprowadź diagnozę"></textarea>
+            <div class="form-group mb-2">
+                <label for="diagnosis" class="form-label">Diagnoza</label>
+                <textarea class="form-control form-control-sm" id="diagnosis" th:field="*{diagnosis}" rows="2" placeholder="Wprowadź diagnozę"></textarea>
             </div>
             <div class="form-group mb-4">
-                <label for="treatment">Zalecane leczenie</label>
-                <textarea class="form-control" id="treatment" rows="2"
-                          placeholder="Wprowadź zalecane leczenie"></textarea>
+                <label for="treatment" class="form-label">Zalecane leczenie</label>
+                <textarea class="form-control form-control-sm" id="treatment" th:field="*{treatment}" rows="2" placeholder="Wprowadź zalecane leczenie"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Zapisz</button>
+            <button type="submit" class="btn btn-primary btn-sm">Zapisz</button>
         </form>
     </div>
 </div>
 
 <footer>
-    <div>Author: RED FLOW TEAM 2024</div>
-    <p>Copyright © 2024 redflowteam.pl
-        <a href="mailto:kontakt@redflowteam.com">kontakt@redflowteam.com</a></p>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
 
 </body>
-
 </html>

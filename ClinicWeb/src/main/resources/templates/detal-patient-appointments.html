@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz wizyty pacjenta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{styles/newStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
+    </div>
+</nav>
+<div class="container">
+    <h3 class="card-title text-center">Formularz wizyty pacjenta</h3>
+
+    <div class="container content mt-5">
+        <div class="card mt-3">
+            <div class="card-body">
+                <form action="/detal-patient-appointments" method="post" th:object="${matchingPatientCard}">
+                    <table class="table table-borderless">
+                        <tbody>
+                        <tr>
+                            <td><label for="patientFirstName" class="form-label">Imię pacjenta</label></td>
+                            <td><input type="text" class="form-control" th:field="*{patientFirstName}" id="patientFirstName" name="patientFirstName" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="patientLastName" class="form-label">Nazwisko pacjenta</label></td>
+                            <td><input type="text" class="form-control" th:field="*{patientLastName}"
+                                       id="patientLastName" name="patientLastName" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="doctorFirstName" class="form-label">Imię lekarza</label></td>
+                            <td><input type="text" class="form-control form-control-sm" th:field="*{doctorFirstName}"
+                                       id="doctorFirstName" name="doctorFirstName" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="doctorLastName" class="form-label">Nazwisko lekarza</label></td>
+                            <td><input type="text" class="form-control form-control-sm" th:field="*{doctorLastName}"
+                                       id="doctorLastName" name="doctorLastName" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="symptoms" class="form-label">Objawy</label></td>
+                            <td><textarea class="form-control form-control-sm" th:field="*{symptoms}"
+                                          id="symptoms" name="symptoms" rows="2" required></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><label for="dateOfVisit" class="form-label">Data wizyty</label></td>
+                            <td><input type="datetime-local" class="form-control form-control-sm"
+                                       th:field="*{dateOfVisit}" id="dateOfVisit" name="dateOfVisit" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="noteDoctor" class="form-label">Uwagi lekarza</label></td>
+                            <td><textarea class="form-control form-control-sm" th:field="*{noteDoctor}"
+                                          id="noteDoctor" name="noteDoctor" rows="2"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><label for="diagnosis" class="form-label">Diagnoza</label></td>
+                            <td><textarea class="form-control form-control-sm" th:field="*{diagnosis}"
+                                          id="diagnosis" name="diagnosis" rows="2"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><label for="treatment" class="form-label">Leczenie</label></td>
+                            <td><textarea class="form-control form-control-sm" th:field="*{treatment}"
+                                          id="treatment" name="treatment" rows="2"></textarea></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+<footer>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</footer>
+</html>

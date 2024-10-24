@@ -3,6 +3,7 @@ package pl.infoshare.clinicweb.visit;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.infoshare.clinicweb.doctor.Doctor;

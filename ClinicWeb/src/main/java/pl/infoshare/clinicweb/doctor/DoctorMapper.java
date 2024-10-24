@@ -3,6 +3,7 @@ package pl.infoshare.clinicweb.doctor;
 import org.springframework.stereotype.Component;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
+
 @Component
 public class DoctorMapper {
 
@@ -14,9 +15,7 @@ public class DoctorMapper {
         doctorDto.setName(doctor.getDetails().getName());
         doctorDto.setSurname(doctor.getDetails().getSurname());
         doctorDto.setSpecialization(doctor.getSpecialization());
-
-
-        return doctorDto;
+ doctorDto;
 
     }
 

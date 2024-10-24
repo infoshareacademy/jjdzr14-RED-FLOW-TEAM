@@ -3,14 +3,11 @@ package pl.infoshare.clinicweb.patient;
 import org.springframework.stereotype.Component;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
-
 @Component
 public class PatientMapper {
 
-
-    public PatientDto toDto(Patient patient) {
-
-        PatientDto patientDto = new PatientDto();
+   public PatientDto toDto(Patient patient) {
+         PatientDto patientDto = new PatientDto();
 
         patientDto.setId(patient.getId());
         patientDto.setName(patient.getPersonDetails().getName());
