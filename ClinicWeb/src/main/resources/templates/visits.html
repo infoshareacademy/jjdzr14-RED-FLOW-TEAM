@@ -44,8 +44,8 @@
                 <td th:text="${visits.doctor.getDetails().name}">Imię</td>
                 <td th:text="${visits.doctor.getDetails().surname}">Nazwisko</td>
                 <td th:text="${visits.doctor.specialization}">Specjalizacja</td>
-                <td th:text="${visits.visitDate.toLocalDate()}"> ">Data wizyty</td>
-                <td th:text="${visits.visitDate.toLocalTime()}"> ">Godzina wizyty</td>
+                <td th:text="${visits.visitDate.toLocalDate()}"> Data wizyty</td>
+                <td th:text="${visits.visitDate.toLocalTime()}">Godzina wizyty</td>
                 <td>
                     <span th:if="${!visits.cancelVisit}"></span>
                     <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${!visits.cancelVisit}">
@@ -56,7 +56,7 @@
                     <form th:action="@{/cancel}" th:method="post" class="d-inline" th:if="${visits.cancelVisit}">
                         <input type="hidden" name="id" th:value="${visits.id}">
                         <button type="submit" class="btn btn-secondary btn-sm" disabled
-                                style="opacity: 0.5; pointer-events: none;">Wizyta Anulowana
+                                style="opacity: 0.5; pointer-events: none">Wizyta Anulowana
                         </button>
                     </form>
                 <td>
