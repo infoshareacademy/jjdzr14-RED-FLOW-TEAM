@@ -2,19 +2,25 @@ package pl.infoshare.clinicweb.patient;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.infoshare.clinicweb.advice.ExceptionHandlerApp;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.PeselFormatException;
 import pl.infoshare.clinicweb.user.Utils;
 import pl.infoshare.clinicweb.visit.VisitService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @RequiredArgsConstructor
 @Controller
@@ -23,11 +29,14 @@ public class PatientController {
     private final PatientService patientService;
 
     private final DoctorService doctorService;
+    private final ExceptionHandlerApp exceptionHandlerApp;
+    private final View error;
+
 
     @GetMapping("/patient")
     public String patientForm(Model model) {
 
-        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+        List<DoctorDto> doctors = doctorService.findAllDoctors();
 
         model.addAttribute("personDetails", new PersonDetails());
         model.addAttribute("address", new Address());
@@ -43,7 +52,7 @@ public class PatientController {
                                         @RequestParam("pesel") String pesel,
                                         Model model, RedirectAttributes redirectAttributes) {
 
-        List<DoctorDto> doctors = Utils.convertOptionalToList(doctorService.findAllDoctors());
+        List<DoctorDto> doctors = doctorService.findAllDoctors();
 
         model.addAttribute("doctors", doctors);
 
@@ -65,11 +74,35 @@ public class PatientController {
 
     }
 
-    @GetMapping("/patients")
-    public String viewPatients(Model model) {
 
-        List<PatientDto> patients = Utils.convertOptionalToList(patientService.findAllPatients());
+    @GetMapping(value = "/patients")
+    public String listPatients(Model model, @RequestParam(value = "pesel", required = false) String pesel,
+                               @RequestParam(value = "page") @ModelAttribute Optional<Integer> page) {
 
+
+        int currentPage = page.orElse(1);
+
+        Page<PatientDto> patientPage = patientService.findPage(currentPage);
+
+        long totalElements = patientPage.getTotalElements();
+        int totalPages = patientPage.getTotalPages();
+        List<PatientDto> patients = patientPage.getContent();
+
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+
+        if (totalPages == 0) {
+            totalPages = 1;
+        }
+
+        model.addAttribute("pesel", pesel);
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
         model.addAttribute("listPatient", patients);
 
         return "patients";
@@ -85,7 +118,7 @@ public class PatientController {
     @PostMapping("/search")
     public String searchPatient(@PathVariable("id") Long id, Model model, Address address) {
 
-        Optional<PatientDto> patient = patientService.findById(id);
+        PatientDto patient = patientService.findById(id);
         if (patient != null) {
             model.addAttribute("patient", patient);
             model.addAttribute("address", address);
@@ -112,29 +145,25 @@ public class PatientController {
                                     @ModelAttribute Long id,
                                     Model model) {
 
-        model.addAttribute("patient", patientService.findById(id).get());
+        model.addAttribute("patient", patientService.findById(id));
 
 
         return "update-patient";
     }
 
-    @PostMapping("/search-patient")
-    public String searchPatientById(@RequestParam("id") @ModelAttribute Long id,
-                                    Model model) {
-
-
-        if (patientService.findById(id) != null) {
-            model.addAttribute("searchForId", id);
-        } else {
-            model.addAttribute("error", "Nie znaleziono pacjenta o podanym numerze id: " + id);
-        }
-        return "search-patient";
-    }
-
     @GetMapping("/search-patient")
-    public String searchPatientById(Model model) {
+    public String searchPatientByPesel(Model model, @RequestParam(value = "pesel", required = false) String pesel) {
 
-        model.addAttribute("patient", new Patient());
+
+        if (!Utils.hasPeselCorrectDigits(pesel)) {
+
+            throw new PeselFormatException(pesel);
+
+        } else {
+
+            PatientDto patientByPesel = patientService.findByPesel(pesel);
+            model.addAttribute("patientByPesel", patientByPesel);
+        }
 
         return "search-patient";
     }
@@ -142,8 +171,8 @@ public class PatientController {
     @PostMapping("/delete-patient")
     public String deletePatient(@RequestParam("id") Long id) {
 
-        Optional<PatientDto> patientById = patientService.findById(id);
-        if (patientById.isPresent()) {
+        PatientDto patientById = patientService.findById(id);
+        if (patientById != null) {
             patientService.deletePatient(id);
         }
         return "redirect:/patients";
@@ -152,7 +181,8 @@ public class PatientController {
     @GetMapping("/delete-patient")
     public String showDeletePatientForm(@RequestParam("id") Long id, Model model) {
 
-        Optional<PatientDto> patientById = patientService.findById(id);
+      PatientDto patientById = patientService.findById(id);
+
         model.addAttribute("patient", patientById);
 
         return "delete-patient";

@@ -7,11 +7,9 @@ import jakarta.validation.constraints.Past;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.infoshare.clinicweb.doctor.Doctor;
-import pl.infoshare.clinicweb.patient.Medicines;
 import pl.infoshare.clinicweb.patient.Patient;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -31,9 +29,10 @@ public class Visit {
     private Patient patient;
     @ManyToOne
     private Doctor doctor;
-//    private List<Medicines> medicines;
+    //    private List<Medicines> medicines;
     private UUID numberOfVisits = UUID.randomUUID();
     private boolean cancelVisit;
+
 
     public void setVisitDate(LocalDateTime visitDate) {
 
@@ -44,7 +43,13 @@ public class Visit {
                 visitDate.getMinute(), 0);
 
     }
+    public boolean isVisitPastDate() {
 
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        return this.visitDate.isBefore(localDateTime);
+
+    }
 
 
 }

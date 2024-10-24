@@ -1,8 +1,11 @@
 package pl.infoshare.clinicweb.patient;
 
 import jakarta.persistence.EntityNotFoundException;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.infoshare.clinicweb.patientCard.PatientCardRepository;
@@ -12,7 +15,6 @@ import pl.infoshare.clinicweb.visit.Visit;
 import pl.infoshare.clinicweb.visit.VisitRepository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -31,21 +33,41 @@ public class PatientService {
         patientRepository.save(patient);
     }
 
-    public Optional<PatientDto> findById(Long id) {
+    public PatientDto findById(Long id) {
 
         return patientRepository.findById(id)
-                .stream()
                 .map(patientMapper::toDto)
-                .findFirst()
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Patient not found with id %s", id)));
     }
 
-    public List<Optional<PatientDto>> findAllPatients() {
+    public PatientDto findByPesel(String pesel) {
 
-        return patientRepository.findAll()
+        return patientRepository.findByPesel(pesel.trim())
+                .map(patientMapper::toDto)
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Patient not found with pesel %s", pesel)));
+    }
+
+    public List<PatientDto> findAllPatients() {
+      return patientRepository.findAll()
                 .stream()
                 .map(patientMapper::toDto)
-                .collect(Collectors.toList());
+               .collect(Collectors.toList());
+    }
+
+    public Page<PatientDto> findPage(int pageNumber) {
+
+        final int pageSize = 10;
+
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.by("id"));
+        Page<Patient> entities = patientRepository.findAll(pageable);
+
+        Page<PatientDto> patients = entities.map(patient -> {
+            PatientDto patientDto = patientMapper.toDto(patient);
+
+            return patientDto;
+        });
+
+        return patients;
     }
 
 

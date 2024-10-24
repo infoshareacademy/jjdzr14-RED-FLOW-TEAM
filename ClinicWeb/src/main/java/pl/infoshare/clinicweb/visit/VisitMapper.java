@@ -6,7 +6,6 @@ import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
-import java.util.Optional;
 
 
 @Component
@@ -16,8 +15,8 @@ public class VisitMapper {
 
 
 
-    public VisitDto toVisitDto(Visit visit) {
 
+    public VisitDto toVisitDto(Visit visit) {
 
 
         VisitDto visitDto = new VisitDto();
@@ -25,6 +24,7 @@ public class VisitMapper {
         visitDto.setId(visit.getId());
         visitDto.setVisitDate(visit.getVisitDate());
         visitDto.setVisitCancelled(visit.isCancelVisit());
+        visitDto.setVisitPastDate(visit.isVisitPastDate());
 
 
         if (visit.getPatient() != null && visit.getPatient().getPersonDetails() != null) {
@@ -81,7 +81,6 @@ public class VisitMapper {
 
         visit.setPatient(patient);
         visit.setDoctor(doctor);
-
 
         return visit;
     }

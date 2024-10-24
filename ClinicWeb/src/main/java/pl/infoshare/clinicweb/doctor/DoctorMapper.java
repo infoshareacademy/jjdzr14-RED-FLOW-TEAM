@@ -3,12 +3,11 @@ package pl.infoshare.clinicweb.doctor;
 import org.springframework.stereotype.Component;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
-import java.util.Optional;
 
 @Component
 public class DoctorMapper {
 
-    public Optional<DoctorDto> toDto(Doctor doctor) {
+    public DoctorDto toDto(Doctor doctor) {
 
         DoctorDto doctorDto = new DoctorDto();
 
@@ -16,11 +15,10 @@ public class DoctorMapper {
         doctorDto.setName(doctor.getDetails().getName());
         doctorDto.setSurname(doctor.getDetails().getSurname());
         doctorDto.setSpecialization(doctor.getSpecialization());
-
-
-        return Optional.of(doctorDto);
+ doctorDto;
 
     }
+
 
     public Doctor toEntity(DoctorDto doctorDto) {
 
