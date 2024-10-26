@@ -69,7 +69,7 @@ public class VisitService {
 
         final int pageSize = 10;
 
-        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.by("id"));
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.by(Sort.Direction.DESC, "visitDate"));
         Page<Visit> entities = visitRepository.findAll(pageable);
 
         Page<VisitDto> visits = entities.map(visit -> {

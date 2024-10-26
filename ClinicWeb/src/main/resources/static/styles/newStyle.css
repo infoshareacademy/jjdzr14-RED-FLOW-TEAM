@@ -1,29 +1,29 @@
 
-body {
+html, body {
+    height: 100%;
+    margin: 0;
     display: flex;
     flex-direction: column;
     background-image: url('/pxfuel.jpg');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
-
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-}
 
 .container {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 10px auto;
+    padding: 10px;
+    flex: 1;
     width: 100%;
     max-width: 600px;
-    flex: 1;
 }
 
+.card {
+    background-color: rgba(255, 255, 255, 0.8);
+}
 
 h3 {
     text-align: center;
@@ -32,21 +32,16 @@ h3 {
 
 
 .navbar-custom {
-    background-color: #000000;
+    background-color: #000;
     width: 100%;
 }
 
-/*.nav-link, .navbar-nav .nav-link {*/
-/*    color: white;*/
-/*}*/
+.navbar-nav .nav-link {
+    color: white;
+}
 
 .navbar-nav .nav-link:hover {
     color: red;
-}
-
-
-.form-label {
-    color: #000;
 }
 
 
@@ -54,26 +49,25 @@ h3 {
     margin-top: 5px;
 }
 
-
 .btn {
     display: inline-block;
 }
 
+
+.form-label {
+    color: #000;
+}
 
 .col-auto {
     margin-left: 2px;
 }
 
 
-.card {
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
 footer {
     background-color: black;
+    color: white;
     padding: 10px 0;
     text-align: center;
-    position: relative;
     width: 100%;
-    border-top: none;
+    margin-top: auto;
 }

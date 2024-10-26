@@ -24,6 +24,7 @@
         body {
             background-image: url('/images/pxfuel.jpg');
             background-size: cover;
+            height: 100%;
         }
 
         .login-container {
@@ -35,7 +36,7 @@
             height: 100%;
         }
         .login-card {
-            background: rgba(255, 255, 255, 0.5); /* Półprzezroczyste tło */
+            background: rgba(255, 255, 255, 0.5);
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -131,11 +132,11 @@
     </div>
 
 </form>
-
-</body>
 <footer>
     <div th:replace="~{fragments/footer :: footer}"></div>
 </footer>
+</body>
+
 <script>
     function updateCurrentDateTime() {
         const currentTimeElement = document.getElementById('currentTime');
@@ -145,19 +146,17 @@
         const month = String(now.getMonth() + 1).padStart(2, '0');
         const year = now.getFullYear();
 
-        // Pobranie godziny
+
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
 
-        // Wyświetlenie daty i godziny
+
         currentTimeElement.textContent = `Aktualna data i godzina: ${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
     }
 
-    // Aktualizuj co sekundę
-    setInterval(updateCurrentDateTime, 1000);
 
-    // Wywołaj funkcję po załadowaniu strony
+    setInterval(updateCurrentDateTime, 1000);
     updateCurrentDateTime();
 </script>
 </html>
