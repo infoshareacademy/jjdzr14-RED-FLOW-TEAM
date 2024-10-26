@@ -36,7 +36,7 @@ public class Visit {
 
     public void setVisitDate(LocalDateTime visitDate) {
 
-        this.visitDate =   LocalDateTime.of(visitDate.getYear(),
+        this.visitDate = LocalDateTime.of(visitDate.getYear(),
                 visitDate.getMonth(),
                 visitDate.getDayOfMonth(),
                 visitDate.getHour(),
@@ -50,6 +50,7 @@ public class Visit {
         return this.visitDate.isBefore(localDateTime);
 
     }
+
 
 
 }

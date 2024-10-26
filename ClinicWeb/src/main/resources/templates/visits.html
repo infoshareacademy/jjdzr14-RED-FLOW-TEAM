@@ -56,26 +56,26 @@
                 <td>
 
                     <form th:action="@{/cancel}" th:method="post" class="d-inline"
-                          th:if="${!visit.isVisitCancelled() AND !visit.isVisitPastDate()}">
+                          th:if="${!visit.isVisitCancelled() && !visit.isVisitPastDate()}">
                         <input type="hidden" name="id" th:value="${visit.id}">
                         <button type="submit" class="btn btn-secondary btn-sm">Anuluj wizytę</button>
                     </form>
 
-                    <span th:if="${visit.isVisitCancelled() OR visit.isVisitPastDate()}" class="text-muted"></span>
+                    <span th:if="${visit.isVisitCancelled() || visit.isVisitPastDate()}" class="text-muted"></span>
                     <form th:action="@{/cancel}" th:method="post" class="d-inline"
-                          th:if="${visit.isVisitCancelled() OR visit.isVisitPastDate()}">
+                          th:if="${visit.isVisitCancelled() || visit.isVisitPastDate()}">
                         <input type="hidden" name="id" th:value="${visit.id}">
                         <button type="submit" class="btn btn-secondary btn-sm" disabled
                                 style="opacity: 0.5; pointer-events: none;">Wizyta Anulowana</button>
                     </form>
 
                 <td>
-                    <span th:if="${!visit.isVisitCancelled() AND !visit.isVisitPastDate()}" class="text-muted">
-                    <a th:href="@{/patient-card(id=${visit.id})}"
-                       class="btn btn-primary btn-sm" disabled role="button" >Utwórz kartę wizyty</a>
-                    </span>
-
+    <span th:if="${!visit.isVisitCancelled() && !visit.isVisitPastDate()}" class="text-muted">
+        <a th:href="@{/patient-card(id=${visit.id})}"
+           class="btn btn-primary btn-sm" role="button">Utwórz kartę wizyty</a>
+    </span>
                 </td>
+
             </thead>
         </table>
         <nav>

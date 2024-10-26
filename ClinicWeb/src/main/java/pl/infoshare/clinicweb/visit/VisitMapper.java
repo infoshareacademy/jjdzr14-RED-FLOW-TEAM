@@ -24,7 +24,7 @@ public class VisitMapper {
         visitDto.setId(visit.getId());
         visitDto.setVisitDate(visit.getVisitDate());
         visitDto.setVisitCancelled(visit.isCancelVisit());
-        visitDto.setVisitPastDate(visit.isVisitPastDate());
+//        visitDto.setVisitPastDate(visit.isVisitPastDate());
 
 
         if (visit.getPatient() != null && visit.getPatient().getPersonDetails() != null) {

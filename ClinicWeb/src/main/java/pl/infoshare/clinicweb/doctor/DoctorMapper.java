@@ -15,7 +15,7 @@ public class DoctorMapper {
         doctorDto.setName(doctor.getDetails().getName());
         doctorDto.setSurname(doctor.getDetails().getSurname());
         doctorDto.setSpecialization(doctor.getSpecialization());
- doctorDto;
+        return doctorDto;
 
     }
 
@@ -29,7 +29,6 @@ public class DoctorMapper {
         doctor.getDetails().setName(doctorDto.getName());
         doctor.getDetails().setSurname(doctorDto.getSurname());
         doctor.setSpecialization(doctorDto.getSpecialization());
-
         return doctor;
 
     }

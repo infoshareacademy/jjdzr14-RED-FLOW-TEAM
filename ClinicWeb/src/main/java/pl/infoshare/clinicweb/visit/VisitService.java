@@ -15,8 +15,8 @@ import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientDto;
 import pl.infoshare.clinicweb.patient.PatientMapper;
 import pl.infoshare.clinicweb.patient.PatientService;
-import java.util.List;
 
+import java.util.List;
 
 
 @Service
@@ -35,17 +35,11 @@ public class VisitService {
             throw new IllegalArgumentException("Doctor ID and Patient ID cannot be null");
         }
 
-
-        DoctorDto doctorDto = doctorService.findById(doctorId);
-        PatientDto patientDto = patientService.findById(patientId);
-
-        DoctorDto doctor = doctorService.findById(doctorId)
-                .orElseThrow(() -> new EntityNotFoundException("Doctor not found with id: " + doctorId));
+        DoctorDto doctor = doctorService.findById(doctorId);
         Doctor entityDoctor = doctorMapper.toEntity(doctor);
 
 
-        PatientDto patient = patientService.findById(patientId)
-                .orElseThrow(() -> new EntityNotFoundException("Patient not found with id: " + patientId));
+        PatientDto patient = patientService.findById(patientId);
         Patient entityPatient = patientMapper.toEntity(patient);
 
         visit.setDoctor(entityDoctor);
@@ -68,18 +62,14 @@ public class VisitService {
         return visitRepository.findAll()
                 .stream()
                 .map(visitMapper::toVisitDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public Page<VisitDto> findPage(int pageNumber) {
 
-        Visit visit = visitMapper.toEntity(visitDto);
-        visit.setCancelVisit(true);
-        visitRepository.save(visit);
-
         final int pageSize = 10;
 
-        Pageable pageable = PageRequest.of(pageNumber-1, pageSize, Sort.by("id"));
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.by("id"));
         Page<Visit> entities = visitRepository.findAll(pageable);
 
         Page<VisitDto> visits = entities.map(visit -> {
@@ -93,14 +83,15 @@ public class VisitService {
 
     public void cancelVisit(VisitDto visitDto)  {
 
-            if (visitDto.isVisitPastDate() || !visitDto.isVisitCancelled()) {
+        if (visitDto.isVisitPastDate() || !visitDto.isVisitCancelled()) {
 
-                Visit visit = visitMapper.toEntity(visitDto);
+            Visit visit = visitMapper.toEntity(visitDto);
 
-                visit.setCancelVisit(true);
+            visit.setCancelVisit(true);
 
-                visitRepository.save(visit);
-            }
+            visitRepository.save(visit);
+        }
+
     }
 
     public void deleteVisit(Visit visit) {
@@ -122,4 +113,5 @@ public class VisitService {
                 .map(visitMapper::toVisitDto)
                 .orElseThrow(() ->
                         new EntityNotFoundException(String.format("Visit not found with given ID: %d", id)));
+    }
 }

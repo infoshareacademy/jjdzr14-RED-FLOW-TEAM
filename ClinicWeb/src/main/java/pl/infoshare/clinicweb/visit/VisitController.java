@@ -15,7 +15,11 @@ import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientDto;
 import pl.infoshare.clinicweb.patient.PatientService;
+
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 @Controller
@@ -51,21 +55,17 @@ public class VisitController {
         return getString(model);
     }
 
-
     @PostMapping("/visit")
     public String visitFormSubmission(@Valid @ModelAttribute("visit") Visit visit, BindingResult visitBindingResult,
                                       @RequestParam(value = "patientId", required = false) Long patientId,
                                       @RequestParam(value = "doctorId", required = false) Long doctorId,
                                       Model model, RedirectAttributes redirectAttributes) {
 
-
         List<PatientDto> patients = patientService.findAllPatients();
         List<DoctorDto> doctors = doctorService.findAllDoctors();
 
         model.addAttribute("doctors", doctors);
         model.addAttribute("patients", patients);
-        visitService.saveVisit(visit, doctorId, patientId);
-
 
         if (visitBindingResult.hasErrors()) {
 
@@ -118,6 +118,8 @@ public class VisitController {
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("totalElements", totalElements);
         model.addAttribute("visits", visits);
+
+
         return "visits";
     }
 
@@ -126,9 +128,9 @@ public class VisitController {
     public String cancelVisit(@RequestParam(value = "id") Long id, Model model) {
 
         VisitDto visit = visitService.findVisitById(id);
+
         model.addAttribute("visits", visitService.findAllVisits());
         model.addAttribute("visit", visit);
-
 
         visitService.cancelVisit(visit);
 
@@ -146,4 +148,3 @@ public class VisitController {
         return "redirect:/visits";
     }
 }
-
