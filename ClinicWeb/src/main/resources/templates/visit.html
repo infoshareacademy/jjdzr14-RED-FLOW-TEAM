@@ -56,11 +56,13 @@
 
                 <div class="mb-4">
                     <label for="visitDate" class="form-label fw-bold">Data i godzina wizyty</label>
-                    <input type="datetime-local"
-                           id="visitDate"
-                           class="form-control"
-                           th:field="*{visitDate}"
-                           required>
+                    <select id="visitDate" th:field="*{visitDate}" class="form-select" required>
+                        <option value="" selected>---- WYBIERZ DATĘ ----</option>
+                        <option th:each="time : ${availableTimes}"
+                                th:value="${time}"
+                                th:text="${time}">
+                        </option>
+                    </select>
                     <div th:if="${#fields.hasErrors('visitDate')}" class="text-danger small mt-2"
                          th:errors="*{visitDate}">Nieprawidłowa data
                     </div>

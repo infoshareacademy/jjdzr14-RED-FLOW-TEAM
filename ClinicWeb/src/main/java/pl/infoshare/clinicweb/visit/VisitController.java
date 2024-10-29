@@ -16,6 +16,11 @@ import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientDto;
 import pl.infoshare.clinicweb.patient.PatientService;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -37,18 +42,6 @@ public class VisitController {
         this.patientService = patientService;
     }
 
-    //    @GetMapping("/visit")
-//    public String saveVisit(@ModelAttribute("patient") Patient patient,
-//                            @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") Doctor doctor, Model model) {
-//
-//        List<PatientDto> patients = patientService.findAllPatients();
-//        List<DoctorDto> doctors = doctorService.findAllDoctors();
-//
-//        model.addAttribute("doctors", doctors);
-//        model.addAttribute("patients", patients);
-//
-//        return "visit";
-//    }
     @GetMapping("/visit")
     public String showVisitForm(Model model) {
 
@@ -61,29 +54,46 @@ public class VisitController {
                                       @RequestParam(value = "doctorId", required = false) Long doctorId,
                                       Model model, RedirectAttributes redirectAttributes) {
 
-        List<PatientDto> patients = patientService.findAllPatients();
-        List<DoctorDto> doctors = doctorService.findAllDoctors();
-
-        model.addAttribute("doctors", doctors);
-        model.addAttribute("patients", patients);
-
-        if (visitBindingResult.hasErrors()) {
-
-            return "visit";
-        }
 
         visitService.saveVisit(visit, doctorId, patientId);
 
         redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. Dziękujemy za rejestrację!");
-
         return "redirect:/visit";
     }
+
+    private List<LocalDateTime> generateAvailableTimes() {
+        List<LocalDateTime> availableTimes = new ArrayList<>();
+        LocalDateTime now = LocalDateTime.now().truncatedTo(ChronoUnit.HOURS).plusMinutes(30);
+
+        LocalDate startDay = now.toLocalDate();
+        LocalDate endOfMonth = now.with(TemporalAdjusters.lastDayOfMonth()).toLocalDate();
+
+        for (LocalDate current = startDay; !current.isAfter(endOfMonth); current = current.plusDays(1)) {
+            LocalDateTime startTime;
+            LocalDateTime endTime = current.atTime(18, 0);
+
+            if (current.isEqual(now.toLocalDate())) {
+                startTime = now.isBefore(current.atTime(8, 0)) ? current.atTime(8, 0) : now;
+            } else {
+                startTime = current.atTime(8, 0);
+            }
+
+            while (startTime.isBefore(endTime)) {
+                availableTimes.add(startTime);
+                startTime = startTime.plusMinutes(30); // Increment by 30 minutes
+            }
+        }
+
+        return availableTimes;
+    }
+
 
     private String getString(Model model) {
 
         List<PatientDto> patients = patientService.findAllPatients();
         List<DoctorDto> doctors = doctorService.findAllDoctors();
-
+        List<LocalDateTime> availableTimes = generateAvailableTimes();
+        model.addAttribute("availableTimes", availableTimes);
         model.addAttribute("doctors", doctors);
         model.addAttribute("patients", patients);
         model.addAttribute("visit", new Visit());
@@ -147,4 +157,5 @@ public class VisitController {
 
         return "redirect:/visits";
     }
+
 }
