@@ -15,7 +15,6 @@ import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.user.PeselFormatException;
 import pl.infoshare.clinicweb.user.Utils;
-import pl.infoshare.clinicweb.visit.VisitService;
 
 import java.util.List;
 import java.util.Optional;

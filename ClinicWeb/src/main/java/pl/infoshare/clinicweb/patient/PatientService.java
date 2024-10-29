@@ -9,7 +9,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.infoshare.clinicweb.patientCard.PatientCardRepository;
-import pl.infoshare.clinicweb.patientCard.PatientCardService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.visit.Visit;
 import pl.infoshare.clinicweb.visit.VisitRepository;
@@ -48,10 +47,10 @@ public class PatientService {
     }
 
     public List<PatientDto> findAllPatients() {
-      return patientRepository.findAll()
+        return patientRepository.findAll()
                 .stream()
                 .map(patientMapper::toDto)
-               .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
     public Page<PatientDto> findPage(int pageNumber) {
