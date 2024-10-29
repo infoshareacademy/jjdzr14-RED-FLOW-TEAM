@@ -15,7 +15,10 @@ import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientDto;
 import pl.infoshare.clinicweb.patient.PatientService;
+
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -40,30 +43,54 @@ public class VisitController {
     @GetMapping("/visit")
     public String showVisitForm(Model model) {
 
-        return getString(model);
+        return prepareVisitFormData(model);
     }
 
     @PostMapping("/visit")
-    public String visitFormSubmission(@Valid @ModelAttribute("visit") Visit visit, BindingResult visitBindingResult,
-                                      @RequestParam(value = "patientId", required = false) Long patientId,
-                                      @RequestParam(value = "doctorId", required = false) Long doctorId,
-                                      Model model, RedirectAttributes redirectAttributes) {
+    public String visitFormSubmission(
+            @Valid @ModelAttribute("visit") Visit visit,
+            BindingResult visitBindingResult,
+            @RequestParam(value = "patientId", required = false) Long patientId,
+            @RequestParam(value = "doctorId", required = false) Long doctorId,
+            @RequestParam(value = "visitDate") String visitDate,
+            Model model,
+            RedirectAttributes redirectAttributes) {
 
+        LocalDateTime visitDateTime;
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+            visitDateTime = LocalDateTime.parse(visitDate, formatter);
+        } catch (DateTimeParseException e) {
+            model.addAttribute("errorMessage", "Invalid date format. Please choose a correct date and time.");
+            prepareVisitFormData(model);
+            return "visit";
+        }
 
-        visitService.saveVisit(visit, doctorId, patientId);
+        if (visitBindingResult.hasErrors()) {
+            prepareVisitFormData(model);
+            return "visit";
+        }
 
-        redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. Dziękujemy za rejestrację!");
-        return "redirect:/visit";
+        visit.setVisitTime(visitDateTime);
+
+        if (visitService.isTimeSlotAvailable(doctorId, visitDateTime)) {
+            visitService.saveVisit(visit, doctorId, patientId, visitDateTime);
+            redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. Dziękujemy za rejestrację!");
+            return "redirect:/visit";
+        } else {
+            model.addAttribute("errorMessage", "Wybrana data i godzina jest zajęta, proszę wybrać inny.");
+            prepareVisitFormData(model);
+            return "visit";
+        }
     }
 
 
 
-
-    private String getString(Model model) {
-
+    private String prepareVisitFormData(Model model) {
         List<PatientDto> patients = patientService.findAllPatients();
         List<DoctorDto> doctors = doctorService.findAllDoctors();
         List<LocalDateTime> availableTimes = VisitService.generateAvailableTimes();
+
         model.addAttribute("availableTimes", availableTimes);
         model.addAttribute("doctors", doctors);
         model.addAttribute("patients", patients);
@@ -72,61 +99,61 @@ public class VisitController {
         return "visit";
     }
 
+        @GetMapping(value = "/visits")
+        public String listVisits (Model model, @RequestParam("page") @ModelAttribute Optional < Integer > page){
 
-    @GetMapping(value = "/visits")
-    public String listVisits(Model model, @RequestParam("page") @ModelAttribute Optional<Integer> page) {
+            int currentPage = page.orElse(1);
 
-        int currentPage = page.orElse(1);
+            Page<VisitDto> visitDtoPage = visitService.findPage(currentPage);
 
-        Page<VisitDto> visitDtoPage = visitService.findPage(currentPage);
+            long totalElements = visitDtoPage.getTotalElements();
+            int totalPages = visitDtoPage.getTotalPages();
+            List<VisitDto> visits = visitDtoPage.getContent();
 
-        long totalElements = visitDtoPage.getTotalElements();
-        int totalPages = visitDtoPage.getTotalPages();
-        List<VisitDto> visits = visitDtoPage.getContent();
+            if (totalPages > 0) {
+                List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                        .boxed()
+                        .collect(Collectors.toList());
+                model.addAttribute("pageNumbers", pageNumbers);
+            }
 
-        if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                    .boxed()
-                    .collect(Collectors.toList());
-            model.addAttribute("pageNumbers", pageNumbers);
+            if (totalPages == 0) {
+                totalPages = 1;
+            }
+
+            model.addAttribute("currentPage", currentPage);
+            model.addAttribute("totalPages", totalPages);
+            model.addAttribute("totalElements", totalElements);
+            model.addAttribute("visits", visits);
+
+
+            return "visits";
         }
 
-        if (totalPages == 0) {
-            totalPages = 1;
+
+        @PostMapping("/cancel")
+        public String cancelVisit (@RequestParam(value = "id") Long id, Model model){
+
+            VisitDto visit = visitService.findVisitById(id);
+
+            model.addAttribute("visits", visitService.findAllVisits());
+            model.addAttribute("visit", visit);
+
+            visitService.cancelVisit(visit);
+
+            return "redirect:/visits";
         }
 
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("totalPages", totalPages);
-        model.addAttribute("totalElements", totalElements);
-        model.addAttribute("visits", visits);
+        @GetMapping("/cancel")
+        public String showCancelVisitForm (@ModelAttribute Patient patient, Model
+        model, @RequestParam(value = "id") Long id){
 
+            VisitDto visit = visitService.findVisitById(id);
 
-        return "visits";
+            model.addAttribute("visit", visit);
+            model.addAttribute("visits", visitService.findAllVisits());
+
+            return "redirect:/visits";
+        }
+
     }
-
-
-    @PostMapping("/cancel")
-    public String cancelVisit(@RequestParam(value = "id") Long id, Model model) {
-
-        VisitDto visit = visitService.findVisitById(id);
-
-        model.addAttribute("visits", visitService.findAllVisits());
-        model.addAttribute("visit", visit);
-
-        visitService.cancelVisit(visit);
-
-        return "redirect:/visits";
-    }
-
-    @GetMapping("/cancel")
-    public String showCancelVisitForm(@ModelAttribute Patient patient, Model model, @RequestParam(value = "id") Long id) {
-
-        VisitDto visit = visitService.findVisitById(id);
-
-        model.addAttribute("visit", visit);
-        model.addAttribute("visits", visitService.findAllVisits());
-
-        return "redirect:/visits";
-    }
-
-}

@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Patient;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -31,7 +32,8 @@ public class Visit {
     //    private List<Medicines> medicines;
     private UUID numberOfVisits = UUID.randomUUID();
     private boolean cancelVisit;
-
+    private LocalDateTime visitTime;
+    private LocalDateTime endTime;
 
     public void setVisitDate(LocalDateTime visitDate) {
 
@@ -42,6 +44,7 @@ public class Visit {
                 visitDate.getMinute(), 0);
 
     }
+
     public boolean isVisitPastDate() {
 
         LocalDateTime localDateTime = LocalDateTime.now();
@@ -49,7 +52,4 @@ public class Visit {
         return this.visitDate.isBefore(localDateTime);
 
     }
-
-
-
 }
