@@ -56,7 +56,7 @@
                         <option value="" selected>---- WYBIERZ DATĘ ----</option>
                         <option th:each="time : ${availableTimes}"
                                 th:value="${time}"
-                                th:text="${time}">
+                                th:text="${{#temporals.format(time, 'dd-MM-yyyy HH:mm')}}">
                         </option>
                     </select>
                     <div th:if="${errorMessage}" class="alert alert-danger">

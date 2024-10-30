@@ -23,7 +23,7 @@ public class Visit {
     private Long id;
     @NotNull(message = "Pole data nie moze byc puste. ")
     @FutureOrPresent(message = "Wybierz datę z przyszłości. ")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
     private LocalDateTime visitDate;
     @ManyToOne
     private Patient patient;
@@ -33,7 +33,7 @@ public class Visit {
     private UUID numberOfVisits = UUID.randomUUID();
     private boolean cancelVisit;
     private LocalDateTime visitTime;
-    private LocalDateTime endTime;
+
 
     public void setVisitDate(LocalDateTime visitDate) {
 

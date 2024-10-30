@@ -155,5 +155,4 @@ public class VisitController {
 
             return "redirect:/visits";
         }
-
     }
