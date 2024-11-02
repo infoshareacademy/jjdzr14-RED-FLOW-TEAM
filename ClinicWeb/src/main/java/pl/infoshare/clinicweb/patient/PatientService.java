@@ -8,9 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patientCard.PatientCardRepository;
-import pl.infoshare.clinicweb.patientCard.PatientCardService;
 import pl.infoshare.clinicweb.user.PersonDetails;
 import pl.infoshare.clinicweb.visit.Visit;
 import pl.infoshare.clinicweb.visit.VisitRepository;
@@ -51,10 +49,10 @@ public class PatientService {
     }
 
     public List<PatientDto> findAllPatients() {
-      return patientRepository.findAll()
+        return patientRepository.findAll()
                 .stream()
                 .map(patientMapper::toDto)
-               .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
     public Page<PatientDto> findPage(int pageNumber) {
@@ -72,7 +70,6 @@ public class PatientService {
 
         return patients;
     }
-
 
     public void updatePatient(PatientDto patientDto, Address address) {
 
@@ -106,27 +103,34 @@ public class PatientService {
 
     public static LocalDate decodeDateOfBirth(String pesel) {
 
-
-        String secondYearPart = pesel.substring(0, 2);
-        String month = pesel.substring(2, 4);
+        String yearPart = pesel.substring(0, 2);
+        String monthPart = pesel.substring(2, 4);
         int day = Integer.parseInt(pesel.substring(4, 6));
 
         String decodedYearPart;
-        if (month.startsWith("8") || month.startsWith("9")) {
+        int monthValue;
+
+        int month = Integer.parseInt(monthPart);
+        if (month >= 81 && month <= 92) {
             decodedYearPart = "18";
-        } else if (month.startsWith("0") || month.startsWith("1")) {
+            monthValue = month - 80;
+        } else if (month >= 1 && month <= 12) {
             decodedYearPart = "19";
-        } else if (month.startsWith("2") || month.startsWith("3")) {
+            monthValue = month;
+        } else if (month >= 21 && month <= 32) {
             decodedYearPart = "20";
-        } else if (month.startsWith("4") || month.startsWith("5")) {
+            monthValue = month - 20;
+        } else if (month >= 41 && month <= 52) {
             decodedYearPart = "21";
-        } else {
+            monthValue = month - 40;
+        } else if (month >= 61 && month <= 72) {
             decodedYearPart = "22";
+            monthValue = month - 60;
+        } else {
+            throw new IllegalArgumentException("Invalid month in PESEL");
         }
 
-
-        int monthValue = Integer.parseInt(month) - (decodedYearPart.equals("18") ? 80 : 0);
-        int fullYear = Integer.parseInt(decodedYearPart + secondYearPart);
+        int fullYear = Integer.parseInt(decodedYearPart + yearPart);
 
         LocalDate dateOfBirth;
         try {
@@ -137,7 +141,5 @@ public class PatientService {
 
         return dateOfBirth;
     }
-
-
 
 }

@@ -8,7 +8,6 @@ import pl.infoshare.clinicweb.visit.VisitDto;
 
 import java.util.List;
 
-
 @Service
 @Slf4j
 public class PatientCardService {

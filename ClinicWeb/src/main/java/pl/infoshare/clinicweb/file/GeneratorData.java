@@ -64,7 +64,6 @@ public class GeneratorData {
     }
 
 
-
     private static Patient generateRandomPatient() {
         Patient patient = new Patient();
         patient.setPersonDetails(generatePersonDetails());

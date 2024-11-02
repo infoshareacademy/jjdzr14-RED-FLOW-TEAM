@@ -10,6 +10,7 @@ import pl.infoshare.clinicweb.patientCard.PatientCard;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
