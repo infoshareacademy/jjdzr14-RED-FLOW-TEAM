@@ -1,11 +1,10 @@
 package pl.infoshare.clinicweb.doctor;
 
 
-
-
 public enum Specialization {
 
-    INTERNIST("Internista"), CHIRURGY("Chirurg"),
+    INTERNIST("Internista"),
+    CHIRURGY("Chirurg"),
     DERMATOLOGY("Dermatolog"),
     NEUROLOGY("Neurolog"),
     ONCOLOGY("Onkolog");

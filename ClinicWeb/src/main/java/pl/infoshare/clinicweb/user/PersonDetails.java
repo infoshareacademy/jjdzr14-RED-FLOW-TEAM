@@ -1,10 +1,13 @@
 package pl.infoshare.clinicweb.user;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import pl.infoshare.clinicweb.patient.PatientService;
 
 import java.time.LocalDate;
 
@@ -23,12 +26,20 @@ public class PersonDetails {
     @NotEmpty(message = "Pole nie może być puste")
     @Pattern(regexp = "^\\d{9}$", message = "Pole musi składać się z 9 cyfr.")
     private String phoneNumber;
-    private LocalDate birthDate;
     @NotEmpty(message = "Pole nie może być puste")
     @Pattern(regexp = "[0-9]{11}", message = "Pole musi zawierać 11 cyfr. ")
     private String pesel;
+    private LocalDate birthDate;
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    private LocalDate setDateOfBirth(String pesel) {
+
+        LocalDate localDate = PatientService.decodeDateOfBirth(pesel);
+
+        return localDate;
+
+
+    }
 
 }

@@ -22,5 +22,6 @@ public class VisitDto {
     private boolean visitCancelled;
     private Long patientId;
     private long doctorId;
+    private boolean isVisitPastDate;
 
 }

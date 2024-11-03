@@ -13,4 +13,6 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     @Query("select p from Patient p where p.personDetails.pesel=:pesel")
     Optional<Patient> findByPesel(String pesel);
+
+
 }

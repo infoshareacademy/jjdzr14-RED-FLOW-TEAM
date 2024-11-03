@@ -7,9 +7,7 @@ import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patientCard.PatientCard;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 

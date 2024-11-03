@@ -18,18 +18,18 @@ public class DoctorService {
     private final DoctorMapper doctorMapper;
 
     public void addDoctor(Doctor user) {
-       doctorRepository.save(user);
+        doctorRepository.save(user);
     }
 
     public DoctorDto findById(long id) {
-      return doctorRepository
+        return doctorRepository
                 .findById(id)
                 .map(doctorMapper::toDto)
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Doctor not found with ID: %s", id)));
 
     }
 
-  public List<DoctorDto> findAllDoctors() {
+    public List<DoctorDto> findAllDoctors() {
 
         return doctorRepository.findAll()
                 .stream()
@@ -46,12 +46,12 @@ public class DoctorService {
         Page<Doctor> entities = doctorRepository.findAll(pageable);
 
 
-            doctors = entities.map(doctor -> {
-                DoctorDto doctorDto = doctorMapper.toDto(doctor);
+        doctors = entities.map(doctor -> {
+            DoctorDto doctorDto = doctorMapper.toDto(doctor);
 
-                return doctorDto;
-            });
-            return doctors;
+            return doctorDto;
+        });
+        return doctors;
 
     }
 
@@ -85,8 +85,6 @@ public class DoctorService {
                 .filter(doctor -> doctor.getSpecialization().equals(specialization))
                 .map(doctorMapper::toDto)
                 .collect(Collectors.toList());
-
-
 
 
         return new PageImpl<>(doctorDtos);

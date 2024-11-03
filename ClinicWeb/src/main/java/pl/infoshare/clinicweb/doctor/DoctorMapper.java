@@ -15,7 +15,8 @@ public class DoctorMapper {
         doctorDto.setName(doctor.getDetails().getName());
         doctorDto.setSurname(doctor.getDetails().getSurname());
         doctorDto.setSpecialization(doctor.getSpecialization());
- doctorDto;
+
+        return doctorDto;
 
     }
 
