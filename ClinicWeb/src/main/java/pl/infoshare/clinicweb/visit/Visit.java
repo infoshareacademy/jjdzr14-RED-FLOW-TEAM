@@ -29,7 +29,6 @@ public class Visit {
     private Patient patient;
     @ManyToOne
     private Doctor doctor;
-    //    private List<Medicines> medicines;
     private UUID numberOfVisits = UUID.randomUUID();
     private boolean cancelVisit;
     private LocalDateTime visitTime;

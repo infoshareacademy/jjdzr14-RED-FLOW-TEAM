@@ -66,11 +66,6 @@ public class VisitController {
             return "visit";
         }
 
-        if (visitBindingResult.hasErrors()) {
-            prepareVisitFormData(model);
-            return "visit";
-        }
-
         visit.setVisitTime(visitDateTime);
 
         if (visitService.isTimeSlotAvailable(doctorId, visitDateTime)) {
