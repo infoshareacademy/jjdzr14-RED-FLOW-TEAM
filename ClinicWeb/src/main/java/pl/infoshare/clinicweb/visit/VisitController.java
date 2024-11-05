@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.patient.Patient;
@@ -56,27 +57,52 @@ public class VisitController {
             Model model,
             RedirectAttributes redirectAttributes) {
 
-        LocalDateTime visitDateTime;
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-            visitDateTime = LocalDateTime.parse(visitDate, formatter);
-        } catch (DateTimeParseException e) {
-            model.addAttribute("errorMessage", "Invalid date format. Please choose a correct date and time.");
+
+        LocalDateTime visitDateTime = parseVisitDate(visitDate, model);
+        if (visitDateTime == null) {
             prepareVisitFormData(model);
             return "visit";
         }
-
         visit.setVisitTime(visitDateTime);
 
-        if (visitService.isTimeSlotAvailable(doctorId, visitDateTime)) {
-            visitService.saveVisit(visit, doctorId, patientId, visitDateTime);
-            redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. Dziękujemy za rejestrację!");
-            return "redirect:/visit";
-        } else {
-            model.addAttribute("errorMessage", "Wybrana data i godzina jest zajęta, proszę wybrać inny.");
+
+        if (!visitService.isTimeSlotAvailable(doctorId, visitDateTime)) {
+            addErrorMessage(model, "Wybrana data i godzina jest zajęta, proszę wybrać inny.");
             prepareVisitFormData(model);
             return "visit";
         }
+
+        setDoctorAndPatient(visit, doctorId, patientId);
+        visitService.saveVisit(visit,doctorId,patientId,visitDateTime);
+        redirectAttributes.addFlashAttribute("success", "Pomyślnie zarejestrowano. Dziękujemy za rejestrację!");
+        return "redirect:/visit";
+    }
+
+    private LocalDateTime parseVisitDate(String visitDate, Model model) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+            return LocalDateTime.parse(visitDate, formatter);
+        } catch (DateTimeParseException e) {
+            addErrorMessage(model, "Invalid date format. Please choose a correct date and time.");
+            return null;
+        }
+    }
+
+    private void setDoctorAndPatient(Visit visit, Long doctorId, Long patientId) {
+        if (doctorId != null) {
+            Doctor doctor = new Doctor();
+            doctor.setId(doctorId);
+            visit.setDoctor(doctor);
+        }
+        if (patientId != null) {
+            Patient patient = new Patient();
+            patient.setId(patientId);
+            visit.setPatient(patient);
+        }
+    }
+
+    private void addErrorMessage(Model model, String message) {
+        model.addAttribute("errorMessage", message);
     }
 
 
