@@ -8,7 +8,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import pl.infoshare.clinicweb.doctor.Doctor;
 import pl.infoshare.clinicweb.patient.Patient;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 

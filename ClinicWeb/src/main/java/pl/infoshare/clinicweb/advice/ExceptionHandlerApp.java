@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import pl.infoshare.clinicweb.exception.validation.CalendarValidationException;
 import pl.infoshare.clinicweb.user.PeselFormatException;
 
 import java.util.HashMap;
@@ -39,6 +40,12 @@ public class ExceptionHandlerApp {
         Map<String, String> errorsMap = new HashMap<>();
         errorsMap.put("error", "Niepoprawny format numeru pesel.");
 
+        return errorsMap;
+    }
+    @ExceptionHandler(CalendarValidationException.class)
+        public Map<String ,String> handleException(CalendarValidationException exception){
+        Map<String , String>errorsMap = new HashMap<>();
+        errorsMap.put("error", "Slot jest już zajety" );
         return errorsMap;
     }
 

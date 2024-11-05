@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.doctor.*;
+import pl.infoshare.clinicweb.exception.validation.CalendarValidationException;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientDto;
 import pl.infoshare.clinicweb.patient.PatientMapper;
@@ -34,11 +35,8 @@ public class VisitService {
 
     public void saveVisit(Visit visit, Long doctorId, Long patientId, LocalDateTime visitTime) {
         if (!isTimeSlotAvailable(doctorId, visitTime)) {
-            throw new IllegalStateException("The selected time slot is already booked.");
+            throw new CalendarValidationException(visitTime);
         }
-//        if (doctorId == null || patientId == null) {
-//            throw new IllegalArgumentException("Doctor ID and Patient ID cannot be null");
-//        }
 
         DoctorDto doctor = doctorService.findById(doctorId);
         Doctor entityDoctor = doctorMapper.toEntity(doctor);
@@ -49,10 +47,9 @@ public class VisitService {
 
         visit.setDoctor(entityDoctor);
         visit.setPatient(entityPatient);
-
-
         visitRepository.save(visit);
     }
+
 
     public void updateVisit(VisitDto visitDto) {
 
@@ -131,7 +128,7 @@ public class VisitService {
             LocalDateTime endTime = current.atTime(18, 0);
 
             if (current.isEqual(now.toLocalDate())) {
-                startTime = now.isBefore(current.atTime(8, 0)) ? current.atTime(8, 0) : now;
+                startTime = now.isBefore(current.atTime(8, 0)) ? current.atTime(8, 0) : now.plusMinutes(30);
             } else {
                 startTime = current.atTime(8, 0);
             }
@@ -145,10 +142,23 @@ public class VisitService {
         return availableTimes;
     }
     public boolean isTimeSlotAvailable(Long doctorId, LocalDateTime visitTime) {
-        Doctor doctor = doctorRepository.findById(doctorId).orElseThrow(() -> new IllegalArgumentException("Doctor not found"));
-        LocalDateTime endTime = visitTime.plusMinutes(30);
-        List<Visit> visits = visitRepository.findByDoctorAndVisitTimeBetween(doctor, visitTime,endTime);
+        Doctor doctor = getDoctorById(doctorId);
+        LocalDateTime endTime = calculateEndTime(visitTime);
+        return areVisitsAvailable(doctor, visitTime, endTime);
+    }
 
+    private Doctor getDoctorById(Long doctorId) {
+        return doctorRepository.findById(doctorId)
+                .orElseThrow(() -> new IllegalArgumentException("Doctor not found"));
+    }
+
+    private LocalDateTime calculateEndTime(LocalDateTime visitTime) {
+        return visitTime.plusMinutes(30);
+    }
+
+    private boolean areVisitsAvailable(Doctor doctor, LocalDateTime startTime, LocalDateTime endTime) {
+        List<Visit> visits = visitRepository.findByDoctorAndVisitTimeBetween(doctor, startTime, endTime);
         return visits.isEmpty();
     }
+
 }
