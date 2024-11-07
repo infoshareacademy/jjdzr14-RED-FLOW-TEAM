@@ -2,12 +2,12 @@ package pl.infoshare.clinicweb.patient;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.advice.ExceptionHandlerApp;
 import pl.infoshare.clinicweb.advice.PeselFormatException;
@@ -66,7 +66,7 @@ public class PatientController {
             patientService.setPatientAttributes(patient, patientDetails, patientAddress);
             patientService.addPatient(patient);
 
-            return "redirect:patient/patient";
+            return "redirect:/patient";
         }
 
     }
@@ -134,7 +134,7 @@ public class PatientController {
 
         patientService.updatePatient(patient, address);
         redirectAttributes.addFlashAttribute("success", "Zaktualizowano dane pacjenta.");
-        return "redirect:patient/patients";
+        return "redirect:/patients";
     }
 
     @GetMapping("/update-patient")
@@ -152,7 +152,7 @@ public class PatientController {
     public String searchPatientByPesel(Model model, @RequestParam(value = "pesel", required = false) String pesel) {
 
 
-        if (!Utils.hasPeselCorrectDigits(pesel)) {
+        if (!Utils.hasPeselCorrectDigits(pesel) || pesel==null) {
 
             throw new PeselFormatException(pesel);
 
@@ -172,7 +172,7 @@ public class PatientController {
         if (patientById != null) {
             patientService.deletePatient(id);
         }
-        return "redirect:patient/patients";
+        return "redirect:/patients";
     }
 
     @GetMapping("/delete-patient")

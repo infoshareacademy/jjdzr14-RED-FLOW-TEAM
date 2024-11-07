@@ -55,8 +55,6 @@ public class VisitController {
 
         model.addAttribute("doctors", doctors);
         model.addAttribute("patients", patients);
-        visitService.saveVisit(visit, doctorId, patientId);
-
 
         if (visitBindingResult.hasErrors()) {
 
