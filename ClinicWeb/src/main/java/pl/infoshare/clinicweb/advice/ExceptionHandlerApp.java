@@ -1,6 +1,7 @@
 package pl.infoshare.clinicweb.advice;
 
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,8 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
+@Component
 public class ExceptionHandlerApp {
-
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleException(MethodArgumentNotValidException exception) {

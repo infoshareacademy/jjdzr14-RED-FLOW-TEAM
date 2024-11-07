@@ -36,18 +36,6 @@ public class VisitController {
         this.patientService = patientService;
     }
 
-    //    @GetMapping("/visit")
-//    public String saveVisit(@ModelAttribute("patient") Patient patient,
-//                            @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") Doctor doctor, Model model) {
-//
-//        List<PatientDto> patients = patientService.findAllPatients();
-//        List<DoctorDto> doctors = doctorService.findAllDoctors();
-//
-//        model.addAttribute("doctors", doctors);
-//        model.addAttribute("patients", patients);
-//
-//        return "visit";
-//    }
     @GetMapping("/visit")
     public String showVisitForm(Model model) {
 
@@ -72,7 +60,7 @@ public class VisitController {
 
         if (visitBindingResult.hasErrors()) {
 
-            return "visit";
+            return "visit/visit";
         }
 
         visitService.saveVisit(visit, doctorId, patientId);
@@ -91,7 +79,7 @@ public class VisitController {
         model.addAttribute("patients", patients);
         model.addAttribute("visit", new Visit());
 
-        return "visit";
+        return "visit/visit";
     }
 
 
@@ -121,7 +109,7 @@ public class VisitController {
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("totalElements", totalElements);
         model.addAttribute("visits", visits);
-        return "visits";
+        return "visit/visits";
     }
 
 

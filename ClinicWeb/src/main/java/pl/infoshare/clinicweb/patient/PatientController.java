@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.infoshare.clinicweb.advice.ExceptionHandlerApp;
 import pl.infoshare.clinicweb.advice.PeselFormatException;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
@@ -26,9 +28,7 @@ public class PatientController {
     private final PatientService patientService;
 
     private final DoctorService doctorService;
-//    private final ExceptionHandlerApp exceptionHandlerApp;
-//    private final View error;
-
+    private final ExceptionHandlerApp exceptionHandlerApp;
 
     @GetMapping("/patient")
     public String patientForm(Model model) {
@@ -57,7 +57,7 @@ public class PatientController {
 
             model.addAttribute("peselError", "Wprowadzony numer PESEL jest niepoprawny");
 
-            return "patient";
+            return "patient/patient";
 
         } else {
 
