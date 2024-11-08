@@ -2,14 +2,13 @@ package pl.infoshare.clinicweb.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import pl.infoshare.clinicweb.user.AppUserService;
 
 import static pl.infoshare.clinicweb.user.Role.ADMIN;
 import static pl.infoshare.clinicweb.user.Role.DOCTOR;
@@ -24,31 +23,32 @@ public class SecurityConfig {
 
 
     @Bean
-    PasswordEncoder passwordEncoder() {
-
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    UserDetailsService userDetailsService() {
+        return new AppUserService();
     }
 
     @Bean
-    InMemoryUserDetailsManager userDetailsManager(PasswordEncoder passwordEncoder) {
+    BCryptPasswordEncoder passwordEncoder() {
 
-        UserDetails admin = User.withUsername("admin")
-                .password(passwordEncoder.encode("admin"))
-                .roles(ADMIN.name())
-                .build();
+        return new BCryptPasswordEncoder();
+    }
 
-        UserDetails doctor = User.withUsername("doctor")
-                .password(passwordEncoder.encode("doctor"))
-                .roles(DOCTOR.name())
-                .build();
+    @Bean
+    DaoAuthenticationProvider authenticationProvider() {
 
-        return new InMemoryUserDetailsManager(admin, doctor);
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService());
+        provider.setPasswordEncoder(passwordEncoder());
+
+        return provider;
+
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/user/register").permitAll()
                         .requestMatchers(staticResources).permitAll()
                         .requestMatchers("/update-patient**",
                                 "/update-doctor**",
@@ -68,6 +68,7 @@ public class SecurityConfig {
                         .hasAnyRole(ADMIN.name(), DOCTOR.name())
                         .anyRequest().authenticated())
                 .formLogin((form) -> form
+                        .usernameParameter("email")
                         .defaultSuccessUrl("/", true)
                         .loginPage("/login")
                         .permitAll()

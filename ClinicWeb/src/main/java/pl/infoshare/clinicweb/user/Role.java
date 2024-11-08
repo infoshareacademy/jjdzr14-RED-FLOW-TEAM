@@ -12,7 +12,6 @@ public enum Role {
         this.roleDescription = roleDescription;
 
     }
-
     public String getRoleDescription() {
 
         return roleDescription;
