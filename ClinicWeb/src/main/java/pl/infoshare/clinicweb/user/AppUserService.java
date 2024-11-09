@@ -25,7 +25,7 @@ public class AppUserService implements UserDetailsService {
 
         Optional<AppUser> user = userRepository.findUserByEmail(email);
 
-        if (!user.equals(null)) {
+        if (user.isPresent()) {
 
             var userObject = user.get();
 
@@ -37,7 +37,6 @@ public class AppUserService implements UserDetailsService {
                     .roles(userObject.getRole().getRoleDescription())
                     .build();
 
-
         } else {
             throw new UsernameNotFoundException(String.format("User not found with email %s", email));
         }
@@ -46,7 +45,7 @@ public class AppUserService implements UserDetailsService {
 
     public void saveUser(AppUser user) {
 
-        AppUser appUser = userRepository.save(user);
+        var appUser = userRepository.save(user);
         log.info("User saved with ID: {}", appUser.getId());
 
     }

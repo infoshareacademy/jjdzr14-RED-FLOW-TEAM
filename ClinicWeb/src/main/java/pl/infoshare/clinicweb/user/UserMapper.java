@@ -5,13 +5,10 @@ import lombok.Data;
 @Data
 public class UserMapper {
 
-    private String email;
-    private String password;
-    private Role role;
+    public AppUserDto toDto(AppUser user) {
 
-    public UserMapper toDto(AppUser user){
 
-        UserMapper userDto = new UserMapper();
+        AppUserDto userDto = new AppUserDto();
 
         userDto.setEmail(user.getEmail());
         userDto.setPassword(userDto.getPassword());
@@ -21,7 +18,7 @@ public class UserMapper {
         return userDto;
     }
 
-    public AppUser toEntity(UserMapper userDto){
+    public AppUser toEntity(AppUserDto userDto){
 
         AppUser user = new AppUser();
         user.setEmail(userDto.getEmail());
