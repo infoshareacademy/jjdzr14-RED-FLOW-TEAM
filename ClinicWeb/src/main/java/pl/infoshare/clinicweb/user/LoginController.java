@@ -1,7 +1,7 @@
 package pl.infoshare.clinicweb.user;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class LoginController {
 
     private AppUserService userService;
@@ -55,7 +55,6 @@ public class LoginController {
         return "index";
 
     }
-
 
     private AppUser getPrincipal() {
         AppUser user = null;

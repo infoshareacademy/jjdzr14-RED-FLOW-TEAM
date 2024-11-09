@@ -128,12 +128,10 @@
                     oninvalid="setCustomValidity('Rejestruje się jako')"
                     oninput="setCustomValidity('')">
                 <option value="" selected>--Wybierz rolę--</option>
-                <th:block th:each="role : ${T(pl.infoshare.clinicweb.user.Role).values()}}">
-                    <th:block th:if="role!='Admin'">
-                        <option th:value="${role}"
-                                th:text="${role.getDescription()}"></option>
-                    </th:block>
-                </th:block>
+                <option th:each="role : ${T(pl.infoshare.clinicweb.user.Role).values()}"
+                        th:value="${role}"
+                        th:text="${role.getRoleDescription()}"></option>
+
             </select>
 
             <input type="submit" value="Zarejestruj się">

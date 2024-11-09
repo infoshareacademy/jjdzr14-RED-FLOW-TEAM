@@ -1,8 +1,8 @@
 package pl.infoshare.clinicweb.user;
 
 public enum Role {
-    PATIENT("Patient"),
-    DOCTOR("Doctor"),
+    PATIENT("Pacjent"),
+    DOCTOR("Lekarz"),
     ADMIN("Admin");
 
     private final String roleDescription;

@@ -12,6 +12,8 @@ import pl.infoshare.clinicweb.user.AppUser;
 import pl.infoshare.clinicweb.user.AppUserRepository;
 import pl.infoshare.clinicweb.user.Role;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
@@ -26,27 +28,27 @@ public class UserRepositoryTests {
     TestEntityManager entityManager;
 
     @Test
-    public void testUserCreation(){
+    public void testUserCreation() {
 
-         AppUser user = new AppUser();
+        AppUser user = new AppUser();
 
-         user.setEmail("halina.kopiec@wp.pl");
-         user.setPassword("Puszek1234");
-         user.setRole(Role.PATIENT);
+        user.setEmail("halina.kopiec@wp.pl");
+        user.setPassword("Puszek1234");
+        user.setRole(Role.PATIENT);
 
-         AppUser savedUser = userRepository.save(user);
+        AppUser savedUser = userRepository.save(user);
 
-         AppUser existUser = entityManager.find(AppUser.class, savedUser.getId());
+        AppUser existUser = entityManager.find(AppUser.class, savedUser.getId());
 
         assertThat(existUser.getEmail().equals(savedUser.getEmail()));
     }
 
     @Test
-    public void testFindUserByEmail(){
+    public void testFindUserByEmail() {
 
         String email = "wolodyjowski212@onet.pl";
 
-        AppUser user = userRepository.findUserByEmail(email);
+        Optional<AppUser> user = userRepository.findUserByEmail(email);
 
         assertThat(user).isNotNull();
     }
