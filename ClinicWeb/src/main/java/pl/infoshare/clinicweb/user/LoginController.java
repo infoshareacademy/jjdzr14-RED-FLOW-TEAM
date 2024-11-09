@@ -50,9 +50,8 @@ public class LoginController {
             log.info("User with id: {} was successfully logged in.", user.getId());
             return "redirect:/index";
 
-        } else {
-            log.info("Incorrect username or password was provided.");
         }
+
         return "login";
     }
 

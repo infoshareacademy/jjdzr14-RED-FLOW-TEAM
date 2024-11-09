@@ -8,7 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface AppUserRepository extends JpaRepository<AppUser, Long> {
-
     @Query("select u from AppUser u where u.email=:email")
     Optional<AppUser> findUserByEmail(String email);
 }
