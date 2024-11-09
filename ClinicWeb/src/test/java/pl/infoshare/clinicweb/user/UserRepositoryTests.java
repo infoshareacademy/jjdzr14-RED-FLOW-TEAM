@@ -1,5 +1,6 @@
-package pl.infoshare.clinicweb;
+package pl.infoshare.clinicweb.user;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import pl.infoshare.clinicweb.user.AppUser;
-import pl.infoshare.clinicweb.user.AppUserRepository;
-import pl.infoshare.clinicweb.user.Role;
+import pl.infoshare.clinicweb.ClinicWebApplication;
 
 import java.util.Optional;
 
@@ -51,5 +50,15 @@ public class UserRepositoryTests {
         Optional<AppUser> user = userRepository.findUserByEmail(email);
 
         assertThat(user).isNotNull();
+    }
+
+    @Test
+    public void testUserRemovalById() {
+
+        AppUser user = new AppUser();
+        user.setId(1L);
+        userRepository.deleteById(1L);
+
+        Assert.assertTrue(userRepository.findById(1L).isEmpty());
     }
 }
