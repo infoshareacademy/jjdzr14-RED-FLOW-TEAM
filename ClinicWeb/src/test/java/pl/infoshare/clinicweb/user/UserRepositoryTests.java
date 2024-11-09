@@ -45,11 +45,11 @@ public class UserRepositoryTests {
     @Test
     public void testFindUserByEmail() {
 
-        String email = "wolodyjowski212@onet.pl";
+        String email = "malwina.kozak@gmail.com";
 
         Optional<AppUser> user = userRepository.findUserByEmail(email);
 
-        assertThat(user).isNotNull();
+        assertThat(user).isNotEmpty();
     }
 
     @Test
