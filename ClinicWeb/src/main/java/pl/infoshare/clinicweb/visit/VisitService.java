@@ -8,11 +8,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.doctor.*;
-import pl.infoshare.clinicweb.exception.validation.CalendarValidationException;
+import pl.infoshare.clinicweb.exception.validation.TimeSlotUnavailableException;
 import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.patient.PatientDto;
 import pl.infoshare.clinicweb.patient.PatientMapper;
 import pl.infoshare.clinicweb.patient.PatientService;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -34,8 +35,9 @@ public class VisitService {
     private final DoctorRepository doctorRepository;
 
     public void saveVisit(Visit visit, Long doctorId, Long patientId, LocalDateTime visitTime) {
-        if (!isTimeSlotAvailable(doctorId, visitTime)) {
-            throw new CalendarValidationException(visitTime);
+        if (isTimeSlotAvailable(doctorId, visitTime)) {
+            throw new TimeSlotUnavailableException(visitTime);
+
         }
 
         DoctorDto doctor = doctorService.findById(doctorId);
@@ -47,6 +49,7 @@ public class VisitService {
 
         visit.setDoctor(entityDoctor);
         visit.setPatient(entityPatient);
+        visit.setVisitTime(visitTime);
         visitRepository.save(visit);
     }
 
@@ -83,7 +86,7 @@ public class VisitService {
         return visits;
     }
 
-    public void cancelVisit(VisitDto visitDto)  {
+    public void cancelVisit(VisitDto visitDto) {
 
         if (visitDto.isVisitPastDate() || !visitDto.isVisitCancelled()) {
 
@@ -116,6 +119,7 @@ public class VisitService {
                 .orElseThrow(() ->
                         new EntityNotFoundException(String.format("Visit not found with given ID: %d", id)));
     }
+
     static List<LocalDateTime> generateAvailableTimes() {
         List<LocalDateTime> availableTimes = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now().truncatedTo(ChronoUnit.HOURS).plusMinutes(30);
@@ -141,12 +145,13 @@ public class VisitService {
 
         return availableTimes;
     }
+
     public boolean isTimeSlotAvailable(Long doctorId, LocalDateTime visitTime) {
-        Doctor doctor = getDoctorById(doctorId);
         LocalDateTime endTime = calculateEndTime(visitTime);
-        return areVisitsAvailable(doctor, visitTime, endTime);
+        return !areVisitsAvailable(doctorId, visitTime, endTime);
     }
 
+    // zmienić na serwis
     private Doctor getDoctorById(Long doctorId) {
         return doctorRepository.findById(doctorId)
                 .orElseThrow(() -> new IllegalArgumentException("Doctor not found"));
@@ -156,9 +161,10 @@ public class VisitService {
         return visitTime.plusMinutes(30);
     }
 
-    private boolean areVisitsAvailable(Doctor doctor, LocalDateTime startTime, LocalDateTime endTime) {
-        List<Visit> visits = visitRepository.findByDoctorAndVisitTimeBetween(doctor, startTime, endTime);
-        return visits.isEmpty();
+    private boolean areVisitsAvailable(long id, LocalDateTime startTime, LocalDateTime endTime) {
+        int countVisit = visitRepository.findByDoctorAndVisitTimeBetween(id, startTime, endTime);
+        return countVisit < 1;
+
     }
 
 }

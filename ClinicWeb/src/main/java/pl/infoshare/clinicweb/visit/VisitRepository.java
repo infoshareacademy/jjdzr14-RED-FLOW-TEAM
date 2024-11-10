@@ -14,6 +14,7 @@ public interface VisitRepository extends JpaRepository<Visit, Long> {
     @Query("SELECT v FROM Visit v WHERE v.patient.id = :patientId")
     List<Visit> findAllByPatientId(Long patientId);
 
-    @Query("SELECT v FROM Visit v WHERE v.doctor = :doctor AND v.visitTime BETWEEN :startTime AND :endTime")
-    List<Visit> findByDoctorAndVisitTimeBetween(Doctor doctor, LocalDateTime startTime, LocalDateTime endTime);
+
+    @Query("SELECT count(v)  FROM Visit v WHERE v.doctor.id = :doctor AND v.visitTime BETWEEN :startTime AND :endTime")
+    int findByDoctorAndVisitTimeBetween(long doctor, LocalDateTime startTime, LocalDateTime endTime);
 }
