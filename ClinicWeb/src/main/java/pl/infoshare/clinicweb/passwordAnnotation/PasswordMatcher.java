@@ -2,7 +2,7 @@ package pl.infoshare.clinicweb.passwordAnnotation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import pl.infoshare.clinicweb.user.AppUserDto;
+import pl.infoshare.clinicweb.user.registration.AppUserDto;
 
 public final class PasswordMatcher implements ConstraintValidator<PasswordMatcherValidator, AppUserDto> {
 
@@ -22,7 +22,7 @@ public final class PasswordMatcher implements ConstraintValidator<PasswordMatche
 
         if (!isPasswordValid) {
             constraintValidatorContext.disableDefaultConstraintViolation();
-            constraintValidatorContext.buildConstraintViolationWithTemplate("Passwords have to be identical.")
+            constraintValidatorContext.buildConstraintViolationWithTemplate("Hasła muszą być identyczne")
                     .addPropertyNode("password")
                     .addConstraintViolation();
         }

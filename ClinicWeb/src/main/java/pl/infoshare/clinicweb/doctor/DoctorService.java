@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.patient.Address;
-import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.entity.PersonDetails;
 
 import java.util.List;
 import java.util.stream.Collectors;

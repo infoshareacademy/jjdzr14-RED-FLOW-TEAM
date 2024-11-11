@@ -11,13 +11,13 @@ import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import pl.infoshare.clinicweb.user.AppUserService;
+import pl.infoshare.clinicweb.user.service.AppUserService;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static pl.infoshare.clinicweb.user.Role.ADMIN;
-import static pl.infoshare.clinicweb.user.Role.DOCTOR;
+import static pl.infoshare.clinicweb.user.entity.Role.ADMIN;
+import static pl.infoshare.clinicweb.user.entity.Role.DOCTOR;
 
 @Configuration
 @RequiredArgsConstructor

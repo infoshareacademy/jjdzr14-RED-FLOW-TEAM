@@ -1,4 +1,4 @@
-package pl.infoshare.clinicweb.user;
+package pl.infoshare.clinicweb.user.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

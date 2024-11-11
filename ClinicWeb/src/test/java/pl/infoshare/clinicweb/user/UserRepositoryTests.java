@@ -10,6 +10,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import pl.infoshare.clinicweb.ClinicWebApplication;
+import pl.infoshare.clinicweb.user.entity.AppUser;
+import pl.infoshare.clinicweb.user.entity.Role;
+import pl.infoshare.clinicweb.user.repository.AppUserRepository;
 
 import java.util.Optional;
 

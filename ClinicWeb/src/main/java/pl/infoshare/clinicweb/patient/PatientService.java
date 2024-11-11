@@ -9,7 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.infoshare.clinicweb.patientCard.PatientCardRepository;
-import pl.infoshare.clinicweb.user.PersonDetails;
+import pl.infoshare.clinicweb.user.entity.PersonDetails;
 import pl.infoshare.clinicweb.visit.Visit;
 import pl.infoshare.clinicweb.visit.VisitRepository;
 

@@ -1,8 +1,9 @@
-package pl.infoshare.clinicweb.user;
+package pl.infoshare.clinicweb.user.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import pl.infoshare.clinicweb.user.entity.AppUser;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package pl.infoshare.clinicweb.user;
+package pl.infoshare.clinicweb.user.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +8,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import pl.infoshare.clinicweb.user.entity.AppUser;
+import pl.infoshare.clinicweb.user.repository.AppUserRepository;
+import pl.infoshare.clinicweb.user.mapper.UserMapper;
+import pl.infoshare.clinicweb.user.registration.AppUserDto;
 
 
 @Service

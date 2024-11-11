@@ -1,6 +1,8 @@
-package pl.infoshare.clinicweb.user;
+package pl.infoshare.clinicweb.user.mapper;
 
 import org.springframework.stereotype.Component;
+import pl.infoshare.clinicweb.user.entity.AppUser;
+import pl.infoshare.clinicweb.user.registration.AppUserDto;
 
 @Component
 public class UserMapper {
