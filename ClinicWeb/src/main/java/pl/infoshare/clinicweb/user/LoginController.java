@@ -22,14 +22,16 @@ public class LoginController {
     @GetMapping("/register")
     public String registerForm(Model model) {
 
-        model.addAttribute("user", new AppUser());
+        model.addAttribute("user", new AppUserDto());
         log.info("New user registration form was requested.");
 
         return "user/registry";
     }
 
     @PostMapping("/register")
-    public String registerFormSubmission(@Valid @ModelAttribute AppUserDto user, BindingResult bindingResult) {
+    public String registerFormSubmission(@Valid AppUserDto user, BindingResult bindingResult, Model model) {
+
+        model.addAttribute("user", user);
 
         if (bindingResult.hasErrors()) {
             log.info("Validation error occured when registering user.");
@@ -37,6 +39,7 @@ public class LoginController {
         }
 
         userService.saveUser(user);
+        model.addAttribute("success", "Pomyślnie zarejestrowano użytkownika");
         log.info("User with ID: {} was successfully created and saved to DB.", user.getId());
 
         return "redirect:/registry";

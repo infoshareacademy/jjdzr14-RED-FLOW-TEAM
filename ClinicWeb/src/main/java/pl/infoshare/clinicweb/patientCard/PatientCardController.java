@@ -37,7 +37,7 @@ public class PatientCardController {
     }
 
 
-    @GetMapping("/detal-patient-appointments")
+    @GetMapping("/detail-patient-appointments")
     public String getDetailPatientAppointments(@RequestParam(value = "id", required = false) Long id, Model model) {
 
 
@@ -53,7 +53,7 @@ public class PatientCardController {
         model.addAttribute("patientAppointments", patientAppointments);
 
 
-        return "detal-patient-appointments";
+        return "detail-patient-appointments";
     }
 
 

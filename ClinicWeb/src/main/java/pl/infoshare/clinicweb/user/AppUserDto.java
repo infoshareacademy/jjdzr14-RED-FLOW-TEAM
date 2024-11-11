@@ -1,7 +1,7 @@
 package pl.infoshare.clinicweb.user;
 
 import lombok.Data;
-import pl.infoshare.clinicweb.annotation.PasswordMatcherValidator;
+import pl.infoshare.clinicweb.passwordAnnotation.PasswordMatcherValidator;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;

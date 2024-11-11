@@ -1,4 +1,4 @@
-package pl.infoshare.clinicweb.annotation;
+package pl.infoshare.clinicweb.passwordAnnotation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
