@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginController {
 
     @GetMapping("/")
-    public String getIndex(){
+    public String getIndex() {
 
         return "home/index";
     }
@@ -19,7 +19,7 @@ public class LoginController {
         User user = getPrincipal();
 
         if (user != null) {
-            return "redirect:home/index";
+            return "redirect:/index";
         }
 
         return "user/login";

@@ -22,7 +22,7 @@ public class Utils {
 
             return modulo == 0 || calculatedDigits == checkDigit;
 
-        } catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
 
             throw new PeselFormatException(pesel);
         }

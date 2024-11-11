@@ -2,14 +2,12 @@ package pl.infoshare.clinicweb.patient;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.infoshare.clinicweb.advice.ExceptionHandlerApp;
 import pl.infoshare.clinicweb.advice.PeselFormatException;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
@@ -28,7 +26,6 @@ public class PatientController {
     private final PatientService patientService;
 
     private final DoctorService doctorService;
-    private final ExceptionHandlerApp exceptionHandlerApp;
 
     @GetMapping("/patient")
     public String patientForm(Model model) {
@@ -152,7 +149,7 @@ public class PatientController {
     public String searchPatientByPesel(Model model, @RequestParam(value = "pesel", required = false) String pesel) {
 
 
-        if (!Utils.hasPeselCorrectDigits(pesel) || pesel==null) {
+        if (!Utils.hasPeselCorrectDigits(pesel) || pesel == null) {
 
             throw new PeselFormatException(pesel);
 
@@ -162,7 +159,8 @@ public class PatientController {
             model.addAttribute("patientByPesel", patientByPesel);
         }
 
-        return "patient/search-patient";
+        return "search-patient";
+
     }
 
     @PostMapping("/delete-patient")
