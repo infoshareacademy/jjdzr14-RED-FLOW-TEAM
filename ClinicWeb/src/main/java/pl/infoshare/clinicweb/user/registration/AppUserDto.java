@@ -1,9 +1,6 @@
 package pl.infoshare.clinicweb.user.registration;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import pl.infoshare.clinicweb.passwordAnnotation.PasswordMatcherValidator;
 import pl.infoshare.clinicweb.user.entity.Role;
@@ -15,7 +12,7 @@ public class AppUserDto {
 
     private Long id;
     @NotEmpty(message = "Pole email nie może być puste.")
-    @Pattern(regexp = ("/^\\S+@\\S+\\.\\S+$/"), message = "Niepoprawny format, poprawny format e-mail np. xxxx@xxx.xx")
+    @Email(message = "Niepoprawny format, poprawny format e-mail np. xxxx@xxx.xx")
     private String email;
     @NotEmpty(message = "Pole hasło nie może być puste.")
     @Size(min = 6, message = "Hasło musi składać się z przynajmniej 6 znaków.")

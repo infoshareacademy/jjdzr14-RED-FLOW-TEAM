@@ -57,6 +57,8 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("register/admin").hasRole(ADMIN.name())
+                        .requestMatchers("register/doctor").hasRole(ADMIN.name())
                         .requestMatchers("/register").permitAll()
                         .requestMatchers(staticResources).permitAll()
                         .requestMatchers("/update-patient**",
