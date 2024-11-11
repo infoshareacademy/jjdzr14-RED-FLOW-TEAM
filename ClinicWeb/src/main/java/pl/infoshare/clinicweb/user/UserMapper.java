@@ -1,8 +1,8 @@
 package pl.infoshare.clinicweb.user;
 
-import lombok.Data;
+import org.springframework.stereotype.Component;
 
-@Data
+@Component
 public class UserMapper {
 
     public AppUserDto toDto(AppUser user) {
@@ -10,6 +10,7 @@ public class UserMapper {
 
         AppUserDto userDto = new AppUserDto();
 
+        userDto.setId(user.getId());
         userDto.setEmail(user.getEmail());
         userDto.setPassword(userDto.getPassword());
         userDto.setRole(user.getRole());
@@ -18,9 +19,10 @@ public class UserMapper {
         return userDto;
     }
 
-    public AppUser toEntity(AppUserDto userDto){
+    public AppUser toEntity(AppUserDto userDto) {
 
         AppUser user = new AppUser();
+        user.setId(userDto.getId());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         user.setRole(userDto.getRole());

@@ -17,6 +17,7 @@ public class AppUserService implements UserDetailsService {
 
     @Autowired
     private final AppUserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -30,7 +31,7 @@ public class AppUserService implements UserDetailsService {
             return User.builder()
                     .username(user.getEmail())
                     .password(user.getPassword())
-                    .roles(user.getRole().getRoleDescription())
+                    .roles(String.valueOf(user.getRole()))
                     .build();
 
         } else {
@@ -40,9 +41,9 @@ public class AppUserService implements UserDetailsService {
 
     }
 
-    public void saveUser(AppUser user) {
+    public void saveUser(AppUserDto user) {
 
-        var appUser = userRepository.save(user);
+        var appUser = userMapper.toEntity(user);
         log.info("User saved with ID: {}", appUser.getId());
 
     }

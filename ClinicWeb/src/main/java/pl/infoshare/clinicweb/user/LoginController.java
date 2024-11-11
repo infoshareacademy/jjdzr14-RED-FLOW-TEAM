@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Slf4j
 public class LoginController {
 
-    private AppUserService userService;
+    private final AppUserService userService;
+
 
     @GetMapping("/register")
     public String registerForm(Model model) {
@@ -28,7 +29,7 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public String registerFormSubmission(@Valid @ModelAttribute AppUser user, BindingResult bindingResult) {
+    public String registerFormSubmission(@Valid @ModelAttribute AppUserDto user, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             log.info("Validation error occured when registering user.");
