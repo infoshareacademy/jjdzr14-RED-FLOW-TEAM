@@ -32,7 +32,6 @@ public class VisitService {
     private final VisitMapper visitMapper;
     private final DoctorMapper doctorMapper;
     private final PatientMapper patientMapper;
-    private final DoctorRepository doctorRepository;
 
     public void saveVisit(Visit visit, Long doctorId, Long patientId, LocalDateTime visitTime) {
         if (isTimeSlotAvailable(doctorId, visitTime)) {
@@ -150,13 +149,7 @@ public class VisitService {
         LocalDateTime endTime = calculateEndTime(visitTime);
         return !areVisitsAvailable(doctorId, visitTime, endTime);
     }
-
-    // zmienić na serwis
-    private Doctor getDoctorById(Long doctorId) {
-        return doctorRepository.findById(doctorId)
-                .orElseThrow(() -> new IllegalArgumentException("Doctor not found"));
-    }
-
+    
     private LocalDateTime calculateEndTime(LocalDateTime visitTime) {
         return visitTime.plusMinutes(30);
     }
