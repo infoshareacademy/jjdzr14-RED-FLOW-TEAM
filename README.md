@@ -1,4 +1,4 @@
-# Medicore App - *medical clinic application* :hospital:
+# Medicore - *medical clinic application* :hospital:
 
 > [!IMPORTANT]
 **USER HAS ABILITY TO:**
@@ -25,7 +25,7 @@
 > * login: **admin**, password: **admin**
 > * login: **doctor**, password: **doctor**
 > * login: **patient**, password: **patient**
-## *However, user can log in as well using other users credential stored in DB.*
+## *However, user can log in as well using other users credentials stored in DB.*
 
 
 
