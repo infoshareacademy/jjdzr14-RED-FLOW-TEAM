@@ -142,8 +142,10 @@
                         th:if="${role.name == 'PATIENT'}"
                         th:value="'PATIENT'"
                         th:text="${role.getRoleDescription()}"></option>
-
             </select>
+            <div th:align="center" th:if="${success}" class="mt-4 alert alert-success" role="alert">
+                <p th:text="${success}">Sukces</p>
+            </div>
             <p th:if="${#fields.hasErrors('role')}" class="text-danger"
                th:errors="${user.role}">Role error</p>
 

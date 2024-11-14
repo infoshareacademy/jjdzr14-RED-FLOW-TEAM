@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.infoshare.clinicweb.user.entity.Role;
 import pl.infoshare.clinicweb.user.service.AppUserService;
 
@@ -31,7 +32,9 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String registerFormSubmission(@Valid @ModelAttribute("user") AppUserDto user, BindingResult bindingResult, Model model) {
+    public String registerFormSubmission(@Valid @ModelAttribute("user") AppUserDto user, BindingResult bindingResult,
+                                         Model model, RedirectAttributes redirectAttributes
+    ) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("userRole", Role.PATIENT);
@@ -42,8 +45,9 @@ public class RegistrationController {
 
         userService.saveUser(user);
         model.addAttribute("success", "Pomyślnie zarejestrowano użytkownika pacjenta.");
-
-        return "redirect:/registry";
+        redirectAttributes.addFlashAttribute("success",
+                "Pomyślnie zarejestrowano użytkownika pacjenta.");
+        return "redirect:/login";
     }
 
 
