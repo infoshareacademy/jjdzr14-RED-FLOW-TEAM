@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import pl.infoshare.clinicweb.advice.UserEmailExistsException;
 import pl.infoshare.clinicweb.user.entity.AppUser;
 import pl.infoshare.clinicweb.user.entity.Role;
 import pl.infoshare.clinicweb.user.mapper.UserMapper;
@@ -49,20 +50,24 @@ public class AppUserService implements UserDetailsService {
     }
 
     public void saveUser(AppUserDto user) {
+        try {
+            if (isUserAlreadyRegistered(user.getEmail())) {
 
-        if (isUserAlreadyRegistered(user.getEmail())) {
+                throw new UserEmailExistsException("Istnieje już konto z podanym adresem email!");
 
-            throw new IllegalArgumentException("Istnieje już konto z podanym adresem email!");
+            }
+
+            user.setRole(Role.PATIENT);
+            var appUser = userMapper.toEntity(user);
+            userRepository.save(appUser);
+            log.info("User patient saved with ID: {}", appUser.getId());
+
+        } catch (UserEmailExistsException e) {
+            log.error("Rejestracja użytkownika nie powiodła się: {}", e.getMessage());
+            throw e;
 
         }
-
-        user.setRole(Role.PATIENT);
-        var appUser = userMapper.toEntity(user);
-        userRepository.save(appUser);
-        log.info("User patient saved with ID: {}", appUser.getId());
-
     }
-
     public boolean isUserAlreadyRegistered(String email) {
 
         Optional<AppUser> user = userRepository.findUserByEmail(email);

@@ -109,9 +109,6 @@ INSERT INTO patients_cards (date_of_visit, doctor_id, id, patient_id, diagnosis,
 
 
 INSERT INTO users(email, password, role) VALUES
-("admin", "admin", 'ADMIN'),
-("doctor", "doctor", 'DOCTOR'),
-("patient", "patient", 'PATIENT'),
 ("malwina.kozak@gmail.com", "proste1234", 'PATIENT'),
 ("damian.pered@onet.pl", "Puszek123!", 'DOCTOR'),
 ("melania.halinowska@wp.pl", "trampek123", 'PATIENT'),

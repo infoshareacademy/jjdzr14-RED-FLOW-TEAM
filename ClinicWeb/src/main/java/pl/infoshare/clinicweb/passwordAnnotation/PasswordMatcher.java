@@ -26,7 +26,6 @@ public final class PasswordMatcher implements ConstraintValidator<PasswordMatche
                     .addPropertyNode("password")
                     .addConstraintViolation();
         }
-
         return isPasswordValid ;
     }
 }

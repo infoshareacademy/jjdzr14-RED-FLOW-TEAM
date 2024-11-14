@@ -41,6 +41,13 @@ public class ExceptionHandlerApp {
         return errorsMap;
     }
 
+    @ExceptionHandler(UserEmailExistsException.class)
+    public Map<String, String> handleException(UserEmailExistsException exception) {
+
+        Map<String, String> errorsMap = new HashMap<>();
+        errorsMap.put("error", "Użytkownik o podanym adresie email już istnieje.");
+        return errorsMap;
+    }
 
 
 }

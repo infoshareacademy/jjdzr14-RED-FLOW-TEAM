@@ -146,6 +146,9 @@
             <div th:align="center" th:if="${success}" class="mt-4 alert alert-success" role="alert">
                 <p th:text="${success}">Sukces</p>
             </div>
+            <div th:if="${error != null}" class="mt-2 alert alert-danger" role="alert">
+                <p th:text="${error}">Błąd</p>
+            </div>
             <p th:if="${#fields.hasErrors('role')}" class="text-danger"
                th:errors="${user.role}">Role error</p>
 

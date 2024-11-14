@@ -28,7 +28,7 @@ public class RegistrationController {
 
         log.info("New user registration form was requested.");
 
-        return "user/registry";
+        return "registry";
     }
 
     @PostMapping("/register")
@@ -40,7 +40,7 @@ public class RegistrationController {
             model.addAttribute("userRole", Role.PATIENT);
             model.addAttribute("user", user);
             log.info("Validation error occured while registering user.");
-            return "user/registry";
+            return "registry";
         }
 
         userService.saveUser(user);
