@@ -52,7 +52,12 @@
                             <a class="nav-link enable" th:href="@{/register}" tabindex="-1" aria-disabled="true">Zarejestruj się</a>
                     </span>
             </div>
-
+            <div>
+                <li class="nav-item">
+                    <span sec:authorize="hasRole('ADMIN')">
+                            <a class="nav-link enable" th:href="@{/register}" tabindex="-1" aria-disabled="true">Tworzenie użytkownika</a>
+                    </span>
+            </div>
             <div>
                 <li class="nav-item">
                         <span sec:authorize="isAnonymous()">
@@ -72,14 +77,13 @@
                             <span th:text="${#authentication.name}">[Użytkownik]</span>
                         </a>
                     </span>
-                    </li>
-            <div>
+                </li>
+                <div>
 
-    </p>
+                    </p>
 
 
-
-            </div>
+                </div>
                 </span>
                 </li>
             </div>

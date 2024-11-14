@@ -108,6 +108,7 @@
     </div>
 </nav>
 <form method="post" th:action="@{/register}" th:method="post" th:object="${user}">
+
     <div class="login-container">
         <div class="login-card">
 
@@ -130,6 +131,7 @@
                    th:errors="${user.password}">Confirm password error</p>
             </div>
 
+            <div sec:authorize="isAnonymous()">
             <select name="role"
                     class="form-select"
                     required
@@ -145,6 +147,7 @@
                th:errors="${user.role}">Role error</p>
 
             <input type="submit" value="Zarejestruj się">
+            </div>
         </div>
     </div>
 

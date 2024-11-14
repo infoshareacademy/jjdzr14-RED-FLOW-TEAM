@@ -21,7 +21,9 @@ public class RegistrationController {
     @GetMapping("/register")
     public String registerForm(Model model) {
 
+
         model.addAttribute("user", new AppUserDto());
+
         log.info("New user registration form was requested.");
 
         return "user/registry";
@@ -30,43 +32,21 @@ public class RegistrationController {
     @PostMapping("/register")
     public String registerFormSubmission(@Valid @ModelAttribute("user") AppUserDto user, BindingResult bindingResult, Model model) {
 
+
+
         if (bindingResult.hasErrors()) {
 
             model.addAttribute("user", user);
-            log.info("Validation error occured when registering user.");
+            log.info("Validation error occured while registering user.");
             return "user/registry";
         }
 
         userService.saveUser(user);
-        model.addAttribute("success", "Pomyślnie zarejestrowano użytkownika");
+        model.addAttribute("success", "Pomyślnie zarejestrowano użytkownika pacjenta.");
         log.info("User with ID: {} was successfully created and saved to DB.", user.getId());
 
         return "redirect:/registry";
     }
 
-    @GetMapping("/register/admin")
-    public String registerAdminForm(Model model) {
 
-        model.addAttribute("user", new AppUserDto());
-        log.info("New user registration form was requested.");
-
-        return "user/registry";
-    }
-
-    @PostMapping("register/admin")
-    public String registerAdminFromSubmission(@Valid @ModelAttribute("admin") AppUserDto admin, BindingResult bindingResult, Model model){
-
-        if (bindingResult.hasErrors()) {
-
-            model.addAttribute("user", admin);
-            log.info("Validation error occured when registering user.");
-            return "user/registry";
-        }
-
-        userService.saveUser(admin);
-        model.addAttribute("success", "Pomyślnie zarejestrowano użytkownika");
-        log.info("User with ID: {} was successfully created and saved to DB.", admin.getId());
-
-        return "user/registry";
-    }
 }

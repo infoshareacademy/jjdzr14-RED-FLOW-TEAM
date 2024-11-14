@@ -1,5 +1,6 @@
 package pl.infoshare.clinicweb.user.service;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import pl.infoshare.clinicweb.user.entity.AppUser;
+import pl.infoshare.clinicweb.user.entity.Role;
 import pl.infoshare.clinicweb.user.mapper.UserMapper;
 import pl.infoshare.clinicweb.user.registration.AppUserDto;
 import pl.infoshare.clinicweb.user.repository.AppUserRepository;
+
+import java.util.Optional;
 
 
 @Service
@@ -46,7 +50,15 @@ public class AppUserService implements UserDetailsService {
 
     }
 
+
+    @Transactional
     public void saveUser(AppUserDto user) {
+
+        if (isUserAlreadyRegistered(user.getEmail())) {
+
+            throw new IllegalArgumentException("Istnieje już konto z podanym adresem email!");
+
+        }
 
         var appUser = userMapper.toEntity(user);
         userRepository.save(appUser);
@@ -58,8 +70,17 @@ public class AppUserService implements UserDetailsService {
     public void saveAdminUser(AppUserDto user) {
 
         var adminUser = userMapper.toEntity(user);
+        adminUser.setRole(Role.ADMIN);
         userRepository.save(adminUser);
         log.info("New admin user saved with ID: {}", adminUser.getId());
+
+    }
+
+    public boolean isUserAlreadyRegistered(String email) {
+
+        Optional<AppUser> user = userRepository.findUserByEmail(email);
+
+        return user.isPresent();
 
     }
 

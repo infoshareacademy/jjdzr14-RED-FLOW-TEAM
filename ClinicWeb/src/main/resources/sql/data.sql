@@ -118,3 +118,4 @@ INSERT INTO users(email, password, role) VALUES
 ("danuta.kopec@onet.pl", "Puszek123!", 'DOCTOR'),
 ("krystian.krawiec@onet.pl", "Puszek123!", 'DOCTOR');
 
+
