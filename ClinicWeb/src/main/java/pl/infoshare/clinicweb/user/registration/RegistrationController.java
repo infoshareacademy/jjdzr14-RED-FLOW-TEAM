@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.infoshare.clinicweb.user.entity.Role;
 import pl.infoshare.clinicweb.user.service.AppUserService;
 
 @Controller
@@ -33,7 +34,7 @@ public class RegistrationController {
     public String registerFormSubmission(@Valid @ModelAttribute("user") AppUserDto user, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-
+            model.addAttribute("userRole", Role.PATIENT);
             model.addAttribute("user", user);
             log.info("Validation error occured while registering user.");
             return "user/registry";
@@ -41,7 +42,6 @@ public class RegistrationController {
 
         userService.saveUser(user);
         model.addAttribute("success", "Pomyślnie zarejestrowano użytkownika pacjenta.");
-        log.info("User with ID: {} was successfully created and saved to DB.", user.getId());
 
         return "redirect:/registry";
     }
