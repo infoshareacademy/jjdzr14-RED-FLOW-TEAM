@@ -1,10 +1,8 @@
 package pl.infoshare.clinicweb.user.service;
 
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -50,8 +48,6 @@ public class AppUserService implements UserDetailsService {
 
     }
 
-
-    @Transactional
     public void saveUser(AppUserDto user) {
 
         if (isUserAlreadyRegistered(user.getEmail())) {
@@ -60,19 +56,10 @@ public class AppUserService implements UserDetailsService {
 
         }
 
+        user.setRole(Role.PATIENT);
         var appUser = userMapper.toEntity(user);
         userRepository.save(appUser);
-        log.info("User saved with ID: {}", appUser.getId());
-
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    public void saveAdminUser(AppUserDto user) {
-
-        var adminUser = userMapper.toEntity(user);
-        adminUser.setRole(Role.ADMIN);
-        userRepository.save(adminUser);
-        log.info("New admin user saved with ID: {}", adminUser.getId());
+        log.info("User patient saved with ID: {}", appUser.getId());
 
     }
 

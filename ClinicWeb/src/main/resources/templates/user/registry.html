@@ -131,23 +131,23 @@
                    th:errors="${user.password}">Confirm password error</p>
             </div>
 
-            <div sec:authorize="isAnonymous()">
+
             <select name="role"
                     class="form-select"
                     required
                     oninvalid="setCustomValidity('Rejestruje się jako')"
                     oninput="setCustomValidity('')">
-                <option value="" selected>--Wybierz rolę--</option>
+
                 <option th:each="role : ${T(pl.infoshare.clinicweb.user.entity.Role).values()}"
                         th:if="${role.name} != 'ADMIN'"
                         th:value="${role}"
-                        th:text="${role.getRoleDescription()}"></option>
+                        th:text="${role.getRoleDescriptiongit ()}"></option>
             </select>
             <p th:if="${#fields.hasErrors('role')}" class="text-danger"
                th:errors="${user.role}">Role error</p>
 
             <input type="submit" value="Zarejestruj się">
-            </div>
+
         </div>
     </div>
 
