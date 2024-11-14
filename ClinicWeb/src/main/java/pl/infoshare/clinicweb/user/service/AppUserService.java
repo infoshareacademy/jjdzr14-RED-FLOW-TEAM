@@ -50,23 +50,12 @@ public class AppUserService implements UserDetailsService {
     }
 
     public void saveUser(AppUserDto user) {
-        try {
-            if (isUserAlreadyRegistered(user.getEmail())) {
-
-                throw new UserEmailExistsException("Istnieje już konto z podanym adresem email!");
-
-            }
 
             user.setRole(Role.PATIENT);
             var appUser = userMapper.toEntity(user);
             userRepository.save(appUser);
             log.info("User patient saved with ID: {}", appUser.getId());
 
-        } catch (UserEmailExistsException e) {
-            log.error("Rejestracja użytkownika nie powiodła się: {}", e.getMessage());
-            throw e;
-
-        }
     }
     public boolean isUserAlreadyRegistered(String email) {
 

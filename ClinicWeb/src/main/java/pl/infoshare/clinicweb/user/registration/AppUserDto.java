@@ -2,12 +2,14 @@ package pl.infoshare.clinicweb.user.registration;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import pl.infoshare.clinicweb.emailAnnotation.EmailMatcherValidator;
 import pl.infoshare.clinicweb.passwordAnnotation.PasswordMatcherValidator;
 import pl.infoshare.clinicweb.user.entity.Role;
 
 
 @Data
 @PasswordMatcherValidator
+@EmailMatcherValidator
 public class AppUserDto {
 
     private Long id;

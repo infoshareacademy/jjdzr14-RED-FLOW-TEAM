@@ -36,18 +36,6 @@ public class VisitController {
         this.patientService = patientService;
     }
 
-    //    @GetMapping("/visit")
-//    public String saveVisit(@ModelAttribute("patient") Patient patient,
-//                            @ModelAttribute("visit") Visit visit, @ModelAttribute("doctor") Doctor doctor, Model model) {
-//
-//        List<PatientDto> patients = patientService.findAllPatients();
-//        List<DoctorDto> doctors = doctorService.findAllDoctors();
-//
-//        model.addAttribute("doctors", doctors);
-//        model.addAttribute("patients", patients);
-//
-//        return "visit";
-//    }
     @GetMapping("/visit")
     public String showVisitForm(Model model) {
 
