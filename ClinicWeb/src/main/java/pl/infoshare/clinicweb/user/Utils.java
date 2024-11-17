@@ -1,5 +1,7 @@
 package pl.infoshare.clinicweb.user;
 
+import pl.infoshare.clinicweb.advice.PeselFormatException;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,16 +30,6 @@ public class Utils {
 
             throw new PeselFormatException(pesel);
         }
-    }
-
-    public static <T> List<T> convertOptionalToList (List<Optional<T>> optionalList) {
-
-        return optionalList.stream()
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .collect(Collectors.toList());
-
-
     }
 
 }

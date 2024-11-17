@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "patients_cards")
 public class PatientCard {
     @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private Patient patient;

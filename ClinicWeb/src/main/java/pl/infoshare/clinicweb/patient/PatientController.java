@@ -13,7 +13,7 @@ import pl.infoshare.clinicweb.advice.ExceptionHandlerApp;
 import pl.infoshare.clinicweb.doctor.DoctorDto;
 import pl.infoshare.clinicweb.doctor.DoctorService;
 import pl.infoshare.clinicweb.user.PersonDetails;
-import pl.infoshare.clinicweb.user.PeselFormatException;
+import pl.infoshare.clinicweb.advice.PeselFormatException;
 import pl.infoshare.clinicweb.user.Utils;
 
 import java.util.List;
@@ -180,7 +180,7 @@ public class PatientController {
     @GetMapping("/delete-patient")
     public String showDeletePatientForm(@RequestParam("id") Long id, Model model) {
 
-      PatientDto patientById = patientService.findById(id);
+        PatientDto patientById = patientService.findById(id);
 
         model.addAttribute("patient", patientById);
 

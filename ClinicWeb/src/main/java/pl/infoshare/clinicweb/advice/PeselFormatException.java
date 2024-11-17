@@ -1,4 +1,4 @@
-package pl.infoshare.clinicweb.user;
+package pl.infoshare.clinicweb.advice;
 
 import static java.lang.String.format;
 

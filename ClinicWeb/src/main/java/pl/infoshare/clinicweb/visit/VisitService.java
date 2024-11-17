@@ -52,7 +52,6 @@ public class VisitService {
         visitRepository.save(visit);
     }
 
-
     public void updateVisit(VisitDto visitDto) {
 
         Visit visit = visitMapper.toEntity(visitDto);
@@ -149,7 +148,7 @@ public class VisitService {
         LocalDateTime endTime = calculateEndTime(visitTime);
         return !areVisitsAvailable(doctorId, visitTime, endTime);
     }
-    
+
     private LocalDateTime calculateEndTime(LocalDateTime visitTime) {
         return visitTime.plusMinutes(30);
     }

@@ -7,7 +7,6 @@ import pl.infoshare.clinicweb.patient.Patient;
 import pl.infoshare.clinicweb.user.PersonDetails;
 
 
-
 @Component
 @AllArgsConstructor
 public class PatientCardMapper {
@@ -42,7 +41,6 @@ public class PatientCardMapper {
 
     public PatientCard toEntity(PatientCardDTO patientCardDTO) {
         PatientCard patientCard = new PatientCard();
-
 
 
         patientCard.setId(patientCardDTO.getId());

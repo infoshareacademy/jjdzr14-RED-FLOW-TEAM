@@ -132,6 +132,8 @@
             <artifactId>thymeleaf-extras-springsecurity6</artifactId>
             <version>3.1.0.RELEASE</version>
         </dependency>
+
+
     </dependencies>
 
     <build>
